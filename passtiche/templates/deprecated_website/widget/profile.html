@@ -1,0 +1,64 @@
+<div class="widget_profile_inner" style="float:left" id="{{ widget.key() }}">
+
+{% include "edit/bookclub_intro.html" %}
+
+	<div class="page_header" style="display:none;">
+	
+		<div id="book_profile_title" style="margin: -6px 0px 0px 65px;
+color: #666;
+font-size: 9px;
+background: #efefef;
+border-radius: 10px;
+border: 2px solid rgba(100, 100, 100, .2);position: absolute;padding: 2px 5px;line-height: 9px;">Book Widget</div>
+<img src="{{ widget.thumbnail_url() }}" style="float:left;width: 52px;height: 42px;margin: 7px 0 0 11px;border-radius: 8px;-moz-border-radius: 8px;-webkit-border-radius: 8px;"><h2 style="padding-left:75px;padding-top:11px;background:white;font-size:25px;line-height:33px;box-shadow:-1px 1px 4px rgba(0,0,0,.25);min-width: 85px;
+text-align: left;">{{ widget.get_name() }}</h2></div>
+	
+	<div class="page_inner" style="padding:10px;margin:10px;">
+		   <ul class="nav nav-tabs span9" style="min-width: 467px;width: 737px !important;
+		width: auto;">
+	           <li class="active main"><a class="main" href="#w_{{ widget.key() }}_preview" data-toggle="tab">Dashboard</a></li>
+		                      
+	           <li class="main"><a class="main" href="#w_{{ widget.key() }}_edit" id="edit_widget_link" data-toggle="tab">Edit</a></li>
+	           
+		           <li class="main"><a class="main" id="insights_link" href="#w_{{ widget.key() }}_insights" data-toggle="tab">Insights</a></li>
+		
+			<li class="main dropdown" style="display:none;">
+              <a class="main" href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>
+              <ul class="advanced_options dropdown-menu">
+                {% if widget.media_type == 'review' %}
+					 <li><a href="#w_{{ widget.key() }}_responses" data-toggle="tab">Responses</a></li>
+				{% end %}
+				<li><a id="alerts_link" data-toggle="tab">Notifications</a></li>
+				<li><a id="ads_link" data-toggle="tab">Ad Campaigns</a></li>
+				<li><a id="book_club_link" data-toggle="tab">BookClub Campaigns</a></li>
+               <!-- <li><a href="#campaigns" data-toggle="tab">Campaigns</a></li> -->
+              </ul>
+            </li>
+	         </ul>
+
+	        <div class="tab-content">
+		           <div class="tab-pane active" id="w_{{ widget.key() }}_preview">
+				
+							{% include "preview.html" %}
+						
+		           </div>
+		           <div class="tab-pane" id="w_{{ widget.key() }}_edit" style="padding:20px;">{% include "edit_inner.html" %}</div>
+		           
+		           <div class="tab-pane" id="w_{{ widget.key() }}_insights">
+					<div class="insights_wrapper" style="padding:20px 0;">
+						{% include "analytics.html" %}
+					</div></div>
+	
+				
+				{% if widget.media_type == 'review' %}	
+		           <div class="tab-pane" id="w_{{ widget.key() }}_responses">				
+							{% include "responses.html" %}
+					</div>
+				{% end %}
+			
+			</div> <!-- end tab content -->
+			
+
+				
+				</div> <!-- end page inner -->
+	         </div>  <!-- end widget profile inner -->

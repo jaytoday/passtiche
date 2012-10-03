@@ -1,0 +1,69 @@
+{% extends "../base.html" %}
+
+
+{% block main %}
+<div class="well span8" style="
+    clear: both;
+    float: none;
+    min-width: 600px;
+">
+<h2>&nbsp; {% if arguments.get("code") %}Register{% else %}Sign In{% end %}</h2>
+<div id="social_login" style="display:none; padding:20px 10px 10px;">
+		<a id="google_login" style="margin:0 20px;" class="btn btn-primary" data-loading-text="Logging In...">Login with Google</a><a id="facebook_login" class="btn btn-primary" data-loading-text="Logging In...">Login with Facebook</a>
+	
+</div><hr/><div style="position:absolute;background: rgba(240, 240, 240, .65) !important;display:none;margin: -37px 225px;padding: 3px 10px;font-weight: bold;">or</div>
+
+<div id="form_login" style="padding:10px;">
+	
+	<div class="form-horizontal">
+        <fieldset>
+	
+          <div class="control-group">
+            <label class="control-label" style="padding-top:15px;" for="email">{% if arguments.get("code") %}Your {% end %}Email</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" id="email" {% if 'email' in arguments %}value="{{ arguments['email'][0] }}"{% end %}> 
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label"  style="padding-top:15px;" for="password">{% if arguments.get("code") %}Set {% end %}Password</label>
+            <div class="controls">
+              <input type="password" class="input-xlarge" id="password">
+            <!--  <p class="help-block">In addition to freeform text, any HTML5 text-based input appears like so.</p> -->
+
+            </div>
+
+{% if arguments.get("code") %}
+     <div class="control-group" style="padding-top:20px;">
+	
+<label class="control-label" style="padding-top:15px;font-size: 12px;" for="code">Invite Code</label>
+<div class="controls" style="
+    margin-top: 9px;
+">
+<p class="help-block" style="margin-top: -26px;position:absolute;font-size: 14px;margin-left: -91px;display:none;">Not registered? Use your invite code to sign in and create a new account.</p>
+<input type="text" class="input" id="code" value="{{ arguments['code'][0] }}">
+</div>
+</div>
+          </div>
+{% end %}
+
+{% if arguments.get("code") %}
+<div style="margin-left:36px;">
+    <input id="terms_agree" type="checkbox" checked="checked" /> &nbsp; I agree to the <a href="/#privacy" target="_blank">Terms of Service</a>
+</div>
+{% end %}
+
+          <div class="form-actions" style="background:none;border-top:0;padding-top:0;">
+            <button id="submit_login" type="submit" class="btn btn-primary btn-large">Sign In</button>
+          </div>
+        </fieldset>
+      </div>
+
+</div>
+
+</div>
+{% end %}
+
+{% block js %}
+	{% include "login.js" %}
+{% end %}

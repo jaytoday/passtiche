@@ -1,0 +1,38 @@
+    <div>
+        
+        
+               
+    <a class="btn btn-large disabled" style="font-size: 16px;
+border: none;">Choose an optional content type for your plugin</a>
+
+								<div class="btn-group" id="widget_plugin_type" style="margin-bottom:15px;" >
+						<a id="video" class="{% if widget.plugin_type == "video" %}active{% end %} btn">Video</a>
+					  <a id="social_sharing" class="{% if widget.plugin_type == "social_sharing" %}active{% end %} btn">Social Sharing</a>
+			            <a id="newsletter_subscribe" class="{% if widget.plugin_type == "newsletter_subscribe" %}active{% end %} btn">Subscribe to Newsletter</a>
+				            	</div>
+				            	
+        <a style="cursor: pointer;
+font-weight: bold;
+font-size: 15px;
+margin-right: 8px;width:383px;
+margin-bottom: 20px;
+clear: both;
+display: block;
+" class="btn btn-warning btn-large"  id="download_widget" href="/download/{{ widget.key() }}" ><span class="icon-download" style="font-size: 24px; float: left;" ></span> Download Book Club For iBooks Author&#8482;</a>
+
+	<div class="alert alert-info" style="padding: 15px;
+font-size: 14px;
+width: 380px;
+margin-top: -4px;
+border-width: 2px;color:#666;
+margin-right: -43px;">
+
+
+Unzip the download and drag &amp; drop the <a style="font-weight:700;" >{% if widget.media_type == "bookclub" %}Book Club Widget{% else %}Widget{% end %}</a> on any page of an <a style="font-weight:700;" href="http://www.apple.com/ibooks-author/gallery.html" target="_blank">iBooks Author&#8482;</a> document
+<img src="/static/images/download_flow.png" style="
+margin: 20px 0;
+"><div style="font-size: 11px;line-height: 20px;width: 350px;">Is your book is in a different format? iBooks Author can import content from Microsoft Word and Apple Pages documents.</div></div>
+
+ 
+				            	
+</div>

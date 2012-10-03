@@ -1,0 +1,60 @@
+
+
+Admin Features
+=====================================
+
+1. Create accounts -  /login/newemail@site.com 
+
+
+HipType Architecture
+=====================================
+
+1. Author CMS - Create, Edit, and Monitor Widgets
+
+   The web-based Author CMS contains a widget management system. 
+   The main index template for this site is website/index/index.html, and is loaded from the views.website.IndexView handler. 
+   website/nav.html contains links to pages to create, list, and view widgets, and this page data is loaded via ajax calls as specified in website/index/index.js. 
+   
+   The widget editing and viewing HTML/JS is in website/widget, and views.ajax contains handlers that load and save widget content on the server. This code should be refactored to separate the ajax interface from the underlying APIs. 
+   
+
+2. Widget Downloading 
+
+   The widget profile page contains a link to download a widget, using a /download/ url that has the widget's key as a path element. The views.resource.DownloadWidget handler uses the zipfile library to create an archive containing files in Apple Dashcode format. The non-blob files are compiled in views.compile_widget. 
+   
+3. Widget Frame Code 
+
+   The widget client code could/should be refactored to avoid iframes, but for now the downloaded widget main.html file contains an iframe with a src attribute pointing to a /w/ URL with the widget's key as a path element. The views.widget.WidgetFrame handler renders the widget content using the resources/widget/widget_frame.html template. 
+
+ *** Widget Paths:
+
+	** /w/{{ widget.key() }}
+	   * Returns widget frame HTML.
+	     -> widget/server/widget_frame.html
+	
+	
+	** /wp/{{ widget.key() }} - Profile
+		* Returns HTML extending base.html 
+		   -> widget/server/widget_profile.html
+		
+	** /ajax/widget.frame?widget={{ widget.key() }} - Ajax
+		
+		* Returns JSON - { "html": < html code > }
+		* widget_ajax.WidgetFrame 
+		    -> widget/server/widget_frame_body.html 
+		        -> frame/widget_frame.html
+		            -> <media_type>.html (and reward html if widget.reward_media_option)
+		              
+   
+      
+   
+   
+
+
+
+Running the Server
+=====================================
+Download the Google AppEngine Python development environment at http://code.google.com/appengine/downloads.html.
+
+
+

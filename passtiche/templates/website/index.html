@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block js %}
+
+  {% include "index.js" %}
+{% end %}
+
+{% block body %}
+
+
+<!-- Masthead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="row">
+
+    <div class="span11">
+    <h1 id="header"
+    >You Just Got a Free Pass.</h1>
+    <p class="lead" style="
+        
+    ">Send <a href="http://www.apple.com/ios/whats-new/#passbook" target="_blank">iOS6 PassBook</a> passes for gifts you are offering and gifts you want.
+    </p>
+    </div>
+
+    <div class="span6">
+
+    </div>
+  </div>
+  <div class="subnav" style="max-width: 618px;">
+    <ul class="nav nav-pills">
+      <li><a href="#popular"><i class="icon-comment"></i> Popular Passes</a></li>
+      <li><a href="#friends"><i class="icon-glass"></i> Passes For Friends</a></li>
+      <li><a href="#romance"><i class="icon-heart"></i> Romantic Passes</a></li>
+      <li><a href="#sports"><i class="icon-gift"></i> Other Passes</a></li>
+     <!-- <li><a href="#events"><i class="icon-film"></i> Entertainment</a></li> -->
+    </ul>
+  </div>
+</header>
+
+
+<div id="pass_gallery_container">
+
+  {% include "pass/gallery.html" %}
+</div>
+
+<!-- Modal -->
+<div class="modal" style="display:none;" id="sendPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-info">Save changes</button>
+  </div>
+</div>
+
+{% end %}

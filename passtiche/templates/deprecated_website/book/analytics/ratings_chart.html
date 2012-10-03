@@ -1,0 +1,34 @@
+      
+<table id="ratings_table" class="table table-striped table-bordered table-condensed">
+        <thead>
+            <th style="width: 94px;
+text-align: center;">User Rating</th>
+           <th style="
+    font-size: 19px;
+    padding: 0 0 0 0px;text-align:center;
+"><i class="icon-user"></i> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="color:rgb(70,170,20);">
+            <td><b>5</b>  <span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span></td>
+            <td>{{ ratings_info['star_totals'][5] }}</td>
+          </tr>	
+          <tr style="color:rgb(100,120,0);">
+            <td><b>4</b>  <span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-empty"></span></td>
+            <td>{{ ratings_info['star_totals'][4] }}</td>
+          </tr>	
+          <tr style="color:rgb(200,140,0);">
+            <td><b>3</b>  <span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-empty"></span><span class="icon-star-empty"></span></td>
+            <td>{{ ratings_info['star_totals'][3] }}</td>
+          </tr>	
+          <tr style="color:rgb(200,80,0);">
+            <td><b>2</b>  <span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-empty"></span><span class="icon-star-empty"></span><span class="icon-star-empty"></span></td>
+            <td>{{ ratings_info['star_totals'][2] }}</td>
+          </tr>
+          <tr style="color:darkred;">
+            <td><b>1</b>  <span class="icon-star"></span><span class="icon-star-empty"></span><span class="icon-star-empty"></span><span class="icon-star-empty"></span><span class="icon-star-empty"></span></td>
+            <td>{{ ratings_info['star_totals'][1] }}</td>
+          </tr>
+        </tbody>
+      </table>

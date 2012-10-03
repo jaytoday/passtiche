@@ -1,0 +1,12 @@
+		
+		
+	<div class="control-group" style="margin-top:20px;">
+	            <label class="control-label" for="file-upload">YouTube URL  &nbsp; <span style="font-size:.8em;color:#AAA;">example: www.youtube.com/watch?v=dQw4w9WgXcQ</span></label>
+	            <div class="controls" style="padding-top:10px;">
+	   
+		              <span class="iconic compass" style="font-size:30px;"> <input style="width: 725px;font-size: 26px;
+" type="text" id="{% if reward %}reward_{% end %}video_url" class="placeholder input-xlarge" {% if widget and video_url  %}value="{{ video_url }}"{% end %}>
+		              <p class="help-block" style="margin-top:5px;">YouTube supports both video and audio. Enable the <i>Unlisted</i> option to make your video private.</p>
+		         
+	            </div>
+	     </div>

@@ -1,0 +1,7 @@
+{% for i, (engagement_date, (sample, purchased)) in enumerate(demographic_dict['engagement_history']) %}
+	<div sort="{{ i }}" range="{{ engagement_date.strftime("%A, %B %d") }}">
+	    <span class="sample">{{ sample }}</span>
+	    <span class="purchased">{{ purchased }}</span>
+	    </div>
+{% end %}
+

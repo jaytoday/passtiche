@@ -1,0 +1,102 @@
+
+<div class="row" style="margin-left:0px;">
+<div style="height: 10px;
+width: 70px;
+margin-left: 0;"></div>
+<div style="width: 670px;
+margin-left: 23px;
+margin-top: 20px;">
+	<div id="widget_pticket" style="">
+			<div id="pticket_intro" class="alert alert-info" style="width: 440px;
+padding: 6px; display:none;
+margin-bottom: 15px;
+font-size: 14px;
+text-align: center;">
+       This widget is shown below as it will appear to readers
+      </div>
+
+		<div id="widget_pticket_inner">
+            {% comment "pticket_inner.html" %}
+		</div>
+	</div>
+
+	<div class="btn-group" id="widget_theme" style="font-size: 18px;
+								padding: 10px;
+								width: auto;
+								clear: both;
+								display:none;
+								float: none;margin-top:30px;">
+								
+								<!-- TODO: refactor this for multiple items -->
+								<label style="float: left;
+padding-top: 5px;" class="control-label" for="widget_theme"><span >Theme: &nbsp; </label>
+								    {% for theme in ["Light", "Dark"] %}
+								    
+								    <a class="btn {% if widget.theme == theme.lower() %}active{% end %}" id="{{ theme.lower() }}">{{ theme }}</a>
+								    
+								    {% end %}
+								    
+								            
+				            	</div>
+				            	
+
+		<div style="margin:10px 0;">
+	</div>
+	
+<div id="pticket_widget_profile" style="margin-top:15px;">
+	
+
+     <!-- <p class="help-block" style="padding: 15px 0px 0;
+font-size: 14px;
+width: 366px;"><b>Widget Link HTML</b> <i>(supported by Kindle and iBooks)</i></p>
+	<textarea class="widget_link_html" style="
+    display: block;
+    width: 370px;
+    font-size: 15px;
+"><a href='{{ base_url }}/wp/{{ widget.key() }}'>{{ widget.get_name() }}</a></textarea>
+ -->
+
+<div class="upload_ebook" style="position: absolute;
+width: 285px;
+margin-left: -23px;">
+<a class="btn btn-large disabled" style="font-size: 16px;
+border: none;">Add Book Club To Your eBook</a>
+<p class="help-block" style="margin-top: 14px;
+font-size: 15px;">Upload a directory containing ePub files and your book will be automatically modified to include Book Club</p>
+<input type="file" multiple id="book_upload" style="margin-bottom:25px;">
+<div>
+<a id="save_book_upload" class="btn-primary btn-large btn-disabled"><span class="icon-upload"></span> Upload</a>
+</div>
+
+</div>
+
+
+</div>
+	<div class="alert alert-info" style="padding: 15px;
+font-size: 14px;
+width: 380px;
+float: right;
+margin-top: -4px;
+border-width: 2px;color:#666;
+margin-right: -43px;">
+<a style="cursor: pointer;
+font-weight: bold;
+font-size: 15px;
+margin-right: 8px;
+margin-bottom: 20px;
+clear: both;
+display: block;
+" class="btn btn-warning btn-large"  id="download_widget" {% if False %}href="/download/{{ widget.key() }}"{% end %} ><span class="icon-download" style="font-size: 24px; float: left;" ></span> Download Book Club For iBooks Author&#8482;</a>
+
+
+Unzip the download and drag &amp; drop the <a style="font-weight:700;" >{% if widget.media_type == "bookclub" %}Book Club Widget{% else %}Widget{% end %}</a> on any page of an <a style="font-weight:700;" href="http://www.apple.com/ibooks-author/gallery.html" target="_blank">iBooks Author&#8482;</a> document
+<img src="/static/images/download_flow.png" style="
+margin: 20px 0;
+"><div style="font-size: 11px;line-height: 20px;width: 350px;">Is your book is in a different format? iBooks Author can import content from Microsoft Word and Apple Pages documents.</div></div>
+
+
+</div>
+
+
+</div>
+

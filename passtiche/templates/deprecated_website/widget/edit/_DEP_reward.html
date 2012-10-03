@@ -1,0 +1,137 @@
+<div class="control-group" style="
+margin: 45px 0 0;
+clear: both;">
+		<div style="background: rgba(255, 255, 255, .6);
+padding: 11px 0px 0px 6px;
+border-radius: 10px;
+width: 572px;
+border: 3px solid rgba(100, 100, 100, .15);
+margin-left: -10px;
+margin-top: -7px;
+clear: both;">
+				           <label class="control-label" for="reward_action" style="padding-left:12px;">Action to Earn Reward</label>
+				      
+								<div class="btn-group" id="reward_action" style="font-size: 25px;
+								padding: 10px;
+								width: 470px;
+								clear: both;
+								float: none;">
+								
+								<!-- TODO: refactor this for multiple items -->
+								<a id="social" class="  {% if not widget or (widget and widget.reward_action == "social") %}active{% end %} btn">Social Sharing</a>
+								
+								          <a id="purchase"   class="{% if widget and widget.reward_action == "purchase" %}active{% end %} btn">Book Purchase</a>
+								  
+										  
+								          
+				            	</div>
+				<!-- TODO: help text for both -->
+				
+					<div class="reward_action_details" style="min-height:0px; margin: 20px;">
+				<div class="panel" id="social" style="{% if widget and widget.reward_action != "social" %}display:none;{% end %}">
+<div class="control-group" style="margin: 10px 0 0; padding: 10px 0;">
+<label class="control-label" for="quote_value">Customize Your Social Sharing Message</label><p class="help-block" style="padding: 6px 0 0; 
+font-size: 13px;">Give your readers an interesting quote or description to share</p>
+<div class="controls" style="margin: 10px -10px;">
+<img src="/static/images/quote.png" style="
+width: 50px;
+margin-top: 35px;
+margin-right: 8px;
+">
+<textarea style="width: 460px; min-height: 200px; font-size: 26px; line-height: 31px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; background-image: none; background-position: 0% 0%; background-repeat: repeat repeat; " id="quote_value">{% if widget %}{{ widget.quote or "" }}{% end %}</textarea>
+
+</div>
+</div>
+<div class="control-group" id="auto_share" style="padding-top:10px; font-size:.8em;">
+		 Automatically open share dialog for &nbsp;  <input type="checkbox" {% if widget and widget.twitter_share %}checked='checked'{% end %} id="twitter_share">  <b>Twitter</b> &nbsp; &nbsp; <input type="checkbox" {% if widget and widget.fb_share %}checked='checked'{% end %} id="facebook_share"> <b>Facebook</b>
+	
+		     </div>
+</div><!-- end social sharing details -->						
+								          <div class="panel"  style="{% if not widget or widget.reward_action != "purchase" %}display:none;{% end %}" id="purchase"><p class="help-block" style="padding: 6px;
+margin: -22px -10px -5px;
+font-size: 13px;">For best results, place this widget at the end of your book's free sample chapter.</p></div>
+	</div>
+
+
+			</div>
+	</div>
+	
+
+
+
+<div class="control-group" style="
+margin: 40px 0 0;
+clear: both;">
+		<div style="background: rgba(255, 255, 255, .6);
+padding: 11px 0px 0px 6px;
+border-radius: 10px;
+width: 572px;
+border: 3px solid rgba(100, 100, 100, .15);
+margin-left: -10px;
+margin-top: -7px;
+clear: both;">
+				           <label class="control-label" for="reward_type" style="padding-left:12px;">Reward Type</label>
+				      
+								<div class="btn-group" id="reward_type" style="font-size: 25px;
+								padding: 10px;
+								width: 470px;
+								clear: both;
+								float: none;">
+								
+								<!-- TODO: refactor this for multiple items -->
+								
+								          <a id="exclusive_content"   class="{% if not widget or (widget and widget.reward_type == "exclusive_content") %}active{% end %} btn">Exclusive Content</a>
+								  
+										  <a id="meet_author" class="  {% if widget and widget.reward_type == "meet_author" %}active{% end %} btn">Meet the Author</a>
+										<a style="display:none;" id="other" class="  {% if widget and widget.reward_type == "other" %}active{% end %} btn">Custom</a>
+								          
+				            	</div>
+				<!-- TODO: help text for both -->
+				
+				<div class="reward_type_details" style="min-height:0px; margin: 20px;">
+			<div id="exclusive_content" class="panel"  style="{% if widget and widget.reward_type != "exclusive_content" %}display:none;{% end %}">
+					<div class="control-group"  style="padding-top:0px;">
+	            <label class="control-label" for="exclusive_upload">Upload Exclusive Content File</label>
+	            <div class="controls" style="padding-top:5px;">
+		<p class="help-block" style="padding: 6px;
+margin: -5px 0px 5px;
+font-size: 13px;font-style: italic;"><b style="
+    font-style: normal;
+">Examples</b>: Author interview, extra chapter, behind-the-scenes content, artwork</p>
+	             	<input type="file" multiple id="exclusive_upload">
+	            </div>
+	     </div>
+				
+			</div>						
+								          <div class="panel"  style="{% if not widget or widget.reward_type != "meet_author" %}display:none;{% end %}" id="meet_author">"Meet the Author" events are held on <a href="http://www.google.com/tools/dlpage/res/talkvideo/hangouts/" target="_blank"><b>Google+ Hangouts</b></a>.</div>
+								<div class="panel"  style="{% if not widget or widget.reward_type != "other" %}display:none;{% end %}" id="other"><input type='text' id='other_details'></input><p class="help-block" style="padding: 6px;
+margin: 0px 0px -5px;
+font-size: 13px;">Describe your custom reward.</p></div>
+	</div>
+
+			</div>
+	</div>
+	
+	<!--	<div class="control-group"  style="padding-top:0px;">
+	            <label class="control-label" for="reward_limit">Reward Quantity                                                                                                                                                                                                                                                                                                                                                                                                               </label>
+	            <div class="controls" style="padding-top:5px;">
+	             	<select class="span1" id="reward_limit">
+                <option>Unlimited</option>
+                <option {% if widget and widget.reward_limit == 10 %}selected="true"{% end %}>10</option>
+                <option {% if widget and widget.reward_limit == 50 %}selected="true"{% end %}>50</option>
+                <option {% if widget and widget.reward_limit == 100 %}selected="true"{% end %}>100</option>
+                <option {% if widget and widget.reward_limit == 200 %}selected="true"{% end %}>200</option>
+					 <option {% if widget and widget.reward_limit == 500 %}selected="true"{% end %}>500</option>
+				    <option {% if widget and widget.reward_limit == 1000 %}selected="true"{% end %}>1000</option>
+              </select>
+	<p class="help-block" style="padding: 0px;
+margin: 0px 0px -5px;
+font-size: 13px;">A limited reward quantity benefits your </p>
+
+	            </div>
+	     </div> -->
+	
+
+	
+
+

@@ -1,0 +1,86 @@
+		
+		<div id="analytics_intro" class="alert" style="
+margin: 0px 0 20px; width:462px;display:none;
+font-size: 14px;">
+        <strong style="font-size: 1.05em;">There is not yet enough data to render analytics for this book</strong>. <br/>The analytics data shown below is only meant to be an example.
+      </div>
+
+
+		<div id="current_reader_wrapper" style="margin: 10px;
+clear: both;
+float: none;
+display:none;
+width: 95%;
+min-height: 49px;
+background: rgba(255, 255, 255, .8);
+border-radius: 10px;
+border: 3px solid rgba(100, 100, 100, .1);"><label class="control-label" style="padding-left: 20px;
+padding-top: 10px;float:left;
+margin-bottom: 0;">Current Readers</label>
+		<div id="current_readers" style="clear: both;
+margin: 35px 0 10px 20px;"></div>
+	</div>
+	
+<div id="book_analytics_{{ book.key() }}_data" style="display:none;">
+    	
+	{% include "book_analytics_inner.html" %}
+	  
+</div>
+<label class="control-label" style="padding-left: 20px;
+padding-top: 18px;
+float: left;
+margin-bottom: -30px;">Daily Interactions</label>
+<div class="btn-group" id="book_chart_type" style="padding: 10px 10px 0;
+width: 460px; z-index: 5000;
+position: absolute;
+margin: 3px 3px 3px 166px;">
+<!-- TODO: refactor this for multiple items -->
+<a id="7" class="active btn" style="
+">7 days</a>
+<a id="30" class=" btn" style="">30 days</a>
+</div>
+<div class="analytics_wrapper" id="book_analytics_{{ book.key() }}" style=""></div>
+<div id="conversion_wrapper" style="display:none;
+    height: 74px;
+">
+	<div id="conversion_intro" class="alert" style="margin: 4px 0 0 -2px;
+width: 375px;
+position: absolute;
+font-size: 13px;
+line-height: 20px;
+padding-right: 8px;
+padding-left: 344px;
+">The <b>free sample to purchase conversion rate</b> estimates from widget interaction data how many of the free sample downloads of your book have resulted in a book purchase</div>
+
+<div class="btn-group" id="book_conversion" style="padding: 14px 10px 0;
+width: 460px;
+z-index: 5000;
+position: absolute;
+margin: 3px 3px 3px 0px;">
+	
+<a class=" btn" style="
+    font-size: 12px;
+">Free Sample  <span class="ft_icon arrowright" style="
+    float: none;
+    display: inline;
+    padding: 0 4px 0 8px;
+"></span>Purchase Conversion Rate: <span style="font-size:1.3em;">&nbsp;{{ book.conversion_rate() }}%</span></a>
+</div><div style="
+ position: absolute;
+font-weight: bold;
+margin: 52px 0 0 15px;
+font-size: 11px;
+z-index: 6000;
+"><input type="checkbox" checked="checked" style="
+"> &nbsp; Notify me when this book's conversion rate changes</div>
+
+</div>
+
+{% if book.get_name() == 'YC W12' %}
+<div style="margin-top:20px;">
+<b><span style="color:#666; font-size:.8em;">Top Audience Locations:</span> <a>California</a>, <a>New York</a>, <a>United Kingdom</a>, <a>Texas</a>, <a>Illinois</a> </b>
+<br/>
+<b><span style="color:#666;font-size:.8em;">Audience Is Also Reading:</span> <a>The Lean Startup</a>, <a>Venture Hacks</a>, <a>The Art of the Start</a>, <a>Crush It!</a></b>
+	</div>
+	{% end %}
+	

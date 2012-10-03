@@ -1,0 +1,23 @@
+
+<div class="inner_page" id="inner_index" style="{% if not current_user %}display:block;{% end %} min-width:500px;">
+    <header class="jumbotron" style="{% if current_user %}padding-top: 25px;{% end %}">
+        <div class="inner">
+            <div id="landing_banner">
+                <img  class="logo" src="/static/images/logo_transparent.png">
+                <img class="cover-bg" src="/static/images/reading_ipad.png">
+            </div>
+            <div class="landing-blurb"> 
+                <div id="banner_description">Here's one for the books.
+                    <div id="banner_details">
+                    <a style="font-size:1.3em;">Hiptype</a> gives book publishers the power of data.
+                    <div style="height:10px;"></div>
+                    Learn more about your audience and their reading behavior so you can more effectively improve your books, increase sales, and provide targeted content to readers.
+                    </div> <!-- banner details -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% include "sign_up.html" %}
+
+</div>

@@ -1,0 +1,97 @@
+
+
+<div style="clear: both;
+width: 800px;
+height: 145px;">	
+	{% include "percents.html" %}
+	
+	{% include "versions.html" %}
+
+</div>
+
+
+
+<div id="audience_activity" style=" margin:70px 0 -10px 65px; min-height:350px;">
+	
+	
+    <div id="engagement_info" style="margin-top:-34px;">
+
+    
+
+	{% include "engagement_chart.html" %}
+
+	
+	<div class="alert alert-info" style="
+margin: -15px 0 10px -15px;
+position:absolute;
+font-size: 13px;
+padding: 5px 0 5px 20px;
+line-height: 23px;
+width: 700px;
+box-shadow: 2px 3px 4px rgba(100,100,100,.4);
+">
+<div style="float:left;font-weight:bold;margin-right: 35px;
+font-size: 15px;">Audience Engagement Visualized</div>
+
+<div style="
+    float: left;
+    width: 228px;
+">
+<div style=" border-radius: 50%;
+ width: 20px;
+ height: 20px; background: rgb(0,195,0); border: 2px solid rgba(100, 100, 100, .2); display:; float: left; margin-right: 10px;"></div>  <b>Highlights &amp; Annotations</b>
+</div>
+
+<div style="
+    float: left;
+    width: 175px;
+">
+<div style=" border-radius: 50%;
+ width: 20px;
+ height: 20px; background: red; border: 2px solid rgba(100, 100, 100, .2); float: left; margin-right: 10px;"></div>  <b>Audience Attrition</b>
+</div>
+
+</div>
+
+{% if ibook_stats['engagement']['chapters'] %}
+<div style="margin: 50px 0px 10px;width: 690px;text-align: center;">
+<button class="btn" data-toggle="collapse" id="engagement_collapse" data-target="#engagement_details" style="margin: 0px 0px 10px -45px;
+height: auto !important;
+float: left;
+font-size: 10px;
+padding: 2px 10px;">
+	<span id="hide" style="display:none;"><i class="icon-caret-down"></i> &nbsp; Hide</span>
+	<span id="show"><i class="icon-caret-right"></i> &nbsp; Show</span>      
+Chapter Performance Details
+</button>
+<div id="engagement_details" class="collapse" style="height:0px; margin: 37px 15px 0;clear: both; ">
+<table id="chapter_details" class="table-sortable table table-striped table-bordered table-condensed" style="width: 660px;clear: both;margin-bottom:60px;">
+      <thead>
+          <tr>
+            <th>Chapter</th>
+				<th>Completion Rate</th>
+				<th>Highlight &amp; Note Rate</th>
+				<th>Performance Grade</th>
+          </tr>
+        </thead><!-- [{'chapter': 1, 'engagement': 10, 'attrition': 5 }] -->
+        <tbody>
+            {% for chapter_data in ibook_stats['engagement']['chapters'] %}
+          <tr>
+            <td>{{ chapter_data['number'] }}</td>
+            <td>{{ chapter_data.get('completion_rate',0) }}%</td>
+            <td>{{ chapter_data.get('note_rate',0) }}%</td>
+				<td>{{ chapter_data.get('grade','N/A') }} <i style="font-size:.75em;">({% if chapter_data['grade'] < 20 %}Poor{% elif chapter_data['grade'] < 40 %}Average{% elif chapter_data['grade'] < 60 %}Good{% elif chapter_data['grade'] < 80 %}Very Good{% else %}Excellent{% end %})</i></td>
+          </tr>
+          {% end %}
+        
+        </tbody>
+</table>
+</div>
+</div>
+{% end %}
+
+	</div> <!-- end engagement info -->
+
+
+    
+</div><!-- end activity details -->

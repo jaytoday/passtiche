@@ -1,0 +1,21 @@
+{% set widget_type_name = widget_type %}
+
+<div class="row widget_details" id="widget_details_{{ widget_type.lower() }}_wrapper" 
+style="{% if not widget %}display:none;{% end %}">
+ 
+    <div class="{% if widget %}span8{% else %}span10{% end %}" style="margin-left:0;">
+      <form class="well" id="text_details" style="min-width:548px;">
+
+   <div style="float: right;{% if widget %}margin-left:-20px;{% end %}
+min-width: 220px;margin-top: -20px;" {% if widget %}class="span2"{% else %}class="span3"{% end %}>
+      <h4 class="form_group_title" style="	background: rgba(200, 200, 200, .9);
+		color: #222;
+		font-size: 1.2em;float:right;
+		border-width: 3px;">Reward Details</h4>
+    </div>
+
+		<h2>TODO: Reward details</h2>
+		
+		</form>
+    </div>
+  </div>

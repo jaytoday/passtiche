@@ -1,0 +1,44 @@
+  <h4 class="form_group_title" style="display:none;background: rgba(200, 200, 200, .9);
+            color: #222;
+            font-size: 1.2em;float:right;
+            border-width: 3px;">Related Books</h4>
+
+{% set related_books = book.get_ibook().also_reading() %}
+
+{% if related_books %}
+
+<table style="margin-top:60px;" class="related_books table table-striped table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>Rank</th>	
+            <th>Book Title</th>
+            <th>Author</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for a, b in enumerate(related_books) %}
+            <tr style="cursor:pointer;" id="{{ b.ibook_id }}">
+            <td>{{ a + 1 }}</td>	
+            <td>{% if b.title %}{{ b.title }}{% else %}{{ b.ibook_id }} (indexing){% end %}</td>
+            <td>{{ b.get_author() }}</td>
+            </tr>
+        {% end %}        
+        </tbody>
+      </table>
+      
+
+<div id="related_book_details">
+<div id="rb_intro" class="alert alert-info" style="font-size: 14px; text-align: center; margin-bottom: 12px; width: 795px; padding-right: 10px; display: block; ">
+The books above are those most often owned by readers of <strong style="
+font-size: 17px;
+">{{ book.get_name() }}</strong>
+<br/>Select a book to view its detailed engagement and demographic analytics
+</div> 
+</div>
+
+{% else %}
+<div class="alert alert-info" style="margin-top:75px; font-size: 14px; text-align: center; margin-bottom: 12px; width: 600px; padding-right: 10px; display: block; margin-left: 56px;">
+There are not yet related books available for this book.
+</div> 
+
+{% end %}

@@ -1,0 +1,18 @@
+
+<br/>
+<!-- this is where group list goes. TODO: delete, permissions, etc. -->
+{% if current_user %}
+<h3>Account: <i>{{ current_user.email }}</i></h3><br/>
+{% end %}
+<h3>Account Users</h3>
+<div id="group_list" class="well" style="margin:20px;padding:10px;width:500px;">
+    {% if sub_users %}
+    {% for sub_user in sub_users %}
+    <div class="sub_user">{{ sub_user.email }} - <i>{{ sub_user.status}}</i></div>
+    {% end %}
+    {% else %}
+    <i>You haven't invited any users to this account</i>
+    {% end %}
+</div>
+
+<input type="text" id="invite_user_email" value="" placeholder="email@email.com"> <a id="invite_user" class="btn">Invite New User</a>

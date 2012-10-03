@@ -1,0 +1,17 @@
+
+ {% for i, (widget, view_info) in enumerate(book.widget_data(days=days)) %}
+
+{% if widget == "conversion" %}
+    		{% set widget_key = "conversion" %}
+			{% set widget_name = "Purchase Conversion" %}
+{% else %}
+    		{% set widget_key =  widget.key() %}
+			{% set widget_name = widget.get_name() %}
+{% end %}
+
+    		    <div class="widget" id="{{ widget_key }}" name="{{ widget_name }}">
+    		        {% for view_date, date_dict in view_info %}
+    		          <span day="{{ view_date.day }}" {% if  view_date == current_date %} is_today="true" {% end %} date="{{ view_date.strftime("%s") }}000" _date="{{ view_date.strftime('%Y-%m-%d') }}" readable_date="{{ view_date.strftime('%d %B %Y') }}" interactions="{{ date_dict['interactions']  }}" readers="{{ date_dict['readers'] }}" ></span>
+		{% end %}
+    		    </div>
+{% end %}

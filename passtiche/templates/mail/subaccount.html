@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block main %}
+<br/><br/>
+<font color="#333333" size="5"><b>You've been invited to join <b>{{ main_account_email }}</b> on Hiptype</b></font>
+<font color="#666666" size="3">
+<br/><br/>
+You're now all set to join {{ main_account_email }} on Hiptype. Visit this link to set your password and continue to your account:
+<br/><br/>
+http://www.hiptype.com/login?email={{ email }}&code=borogoves
+<br/><br/>
+</font>
+{% end %}
+{% block footer %}{% end %}

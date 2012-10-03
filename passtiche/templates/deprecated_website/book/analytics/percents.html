@@ -1,0 +1,80 @@
+
+{% set percent_info = ibook_stats['percents'] %}
+
+<div id="percent_info_wrapper" style="float: left;
+margin-top: 22px;
+background:
+rgba(255, 255, 255, .6);
+padding: 5px 0 5px 12px;
+border-radius: 10px;
+border: 3px solid
+rgba(100, 100, 100, .1);
+width: 360px;height: 154px;margin-left: 18px;">
+       
+<!-- <h3 style='padding-left:0px;font-size:16px;text-align:center;'>Percent of Readers<br/>Who Purchased Book</h3> -->
+
+        <div id='converted_inner' style="width:119px;float:left">
+{% if 'converted' in percent_info %}           
+	 {% comment "TODO: color should depend on value (red, yellow, green) %}
+	            <input style="display:none;" type="text" id="converted_knob" value="{{ percent_info['converted'] }}" data-fontShrink="6" data-ticks="10" data-thickness=".35" data-width="110" data-fgColor="#0b62a" data-displayInput=false data-textColor="#666" data-readOnly=true data-min="0" data-max="100" />
+	<div style="position: absolute;
+margin: -65px {% if percent_info['converted'] > 9 %}37{% else %}44{% end %}px;"><span style="font-size: 22px;float: left;">{{ percent_info['converted'] }}</span><span style="
+    font-size: 12px;
+    padding-left: 2px;
+">%</span></div>
+	  <div style="font-weight:bold; font-size: 14px;
+	text-align: center;">Purchased<div style="margin-top: -6px; font-size:10px;">After Reading Sample</div></div>
+	{% else %}
+	<div style="font-size: 11px;
+line-height: 15px;
+text-align: center;
+margin: auto;
+padding: 44px 5px;">Conversion Rates Are Not Yet Available For This Book</div>
+{% end %}
+        </div>
+
+
+     <div id='completed_inner' style="width:119px;float:left">
+	{% if 'completed' in percent_info %}
+            {% comment "TODO: color should depend on value (red, yellow, green) %}
+            <input style="display:none;" type="text" id="completed_knob" value="{{ percent_info['completed'] }}" data-fontShrink="6"  data-ticks="10" data-thickness=".35" data-width="110" data-displayInput=false data-fgColor="#0b62a4" data-textColor="#666" data-readOnly=true data-min="0" data-max="100" />
+	<div style="position: absolute;
+margin: -65px {% if percent_info['completed'] > 9 %}37{% else %}44{% end %}px;"><span style="font-size: 22px;float: left;">{{ percent_info['completed'] }}</span><span style="
+    font-size: 12px;
+    padding-left: 2px;
+">%</span></div>
+  <div style="font-weight:bold; font-size: 14px;
+text-align: center;">Completed<div style="margin-top: -6px; font-size:.8em;">Reading This Book</div></div>
+{% else %}
+<div style="font-size: 11px;
+line-height: 15px;
+text-align: center;
+margin: auto;
+padding: 44px 10px;">Book Completion Rates Are Not Yet Available For This Book</div>
+{% end %}
+        </div>
+
+  <div id='progress_inner' style="width:119px;float:left">
+	{% if 'progress' in percent_info %}
+            {% comment "TODO: color should depend on value (red, yellow, green) %}
+            <input style="display:none;"  type="text" id="progress_knob" value="{{ percent_info['progress'] }}" data-fontShrink="6" data-ticks="10" data-thickness=".35" data-width="110" data-displayInput=false data-fgColor="#0b62a4" data-textColor="#666" data-readOnly=true data-min="0" data-max="100" />
+			<div style="position: absolute;
+margin: -65px {% if percent_info['progress'] > 9 %}37{% else %}44{% end %}px;"><span style="font-size: 22px;float: left;">{{ percent_info['progress'] }}</span><span style="
+    font-size: 12px;
+    padding-left: 2px;
+">%</span></div>
+  <div style="font-weight: bold;
+font-size: 11px;
+text-align: center;
+line-height: 17px;
+margin-top: 5px;">Average Progress Through This Book</div>
+{% else %}
+<div style="font-size: 11px;
+line-height: 15px;
+text-align: center;
+margin: auto;
+padding: 44px 10px;">Average Reading Progress Is Not Yet Available For This Book</div>
+{% end %}
+</div>
+
+    </div><!-- end percent info wrapper -->

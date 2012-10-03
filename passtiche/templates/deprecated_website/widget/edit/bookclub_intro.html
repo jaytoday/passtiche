@@ -1,0 +1,27 @@
+<div class="alert alert-info" style="max-width: 481px;
+margin: 10px 0 10px;
+padding-top: 23px;
+padding-bottom: 9px;
+padding-left: 190px;
+font-size: 18px;
+line-height: 27px;
+height: {% if widget %}119{% else %}62{% end %}px;">
+<div class="alert alert-warning" style="position:absolute;width: 449px;margin: -16px 1px;height: 60px;font-sze: 20px;font-size: 17px;line-height: 23px;padding: 6px 17px 13px;">Book Club generates accurate and detailed analytics by combining device identifier information with data from Facebook, Goodreads, and other sources</div>
+<img src="/static/images/BookClubLong.png" style="margin-top: -15px; width: 148px;
+height: 77px;position: absolute;margin-left: -175px;">
+<!--<b style="
+font-size: 18px;
+">Book Club</b> gives readers personalized recommendations consisting of your latest releases and back catalog titles<div style="height:10px;"></div>-->
+
+
+{% if widget %}
+	<a href="/wp/{{ widget.key() }}" target="_blank" style=" margin:77px 0 5px -174px; font-size: 17px;
+line-height: 23px;" class="btn btn-warning btn-large">
+<span class="icon-search" style="font-size: 30px;
+float: left;
+margin-right: 8px;
+margin-bottom: -4px;"></span>&nbsp; Preview Book Club For <i>{{ book.get_name(limit=20) }}</i></a>
+{% end %}
+
+</div>
+

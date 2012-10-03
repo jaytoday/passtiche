@@ -1,0 +1,60 @@
+
+<div id="demographics_details" style=" clear: both; margin: -40px 40px 0; ">
+ <div style="
+height: 39px;
+margin-top: 40px;margin-left: -35px;margin-bottom:-20px;
+">
+<a id="reader_activity" class="btn disabled" style=" background: rgba(200, 200, 200, .9);
+color: #222;
+font-size: 1.2em; float: left;
+border-width: 3px; clear: both;">Audience Demographics</a>
+</div>
+
+ 
+<!-- Age and Income -->
+
+<div id="demographic_details" style=" clear: both;
+margin: 40px 0 0 -55px;
+min-height: 240px;
+width: 900px;">
+
+<h3 style="margin: 0px 0 0 155px;position: absolute;">Reader Age</h3><h3 style="margin: 0px 0 0 557px;position: absolute;">Reader Income</h3>
+
+    {% set demographic_dict = ibook.get_demographics() %}
+    
+    <div id="age_chart_{{ book.key() }}_data" style="display:none;">
+    	
+	    {% include "age_data.html" %}
+	  
+    </div>
+
+    <div style="float:left;width:385px; height:200px;" class="age_chart_wrapper" id="age_chart_{{ book.key() }}" style=""></div>
+
+    <div id="income_chart_{{ book.key() }}_data" style="display:none;">
+    	
+	    {% include "income_data.html" %}
+	  
+    </div>
+
+    <div style="float:left;width:385px; height:200px;margin-left:28px;" class="income_chart_wrapper" id="income_chart_{{ book.key() }}" style=""></div>
+
+    
+</div>
+
+    <div id="location_chart_{{ book.key() }}_data" style="display:none;">
+    	
+	    {% include "location_data.html" %}
+	  
+    </div>
+    
+   <h3 style="margin: 0px 0 0 275px;position: absolute;">Reader Location</h3>
+   
+ <!-- Location -->
+	<div style="margin-left:-45px;margin-top:35px;" id="location_map_{{ book.key() }}"></div>
+	
+{% if demographic_dict['top_cities'] and False %}	<div style="margin: 10px 0 0 -38px;
+width: 784px;">Top Cities: {% for i,(city, reader_count) in enumerate(demographic_dict['top_cities']) %}{{ i + 1 }}. <span style="font-size:1.1em;color:#555;">{{ city }}</span> &nbsp; {% end %}</div>	
+{% end %}
+	
+    
+</div>

@@ -1,0 +1,146 @@
+/* Landing Page header */
+
+
+.subhead h1 {
+font-size: 52px;
+}
+
+.jumbotron p{
+	font-size: 17px;
+}
+
+@media (max-width: 768px){
+
+.jumbotron p {
+font-size: 14px;
+}
+
+
+}
+
+@media (max-width: 640px)  {
+
+	.subhead h1{
+		font-size:39px;
+	}
+
+	.jumbotron p {
+font-size: 12px;
+}
+
+}
+
+
+
+@media (max-width: 490px){
+.jumbotron p {
+display:none;
+}
+.subhead h1 {
+font-size: 36px;
+}
+}
+
+@media (max-width: 445px){
+.subhead h1 {
+font-size: 30px;
+}
+}
+
+@media (max-width: 980px) and (min-width: 768px){
+.jumbotron h1 {
+font-size: 54px;
+}
+}
+.subnav:not(.subnav-fixed) { 
+	margin-bottom:20px;
+}
+
+
+
+
+
+
+/* Gallery of Passes */
+
+
+#gallery {
+  margin: 45px 0 30px 0;
+  padding-right: 20px;
+  text-align: center;
+} 
+
+#pass_gallery_container .span4 {
+width: 290px;
+margin-left: 0;
+float:left;
+margin-right: 20px;
+}
+
+.thumbnail {
+	margin-bottom: 20px;
+	background-color: rgba(0, 200, 200, 0.05);
+}
+
+.thumbnail .img {
+width: 270px;
+-webkit-border-radius: 7px;
+-moz-border-radius: 7px;
+border-radius: 7px;
+height: 320px;
+margin: 5px;
+background: rgba(100, 100, 100, .1);
+}
+
+.thumbnail .stats{
+font-size: 12px;
+text-align: left;
+line-height: 20px;
+position: absolute;
+width: 109px;
+overflow: hidden;
+max-height: 41px;
+margin-left: 0;
+}
+
+.thumbnail .download_container{
+	margin-bottom:-15px;
+}
+.thumbnail .caption {
+	color: inherit !important;
+}
+
+.thumbnail h3 {
+	margin-bottom: 0;
+}
+
+.thumbnail .label {
+	vertical-align: top;
+}
+
+.thumbnail .btn-toolbar {
+	margin-top: 15px;
+	text-align: right;
+}
+
+
+@media (min-width: 768px) and (max-width: 980px) {
+
+
+
+	.thumbnail .btn {
+		font-size: 11px;
+	}
+}
+
+@media (max-width: 660px) {
+
+
+
+	#pass_gallery_container .span4{
+		float: none;
+margin: auto;
+	}
+}
+
+

@@ -1,0 +1,1 @@
+$('i', '.stats').tooltip();

@@ -1,0 +1,150 @@
+<div class="edit_widget_form edit_form" {% if widget %}media_type="{{ widget.media_type }}" id="{{ widget.key() }}"{% else %}id="new"{% end %} style="float: left;
+width: 422px;
+margin-left: 40px;">
+	<div class="row" id="widget_basics" style="margin-top:0;">
+	    <div >
+		
+		
+			{% if not widget %}
+				 <a id="cancel_new_widget" class="btn btn-mini" style="margin: 15px 0;
+clear: both;
+font-size: 20px;
+padding: 7px;
+color: 
+rgba(100, 100, 100, .4);"><span class="icon-book"></span>&nbsp; {{ book.get_name() }}</a>
+			 <div style="height:10px;"></div>
+			
+				<div class="page_header" style="width:625px; display:none;float:none;margin-bottom:15px;"><h2 class="coquette_font" style="font-size: 31px;
+line-height: 39px;">Add a Widget to <span style="color:#777;font-size:1.2em;">{{ book.get_name() }}</span></h2></div>
+
+<!--
+<div id="create_intro" class="alert alert-info" style="font-size: 14px; text-align: center; margin-bottom: 12px; width: 500px; padding-right: 10px; display: block; margin-left: 56px;">
+<strong style="
+font-size: 17px;
+">Create a widget in seconds!</strong> &nbsp; Customize your choice of widget
+<div style="
+font-style: italic;
+color: #666;
+font-weight: bold;
+font-size: 14px;
+">Every widget includes analytics and social sharing features</div>
+</div> 
+-->
+
+			{% end %}
+			
+					{% if widget %}
+					<input type="hidden" style="display:none;opacity:0;height:0;" id="widget_key" value="{{ widget.key() }}" />
+				{% else %}
+	      <form class="well" style="display:none;	width: 565px;
+padding: 12px 14px 0px;
+border-bottom: none;
+margin: 12px 10px 0px 27px;
+position: absolute;
+border-radius: 20px 20px 0 0;"><div id="new_widget_title" style="margin: -25px 0px 7px 8px;
+color: #666;
+font-size: 14px;
+background: white;
+border-radius: 10px;
+border: 2px solid rgba(100, 100, 100, .2);position: absolute;padding: 2px 5px;line-height: 15px;">Add a Widget to <i>{{ book.get_name() }}</i></div>
+		
+				<div class="control-group" style="height:105px;">
+				           <!-- <label class="control-label" for="multiSelect">Widget Type</label> -->
+				      
+								<div class="btn-group" id="widget_media_type" style="font-size: 25px;
+								padding: 10px 0;
+								
+								width: 650px;
+								clear: both;
+								float: left;">
+						
+								{% comment "TODO: change bookclub to bookclub" %}
+								<a id="bookclub" style="width:345px;" class="larger  {% if not widget or widget.media_type == "bookclub" %}active{% end %} btn"><img src="/static/images/bookclub.png" style="margin-top:-27px; width: 148px;
+height: 93px;"/><!--<div class='widget_type_title'>Book Club</div>--></a>
+								
+										<!--<a id="social" class="larger  {% if widget and widget.media_type == "social" %}active{% end %} btn"><img src="/static/images/social.png"/><div class='widget_type_title'>Share Highlights</div></a>-->
+								
+								 <a id="media"  style="width:160px;" class="{% if widget and widget.media_type == "media" %}active{% end %} btn">
+									<img src="/static/images/media_icon.jpg" style="width: 130px;
+height: 93px;
+margin-top: -28px;"/><!--<div class='widget_type_title'>Web Media</div>--></a>
+									
+								<!--	<a id="comments" style="width:100px !important;" class="  {% if widget and widget.media_type == "comments" %}active{% end %} btn"><img src="/static/images/comments.png"/><div class='widget_type_title'>Comments</div></a> -->
+									
+									
+						
+									
+								          <!--   <a id="feed" class="  {% if widget and widget.media_type == "feed" %}active{% end %} btn"><img src="/static/images/feed.png"/><div class='widget_type_title'>Feed</div></a>
+								         
+				            	
+								 <a id="reward"   class="{% if widget and widget.media_type == "reward" %}active{% end %} btn">
+										<img src="/static/images/reward.png"/><div class='widget_type_title'>Reward</div></a>
+										  
+									
+										  <a id="review" class="  {% if widget and widget.media_type == "review" %}active{% end %} btn"><img src="/static/images/review.png"/><div class='widget_type_title'>Review</div></a>
+										
+								          <a id="gallery"   style="display:none;" class="{% if widget and widget.media_type == "gallery" %}active{% end %} btn">
+									<img src="/static/images/gallery.png"/><div class='widget_type_title'>Gallery</div></a>
+								  
+										 <a id="custom"   class="{% if widget and widget.media_type == "reward" %}active{% end %} btn">
+										<img src="/static/images/custom.png"/><div class='widget_type_title'>Custom</div></a>
+									-->
+								  
+								
+				</div>	
+				</div>
+			
+			</form>
+				
+				{% end %}
+	    </div>
+	  </div> <!-- end basics -->
+	
+	
+	{% if widget %}
+		{% set widget_type = widget.media_type.capitalize() %}
+		{% include "edit_details.html" %}	
+	{% else %}
+	
+		{% for widget_type in  ["Bookclub"] %} {% comment ' "Social", "Media" ' %}
+			{% comment "edit_details.html" %}
+		{% end %}
+		
+		<!-- Widgets -->
+		{% for widget_type in  ["Feed", "Quote", "Review", "Gallery", "Video",  "Reward","Custom"] %}
+			{% comment "edit_details.html" %}	
+		{% end %}
+		
+		
+	
+	{% end %}
+	
+ 
+
+	<div class="row" id="widget_save_wrapper" style="margin-top:20px;width:510px;">
+	  <!--  <div {% if widget %}class="span2"{% else %}class="span3"{% end %} style="height:10px;">
+	    </div> -->
+	    <div class="">
+			<div id="save_widget_wrapper" style="padding:0px;">
+				 <a id="save_widget" class="btn btn-primary btn-large" data-loading-text="Saving...">{% if widget %}Save Widget{% else %}Continue{% end %} &nbsp;<span class="icon-chevron-right"></span></a>		
+			<div class="alert alert-warning" style="
+    float: left;
+    margin: -52px 0 0 217px;
+    font-size: 13px;
+    padding: 5px 10px;
+    line-height: 23px;
+width: 300px;
+text-align: center;
+"><b>Live Updates</b>: Edit your plugin at any time.<br>Changes will instantly appear in your book.</div>
+			</div>
+			{% if widget %}
+			<div id="delete_widget" class="btn" style="margin-top:15px;"><a style="cursor:pointer;font-weight:bold;font-size:.8em;"><span class="icon-trash"></span>  Delete Widget</a></div>
+			<div id="debug_widget" style="margin-top:15px;display:none;"><a style="cursor:pointer;font-weight:bold;font-size:.6em;" href="/w/{{ widget.key() }}?debug=true" target="_blank">Debug</a></div>
+			{% end %}
+			
+		</div>
+	</div> 	<!-- end save -->
+ 
+
+
+</div><!-- end edit widget form -->

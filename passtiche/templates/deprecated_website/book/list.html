@@ -1,0 +1,90 @@
+<div id="book_list">
+
+	{% for book, ibook in zip(books, ibooks) %}
+		<a id="{{ book.key() }}" class="book_item" style="display:block; width:270px; height:185px; margin: 20px 10px;" href="#book/{{ book.key() }}">
+			
+				<div class="page_header" style="float: none;
+margin-top: -8px;height:50px;" >
+<!-- the left side of the fork effect -->
+<div class="l-triangle-top"></div>
+<div class="l-triangle-bottom"></div>
+
+<!-- the right side of the fork effect -->
+<div class="r-triangle-top"></div>
+<div class="r-triangle-bottom"></div>
+<h2 style="font-size: 21px;
+height: 35px;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+width: 220px;position:absolute;">{{ book.get_name() }}</h2></div>
+				
+			<div class="description" style="display:none;clear: both;
+font-size: 12px;
+line-height: 16px;
+margin: 5px 4px;
+min-height: 45px;
+width: 140px;
+text-align: left;
+padding: 11px 7px 0;max-height: 48px;
+overflow: hidden;">{% if book.description %}{{ book.get_description(limit=50) }}{% else %}<span style="font-style:italic; font-size:.9em;">no description</span>{% end %}</div>
+<img src="{{ book.thumbnail_url() }}" style="height: 125px;
+width: 100px;
+margin: 18px 0 0 156px;
+border-radius: 5px;-moz-border-radius: 5px;"/>
+
+		<div style="">	</div>
+{% set last_edited = book.last_edited(short=True,bold=True) %}
+	{% set last_viewed = book.last_viewed(short=True,bold=True) %}
+				
+	<div class="view_sparkline_wrapper" style=" float: left;
+margin: -94px 0 0 12px;">
+	 
+
+                      <div style="font-size: 16px;text-align: right;background: rgba(200, 200, 200, .5);float:left;padding-left: 17px;border-radius: 10px;margin: -4px -18px 1px;padding-top: 1px;border: 3px solid rgba(180, 180, 180, .3);min-width: 127px;max-width: 136px;
+max-height: 92px;color: #555;"><span style="padding-right:10px;font-size:.9em;font-style:italic;">{% if book.published %}published{% else %}not published{% end %}</span>
+	<div>
+		
+	{% if last_edited %}<div style="font-size:11px;
+margin: 0 0 0 -7px;
+font-weight: 300;
+color: #888;
+bottom: 0;
+padding: 0 7px;
+text-align: right;
+line-height: 13px;
+float: right;
+
+">
+{% if ibook and ibook.title %}
+{% if ibook.author_name %}
+<div style="margin-top:5px; max-height: 13px;
+overflow: hidden;color:#777;
+line-height: 12px;">{{ ibook.author_name }}</div>
+{% end %}
+{% if ibook.publisher_name and ibook.publisher_name != ibook.author_name %}
+<div style="max-height: 13px;
+overflow: hidden;
+line-height: 12px;color:#777;">{{ ibook.publisher_name }}</div>{% end %}
+{% set stats_info = ibook.stats_info() %}
+{% if 'ratings_info' in stats_info and stats_info['ratings_info']['average'] %}<div>average rating: {{ stats_info['ratings_info']['average']  }}</div>{% end %}
+
+{% end %}	
+
+<div style="margin: 5px 0; display:block;font-style:italic;">updated {% raw last_edited %}</div>
+
+</div>
+{% end %}
+
+</div>
+		
+	</div>
+             
+	 
+	</div><!-- end wrapper -->
+	
+</a>
+		
+		{% end %}	
+		
+</div>

@@ -1,0 +1,72 @@
+
+body{
+	background: url("/static/images/body-bg.png");
+}		
+		/* Content */
+		.ui-content{
+			max-width:980px;
+			margin: 15px auto;
+		}
+
+	
+		.ui-collapsible-heading-collapsed .ui-collapsible-heading-toggle {
+	-moz-border-radius-bottomleft: 		.6em /*{global-radii-blocks}*/;
+	-webkit-border-bottom-left-radius: 	.6em /*{global-radii-blocks}*/;
+	border-bottom-left-radius: 			.6em /*{global-radii-blocks}*/;
+	-moz-border-radius-bottomright: 	.6em /*{global-radii-blocks}*/;
+	-webkit-border-bottom-right-radius: .6em /*{global-radii-blocks}*/;
+	border-bottom-right-radius: 		.6em /*{global-radii-blocks}*/;
+	}
+
+		/* Header */
+		.ui-header .ui-title{
+			text-overflow:initial;
+			margin:.6em 20px .8em;
+		}
+	
+		/* Footer */
+		.ui-footer{
+			bottom: 0;
+position: fixed;
+width: 100%;
+z-index: 10000;
+		}
+		/* Navigation */
+
+			.nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+		.nav-glyphish-example .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
+		
+		#all_passes_link .ui-icon { background:  url(/static/images/glyphish-icons/88-beermug2.png) 50% 50% no-repeat;  background-size: 22px 27px; }
+
+		#new_pass_link:not(.ui-btn-active) {
+			border: 1px solid 		#000 /*{a-bdown-border}*/;
+	background: 			#222 /*{a-bdown-background-color}*/;
+	font-weight: bold;
+	color: 					#fff /*{a-bdown-color}*/;
+	text-shadow: 0 /*{a-bdown-shadow-x}*/ 1px /*{a-bdown-shadow-y}*/ 1px /*{a-bdown-shadow-radius}*/ #111 /*{a-bdown-shadow-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #202020 /*{a-bdown-background-start}*/), to( #2c2c2c /*{a-bdown-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #202020 /*{a-bdown-background-start}*/, #2c2c2c /*{a-bdown-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #202020 /*{a-bdown-background-start}*/, #2c2c2c /*{a-bdown-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #202020 /*{a-bdown-background-start}*/, #2c2c2c /*{a-bdown-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #202020 /*{a-bdown-background-start}*/, #2c2c2c /*{a-bdown-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #202020 /*{a-bdown-background-start}*/, #2c2c2c /*{a-bdown-background-end}*/);
+
+		}
+		#new_pass_link .ui-btn-text { font-size:20px; }
+		#new_pass_link .ui-icon { background:  url(/static/images/glyphish-icons/43-film-roll2.png) 50% 50% no-repeat;  background-size: 20px 24px; }
+
+		#my_passes_link .ui-icon { background:  url(/static/images/glyphish-icons/21-skull2.png) 50% 50% no-repeat;  background-size: 22px 24px; }
+
+
+		.pass_list .ui-btn-text{
+			height:81px;
+		}
+
+
+
+
+		/* New Pass */
+		#preview_pass .ui-btn-inner{
+			font-size: 21px;
+		}
+
