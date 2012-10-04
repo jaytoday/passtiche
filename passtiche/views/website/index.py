@@ -16,6 +16,9 @@ class ViewHandler(CookieHandler):
         
         super(ViewHandler, self).__init__(*args, **kwargs)
         self.context['current_user'] = self.get_current_user()
+        from utils.gae import GetUserAgent
+        from utils.web import is_mobile
+        self.context['is_mobile'] = is_mobile(GetUserAgent())
         
     def page_not_found(self, error_msg='Page Not Found'):
         self.set_status(404)
