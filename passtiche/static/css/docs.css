@@ -81,6 +81,7 @@ body {
   margin-bottom: 0;
 }
 .subnav .nav > li > a {
+  width: auto;
   margin: 0;
   padding-top:    11px;
   padding-bottom: 11px;

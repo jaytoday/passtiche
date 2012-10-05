@@ -144,3 +144,82 @@ margin: auto;
 }
 
 
+/* Modal */
+
+#sendPass .form-horizontal .control-label {
+
+width: 66px;
+
+}
+
+#sendPass .controls {
+margin-left: 90px;
+}
+
+#sendPass .span2 {
+margin-left:0;
+width:170px;
+}
+
+#sendPass .span3 #theme_control{ 
+text-align: left;
+width: auto;
+position: relative;
+margin-left: -71px;
+margin-top: -6px;
+
+}
+
+@media(min-width: 590px) and (max-width: 767px){
+
+#sendPass{
+position: fixed;
+top: 20%;
+left: 50%;
+width: 560px;
+margin: 0px 0 0 -280px;
+}
+}
+
+
+@media (max-width: 767px){
+#sendPass .span2 {
+width: 140px;
+float:left;
+}
+}
+
+
+@media (max-width: 767px){
+#sendPass .span3{ 
+width: 220px;
+float:left;
+}
+}
+
+@media (max-width: 550px){
+#sendPass .span3{ 
+float: none;
+clear: both;
+margin: 20px;
+padding-top: 40px;
+width:auto;
+}
+
+#sendPass .form-horizontal .control-label {
+padding-top:5px;
+float:left;
+}
+
+#sendPass .span3 #theme_control{ 
+	margin-top: -5px;
+margin-bottom: -20px;
+}
+
+#sendPass .span2{
+	width: 90%;
+}
+
+}
+
+
