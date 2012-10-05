@@ -1,0 +1,13 @@
+{% extends "../base.html" %}
+
+{% block main %}
+<br/><br/>
+<font color="#333333" size="5"><b>You have received a pass.</b></font>
+<font color="#666666" size="3">
+<br/><br/>
+You have received a pass for {{ user_pass.pass_name }} from {{ user_pass.from_email }}.
+<br/><br/>
+<br/><br/>
+</font>
+{% end %}
+{% block footer %}{% end %}

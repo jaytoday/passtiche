@@ -58,6 +58,8 @@ application = tornado.wsgi.WSGIApplication([
     # ajax
     (r'/ajax/user\.request_invite/?', ajax_index.RequestInvite), 
 
+    (r'/ajax/pass\.send/?', ajax_index.SendPass),     
+
     # mobile
     (r'/cakepass/new/?', mobile_index.UploadScreenshot),    
 

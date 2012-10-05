@@ -1,0 +1,73 @@
+<!-- Modal -->
+<div class="modal" style="display:none;" id="sendPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><span class="pass_action"></span> <span class="pass_template"></span> </h3>
+  </div>
+<div class="modal-body">
+<div><div class="cl span2" >
+  
+  <img src="/static/images/starbucks.png">
+
+</div><div class="cl span3">
+
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="inputFrom">From</label>
+    <div class="controls">
+      <input type="text" id="inputFrom" placeholder="email@email.com">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputTo">To</label>
+    <div class="controls">
+      <input type="text" id="inputTo" placeholder="email@email.com">
+    </div>
+  </div>
+<div class="control-group" style='margin-left:91px;' id="inputThemes">
+<div class="controls" style='margin-left:0;'>
+<label class="control-label" for="inputTheme" id="theme_control">Theme</label>
+</div>
+<label class="radio">
+  <input type="radio" name="themeRadios" id="inputTheme" value="friends" checked>
+  Friends
+</label>
+
+<label class="radio">
+  <input type="radio" name="themeRadios" id="inputTheme" value="christmas">
+  Christmas
+</label>
+<label class="radio">
+  <input type="radio" name="themeRadios" id="inputTheme" value="birthday">
+ Birthday
+</label>
+<label class="radio">
+  <input type="radio" name="themeRadios" id="inputTheme" value="romance">
+Romance
+</label>
+
+</div>
+
+
+<div class="alert alert-error" id="error_alert" style="display:none;font-size: 13px;
+font-weight: 700;
+padding-right: 0;
+width: 300px;
+text-align: center;">
+ 
+</div>
+
+</form>
+
+</div>
+
+
+
+</div>
+</div>
+  <div class="modal-footer">
+    <button class="btn" aria-hidden="true" style="float:left;"><i class='icon-edit'></i> <span class="other_action"></span></button>
+    <button id="send_pass_btn" class="btn btn-info" style="font-size: 25px;
+padding: 10px;">Send Pass</button>
+  </div>
+</div>

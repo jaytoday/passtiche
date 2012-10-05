@@ -40,6 +40,49 @@ class AccountInvite(AjaxHandler):
         self.context['current_user'].create_subuser(self.get_argument('invite_email'))
         self.context['sub_users'] = self.context['current_user'].sub_users.fetch(1000)
         self.render("website/index/account_inner.html", **self.context)
+
+
+class SendPass(AjaxHandler):
+
+    def get(self):
+        from_email = self.get_argument('from_email')
+        to_email = self.get_argument('to_email')
+        theme = self.get_argument('theme','')
+        pass_template_id = self.get_argument('pass_template')
+        current_user = self.get_current_user()
+        from model.passes import UserPass, PassTemplate
+
+        pass_template = PassTemplate.get_by_id(int(pass_template_id))
+        if not pass_template:
+            raise ValueError('pass_template')
+
+        
+        self.user_pass = UserPass(owner=current_user, template=pass_template, 
+            pass_name=pass_template.name, from_email=from_email, to_email=to_email)
+        if theme:
+            self.user_pass.theme = theme
+        self.user_pass.put()
+        self.context['user_pass'] = self.user_pass
+
+
+        # two different emails - one for recipient, one for sender
+
+
+        self.email_recipient()
+        self.email_sender()     
+        self.write('OK')
+
+    def email_recipient(self):
+        from backend.mail.base import EmailMessage
+        email_msg = EmailMessage(subject="You have been sent a PassBook pass", to=self.user_pass.to_email, 
+            context=self.context, template='pass/recipient.html', sender=self.user_pass.from_email)
+        email_msg.send()      
+
+    def email_sender(self):
+        from backend.mail.base import EmailMessage
+        email_msg = EmailMessage(subject="Here is your PassBook pass", to=self.user_pass.from_email, 
+            context=self.context, template='pass/sender.html')   
+        email_msg.send()   
         
         
 class AccountPayment(AjaxHandler):

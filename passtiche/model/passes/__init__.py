@@ -41,10 +41,15 @@ class PassImage(BaseModel):
 
 
 class UserPass(BaseModel):
-	""" Customized pass
-	"""
-	owner = db.ReferenceProperty(User)
-	template = db.ReferenceProperty(PassTemplate, collection_name='user_passes')
-	message = db.TextProperty()
-	theme = db.StringProperty()
+    """ Customized pass
+    """
+    owner = db.ReferenceProperty(User)
+    template = db.ReferenceProperty(PassTemplate, collection_name='user_passes')
+    pass_name = db.StringProperty()
+    from_email = db.StringProperty()
+    to_email = db.StringProperty()  
+
+    message = db.TextProperty()
+    theme = db.StringProperty()
+
 
