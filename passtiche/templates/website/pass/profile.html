@@ -1,0 +1,21 @@
+{% extends "../base.html" %}
+
+{% block body %}
+<h1>Pass: {{ pass_template.name }} {% if theme %}(theme: {{ theme }}){% end %}</h1>
+
+{% if msg == 'iOS6' %}
+<h2>
+Visit this page on an iOS6 device.</h2>
+{% end %}
+
+
+{% if msg == 'upgrade_iOS6' %}
+<h2>This device needs to upgrade to iOS 6. Instructions...</h2>
+{% end %}
+
+<h3>Email link to download on my iPhone, iPad, or iPod running iOS6</h3>
+
+<div>
+	<a href="{{ dl_url }}" class="btn">download PKPass file</a>
+</div>
+{% end %}

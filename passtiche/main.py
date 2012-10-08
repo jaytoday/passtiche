@@ -49,13 +49,17 @@ application = tornado.wsgi.WSGIApplication([
     # index - # TODO - new dashboard module
     #(r"/", index.LandingPage),
     (r"/", index.PassticheIndex),
-    (r"/reference", index.Reference),
+
  
 
     (r"/login", auth.Login),
     (r"/logout", auth.Logout),
      # shortcut login
      (r'/login/(?P<email>[^\/]+)/?', auth.Login),
+
+     # pass URLs
+     (r'/p/(?P<pass_id>[^\/]+)/?', index.PassURL),  
+     (r'/p/(?P<pass_id>[^\/]+)/(?P<theme>[^\/]+)/?', index.PassURL),          
 
     # ajax
     (r'/ajax/user\.request_invite/?', ajax_index.RequestInvite), 
@@ -64,7 +68,7 @@ application = tornado.wsgi.WSGIApplication([
 
 
     # mobile
-    (r'/cakepass/new/?', mobile_index.UploadScreenshot),    
+    #(r'/mobile/?', mobile_index.UploadScreenshot),    
 
     # admin
     (r"/admin/login/(?P<email>[^\/]+)?", auth.AdminLogin),

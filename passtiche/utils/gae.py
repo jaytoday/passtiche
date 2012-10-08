@@ -14,7 +14,7 @@ def GetPathElements():
     return [ x for x in os.environ['PATH_INFO'].split('/') if x ]
     
 def GetUrl():
-    return os.environ['HTTP_HOST'] + os.environ['PATH_INFO']
+    return 'http://' + os.environ['HTTP_HOST'] + os.environ['PATH_INFO']
 
 def IPAddress(default='unknown_IP'):
     return os.environ.get('REMOTE_ADDR', default)

@@ -7,6 +7,11 @@ from model.base import BaseModel
 import model.util.properties
 from model.user import User
 
+THEME_CODES = {
+    "birthday": "b",
+    "christmas": "c",
+    "romance": "r"
+}
 
 class PassTemplate(BaseModel):
     """ Template for a pass
@@ -94,9 +99,16 @@ class UserPass(BaseModel):
     owner = db.ReferenceProperty(User)
     template = db.ReferenceProperty(PassTemplate, collection_name='user_passes')
     pass_name = db.StringProperty()
+    pass_id = db.IntegerProperty()
     from_email = db.StringProperty()
     to_email = db.StringProperty()  
 
     message = db.TextProperty()
     theme = db.StringProperty()
+
+    def url(self):
+        link = 'http://passtiche.com/p/%s' % self.pass_id
+        if self.theme:
+            link += "/%s" % THEME_CODES[self.theme]
+        return link
 

@@ -46,16 +46,53 @@ class PassticheIndex(ViewHandler):
         from model.passes import PassTemplate
         return PassTemplate.all().fetch(1000)
 
-class Reference(ViewHandler):
-    """ Main website view """
+class PassURL(ViewHandler):
+    """ Pass Profile page """
     
-    def get(self):
+    def get(self, pass_id, theme=None):
 
         #if 'blog.' in gae_utils.GetUrl():
         #    return self.write(static_page('blog'))
 
-        self.write(static_page(None, "website/reference.html", context=self.context))
+        '''
+        different scenarios:
+            * on iOS 6 device: redirect to download
+            * on 
+        '''
+
+        self.context['msg'] = 'iOS6'
+        self.context['dl_url'] = gae_utils.GetUrl() + "?dl=t"
+
+        self.context['theme'] = None
+        from model.passes import THEME_CODES, PassTemplate
+        if theme:
+            for theme_name, code in THEME_CODES.items():
+                if code == theme:
+                    self.context['theme'] = theme_name
+                    break
+
+        if self.get_argument('dl',''):
+            return self.download()
+        pass_template = PassTemplate.get_by_id(int(pass_id))
+        if not pass_template:
+            raise ValueError('pass_id')
+
+        # if on iOS6 device, download pass
+        ua = gae_utils.GetUserAgent()
+        if 'AppleWebKit' in ua and 'Mobile' in ua:
+            if 'OS 6_' in ua:
+                # TODO: override?
+                return self.download()
+            else:
+                self.context['msg'] = 'upgrade_iOS6'
+
+
+        self.context['pass_template'] = pass_template
+        self.write(static_page(None, "website/pass/profile.html", context=self.context))
         return
+
+    def download(self):
+        self.write('download')
 
 
 
