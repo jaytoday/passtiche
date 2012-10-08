@@ -1,0 +1,40 @@
+{
+	"passes": [
+	
+		{
+   		 "name": "Let's Meet for Coffee",
+   		 "slug": "coffee",
+   		 "tags": ["friends", "popular"]
+		},
+		{
+   		 "name": "First Round is On Me.",
+   		 "slug": "beer",
+   		 "tags": ["friends", "popular"]
+		},	
+		{
+   		 "name": "A Good Workout",
+   		 "slug": "workout",
+   		 "tags": ["friends"]
+		},	
+		{
+   		 "name": "Let's Take a Hike",
+   		 "slug": "outdoors",
+   		 "tags": ["friends"]
+		},					
+		{
+   		 "name": "A really good massage",
+   		 "slug": "massage",
+   		 "tags": ["romantic", "popular"]
+		},		
+		{
+   		 "name": "Slave for a Night",
+   		 "slug": "slave",
+   		 "tags": ["romantic"]
+		},						
+		{
+   		 "name": "Facebook Collections",
+   		 "slug": "choose",
+   		 "tags": ["popular"]
+		}		
+    
+]}

@@ -16,7 +16,8 @@ class PassTemplate(BaseModel):
 
     owner = db.ReferenceProperty(User, required=False, collection_name='templates')
 
-    name = db.StringProperty(required=False)  
+    name = db.StringProperty(required=True)  
+    slug = db.StringProperty(required=False)  
 
 
     image_key = db.StringProperty(required=False)
@@ -29,10 +30,55 @@ class PassTemplate(BaseModel):
     # TODO: more information
 
 
+    @classmethod
+    def create_or_update(cls, name, slug=None, tags=None, image_file=None, description=None,  owner=None):
+        if not slug:
+            slug = cls.get_slug(name)
+        pass_template = cls.all().filter('slug', slug).get()
+        if not pass_template:
+            pass_template = cls(name=name, slug=slug)
+        if description:
+            pass_template.description = description
+        if tags:
+            pass_template.tags = tags
+        if owner:
+            pass_template.owner = owner
+        if image_file:
+            pass # TODO
+        return pass_template
+
+    @classmethod    
+    def update_from_json(cls):
+        try:    
+            import json
+        except:
+            from django.utils import simplejson as json   
+        import os
+
+        json_file = open('model/passes/fixtures.json').read()
+        fixtures_json = json.loads(json_file)
+
+        templates = []
+        for pass_template in fixtures_json['passes']:
+            updated_template = cls.create_or_update(pass_template['name'], slug=pass_template.get('slug'), tags=pass_template.get('tags'), 
+                description=pass_template.get('description'))
+            templates.append(updated_template)
+
+        db.put(templates)
+
+
+
+
+    @classmethod
+    def get_slug(cls, name):
+        from utils.string import safe_slugify
+        return safe_slugify(name)
+
+
 
 
 class PassImage(BaseModel):
-    """ Customized pass
+    """ Customized pass image
     """
     template = db.ReferenceProperty(PassTemplate, collection_name='images')
     image = db.BlobProperty()  
@@ -40,7 +86,9 @@ class PassImage(BaseModel):
     deleted = db.BooleanProperty(default=False)  	
 
 
+
 class UserPass(BaseModel):
+
     """ Customized pass
     """
     owner = db.ReferenceProperty(User)
@@ -51,5 +99,4 @@ class UserPass(BaseModel):
 
     message = db.TextProperty()
     theme = db.StringProperty()
-
 

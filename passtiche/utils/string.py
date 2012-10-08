@@ -28,12 +28,14 @@ def remove_linebreaks(text):
 def safe_slugify(s):
     return '_'.join(re.findall('[a-z]+', s.lower()))
     
-def genkey(longer = False):
+def genkey(longer = False, length=None):
     key = md5(str(random.random()) + " " + str(datetime.datetime.now()) + " " + str(random.random()))
     if longer:
         key += datetime.datetime.now().strftime('%s') + str(datetime.datetime.now().microsecond)
         key += str(random.random()).replace(".","")
 
+    if length:
+        return key[:length]
     return key
     
 

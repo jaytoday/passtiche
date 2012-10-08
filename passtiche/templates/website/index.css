@@ -170,6 +170,18 @@ margin-top: -6px;
 
 }
 
+#pass_action_choices .btn.active{
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	color: white;
+background-color: #EFB73E;
+
+}
+
+#pass_action_choices .btn{
+	font-size: 11px;
+padding: 4px 8px;
+}
+
 @media(min-width: 590px) and (max-width: 767px){
 
 #sendPass{

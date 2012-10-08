@@ -50,6 +50,8 @@ from model.util.methods import count_entities
 
 from model.user import User
 
+from model.passes import PassTemplate, UserPass
+
 
 #from lib.passbook.models import Pass, Barcode, StoreCard
 

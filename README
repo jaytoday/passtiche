@@ -28,5 +28,8 @@ Running the Server
 =====================================
 Download the Google AppEngine Python development environment at http://code.google.com/appengine/downloads.html.
 
+Run with extra flags (Info menu from GAE launcher):
+	--datastore_path=PATH
+
 
 

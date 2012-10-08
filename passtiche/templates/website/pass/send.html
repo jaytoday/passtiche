@@ -2,7 +2,14 @@
 <div class="modal" style="display:none;" id="sendPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel"><span class="pass_action"></span> <span class="pass_template"></span> </h3>
+    <h3 id="myModalLabel"> 
+      <div class="btn-group" id="pass_action_choices" data-toggle="buttons-radio" style="margin-right: 10px;float:left;">
+  <button type="button" id="Offer" class="btn">Offer</button>
+  <button type="button" id="Request" class="btn">Request</button>
+</div>
+
+<span class="pass_action" style="color:#888; font-size:.9em;"></span> <span class="pass_template"></span> 
+   </h3>
   </div>
 <div class="modal-body">
 <div><div class="cl span2" >
@@ -12,41 +19,63 @@
 </div><div class="cl span3">
 
 <form class="form-horizontal">
+
+  <div class="control-group" style='margin-left:91px;' id="inputThemes">
+    <div class="controls" style='margin-left:0;'>
+      <label class="control-label" for="inputTheme" id="theme_control">Theme</label>
+    </div>
+      <label class="radio">
+        <input type="radio" name="themeRadios" id="inputTheme" value="friends" checked>
+        Friends
+      </label>
+
+      <label class="radio">
+        <input type="radio" name="themeRadios" id="inputTheme" theme-id="c" value="christmas">
+        Christmas
+      </label>
+      <label class="radio">
+        <input type="radio" name="themeRadios" id="inputTheme" theme-id="b" value="birthday">
+       Birthday
+      </label>
+      <label class="radio">
+        <input type="radio" name="themeRadios" id="inputTheme" theme-id="r" value="romance">
+      Romance
+      </label>
+
+</div>
+
   <div class="control-group">
-    <label class="control-label" for="inputFrom">From</label>
+
+    <label class="control-label" for="inputLink" style="font-size:1.6em;">Link</label>
     <div class="controls">
-      <input type="text" id="inputFrom" placeholder="email@email.com">
+      <input type="text" onclick="this.focus(); this.select()" id="inputLink" placeholder="" sdisabled="true" style="font-size: 16px;
+padding: 4px 10px;">
+    </div>
+  </div>
+
+
+
+<hr>
+  <div class="control-group">
+
+    <label class="control-label" for="inputTo">Send To</label>
+    <div class="controls">
+      <input type="text" id="inputTo" placeholder="send to this email address">
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label" for="inputTo">To</label>
+    <label class="control-label" for="inputFrom">Sent By</label>
     <div class="controls">
-      <input type="text" id="inputTo" placeholder="email@email.com">
+      <input type="text" id="inputFrom" placeholder="your email address">
     </div>
   </div>
-<div class="control-group" style='margin-left:91px;' id="inputThemes">
-<div class="controls" style='margin-left:0;'>
-<label class="control-label" for="inputTheme" id="theme_control">Theme</label>
-</div>
-<label class="radio">
-  <input type="radio" name="themeRadios" id="inputTheme" value="friends" checked>
-  Friends
-</label>
 
-<label class="radio">
-  <input type="radio" name="themeRadios" id="inputTheme" value="christmas">
-  Christmas
-</label>
-<label class="radio">
-  <input type="radio" name="themeRadios" id="inputTheme" value="birthday">
- Birthday
-</label>
-<label class="radio">
-  <input type="radio" name="themeRadios" id="inputTheme" value="romance">
-Romance
-</label>
 
-</div>
+
+
+    <button id="send_pass_btn" class="btn btn-info" style="font-size: 25px;
+padding: 10px;
+float: left;">Send Pass</button>
 
 
 <div class="alert alert-error" id="error_alert" style="display:none;font-size: 13px;
@@ -66,8 +95,6 @@ text-align: center;">
 </div>
 </div>
   <div class="modal-footer">
-    <button class="btn" aria-hidden="true" style="float:left;"><i class='icon-edit'></i> <span class="other_action"></span></button>
-    <button id="send_pass_btn" class="btn btn-info" style="font-size: 25px;
-padding: 10px;">Send Pass</button>
+
   </div>
 </div>

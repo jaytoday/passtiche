@@ -10,11 +10,11 @@ from backend.user import auth
 from utils.cache import cache
 from utils import gae as gae_utils
 
-from views.website import ViewHandler
+from views.base import BaseHandler
 
 from model.user import User
 
-class AdminViewHandler(ViewHandler):  
+class AdminViewHandler(BaseHandler):  
     # authentication happens via app.yaml
     pass
 
@@ -44,7 +44,17 @@ class Email(AdminViewHandler):
             email_msg.send()            
             
     
-            
+
+        
+class RunTask(AdminViewHandler):
+    
+    def get(self,task):
+        return getattr(self, task)()
+
+    def update_passes(self):
+        from model.passes import PassTemplate
+        PassTemplate.update_from_json()
+        self.write("OK")          
         
 class BinView(AdminViewHandler):
     

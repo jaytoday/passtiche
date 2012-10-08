@@ -40,6 +40,8 @@ from views.ajax import index as ajax_index, mobile as ajax_mobile
 
 from views.mobile import index as mobile_index
 
+from views import admin
+
 
 application = tornado.wsgi.WSGIApplication([
     
@@ -60,8 +62,14 @@ application = tornado.wsgi.WSGIApplication([
 
     (r'/ajax/pass\.send/?', ajax_index.SendPass),     
 
+
     # mobile
     (r'/cakepass/new/?', mobile_index.UploadScreenshot),    
+
+    # admin
+    (r"/admin/login/(?P<email>[^\/]+)?", auth.AdminLogin),
+    (r"/admin/mail/?", admin.Email),
+    (r"/admin/run/(?P<task>[^\/]+)?", admin.RunTask),
 
 
 
