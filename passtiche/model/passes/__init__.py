@@ -28,8 +28,8 @@ class PassTemplate(BaseModel):
     image_key = db.StringProperty(required=False)
     tags = model.util.properties.PickledProperty(default=[])
 
-    requests = db.IntegerProperty(required=False)
-    offers = db.IntegerProperty(required=False)
+    requests = db.IntegerProperty(default=0)
+    offers = db.IntegerProperty(default=0)
     # in the future this will have to  
     description = db.TextProperty(required=False)
     # TODO: more information

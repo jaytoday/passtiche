@@ -48,6 +48,7 @@ class SendPass(AjaxHandler):
         from_email = self.get_argument('from_email')
         to_email = self.get_argument('to_email')
         theme = self.get_argument('theme','')
+        action = self.get_argument('action','')
         pass_template_id = self.get_argument('pass_template')
         current_user = self.get_current_user()
         
@@ -64,7 +65,12 @@ class SendPass(AjaxHandler):
             pass_name=pass_template.name, pass_id=pass_template.key().id(), from_email=from_email, to_email=to_email)
         if theme:
             self.user_pass.theme = theme
-        self.user_pass.put()
+
+        if action == 'Offer':
+            pass_template.offers += 1
+        if action == 'Request':
+            pass_template.requests += 1
+        db.put([self.user_pass, pass_template])
         self.context['user_pass'] = self.user_pass
 
 

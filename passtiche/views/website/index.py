@@ -44,7 +44,22 @@ class PassticheIndex(ViewHandler):
 
     def get_passes(self):
         from model.passes import PassTemplate
-        return PassTemplate.all().fetch(1000)
+        pass_dict = {
+            'popular': [],
+            'friends': [],
+            'romantic': []
+        }
+        all_passes = PassTemplate.all().order('-modified').fetch(1000)
+        for pass_template in all_passes:
+            if 'popular' in pass_template.tags:
+                pass_dict['popular'].append(pass_template)
+            if 'friends' in pass_template.tags:
+                pass_dict['friends'].append(pass_template)
+            if 'romantic' in pass_template.tags:
+                pass_dict['romantic'].append(pass_template)  
+        return pass_dict                              
+                
+
 
 class PassURL(ViewHandler):
     """ Pass Profile page """

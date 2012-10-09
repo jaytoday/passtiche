@@ -32,6 +32,7 @@ send_pass_modal.find('#inputThemes input').on('click', function(){
 	if ($(this).attr('theme-id'))
 		pass_link += "/" + $(this).attr('theme-id');
 	send_pass_modal.find('#inputLink').val(pass_link);
+	send_pass_modal.find('#link_text').attr('href',pass_link);
 
 });
 
@@ -52,6 +53,7 @@ $('#send_pass_btn').on('click', function(){
 	pass_data['from_email']  = send_pass_modal.find('#inputFrom').val();
 	pass_data['to_email'] = send_pass_modal.find('#inputTo').val();	
 	pass_data['theme'] = send_pass_modal.find('#inputThemes').find('input:checked').val();
+	pass_data['action'] = send_pass_modal.data('pass_action');
 
 	console.log(pass_data);	
 

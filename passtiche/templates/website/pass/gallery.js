@@ -36,3 +36,21 @@ $('.offer_pass').on('click',offerPass);
 
 
 
+$('#add_pass').on('click', function(){
+
+	bootbox.dialog("This feature requires an account", [{
+    "label" : "Cancel",
+    "class" : "error",
+    "callback": function() {
+     
+    }
+}, {
+    "label" : "Continue",
+}], {
+    "backdrop" : "static",
+    "onEscape": "close",
+    "keyboard" : true,
+    "show"     : true,
+    "animate": false
+});
+});

@@ -9,12 +9,42 @@ font-size: 52px;
 	font-size: 17px;
 }
 
+
+#pass_description{
+	margin: 17px 0 0;
+font-size: 12px;
+padding: 10px 7px;
+max-height: 78px;
+}
+
+/* Gallery */
+.pass_container{
+clear:both;
+float:left;
+padding-top:50px;
+}
+
+
+.pass_container h5{
+color: #777;
+background: rgba(100, 100, 100, .08);
+display: inline-block;
+padding: 2px 17px;
+border-radius: 10px;
+position:absolute;
+margin-top:-30px;
+}
+
 @media (max-width: 768px){
 
 .jumbotron p {
 font-size: 14px;
 }
 
+#pass_description{
+	font-size: 10px;
+	max-height: 115px;
+}
 
 }
 
@@ -28,8 +58,17 @@ font-size: 14px;
 font-size: 12px;
 }
 
+
 }
 
+
+@media (max-width: 540px)  {
+
+.modal-header h3{
+	line-height: 28px;
+font-size: 18px;
+}
+}
 
 
 @media (max-width: 490px){
@@ -39,6 +78,8 @@ display:none;
 .subhead h1 {
 font-size: 36px;
 }
+
+
 }
 
 @media (max-width: 445px){
