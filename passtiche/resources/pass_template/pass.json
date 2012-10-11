@@ -6,23 +6,23 @@
  "eventTicket":
     {"primaryFields":[
         {"key":"p1",
-         "value":"", // Item Name
-         "label":"", // Offered/Requested Item:
+         "value":"", 
+         "label":"", 
          "textAlignment":"PKTextAlignmentLeft"}],
      "secondaryFields":[
         {"key":"s1",
-         "value":"Unknown Sender", // Person Name/Email
-         "label":"", // Offered/Requested By:
+         "value":"Unknown Sender", 
+         "label":"", 
          "textAlignment":"PKTextAlignmentLeft"}],
      "auxiliaryFields":[
         {"key":"a1",
          "value":" ",
-         "label":"", // Month Day, Year
+         "label":"", 
          "textAlignment":"PKTextAlignmentLeft"}]},
  "authenticationToken":"e7f3f3f56a2a419dad2f639c5af4858b",
  "webServiceURL":"https://www.passtiche.com/_ps",
  "backgroundColor":"rgb(246,246,246)",
  "foregroundColor":"rgb(4,119,191)",
  "labelColor":"rgb(109,110,113)",
- "description":"" // description
+ "description":"" 
 } 

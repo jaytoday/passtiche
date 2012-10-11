@@ -226,6 +226,9 @@ margin: 10px 0;
 
 @media (max-width: 660px) {
 
+#header_wrapper{
+	text-align:center;
+}
 
 .offset h5{
 	position: relative;
@@ -297,9 +300,11 @@ padding: 4px 8px;
 }
 
 img#pass_preview{
-	width: 100%;
-
-max-height: 150px
+width: 100%;
+max-height: 150px;
+border: 5px;
+border-radius: 5px;
+box-shadow: 1px 3px rgba(100, 100, 100, .5);
 }
 
 #inputThemes .radio{

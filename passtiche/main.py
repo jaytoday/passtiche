@@ -59,8 +59,8 @@ application = tornado.wsgi.WSGIApplication([
 
      # pass URLs 
      #(r'/pt/(?P<pass_id>[^\/]+)/(?P<letter_code>[^\/]+)/?', index.PassURL),     
-     (r'/p/(?P<pass_code>[^\/]+)/?', index.PassURL),   
-     (r'/d/(?P<pass_code>[^\/]+)/?', index.PassDownload),               
+     (r'/p/(?P<pass_code>[^\/]+)/?', index.PassDownload),   
+     (r'/d/(?P<pass_code>[^\/]+)/?', index.PassDirectDownload),               
 
     # ajax
     (r'/ajax/user\.request_invite/?', ajax_index.RequestInvite), 

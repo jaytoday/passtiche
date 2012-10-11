@@ -102,11 +102,11 @@ class UserPass(BaseModel):
     owner = db.ReferenceProperty(User)
     template = db.ReferenceProperty(PassTemplate, collection_name='user_passes')
     pass_name = db.StringProperty()
+    pass_slug = db.StringProperty()
     pass_id = db.IntegerProperty()
 
-    from_name = db.StringProperty()
-    from_email = db.StringProperty()
-    to_email = db.StringProperty()  
+    owner_name = db.StringProperty()
+    owner_email = db.StringProperty() 
 
     message = db.TextProperty()
     action = db.StringProperty()
@@ -117,4 +117,11 @@ class UserPass(BaseModel):
         if self.theme:
             link += "/%s" % THEME_CODES[self.theme]
         return link
+
+
+class SentUserPass(BaseModel):
+    user_pass = db.ReferenceProperty(UserPass, collection_name='sent_passes')
+    to_email = db.StringProperty() 
+    # other info - FB, etc. 
+
 

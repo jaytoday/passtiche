@@ -45,17 +45,17 @@ class AccountInvite(AjaxHandler):
 class SavePass(AjaxHandler):
 
     def get(self):
+        if self.get_argument('increment', ''):
+            return self.increment()
         from model.passes import UserPass, PassTemplate
 
         self.user = self.get_current_user()
         self.action = self.get_argument('action')
         self.theme = self.get_argument('theme')
-        self.pass_template_id = int(self.get_argument('pass_template'))
-        self.pass_template = PassTemplate.get_by_id(self.pass_template_id)
+
 
         # TODO: first check if there is user_pass key name
-        if self.get_argument('user_pass',''):
-            self.user_pass = UserPass.get_by_key_name(self.get_argument('user_pass'))
+        if self.get_argument('user_pass',''):         
             self.update()
         else:
             self.create()
@@ -69,19 +69,37 @@ class SavePass(AjaxHandler):
     def create(self):
         from model.passes import UserPass, PassTemplate
         from utils import string as str_utils
+        self.pass_template_id = int(self.get_argument('pass_template'))
+        self.pass_template = PassTemplate.get_by_id(self.pass_template_id)
+
         code = str_utils.genkey(length=5)
         self.user_pass = UserPass(key_name=code, code=code,owner=self.user, 
-                template=self.pass_template, pass_name=self.pass_template.name,
-                pass_id=self.pass_template.key().id(), action=self.action, theme=self.theme)
-        self.user_pass.from_name = self.get_argument('from_name')
+                template=self.pass_template, pass_name=self.pass_template.name, pass_slug=self.pass_template.slug,
+                pass_id=self.pass_template.key().id(), action=self.action.lower(), theme=self.theme.lower())
+        self.user_pass.owner_name = self.get_argument('owner_name')
 
 
     def update(self):
         from model.passes import UserPass, PassTemplate
-        # update action, theme, emails
-        pass
+
+        self.user_pass = UserPass.get_by_key_name(self.get_argument('user_pass'))
+        self.user_pass.action = self.action.lower()
+        self.user_pass.theme  = self.theme.lower()
 
         # template ID, name, action, theme
+
+    def increment(self):
+        from model.passes import UserPass, PassTemplate
+        pass_template = PassTemplate.get_by_id(int(self.get_argument('pass_id')))
+        action = self.get_argument('action').lower()
+        if action == 'offer':
+            pass_template.offers += 1
+        if action == 'request':
+            pass_template.requests +=1
+
+        pass_template.put()
+        
+        return
 
 
         

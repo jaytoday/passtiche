@@ -14,7 +14,7 @@ $('#send_pass_btn').on('click', function(){
 	if (pass_data['from_email'].indexOf('@') < 1)
 		return sendDialogError("Valid 'From' Email Address is Required")
 	/* make from email optional? */
-	if (pass_data['to_email'].indexOf('@') < 1)
+	if (false && pass_data['to_email'].indexOf('@') < 1)
 		return sendDialogError("Valid 'To' Email Address is Required")	
 
 
@@ -34,7 +34,7 @@ $('#send_pass_btn').on('click', function(){
 
 function sendDialogError(err_msg){
 
-send_pass_modal.find('#error_alert').html(err_msg).alert().show();
+alert(err_msg);
 
 
 }

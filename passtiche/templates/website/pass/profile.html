@@ -8,7 +8,7 @@
 {% end %}
 
 {% block body %}
-<h1>Pass: {{ action }} for {{ pass_template.name }} {% if theme %}(theme: {{ theme }}){% end %}</h1>
+<h1>Pass: {{ user_pass.action }} for {{ user_pass.pass_name }} from {{ user_pass.owner_name }} {% if user_pass.theme %}(theme: {{ user_pass.theme }}){% end %}</h1>
 
 {% if msg == 'dl' %}
 <h2>Now downloading this pass...</h2>

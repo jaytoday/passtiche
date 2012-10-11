@@ -24,6 +24,8 @@ function openPassDialog(pass_action, el){
 
 	$('#name_form').find('#continue_btn').button('reset');
 
+	incrementPassCount(pass_id, pass_action);
+
 }
 
 function sendPassInit(pass_template, pass_template_id, pass_action){
@@ -38,7 +40,6 @@ function sendPassInit(pass_template, pass_template_id, pass_action){
 
 	send_pass_modal.find('.pass_template:first').text(pass_template);
 
-	resetLink(); 
 	// click default theme
 	//send_pass_modal.find('input:first', '#inputThemes').click();
 
@@ -52,6 +53,8 @@ function sendPassInit(pass_template, pass_template_id, pass_action){
 send_pass_modal.find('#pass_action_choices button').on('click',function(){
 
 	sendPassInit(send_pass_modal.data('pass_template'), send_pass_modal.data('pass_template_id'), $(this).attr('id'));
+	if (send_pass_modal.find('#send_form').is(':visible'))
+		updateUserPass();
 });
 
 // change theme
@@ -65,19 +68,12 @@ send_pass_modal.find('#inputThemes input').on('click', function(){
 		else
 			send_pass_modal.data('pass_theme', false);
 
-		resetLink(); 
+	if (send_pass_modal.find('#send_form').is(':visible'))
+		updateUserPass();		
+
+
 });
 
-function resetLink(){
-	return; // DEPRECATED
-		var pass_link =  $(document).data('base-url') + '/p/' + send_pass_modal.data('pass_template_id') + "/" + send_pass_modal.data('pass_action')[0].toLowerCase();
-	if (send_pass_modal.data('pass_theme'))
-			pass_link += send_pass_modal.data('pass_theme');
-
-	send_pass_modal.find('#inputLink').val(pass_link);
-	send_pass_modal.find('#link_text').attr('href',pass_link);
-
-}
 
 
 function resetSendDialog(){
