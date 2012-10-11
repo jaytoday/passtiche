@@ -16,7 +16,7 @@
 
     <label class="control-label" for="inputLink" style="font-size:1.2em;width:111px;"><i style="margin-top: 4px;" class="icon-share-alt"></i> &nbsp; <a target="_blank" style="text-decoration:underline;" id="link_text"> Pass URL </a></label>
     <div class="controls" style="width:230px;">
-      <input type="text" onclick="this.focus(); this.select()" id="inputLink" placeholder=""  style="font-size: 13px;
+      <input type="text" onclick="this.focus(); this.select()" id="inputLink" placeholder=""  style="font-size: 17px;
 padding: 4px 10px;
 width: 178px;">
     </div>
@@ -25,26 +25,29 @@ width: 178px;">
 
 
 <hr>
-  <div class="control-group">
+  <div class="control-group" style="margin-top:-7px;">
 
-    <label class="control-label" for="inputTo">Email To:</label>
+    <label class="control-label" for="inputTo">Send Pass Via Email:</label>
     <div class="controls">
-      <input type="text" id="inputTo" placeholder="send pass to this email address">
+      <input type="text" id="inputTo" placeholder="email address" style="font-size: 16px;
+padding: 7px 6px;
+margin-top: 6px;">
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label" style="color:#777;" for="inputFrom">Your Email:</label>
+    <label class="control-label" style="color:#777;" for="inputFrom">Your Email Address:</label>
     <div class="controls">
-      <input type="text" id="inputFrom" placeholder="get a receipt pass sent to you">
-    </div>
+      <input type="text" id="inputFrom" placeholder="your email address">
+  <div style="font-size:10px;position: absolute;width: 220px;padding: 5px 3px;color: #777;line-height: 15px;">You will be emailed a receipt pass that will notify you when your recipient is nearby</div> </div>
   </div>
 
 
 
 
-    <button id="send_pass_btn" class="btn btn-info" style="font-size: 25px;
-padding: 10px;
-float: right;">Email Pass</button>
+    <button id="send_pass_btn" class="continue btn btn-info" style="font-size: 19px;
+padding: 8px 10px;
+float: right;
+margin-top: 15px;"><i class="icon-envelope icon-white" style="margin-top: 6px;"></i> Email Pass</button>
 
 
 <div class="alert alert-error" id="error_alert" style="display:none;font-size: 13px;

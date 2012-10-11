@@ -24,6 +24,7 @@ class BaseHandler(tornado.web.RequestHandler):
             'current_user': None, 
             'error': None, 
             'base_url': gae_utils.base_url(), 
+            'domain': gae_utils.base_url().replace('http://','').replace('www.',''),
             'user_agent': gae_utils.GetUserAgent(),
             'path': os.environ['PATH_INFO'],
             "handler_name": self.__class__.__name__,
