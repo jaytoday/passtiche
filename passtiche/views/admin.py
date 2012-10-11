@@ -54,7 +54,14 @@ class RunTask(AdminViewHandler):
     def update_passes(self):
         from model.passes import PassTemplate
         PassTemplate.update_from_json()
-        self.write("OK")          
+        self.write("OK")     
+
+    def passfile(self):
+        from backend.passes import passfile
+        pass_creator = passfile.PassFile()
+        pass_creator.create('coffee')
+        pass_creator.write(self)
+
         
 class BinView(AdminViewHandler):
     

@@ -17,7 +17,7 @@ def send_admin_email(*args, **kwargs):
             ip = IPAddress()
         from backend.mail.base import EmailMessage
         if not admins:
-            admins = ['james@hiptype.com','sohail@hiptype.com']
+            admins = ['thelevybreaks@gmail.com']
         for admin in admins:
             email_msg = EmailMessage(
                 duplicate_check=False,

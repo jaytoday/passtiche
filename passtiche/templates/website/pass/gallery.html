@@ -12,7 +12,7 @@
 <div id="friends_passes" class="pass_container">
 		<div class="offset">
 <h5><i class="icon-glass"></i>  Passes For Friends</h5>
-{% for pass_template in pass_templates['friends'] %}
+{% for pass_template in pass_templates['friends'][::-1] %}
 	{% include "pass.html" %}
 {% end %}
 </div>
@@ -21,7 +21,7 @@
 <div id="romantic_passes"  class="pass_container">
 		<div class="offset">
 <h5><i class="icon-heart"></i>  Romantic Passes</h5>
-{% for pass_template in pass_templates['romantic'] %}
+{% for pass_template in pass_templates['romantic'][::-1] %}
 	{% include "pass.html" %}
 {% end %}
 </div>

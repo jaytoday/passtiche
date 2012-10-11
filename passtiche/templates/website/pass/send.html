@@ -8,30 +8,20 @@
   <button type="button" id="Request" class="btn">Request</button>
 </div>
 
-<span class="pass_action" style="color:#888; font-size:.9em;"></span> &nbsp; <span class="pass_template"></span> 
+<span class="pass_action" style="color:#888; font-size:.7em;"></span> &nbsp; <span class="pass_template"></span> 
    </h3>
   </div>
 <div class="modal-body">
-<div><div class="cl span2" >
+<div><div class="cl leftspan" >
   
-  <img src="/static/images/starbucks.png">
+  <img src="" id="pass_preview">
 
-  <div id="pass_description" class="alert">
-   Best check yo self, you're not looking too good. Best check yo self, you're not looking too good.
-</div>
+  <form id="pass_theme" class="alert">
+      <div class="control-group" style='' id="inputThemes">
 
-
-</div><div class="cl span3">
-
-<form class="form-horizontal">
-
-  <div class="control-group" style='margin-left:91px;' id="inputThemes">
-    <div class="controls" style='margin-left:0;'>
-      <label class="control-label" for="inputTheme" id="theme_control">Theme</label>
-    </div>
-      <label class="radio">
+      <label class="radio" class="active">
         <input type="radio" name="themeRadios" id="inputTheme" value="original" checked>
-       <span style="color:#555;">Original</span>
+       No Theme
       </label>
 
       <label class="radio">
@@ -49,49 +39,38 @@
 
 </div>
 
-  <div class="control-group">
-
-    <label class="control-label" for="inputLink" style="font-size:1.5em;"><a target="_blank" style="text-decoration:underline;" id="link_text"><i style="margin-top: 4px;" class="icon-share-alt"></i> Link</a></label>
-    <div class="controls">
-      <input type="text" onclick="this.focus(); this.select()" id="inputLink" placeholder=""  style="font-size: 16px;
-padding: 4px 10px;">
-    </div>
-  </div>
+  </form>
 
 
-
-<hr>
-  <div class="control-group">
-
-    <label class="control-label" for="inputTo">Send To</label>
-    <div class="controls">
-      <input type="text" id="inputTo" placeholder="send to this email address">
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="inputFrom">Sent By</label>
-    <div class="controls">
-      <input type="text" id="inputFrom" placeholder="your email address">
-    </div>
-  </div>
-
-
-
-
-    <button id="send_pass_btn" class="btn btn-info" style="font-size: 25px;
-padding: 10px;
-float: right;">Send Pass</button>
-
-
-<div class="alert alert-error" id="error_alert" style="display:none;font-size: 13px;
-font-weight: 700;
-padding-right: 0;
-width: 300px;
-text-align: center;">
- 
 </div>
 
-</form>
+<div class="cl rightspan">
+
+      <div id="name_form">
+
+    <div class="control-group">
+
+    <label style="font-size: 19px;" for="inputName">Your Name: </label>
+    <div class="controls" style="margin: 10px 0;">
+      <input type="text" id="inputName" placeholder="" style="font-size: 25px;
+height: 27px;
+width: 300px;
+padding: 6px;" >
+    </div>
+  </div>
+
+
+    <button data-loading-text="Loading..." id="continue_btn" class="btn btn-info" style="font-size: 25px;
+padding: 10px;
+float: left;">Continue</button>
+
+
+
+      </div>
+
+      <div id="send_form" style="display:none;">
+          {% include "send_form.html" %}
+        </div>
 
 </div>
 

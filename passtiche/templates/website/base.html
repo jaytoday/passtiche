@@ -15,8 +15,8 @@
     <meta name="keywords" content="" />
 
 <link rel="shortcut icon" href="/static/favicon.ico">
-<link rel="apple-touch-icon" href="/static/images/logo/apple-touch-_icon.png">
-<link rel="apple-touch-icon-precomposed" href="/static/images/logo/apple-touch-_icon.png"/>
+<link rel="apple-touch-icon" href="/static/images/logo/apple-touch-icon.png">
+<link rel="apple-touch-icon-precomposed" href="/static/images/logo/apple-touch-icon.png"/>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -84,6 +84,7 @@
     <script src="/static/js/application.js"></script> 
     <script>
     $(function(){
+        {% include "base.js" %}
         {% block js %} {% end %}
     });
     </script>

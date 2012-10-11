@@ -42,6 +42,8 @@ class PassTemplate(BaseModel):
         pass_template = cls.all().filter('slug', slug).get()
         if not pass_template:
             pass_template = cls(name=name, slug=slug)
+        pass_template.name = name
+
         if description:
             pass_template.description = description
         if tags:
@@ -64,7 +66,7 @@ class PassTemplate(BaseModel):
         fixtures_json = json.loads(json_file)
 
         templates = []
-        for pass_template in fixtures_json['passes']:
+        for pass_template in fixtures_json['passes'][::-1]:
             updated_template = cls.create_or_update(pass_template['name'], slug=pass_template.get('slug'), tags=pass_template.get('tags'), 
                 description=pass_template.get('description'))
             templates.append(updated_template)
@@ -96,14 +98,18 @@ class UserPass(BaseModel):
 
     """ Customized pass
     """
+    code = db.StringProperty()
     owner = db.ReferenceProperty(User)
     template = db.ReferenceProperty(PassTemplate, collection_name='user_passes')
     pass_name = db.StringProperty()
     pass_id = db.IntegerProperty()
+
+    from_name = db.StringProperty()
     from_email = db.StringProperty()
     to_email = db.StringProperty()  
 
     message = db.TextProperty()
+    action = db.StringProperty()
     theme = db.StringProperty()
 
     def url(self):

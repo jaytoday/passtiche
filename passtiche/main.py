@@ -57,13 +57,15 @@ application = tornado.wsgi.WSGIApplication([
      # shortcut login
      (r'/login/(?P<email>[^\/]+)/?', auth.Login),
 
-     # pass URLs
-     (r'/p/(?P<pass_id>[^\/]+)/?', index.PassURL),  
-     (r'/p/(?P<pass_id>[^\/]+)/(?P<theme>[^\/]+)/?', index.PassURL),          
+     # pass URLs 
+     #(r'/pt/(?P<pass_id>[^\/]+)/(?P<letter_code>[^\/]+)/?', index.PassURL),     
+     (r'/p/(?P<pass_code>[^\/]+)/?', index.PassURL),   
+     (r'/d/(?P<pass_code>[^\/]+)/?', index.PassDownload),               
 
     # ajax
     (r'/ajax/user\.request_invite/?', ajax_index.RequestInvite), 
 
+    (r'/ajax/pass\.save/?', ajax_index.SavePass),    
     (r'/ajax/pass\.send/?', ajax_index.SendPass),     
 
 
@@ -76,6 +78,9 @@ application = tornado.wsgi.WSGIApplication([
     (r"/admin/run/(?P<task>[^\/]+)?", admin.RunTask),
 
 
+
+    # Apple push service URL
+     (r'/_ps/?', gae.ChannelDisconnect), # TODO
 
     # GAE handlers
      (r'/_ah/channel/disconnected/', gae.ChannelDisconnect),

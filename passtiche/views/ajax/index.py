@@ -42,6 +42,50 @@ class AccountInvite(AjaxHandler):
         self.render("website/index/account_inner.html", **self.context)
 
 
+class SavePass(AjaxHandler):
+
+    def get(self):
+        from model.passes import UserPass, PassTemplate
+
+        self.user = self.get_current_user()
+        self.action = self.get_argument('action')
+        self.theme = self.get_argument('theme')
+        self.pass_template_id = int(self.get_argument('pass_template'))
+        self.pass_template = PassTemplate.get_by_id(self.pass_template_id)
+
+        # TODO: first check if there is user_pass key name
+        if self.get_argument('user_pass',''):
+            self.user_pass = UserPass.get_by_key_name(self.get_argument('user_pass'))
+            self.update()
+        else:
+            self.create()
+
+        self.user_pass.put()
+
+        self.write(self.user_pass.key().name())
+
+
+
+    def create(self):
+        from model.passes import UserPass, PassTemplate
+        from utils import string as str_utils
+        code = str_utils.genkey(length=5)
+        self.user_pass = UserPass(key_name=code, code=code,owner=self.user, 
+                template=self.pass_template, pass_name=self.pass_template.name,
+                pass_id=self.pass_template.key().id(), action=self.action, theme=self.theme)
+        self.user_pass.from_name = self.get_argument('from_name')
+
+
+    def update(self):
+        from model.passes import UserPass, PassTemplate
+        # update action, theme, emails
+        pass
+
+        # template ID, name, action, theme
+
+
+        
+
 class SendPass(AjaxHandler):
 
     def get(self):

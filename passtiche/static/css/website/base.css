@@ -64,6 +64,16 @@ height:40px;
 }
 
 
+#site-nav{
+	box-shadow: 2px 2px rgba(100, 100, 100, .15); border-radius: 5px;
+}
+
+
+.subnav-fixed #site-nav{
+	box-shadow: none;
+}
+
+
 }
 .navbar .btn-navbar {
 display: none;

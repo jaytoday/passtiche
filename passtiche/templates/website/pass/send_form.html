@@ -1,0 +1,64 @@
+<form class="form-horizontal" style="padding-bottom:40px;">
+
+    <div class="control-group">
+
+    <label class="control-label" for="inputName2">Your Name: </label>
+    <div class="controls" style="margin-left:110px;">
+      <input type="text" id="inputName2" placeholder="" disabled="true" style="width:187px;">
+    </div>
+  </div>
+
+
+  <div id="send_details" style="margin-top:32px;">
+
+
+  <div class="control-group">
+
+    <label class="control-label" for="inputLink" style="font-size:1.2em;width:111px;"><i style="margin-top: 4px;" class="icon-share-alt"></i> &nbsp; <a target="_blank" style="text-decoration:underline;" id="link_text"> Pass URL </a></label>
+    <div class="controls" style="width:230px;">
+      <input type="text" onclick="this.focus(); this.select()" id="inputLink" placeholder=""  style="font-size: 13px;
+padding: 4px 10px;
+width: 178px;">
+    </div>
+  </div>
+
+
+
+<hr>
+  <div class="control-group">
+
+    <label class="control-label" for="inputTo">Email To:</label>
+    <div class="controls">
+      <input type="text" id="inputTo" placeholder="send pass to this email address">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputFrom">Your Email:</label>
+    <div class="controls">
+      <input type="text" id="inputFrom" placeholder="get a receipt pass sent to you">
+    </div>
+  </div>
+
+
+
+
+    <button id="send_pass_btn" class="btn btn-info" style="font-size: 25px;
+padding: 10px;
+float: right;">Email Pass</button>
+
+
+<div class="alert alert-error" id="error_alert" style="display:none;font-size: 13px;
+font-weight: 700;
+padding-right: 0;
+width: 300px;
+text-align: center;">
+ 
+</div>
+
+</div> <!-- send details -->
+
+<div class="alert" style="background: #EEEFF4;display:none;
+border-color: #BCE8F1;
+color: #3A87AD;position: absolute;font-size: 11px;width: 325px;padding: 10px;margin: 52px -9px;"><b>Coming Soon: </b>Sign Into Facebook to Customize And Share</div>
+
+</form>

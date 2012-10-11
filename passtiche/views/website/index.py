@@ -60,11 +60,42 @@ class PassticheIndex(ViewHandler):
         return pass_dict                              
                 
 
+def letter_decode(letter_code):
+    from model.passes import THEME_CODES
+    if len(letter_code) == 2:
+        action_code, theme_code = list(letter_code)
+    elif len(letter_code) == 1:
+        action_code, theme_code = (letter_code,None)
+    ACTION_CODES = {'o': 'Offer', 'r': 'Request'}
+    action = ACTION_CODES[action_code]
+    if theme_code:
+        for tn, code in THEME_CODES.items():
+            if code == theme_code:
+                theme = tn
+                break             
+    else:
+        theme = None
+
+    return action,theme
+
+class PassDownload(ViewHandler):
+    def get(self, pass_id, letter_code):
+        from model.passes import PassTemplate
+        from backend.passes import passfile
+        pass_creator = passfile.PassFile()
+        pass_template = PassTemplate.get_by_id(int(pass_id))
+        if not pass_template:
+            raise ValueError('pass_id')    
+
+        action, theme = letter_decode(letter_code)
+
+        pass_creator.create(pass_template.slug, action=action, theme=theme)
+        pass_creator.write(self)        
 
 class PassURL(ViewHandler):
     """ Pass Profile page """
     
-    def get(self, pass_id, theme=None):
+    def get(self, pass_id, letter_code):
 
         #if 'blog.' in gae_utils.GetUrl():
         #    return self.write(static_page('blog'))
@@ -78,28 +109,27 @@ class PassURL(ViewHandler):
         self.context['msg'] = 'iOS6'
         self.context['dl_url'] = gae_utils.GetUrl() + "?dl=t"
 
-        self.context['theme'] = None
-        from model.passes import THEME_CODES, PassTemplate
-        if theme:
-            for theme_name, code in THEME_CODES.items():
-                if code == theme:
-                    self.context['theme'] = theme_name
-                    break
+        self.context['action'], self.context['theme'] = letter_decode(letter_code)
+
+        from model.passes import PassTemplate
 
         if self.get_argument('dl',''):
-            return self.download()
+            self.context['msg'] = 'dl'
         pass_template = PassTemplate.get_by_id(int(pass_id))
         if not pass_template:
             raise ValueError('pass_id')
 
+        self.context['dl_redirect_url'] = gae_utils.GetUrl().replace('/p/','/d/')
+
         # if on iOS6 device, download pass
-        ua = gae_utils.GetUserAgent()
-        if 'AppleWebKit' in ua and 'Mobile' in ua:
-            if 'OS 6_' in ua:
-                # TODO: override?
-                return self.download()
-            else:
-                self.context['msg'] = 'upgrade_iOS6'
+        if self.context['msg'] != 'dl':
+            ua = gae_utils.GetUserAgent()
+            if 'AppleWebKit' in ua and 'Mobile' in ua:
+                if 'OS 6_' in ua:
+                    # TODO: override?
+                    self.context['msg'] = 'dl'
+                else:
+                    self.context['msg'] = 'upgrade_iOS6'
 
 
         self.context['pass_template'] = pass_template
