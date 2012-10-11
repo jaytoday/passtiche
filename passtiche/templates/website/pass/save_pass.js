@@ -27,7 +27,7 @@ function createUserPass(){
 		var pass_link =  $(document).data('domain') + '/p/' + response;
 
 		send_pass_modal.find('#inputLink').val(pass_link);
-		send_pass_modal.find('#link_text').attr('href',pass_link);
+		send_pass_modal.find('#link_text').attr('href','http://' + pass_link);
 
 
      }

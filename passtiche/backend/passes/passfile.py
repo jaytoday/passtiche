@@ -27,20 +27,19 @@ class PassFile(object):
 	def update_json(self):
 		
 		# first specify item
-		if self.user_pass.action == 'offer':
-			self.pass_json['eventTicket']['primaryFields'][0]['label'] = 'Offered Item:'
-		if self.user_pass.action == 'request':
-			self.pass_json['eventTicket']['primaryFields'][0]['label'] = 'Requested Item:'			
+		action_verb = self.user_pass.action.capitalize() + 'ed' 
+
+		# what is the item?
+		self.pass_json['eventTicket']['primaryFields'][0]['label'] = '%s Item:' % action_verb
 		self.pass_json['eventTicket']['primaryFields'][0]['value'] = self.user_pass.pass_name
 
 		# who made the pass?
-		if self.user_pass.action == 'offer':
-			self.pass_json['eventTicket']['secondaryFields'][0]['label'] = 'Offered By:'
-		if self.user_pass.action == 'request':
-			self.pass_json['eventTicket']['secondaryFields'][0]['label'] = 'Requested By:'	
+		self.pass_json['eventTicket']['secondaryFields'][0]['label'] = '%s By:' % action_verb
 		self.pass_json['eventTicket']['secondaryFields'][0]['value'] = self.user_pass.owner_name
 
-		self.pass_json['eventTicket']['auxiliaryFields'][0]['label'] = datetime.datetime.now().strftime("%A, %B %d")
+		# when was the pass made?
+		self.pass_json['eventTicket']['auxiliaryFields'][0]['label'] = '%s On %s' % (
+				action_verb, datetime.datetime.now().strftime("%A, %B %d"))
 	
 
 	# Creates .pkpass (zip archive)
