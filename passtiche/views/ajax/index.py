@@ -53,7 +53,6 @@ class SavePass(AjaxHandler):
         self.action = self.get_argument('action')
         self.theme = self.get_argument('theme')
 
-
         # TODO: first check if there is user_pass key name
         if self.get_argument('user_pass',''):         
             self.update()
@@ -70,7 +69,10 @@ class SavePass(AjaxHandler):
         from model.passes import UserPass, PassTemplate
         from utils import string as str_utils
         self.pass_template_id = int(self.get_argument('pass_template'))
-        self.pass_template = PassTemplate.get_by_id(self.pass_template_id)
+        pass_template = PassTemplate.get_by_id(self.pass_template_id)
+        if not pass_template:
+            raise ValueError('pass_template')
+        self.pass_template = pass_template
 
         code = str_utils.genkey(length=5)
         self.user_pass = UserPass(key_name=code, code=code,owner=self.user, 
@@ -119,7 +121,7 @@ class SendPass(AjaxHandler):
         from model.passes import UserPass, PassTemplate
         
         self.user_pass = UserPass.get_by_key_name(self.get_argument('user_pass'))
-        pass_template = self.user_pass.pass_template
+        pass_template = self.user_pass.template
         self.user_pass.to_email = to_email
         if from_email:
             self.user_pass.from_email = from_email
