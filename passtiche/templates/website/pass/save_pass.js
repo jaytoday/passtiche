@@ -1,8 +1,9 @@
+DEFAULT_NAME = "Not Specified";
 
 function createUserPass(){
 	var name_val = $('#name_form').find('#inputName').val();
 	if (!name_val)
-		name_val = "Not Specified";
+		name_val = DEFAULT_NAME;
 	$('#name_form').hide();
 
 	$('#name_form').find('#continue_btn').button('loading');
@@ -12,9 +13,10 @@ function createUserPass(){
 	pass_data = {
 		'pass_template': send_pass_modal.data('pass_template_id'),
 		'action': send_pass_modal.data('pass_action'),
-		'theme': send_pass_modal.find('#inputThemes').find('input:checked').val(),
-		'owner_name': name_val
+		'theme': send_pass_modal.find('#inputThemes').find('input:checked').val()
 	};
+	if (name_val != DEFAULT_NAME)
+		pass_data['owner_name'] = name_val;
 
    $.ajax({
      type: "POST",

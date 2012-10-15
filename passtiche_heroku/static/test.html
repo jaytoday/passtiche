@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>test</title>
+<script src="hiptype.js"></script>
+<body>
+Hiptype ID: 
+<div id="demo"></div>
+<script>
+var callback = function () {
+    var device_info = hiptype.device_info();
+    document.getElementById("demo").innerHTML = device_info['hiptype_id'];
+};
+hiptype.init(undefined, callback);
+</script>
+</body>
+</html>

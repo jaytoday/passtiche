@@ -76,7 +76,8 @@ class SavePass(AjaxHandler):
         self.user_pass = UserPass(key_name=code, code=code,owner=self.user, 
                 template=self.pass_template, pass_name=self.pass_template.name, pass_slug=self.pass_template.slug,
                 pass_id=self.pass_template.key().id(), action=self.action.lower(), theme=self.theme.lower())
-        self.user_pass.owner_name = self.get_argument('owner_name')
+        if self.get_argument('owner_name',''):
+            self.user_pass.owner_name = self.get_argument('owner_name')
 
 
     def update(self):
@@ -98,7 +99,7 @@ class SavePass(AjaxHandler):
             pass_template.requests +=1
 
         pass_template.put()
-        
+
         return
 
 
@@ -107,26 +108,21 @@ class SavePass(AjaxHandler):
 class SendPass(AjaxHandler):
 
     def get(self):
-        from_email = self.get_argument('from_email')
+        from_email = self.get_argument('from_email','')
         to_email = self.get_argument('to_email')
         theme = self.get_argument('theme','')
         action = self.get_argument('action','')
-        pass_template_id = self.get_argument('pass_template')
         current_user = self.get_current_user()
         
         # TODO: refactor this to backend API
 
         from model.passes import UserPass, PassTemplate
-
-        pass_template = PassTemplate.get_by_id(int(pass_template_id))
-        if not pass_template:
-            raise ValueError('pass_template')
-
         
-        self.user_pass = UserPass(owner=current_user, template=pass_template, 
-            pass_name=pass_template.name, pass_id=pass_template.key().id(), from_email=from_email, to_email=to_email)
-        if theme:
-            self.user_pass.theme = theme
+        self.user_pass = UserPass.get_by_key_name(self.get_argument('user_pass'))
+        pass_template = self.user_pass.pass_template
+        self.user_pass.to_email = to_email
+        if from_email:
+            self.user_pass.from_email = from_email
 
         if action == 'Offer':
             pass_template.offers += 1

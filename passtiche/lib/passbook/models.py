@@ -13,12 +13,11 @@ except ImportError:
 import hashlib
 import zipfile
 import decimal
-try:
-    from M2Crypto import SMIME
-    from M2Crypto import X509
-    from M2Crypto.X509 import X509_Stack
-except:
-    pass
+
+from M2Crypto import SMIME
+from M2Crypto import X509
+from M2Crypto.X509 import X509_Stack
+
 
 class Alignment:
     LEFT = 'PKTextAlignmentLeft'

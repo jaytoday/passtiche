@@ -216,14 +216,7 @@ width: 92px;
 }
 }
 
-@media (min-width: 768px) and (max-width: 980px) {
 
-
-
-	.thumbnail .btn {
-		font-size: 11px;
-	}
-}
 
 @media (max-width: 660px) {
 
