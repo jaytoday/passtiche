@@ -27,7 +27,7 @@ $('#send_pass_btn').on('click', function(){
      }
      });
 
-	send_pass_modal.modal('hide');
+	//send_pass_modal.modal('hide');
 
 
 });
