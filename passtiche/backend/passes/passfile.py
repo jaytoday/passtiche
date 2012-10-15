@@ -37,15 +37,19 @@ class PassFile(object):
 
 		# what is the item?
 		self.pass_json['primaryFields'][0]['label'] = '%s Item:' % action_verb
+		self.pass_json['primaryFields'][0]['key'] = 'p1'
 		self.pass_json['primaryFields'][0]['value'] = self.user_pass.pass_name
 
 		# who made the pass?
 		self.pass_json['secondaryFields'][0]['label'] = '%s By:' % action_verb
+		self.pass_json['secondaryFields'][0]['key'] = 's1'
 		self.pass_json['secondaryFields'][0]['value'] = self.user_pass.owner_name
 
 		# when was the pass made?
 		self.pass_json['auxiliaryFields'][0]['label'] = '%s On %s' % (
 				action_verb, datetime.datetime.now().strftime("%A, %B %d"))
+		self.pass_json['auxiliaryFields'][0]['key'] = 'a1'
+		self.pass_json['auxiliaryFields'][0]['value'] = ''
 
 
 
@@ -56,7 +60,10 @@ class PassFile(object):
 		else:
 			fetch_url = 'http://passtiche.herokuapp.com'
 		response = urlfetch.fetch(fetch_url, payload=json.dumps(self.pass_json), method='POST', 
-				headers={'Content-Type': 'application/json;charset=UTF-8'})
+				headers={'Content-Type': 'application/json;charset=UTF-8'}, deadline=60)
+		if response.status_code != 200:
+			logging.error(response.content)
+			raise ValueError('heroku error')
 		self.pass_file = response.content
 
 	def write(self, handler):

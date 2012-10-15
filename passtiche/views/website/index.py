@@ -76,7 +76,7 @@ class PassDownload(ViewHandler):
             if 'AppleWebKit' in ua:
                 if 'Mobile' in ua and 'OS 6_' in ua:
                     self.context['msg'] = 'dl'
-                elif 'Intel Mac OS X 10_8' in ua:
+                elif 'Intel Mac OS X 10_8' in ua and 'Safari' in ua:
                     self.context['msg'] = 'dl'
                 else:
                     self.context['msg'] = 'upgrade_iOS6'
