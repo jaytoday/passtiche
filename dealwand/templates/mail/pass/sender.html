@@ -1,0 +1,16 @@
+{% extends "../base.html" %}
+
+{% block main %}
+<br/><br/>
+<font color="#333333" size="5"><b>Your pass has been sent.</b></font>
+<font color="#666666" size="3">
+<br/><br/>
+You have a sent 
+{% if user_pass.action == 'request' %}a request{% end %}{% if user_pass.action == 'offer' %}an offer{% end %}
+for <font color="#111" size="4">{{ user_pass.pass_name }}</font> to <i>{{ user_pass.to_email }}</i>.
+<br/><br/>
+Your pass is available for download on your iPhone or the latest version of Safari for Mac:<br/><br/>
+    {{ user_pass.url() }}
+<br/><br/>
+</font>
+{% end %}

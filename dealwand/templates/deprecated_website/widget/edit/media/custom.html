@@ -1,0 +1,10 @@
+	
+			<div class="control-group" style="margin-top:25px;">
+	            <label class="control-label" for="{% if reward %}reward{% else %}custom{% end %}_upload">Upload Text or Image &nbsp; <span style="font-size:.8em;color:#AAA;">supports .pdf, .doc, .epub, .ibooks, .png, .jpg, .gif</span></label>
+					{% if widget and media_info %}
+					<p style="margin:9px;" class="help-block">Uploaded file: {{ media_info[0]['filename'] }}</p>
+					{% end %}
+	            <div class="controls" style="padding-top:5px;">
+	             	<input type="file" multiple id="{% if reward %}reward{% else %}custom{% end %}_upload">
+	            </div>
+	     </div>

@@ -1,0 +1,50 @@
+<div id="page_nav" class="navbar navbar-relative-top">
+    <div class="navbar-inner" style="z-index:1000;">
+        <div class="container" style="margin-left:0;">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" style="z-index:1000;position: absolute;
+right: 10px;">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" style="display:none;opacity:.1; float:right; " href="/">{{ settings['title'] }}</a>
+            <div class="nav-collapse">
+                <ul class="nav" id="site_nav">
+                    <li>
+                        <a href="/" class="coquette_font small-logo" id="home_link"><img style="width: 100px;
+    height: 40px;" src="/static/images/small_logo.png"></a>
+                    </li>
+                    {% if current_user and handler_name == "DashboardView" %}
+                    <li class="action" style="">
+                        <a href="#mybooks" id="mybooks_link" style="font-size: 26px; padding: 11px 1px 11px 34px; width: 139px;"><i class="icon-bookmark" style="
+        font-size: 21px;
+        float: left;
+        margin: -12px -27px;
+    "></i> My Books</a>
+                    </li>
+                    
+                    <li class="action" style="">
+<a href="#account" id="account_link" style="font-size: 18px; padding: 8px 2px 4px 9px; width: 114px;"><i class="icon-cog" style="
+"></i> Account</a>
+</li>            
+                    {% end %}
+         {% if current_user and handler_name == "TargetDashboardView" %}
+                    <li class="action" style="display:none;">
+                        <a href="#mycampaigns" id="mycampaigns_link" style="font-size: 26px; padding: 11px 1px 11px 34px; width: 208px;"><i class="icon-bookmark" style="
+        font-size: 21px;
+        float: left;
+        margin: -12px -27px;
+    "></i> My Campaigns</a>
+                    </li>
+                    
+                    <li class="action" style="">
+<a href="#account" id="account_link" style="font-size: 18px; padding: 8px 2px 4px 9px; width: 114px;"><i class="icon-cog" style="
+"></i> Account </a>
+</li>            
+                    {% end %}                    
+             
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

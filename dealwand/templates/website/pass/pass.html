@@ -1,0 +1,25 @@
+<div class="pass_item span4" name="{{ pass_template.name }}" pass_id="{{ pass_template.key().id() }}">
+				<div  class="thumbnail">
+					<img class="pass" src="/static/images/pass/{{ pass_template.slug }}.png"></img>
+
+					<a href="#sendPass" class="pass_name" data-toggle="modal"><div class="img"><h3>{{ pass_template.name }}</h3></div></a>
+					<span style="display:none" id="description">{% raw pass_template.description or "" %}</span>
+					{% if not is_mobile %}<div href="#sendPass" data-toggle="modal" class="targ"></div>{% end %}
+					<div class="caption">
+					
+				
+						<div class="btn-toolbar" style='margin-top:0;'>
+								<div class="stats" style='display:none;'><div><i class="icon-download" title="Requests"></i> <span class="val">{{ pass_template.requests or 0 }}</span></div>
+								<i class="icon-share" title="Offers"></i> 
+								 <span class="val">{{ pass_template.offers or 0 }}</span>
+								 <div></div></div>
+							<div class="btn-group download_container">
+								<a class="btn btn-large btn-default request_pass" href="#sendPass" role="button" data-toggle="modal" ><i class="icon-download"></i> Request Gift</a>
+								<a class="btn btn-large btn-info offer_pass" href="#sendPass" role="button" data-toggle="modal" ><i class="icon-share icon-white"></i> Offer Gift</a>
+							
+			
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>

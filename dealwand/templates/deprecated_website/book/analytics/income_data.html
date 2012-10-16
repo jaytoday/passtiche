@@ -1,0 +1,7 @@
+{% for i, (income_range, (sample, purchased)) in enumerate(demographic_dict['income']) %}
+<div sort="{{ i }}" range="{{ income_range }}">
+<span class="sample">{{ sample }}</span>    
+<span class="purchased">{{ purchased }}</span>    
+</div>
+{% end %}
+

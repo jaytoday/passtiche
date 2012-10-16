@@ -1,0 +1,28 @@
+
+
+<div id="popular_passes"  class="pass_container">
+	<div class="offset">
+<h5><i class="icon-comment"></i> Popular Gifts</h5>
+{% for pass_template in pass_templates['popular'] %}
+	{% include "pass.html" %}
+{% end %}
+</div>
+</div>
+
+<div id="friends_passes" class="pass_container">
+		<div class="offset">
+<h5><i class="icon-glass"></i>  Gifts For Friends</h5>
+{% for pass_template in pass_templates['friends'][::-1] %}
+	{% include "pass.html" %}
+{% end %}
+</div>
+</div>
+
+<div id="romantic_passes"  class="pass_container">
+		<div class="offset">
+<h5><i class="icon-heart"></i>  Romantic Gifts</h5>
+{% for pass_template in pass_templates['romantic'][::-1] %}
+	{% include "pass.html" %}
+{% end %}
+</div>
+</div>

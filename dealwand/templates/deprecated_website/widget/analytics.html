@@ -1,0 +1,89 @@
+	
+<script type="text/javascript">
+
+{% comment "analytics.js" %}
+
+</script>
+
+		<h3>Views: <span style='font-size:1.2em'>{{ widget.views() }}</span></h3>
+		
+{% if True %}
+		<div id="analytics_intro" class="alert" style="
+margin: 15px 0 20px; width:480px;text-align:center;
+font-size: 14px;">
+        <strong style="font-size: 1.05em;">Advanced insights for this widget are not yet available</strong>
+      </div>
+{% else %}
+
+
+<div class="well">
+    <div style="float: right;margin-left:-20px;
+min-width: 220px;margin-top: -20px;" class="span2">
+<h4 class="form_group_title" style=" background: rgba(200, 200, 200, .9);
+color: #222;
+font-size: 1.2em;float:right;
+border-width: 3px;">Audience Activity</h4>
+</div>
+<br/><br/>
+
+<div id="audience_analytics_{{ widget.key() }}_data" style="display:none;">
+    	{% include "audience_analytics_inner.html" %}
+</div>
+
+<label class="control-label" style="padding-left: 20px;
+padding-top: 10px;float:left;
+margin-bottom: 0;">Daily Interactions &amp; Readers</label>
+<div class="btn-group" id="audience_chart_type" style="
+padding: 10px;
+width: 420px;
+
+float: left;margin: -2px 3px;">
+<!-- TODO: refactor this for multiple items -->
+<a id="7" class="active btn" style="
+">7 days</a>
+<a id="30" class=" btn" style="
+">30 days</a>
+</div>
+
+<div class="analytics_wrapper" id="audience_analytics_{{ widget.key() }}" ></div>
+
+</div>
+
+<div class="well">
+    <div style="float: right;margin-left:-20px;
+min-width: 220px;margin-top: -20px;" class="span2">
+<h4 class="form_group_title" style=" background: rgba(200, 200, 200, .9);
+color: #222;
+font-size: 1.2em;float:right;
+border-width: 3px;">Social Activity</h4>
+</div>
+<br/><br/>
+<div id="social_analytics_{{ widget.key() }}_data" style="display:none;">
+    	{% include "social_analytics_inner.html" %}
+</div>
+
+<label class="control-label" style="padding-left: 20px;
+padding-top: 10px; float:left;
+margin-bottom: 0;">Daily Social Sharing</label>
+<div class="btn-group" id="social_chart_type" style="
+padding: 10px;
+width: 440px;
+
+float: left;margin: -2px 3px;">
+<!-- TODO: refactor this for multiple items -->
+<a id="7" class="active btn" style="
+">7 days</a>
+<a id="30" class=" btn" style="
+">30 days</a>
+</div>
+<div class="analytics_wrapper" id="social_analytics_{{ widget.key() }}"></div>
+
+
+<div>
+    <!-- What your readers are already sharing online -->
+    <!-- Pull in existing book mentions not from hiptype (OG, etc.) -->
+  <!--  lists and info about demographic, similar interests... -->
+</div>
+</div>
+
+{% end %}

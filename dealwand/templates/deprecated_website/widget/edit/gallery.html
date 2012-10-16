@@ -1,0 +1,57 @@
+				<div class="control-group" id="widget_preview_icon" style="padding-top:10px;">
+		            <label class="control-label" id="widget_icon_type_label" for="thumbnail">Widget Preview Icon</label>
+		      
+								<div class="btn-group" id="widget_icon_type">
+								          <a id="gallery1"   class="active btn">
+									<img src="/static/images/thumbnail/gallery1.png"/></a>
+								  
+										  <a id="gallery2" class="btn"><img src="/static/images/thumbnail/gallery2.png"/></a>
+								            <a id="gallery3" class="btn"><img src="/static/images/thumbnail/gallery3.png" /></a>
+				            	</div>
+					</div>
+	
+
+{% if widget and widget.media_info %}		
+		<div class="control-group" style="margin:25px 5px;">
+	            <label class="control-label" for="input01">Gallery Sequence</label>
+	 			<p class="help-block">Drag an image to change its placement</p>
+	         
+				
+				<ul id="gallery_items"  class="thumbnails">
+					{% for item_info in widget.media_info %}
+			        <li id="{{ item_info['key'] }}" class="width:100%; height:50px; padding:10px; margin:5px; cursor:move; span2 gallery_item">
+				<a class="close" style='position: absolute;
+margin: -9 0 0 157px;
+z-index: 1000;
+display: initial;
+font-size: 20px;
+padding: 3px;
+background: rgba(255, 255, 255, .5);
+border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;
+opacity: 0.7;'>×</a>
+			          <a class="thumbnail">
+			            <img src="/gallery/{{ item_info['key'] }}" style="height:130px;width:200px;" alt="">
+			          </a>
+			        </li>
+	{% end %}	
+				
+      </ul>
+
+
+</div>
+{% end %}
+		
+		<div class="control-group">
+	            <label class="control-label" for="gallery_upload">Upload Gallery Images</label>
+	            <div class="controls" style="padding-top:10px;">
+	             	<input type="file" multiple id="gallery_upload">
+	            </div>
+	     </div>
+	     
+	     
+	        		<div class="control-group" style="display:none;">
+	            <label class="control-label" for="fb_fangate" style='display:inline; padding-right:10px;'>Enable Facebook Fangate</label>
+	            <div class="controls" style="padding-top:10px; display:inline;">
+	             	<input type="checkbox" multiple id="fb_fangate" {% if widget and widget.fb_fangate %}checked {% end %}>
+	            </div>
+	     </div>

@@ -1,0 +1,81 @@
+{% set widget_type_name = widget_type %}
+{% if widget_type == "Custom" %}
+ 	{% set widget_type_name = "Custom Widget" %}
+{% end %}
+
+<div class="row widget_details" {% if widget  %}style="margin: -26px 5px 23px;"{% else %}style='margin-top:8px;{% if not widget and widget_type != "Bookclub" %}display:none;{% end %}'{% end %} id="widget_details_{{ widget_type.lower() }}_wrapper" 
+>
+ 
+    <div class="{% if widget %}span8{% else %}span10{% end %}" style="{% if widget %}margin-left:-43px;{% else %}margin-left:0;{% end %}min-width:850px;">
+      <form {% if not widget %}class="well"{% end %} id="text_details" style="min-width:600px;{% if widget %}border-color: rgba(200, 200, 200, .3);{% end %}">
+          
+{% if widget_type != "Custom" %}
+   <div style="float: right;{% if widget %}margin-left:-20px;{% end %}
+min-width: 220px;margin-top: -20px;" {% if widget %}class="span2"{% else %}class="span3"{% end %}>
+     {% if not widget and False %} <h4 class="form_group_title" style="	background: rgba(200, 200, 200, .9);
+		color: #222;
+		font-size: 1.2em;float:right;
+		border-width: 3px;">New Book Club</h4>{% end %}
+    </div>
+	{% end %}
+	
+			{% if widget_type == "Social" %}
+				{% set reward = True %}
+				{% include "edit/social.html" %}
+			{% end %}
+			{% if widget_type == "Bookclub" %}
+			{% set reward = True %}
+				{% include "edit/bookclub.html" %}
+			{% end %}
+				{% if widget_type == "Media" %}
+				{% set reward = False %}
+				{% include "edit/media.html" %}
+			{% end %}					
+			
+						
+			
+		<!-- Widgets -->
+
+			{% if widget_type == "Quote" %}
+				{% include "edit/quote.html" %}
+			{% end %}			
+			{% if widget_type == "Review" %}
+				{% include "edit/review.html" %}
+			{% end %}
+
+			{% if widget_type == "Custom" %}
+				{% include "edit/custom.html" %}
+			{% end %}	
+
+		
+																	
+
+{% if False %}
+
+		{% if widget_type != "Video" and widget_type != "Feed" %}
+			<div class="control-group" style="padding-top:20px;">
+		            <label class="control-label" for="widget_name">{{ widget_type_name }} Name &nbsp; <span style="font-size:.8em;color:#AAA;">optional</span></label>
+		            <div class="controls">
+		              <input type="text" id="widget_name" class="placeholder input" {% if widget %}value="{{ widget.name or "" }}"{% end %}>
+		              <!--<p class="help-block">Put help text here...</p>-->
+		            </div>
+		     </div>
+	{% end %}
+
+{% end %}	
+			<!-- TODO: show current thumbnail -->
+			{% if False  %}
+			<div class="control-group"  style="padding-top:20px;">
+	            <label class="control-label" for="thumbnail_upload">Upload Custom Thumbnail &nbsp; <span style="font-size:.8em;color:#AAA;">optional</span></label>
+	            <div class="controls" style="padding-top:5px;">
+	             	<input type="file" multiple id="thumbnail_upload">
+	            </div>
+	     </div>
+		{% end %}
+		
+		
+		
+		
+		</form>
+    </div>
+  </div>

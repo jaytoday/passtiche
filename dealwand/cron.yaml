@@ -1,0 +1,14 @@
+cron:
+ 
+- description: keep instance hot
+  url: /
+  schedule: every 5 minutes
+  
+- description: keep widget caches hot
+  url: /w/random
+  schedule: every 55 minutes
+
+- description: refresh all iBookstore charts
+  url: /cron/ibookstore/refresh_charts
+  schedule: every day 05:00
+  timezone: America/Los_Angeles

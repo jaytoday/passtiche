@@ -1,0 +1,67 @@
+{% if widget %}
+
+{% if reward %}
+		{% set media_option = widget.reward_media_option %}
+		{% set media_info = widget.reward_media_info %}
+		{% set video_id = widget.reward_video_id %}
+		{% set video_url = widget.reward_video_url %}
+{% else %}
+		{% set media_option = widget.media_option %}
+		{% set media_info = widget.media_info %}
+		{% set video_id = widget.video_id %}
+		{% set video_url = widget.video_url %}
+{% end %}
+
+{% else %}
+	{% set media_option = None %}
+	{% set media_info = None %}
+	{% set video_id  = None %}
+	{% set video_url  = None %}
+{% end %}
+
+<div class="btn-group {% if reward %}reward{% end %} media_options" id="{% if reward %}reward_{% end %}media_options" style="font-size: 25px;{% if widget and not reward %}display:none;{% end %}
+padding: 30px 10px;
+width: auto;
+clear: both;
+float: none;">
+
+<a id="video" class="{% if widget and media_option == "video" %}active{% end %} btn btn-large"><span class="iconic play"></span> Video/Audio</a>
+
+<a id="comments" class="{% if widget and media_option == "comments" %}active{% end %}  btn btn-large"><span class="iconic chat_alt_stroke"></span> {% if reward %}Private Discussion {% else %}Comments{% end %}</a>
+
+{% if not reward %}
+<a id="feed" class="{% if widget and media_option == "feed" %}active{% end %}  btn btn-large"><span class="iconic rss_alt"></span> Social Media</a>
+{% end %}
+
+<a id="custom" class="{% if widget and media_option == "custom" %}active{% end %}   btn btn-large"><span class="iconic document_alt_stroke"></span> Upload File</a>
+
+</div>
+
+
+
+
+		
+	<div id="{% if reward %}reward_{% end %}media_panels" class="media_panels">
+		
+
+		<div class="panel" id="video" {% if widget and media_option == "video"  %}style="display:block;"{% end %}>
+			{% include "video.html" %}
+		</div>
+		
+	
+		<div class="panel" id="comments" {% if widget and media_option == "comments" %}style="display:block;"{% end %}>
+			<div style="height:10px;"></div>
+			{% include "comments.html" %}
+		</div>
+		
+		{% if not reward %}	
+		<div class="panel" id="feed" twitter_id="{% if widget %}{{ widget.key() }}_{{ media_option or "" }}{% else %}new{% end %}" {% if widget and media_option == "feed" %}style="display:block;"{% end %}>
+			{% include "twitter.html" %}
+		</div>
+		{% end %}
+		
+	
+		<div class="panel" id="custom" {% if widget and media_option == "custom" %}style="display:block;"{% end %} >			
+			{% include "custom.html" %}
+		</div>	
+</div>
