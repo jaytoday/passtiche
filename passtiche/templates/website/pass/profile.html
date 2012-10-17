@@ -2,27 +2,42 @@
 
 {% block js %}
 
-{% if msg == 'dl' %}
+{% if ua_type == 'dl' %}
 	window.location.href = '{{ dl_redirect_url }}';
 {% end %}
 {% end %}
 
 {% block body %}
+{% if False %}
 <h1>Pass: {{ user_pass.action }} for {{ user_pass.pass_name }} from {{ user_pass.owner_name }} {% if user_pass.theme %}(theme: {{ user_pass.theme }}){% end %}</h1>
 
-{% if msg == 'dl' %}
-<h2>Now downloading this pass...</h2>
+{% if ua_type == 'dl' %}
+<h2>Now downloading the pass. This may a few seconds. </h2>
 {% end %}
 
-{% if msg == 'iOS6' %}
+
+{% if ua_type == 'mountain_lion' %}
+<h2>Use Safari.</h2>
+{% end %}
+
+{% if ua_type == 'upgrade_iOS' %}
 <h2>
 This link is for installing passes onto an Apple iOS6 device
 Please return using an iPhone or iPod touch running iOS6, or using Safari on Mac OS X 10.8.2 or higher.</h2>
 {% end %}
 
-
-{% if msg == 'upgrade_iOS6' %}
+{% if ua_type == 'upgrade_OSX' %}
 <h2>This device needs to upgrade to iOS 6 or OS X Mountain Lion. Instructions...</h2>
+{% end %}
+
+
+{% if ua_type == 'generic' %}
+<h2>Generic. 
+This link is for installing passes onto an Apple iOS6 device
+Please return using an iPhone or iPod touch running iOS6, or using Safari on Mac OS X 10.8.2 or higher.</h2>
+{% end %}
+
+
 {% end %}
 
 <h3>Email link to download on my iPhone, iPad, or iPod running iOS6</h3>

@@ -63,23 +63,44 @@ class PassticheIndex(ViewHandler):
 class PassDownload(ViewHandler):
     def get(self, pass_code):
         from model.passes import PassTemplate, UserPass
-        self.context['msg'] = 'iOS6'
-
-        if self.get_argument('dl',''):
-            self.context['msg'] = 'dl'        
+  
         self.context['dl_url'] = gae_utils.GetUrl() + "?dl=t"
         self.context['dl_redirect_url'] = gae_utils.GetUrl().replace('/p/','/d/')
 
         # if on iOS6 device, download pass
-        if self.context['msg'] != 'dl':
-            ua = gae_utils.GetUserAgent()
-            if 'AppleWebKit' in ua:
-                if 'Mobile' in ua and 'OS 6_' in ua:
-                    self.context['msg'] = 'dl'
-                elif 'Intel Mac OS X 10_8' in ua and 'Safari' in ua:
-                    self.context['msg'] = 'dl'
-                else:
-                    self.context['msg'] = 'upgrade_iOS6'
+        if self.get_argument('dl',''):
+            self.context['ua_type'] = 'dl'   
+
+
+        def check_ua():
+            if self.context['ua_type'] == 'dl':
+                return
+            ua = gae_utils.GetUserAgent()            
+            if 'Mobile' in ua:
+                if ('iPhone' in ua or 'iPod' in ua) and 'AppleWebKit' in ua:
+                    if 'OS 6_' in ua:
+                        self.context['ua_type'] = 'dl'
+                        return
+                    # a previous iPhone version 
+                    self.context['ua_type'] = 'upgrade_iOS'
+                # another mobile OS
+            
+            if 'Intel Mac' in ua:
+                if 'OS X 10_8' in ua:
+                    if 'Safari' in ua and 'Chrome' not in ua:
+                        # Safari on Mountain Lion
+                        self.context['ua_type'] = 'dl'
+                        return
+                    # using Mountain Lion, not Safari
+                    self.context['ua_type'] = 'mountain_lion'  
+                    return
+                # using previous OS X
+                self.context['ua_type'] = 'upgrade_OSX'  
+
+
+
+        self.context['ua_type'] = 'generic' 
+        check_ua()              
 
 
         user_pass = UserPass.get_by_key_name(pass_code)
