@@ -2,6 +2,7 @@ DEFAULT_NAME = "Not Specified";
 
 function createUserPass(){
 	var name_val = $('#name_form').find('#inputName').val();
+     localStorage.setItem("user_name", name_val);
 	if (!name_val)
 		name_val = DEFAULT_NAME;
 	$('#name_form').hide();
@@ -27,6 +28,7 @@ function createUserPass(){
      	send_pass_modal.data('user_pass', response);
 
 		var pass_link =  $(document).data('domain') + '/p/' + response;
+          $('#name_form').find('#continue_btn').button('reset');
 
 		send_pass_modal.find('#inputLink').val(pass_link);
 		send_pass_modal.find('#link_text').attr('href','http://' + pass_link);

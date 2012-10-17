@@ -10,8 +10,6 @@ function openPassDialog(pass_action, el){
 
 	sendPassInit(pass_name, pass_id, pass_action);
 
-	if (pass_description)
-		send_pass_modal.find('#pass_description').html(pass_description)
 
 	send_pass_modal.find('button', '#pass_action_choices').removeClass('active').filter('#' + pass_action).click();
 
@@ -19,10 +17,18 @@ function openPassDialog(pass_action, el){
 
 	send_pass_modal.find('#pass_preview').attr('src', pass_img_src);
 
+	
+	
 	send_pass_modal.find('#send_form').hide();
-	send_pass_modal.find('#name_form').show();
+	send_pass_modal.find('#name_form').show();		
+	
+	var user_name = localStorage.getItem("user_name");
+	if (user_name)
+		$('#name_form').find('#inputName').val(user_name).end().find('#continue_btn').click();
 
 	$('#name_form').find('#continue_btn').button('reset');
+
+	
 
 	incrementPassCount(pass_id, pass_action);
 
@@ -72,6 +78,14 @@ send_pass_modal.find('#inputThemes input').on('click', function(){
 		updateUserPass();		
 
 
+});
+
+
+$('#edit_name').on('click', function(){
+
+	send_pass_modal.find('#send_form').hide();
+	send_pass_modal.find('#name_form').show();	
+	
 });
 
 

@@ -21,6 +21,13 @@ class PassFile(object):
 			"primaryFields": [{}],
 			"secondaryFields": [{}],
 			"auxiliaryFields": [{}],
+			"backFields" : [
+			      {
+			        "key" : "about",
+			        "label" : "About This Pass",
+			        "value" : "www.passtiche.com - offer and request gifts using PassBook"
+			      }
+			 ],
 			'pass_slug': self.user_pass.pass_slug,
 			'pass_name': self.user_pass.pass_name
 
@@ -64,6 +71,9 @@ class PassFile(object):
 				headers={'Content-Type': 'application/json;charset=UTF-8'}, deadline=60)
 		if response.status_code != 200:
 			logging.error(response.content)
+			from backend.admin import send_admin_email 
+			send_admin_email(subject='Heroku Error', message=response.content,
+				 user_agent=gae_utils.GetUserAgent(), ip=gae_utils.IPAddress(), url=gae_utils.GetUrl())
 			raise ValueError('heroku error')
 		self.pass_file = response.content
 
