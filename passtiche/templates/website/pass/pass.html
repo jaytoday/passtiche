@@ -1,9 +1,8 @@
-<div class="pass_item span4" name="{{ pass_template.name }}" pass_id="{{ pass_template.key().id() }}">
+<div class="pass_item span4" name="{{ pass_template.name }}" slug="{{ pass_template.slug }}" pass_id="{{ pass_template.key().id() }}">
 				<div  class="thumbnail">
-					<img class="pass" src="/static/images/pass/{{ pass_template.slug }}.png"></img>
+					<img class="pass sprite {{ pass_template.slug }}" _src="/static/images/pass/{{ pass_template.slug }}-small.png"></img>
 
 					<a href="#sendPass" class="pass_name" data-toggle="modal"><div class="img"><h3>{{ pass_template.name }}</h3></div></a>
-					<span style="display:none" id="description">{% raw pass_template.description or "" %}</span>
 					{% if not is_mobile %}<div href="#sendPass" data-toggle="modal" class="targ"></div>{% end %}
 					<div class="caption">
 					

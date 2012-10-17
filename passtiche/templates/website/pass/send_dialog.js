@@ -1,10 +1,10 @@
 
 function openPassDialog(pass_action, el){
 	var pass_item = el.parents('.pass_item:first');
-	var pass_img_src = pass_item.find('img.pass').attr('src');
-
 	var pass_name = pass_item.attr('name');
 	var pass_id = pass_item.attr('pass_id');
+	var pass_slug = pass_item.attr('slug');
+	var pass_img_src = '/static/images/pass/' + pass_slug + '-small.png';
 	var pass_description = pass_item.find('#description').html();
 	resetSendDialog();
 
@@ -85,7 +85,7 @@ $('#edit_name').on('click', function(){
 
 	send_pass_modal.find('#send_form').hide();
 	send_pass_modal.find('#name_form').show();	
-	
+
 });
 
 

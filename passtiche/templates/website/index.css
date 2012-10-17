@@ -126,7 +126,7 @@ padding:0;
 border:none;
 }
 
-.thumbnail > img.pass {
+.thumbnail > .pass {
 display: block;
 width: 100%;
 margin-left: auto;
@@ -412,3 +412,22 @@ font-size: 30px;
 		font-size:28px;
 	}
 }
+
+
+/* Image Sprite for Passes */
+
+.sprite { background: url('/static/images/pass_sprite.jpg') no-repeat top left; width: 290px; height: 320px;  } 
+.sprite.slave { background-position: 0px 0px;  } 
+.sprite.song { background-position: 0px -330px;  } 
+.sprite.beer { background-position: 0px -660px;  } 
+.sprite.breakfast { background-position: 0px -990px;  } 
+.sprite.coffee { background-position: 0px -1320px;  } 
+.sprite.dinner { background-position: 0px -1650px;  } 
+.sprite.favor { background-position: 0px -1980px;  } 
+.sprite.kiss { background-position: 0px -2310px;  } 
+.sprite.massage { background-position: 0px -2640px;  } 
+.sprite.night { background-position: 0px -2970px;  } 
+.sprite.meal { background-position: 0px -3300px;  } 
+.sprite.outdoors { background-position: 0px -3630px;  } 
+
+
