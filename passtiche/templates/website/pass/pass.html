@@ -12,9 +12,13 @@
 								<i class="icon-share" title="Offers"></i> 
 								 <span class="val">{{ pass_template.offers or 0 }}</span>
 								 <div></div></div>
-							<div class="btn-group download_container">
-								<a class="btn btn-large btn-default request_pass" href="#sendPass" role="button" data-toggle="modal" ><i class="icon-download"></i> Request Gift</a>
-								<a class="btn btn-large btn-info offer_pass" href="#sendPass" role="button" data-toggle="modal" ><i class="icon-share icon-white"></i> Offer Gift</a>
+							<div style="position:relative;" class=" download_container">
+								<!--<a class="btn btn-large btn-default request_pass" href="#sendPass" role="button" data-toggle="modal" ><i class="icon-download"></i> Request Gift</a>-->
+								<img style="height: 40px;
+margin: -1px 0 0px 4px;
+float: left;" src="/static/images/Add_to_Passbook_Badge_2x.png" id="download_pass" style="height: 40px;
+margin: 0 14px;"/>
+								<a class="btn btn-large btn-info offer_pass" href="#sendPass" role="button" data-toggle="modal" ><i class="icon-share icon-white"></i> Share Gift</a>
 							
 			
 							</div>

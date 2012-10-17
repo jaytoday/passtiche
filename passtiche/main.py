@@ -6,11 +6,28 @@ import tornado.web
 import tornado.wsgi
 import wsgiref.handlers
 
+PASSBOOK_DESCRIPTION = """
+
+Passbook on iPhone and iPod touch is where 
+you store and access all your boarding passes, 
+movie tickets, retail coupons, loyalty cards, and 
+more.
+
+"""
+
+PASSBOOK_INSTRUCTIONS = """
+
+To add this <pass/ticket/coupon/card> to 
+Passbook, open this <email, web page> on 
+your iPhone or iPod touch.
+
+"""
+
             
 settings = {
 
     "title": u"passtiche",
-    "description": "Share and Create Fun PassBook Passes",
+    "description": "Share and Create Fun Passbook Passes",
     "cookie_secret": "49490ja09jfkjapojspokajk20jk",
     "template_path": os.path.join(os.path.dirname(__file__), "templates"),
     

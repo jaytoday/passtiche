@@ -90,6 +90,10 @@ body {
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
           border-radius: 0;
+          /* new */
+          padding-left:23px;
+          padding-right:20px;
+          font-size:16px;
 }
 .subnav .nav > .active > a,
 .subnav .nav > .active > a:hover {
@@ -109,7 +113,7 @@ body {
 .subnav .nav > li:first-child > a,
 .subnav .nav > li:first-child > a:hover {
   border-left: 0;
-  padding-left: 12px;
+  padding-left: 20px;
   -webkit-border-radius: 4px 0 0 4px;
      -moz-border-radius: 4px 0 0 4px;
           border-radius: 4px 0 0 4px;

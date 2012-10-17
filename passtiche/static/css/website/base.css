@@ -50,7 +50,7 @@ max-width: 940px;
 .brand img{
 position: absolute;
 margin: -5px 30px;
-height: 28px;
+height: 33px;
 }
 
 #main-menu li.top {
@@ -77,7 +77,7 @@ height:40px;
 }
 
 .subnav-fixed{
-	max-width: 520px;
+	max-width: 559px;
 }
 
 .subnav-fixed #site-nav{

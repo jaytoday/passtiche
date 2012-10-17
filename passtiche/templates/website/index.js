@@ -10,6 +10,8 @@ if (!window.location.hash)
 
 {% include "pass/send_dialog.js" %}
 
+{% include "pass/download_dialog.js" %}
+
 
 /*
 bootbox.dialog("Plenty of buttons...", [{
