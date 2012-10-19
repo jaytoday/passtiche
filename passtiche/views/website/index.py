@@ -10,6 +10,8 @@ from backend.user import auth
 from utils.cache import cache
 from utils import gae as gae_utils
 
+from model.passes import PassTemplate, UserPass
+
 class ViewHandler(CookieHandler):
     
     def __init__(self, *args, **kwargs):
@@ -35,92 +37,114 @@ class PassticheIndex(ViewHandler):
     """ Main website view """
     
     def get(self):
+        self.render_output()
 
-        #if 'blog.' in gae_utils.GetUrl():
-        #    return self.write(static_page('blog'))
-        self.context['pass_templates'] = self.get_passes()
+    def render_output(self):
+        for f in ['linked_pass_template','linked_user_pass']:
+            if f not in self.context:
+                self.context[f] = ''
+        self.context['pass_templates'] = get_passes()
+        self.ua_type()
         self.write(static_page(None, "website/index.html", context=self.context))
         return
 
-    def get_passes(self):
-        from model.passes import PassTemplate
-        pass_dict = {
-            'popular': [],
-            'friends': [],
-            'romantic': []
-        }
-        all_passes = PassTemplate.all().order('-modified').fetch(1000)
-        for pass_template in all_passes:
-            if 'popular' in pass_template.tags:
-                pass_dict['popular'].append(pass_template)
-            if 'friends' in pass_template.tags:
-                pass_dict['friends'].append(pass_template)
-            if 'romantic' in pass_template.tags:
-                pass_dict['romantic'].append(pass_template)  
-        return pass_dict                              
-                
-
-class PassDownload(ViewHandler):
-    def get(self, pass_code):
-        from model.passes import PassTemplate, UserPass
-  
-        self.context['dl_url'] = gae_utils.GetUrl() + "?dl=t"
-        self.context['dl_redirect_url'] = gae_utils.GetUrl().replace('/p/','/d/')
+    def ua_type(self):
 
         # if on iOS6 device, download pass
         if self.get_argument('dl',''):
-            self.context['ua_type'] = 'dl'   
-
-
-        def check_ua():
-            if self.context['ua_type'] == 'dl':
-                return
-            ua = gae_utils.GetUserAgent()            
-            if 'Mobile' in ua:
-                if ('iPhone' in ua or 'iPod' in ua) and 'AppleWebKit' in ua:
-                    if 'OS 6_' in ua:
-                        self.context['ua_type'] = 'dl'
-                        return
-                    # a previous iPhone version 
-                    self.context['ua_type'] = 'upgrade_iOS'
-                # another mobile OS
-            
-            if 'Intel Mac' in ua:
-                if 'OS X 10_8' in ua:
-                    if 'Safari' in ua and 'Chrome' not in ua:
-                        # Safari on Mountain Lion
-                        self.context['ua_type'] = 'dl'
-                        return
-                    # using Mountain Lion, not Safari
-                    self.context['ua_type'] = 'mountain_lion'  
-                    return
-                # using previous OS X
-                self.context['ua_type'] = 'upgrade_OSX'  
-
-
+            self.context['ua_type'] = 'dl' 
+            return  
 
         self.context['ua_type'] = 'generic' 
-        check_ua()              
+        if self.context['ua_type'] == 'dl':
+            return
+        ua = gae_utils.GetUserAgent()            
+        if 'Mobile' in ua:
+            if ('iPhone' in ua or 'iPod' in ua) and 'AppleWebKit' in ua:
+                if 'OS 6_' in ua:
+                    self.context['ua_type'] = 'dl'
+                    return
+                # a previous iPhone version 
+                self.context['ua_type'] = 'upgrade_iOS'
+            # another mobile OS
+        
+        if 'Intel Mac' in ua:
+            if 'OS X 10_8' in ua:
+                if 'Safari' in ua and 'Chrome' not in ua:
+                    # Safari on Mountain Lion
+                    self.context['ua_type'] = 'dl'
+                    return
+                # using Mountain Lion, not Safari
+                self.context['ua_type'] = 'mountain_lion'  
+                return
+            # using previous OS X
+            self.context['ua_type'] = 'upgrade_OSX'  
 
 
-        user_pass = UserPass.get_by_key_name(pass_code)
-        self.context['user_pass'] = user_pass
+@cache(version_only=False)
+def get_passes():
+    # TODO: this should be cached!
+    from model.passes import PassTemplate
+    pass_dict = {
+        'popular': [],
+        'friends': [],
+        'romantic': []
+    }
+    all_passes = PassTemplate.all().order('-modified').fetch(1000)
+    for pass_template in all_passes:
+        if 'popular' in pass_template.tags:
+            pass_dict['popular'].append(pass_template)
+        if 'friends' in pass_template.tags:
+            pass_dict['friends'].append(pass_template)
+        if 'romantic' in pass_template.tags:
+            pass_dict['romantic'].append(pass_template)  
+    return pass_dict                              
+                
 
-        self.write(static_page(None, "website/pass/profile.html", context=self.context))
-        return
+class PassDownload(PassticheIndex):
+
+    def get(self, pass_code):
+        self.pass_code = pass_code
+       
+        self.get_pass()           
+        self.render_output()
+
+    def get_pass(self):
+        pass_template = PassTemplate.get_by_id(int(self.pass_code))
+        if not pass_template:
+            # return 404
+            raise ValueError('pass_template')
+        self.context['linked_pass_template'] = pass_template.key().id()
+
+
+
+
+class UserPassDownload(PassDownload):
+
+    def get_pass(self):
+        user_pass = UserPass.get_by_key_name(self.pass_code)
+        self.context['linked_user_pass'] = user_pass.code
+        self.context['linked_pass_template'] = user_pass.pass_id           
 
         
 
 class PassDirectDownload(ViewHandler):
     def get(self, pass_code):
         from model.passes import PassTemplate, UserPass
+        pass_template = PassTemplate.get_by_id(int(pass_code))
+        from backend.passes import passfile
+        pass_creator = passfile.PassFile(pass_template=pass_template)
+        pass_creator.create()
+        return pass_creator.write(self)    
+   
+class UserPassDirectDownload(ViewHandler):
+    def get(self, pass_code):        
+        from model.passes import PassTemplate, UserPass
         user_pass = UserPass.get_by_key_name(pass_code)
         from backend.passes import passfile
-        pass_creator = passfile.PassFile()
-        pass_creator.create(user_pass=user_pass)
-        return pass_creator.write(self)    
-        
-        
+        pass_creator = passfile.PassFile(user_pass=user_pass)
+        pass_creator.create()
+        return pass_creator.write(self)          
 
 
 

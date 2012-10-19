@@ -113,7 +113,7 @@ class UserPass(BaseModel):
     theme = db.StringProperty()
 
     def url(self):
-        link = 'http://passtiche.com/p/%s' % self.code
+        link = 'http://passtiche.com/u/%s' % self.code
         return link
 
     def display_owner_name(self):

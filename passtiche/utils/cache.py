@@ -48,7 +48,7 @@ def cache(func, *args, **kwargs):
           @cache(reset=True) - manual reset
           def functionToCache(arguments):
 
-          @cache(version_key=True) - resets on deployment
+          @cache(version_only=False) - Does NOT reset on deployment
           def functionToCache(arguments):              
               
               
@@ -68,7 +68,7 @@ def cache(func, *args, **kwargs):
         else:
             arg_key = '_'.join([str(par) for par in pars ]) + str(kpars or '')
         key = func.__name__ + '_' + str(arg_key)
-        if kwargs.get('version_key', True):
+        if kwargs.get('version_only', True):
             key += "_" + os.environ["CURRENT_VERSION_ID"]
         logging.info('cache key: %s' % key)
         if kwargs.get('reset', RESET_DEFAULT) or 'reset_cache' in os.environ['QUERY_STRING']:

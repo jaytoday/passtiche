@@ -1,14 +1,26 @@
 
 function openPassDialog(pass_action, el){
-	var pass_item = el.parents('.pass_item:first');
-	var pass_name = pass_item.attr('name');
-	var pass_id = pass_item.attr('pass_id');
-	var pass_slug = pass_item.attr('slug');
+
+	if (send_pass_modal.is(':visible')) return;
+
+	// el can be various buttons and targets
+	pass_item = el.parents('.pass_item:first');
+	pass_name = pass_item.attr('name');
+	pass_id = pass_item.attr('pass_id');
+	pass_slug = pass_item.attr('slug');
+
+
 	var pass_img_src = '/static/images/pass/' + pass_slug + '-small.png';
 	var pass_description = pass_item.find('#description').html();
 	resetSendDialog();
 
-	sendPassInit(pass_name, pass_id, pass_action);
+
+	send_pass_modal.data('pass_template', pass_name);
+	send_pass_modal.data('pass_template_id', pass_id);
+	send_pass_modal.data('pass_action', pass_action);
+	send_pass_modal.find('.pass_template:first').text(pass_name);	
+
+	sendPassActionInit(pass_action);
 
 
 	send_pass_modal.find('button', '#pass_action_choices').removeClass('active').filter('#' + pass_action).click();
@@ -17,37 +29,58 @@ function openPassDialog(pass_action, el){
 
 	send_pass_modal.find('#pass_preview').attr('src', pass_img_src);
 
-	
-	
-	send_pass_modal.find('#send_form').hide();
-	send_pass_modal.find('#name_form').show();		
-	
-	var user_name = localStorage.getItem("user_name");
-	if (user_name)
-		$('#name_form').find('#inputName').val(user_name).end().find('#continue_btn').click();
 
-	$('#name_form').find('#continue_btn').button('reset');
-
+	send_pass_modal.modal('show');
 	
 
 	incrementPassCount(pass_id, pass_action);
 
+	if (send_pass_modal.find('#downloading_pass').length > 0){
+		var dd_href = $(document).data('base-url');
+		if (send_pass_modal.data('user_pass'))
+			dd_href += ('/ud/' + send_pass_modal.data('user_pass'));
+		else dd_href += ('/pd/' + pass_id);
+
+		setTimeout(function(){
+			window.location.href = dd_href;	
+		}, 100);
+		setTimeout(function(){
+		//	send_pass_modal.modal('hide');
+		}, 2500);		
+
+	}
+
+
 }
 
-function sendPassInit(pass_template, pass_template_id, pass_action){
-// use el instead of pass template id?
-
-
-	send_pass_modal.data('pass_template', pass_template);
-	send_pass_modal.data('pass_template_id', pass_template_id);
-	send_pass_modal.data('pass_action', pass_action);
+function sendPassActionInit(pass_action){
 
 	send_pass_modal.find('.pass_action:first').text(pass_action);
 
-	send_pass_modal.find('.pass_template:first').text(pass_template);
-
 	// click default theme
 	//send_pass_modal.find('input:first', '#inputThemes').click();
+
+
+	if (pass_action == 'Share'){
+		send_pass_modal.find('.send_form').hide();
+		send_pass_modal.find('#name_form').show();		
+		
+		var user_name = localStorage.getItem("user_name");
+		if (user_name)
+			$('#name_form').find('#inputName').val(user_name).end().find('#continue_btn').click();
+
+		$('#name_form').find('#continue_btn').button('reset');
+	}
+	if (pass_action == 'Download'){
+			send_pass_modal.find('.send_form').hide();
+			send_pass_modal.find('#name_form').hide();
+			send_pass_modal.find('#send_form_download').show();	
+
+		var pass_link =  $(document).data('domain') + '/p/' + send_pass_modal.data('pass_template_id');
+		send_pass_modal.find('#inputLink').val(pass_link);
+		send_pass_modal.find('#link_text').attr('href','http://' + pass_link);
+
+	}	
 
 
 };
@@ -58,13 +91,11 @@ function sendPassInit(pass_template, pass_template_id, pass_action){
 // change pass action type
 send_pass_modal.find('#pass_action_choices button').on('click',function(){
 
-	sendPassInit(send_pass_modal.data('pass_template'), send_pass_modal.data('pass_template_id'), $(this).attr('id'));
-	if (send_pass_modal.find('#send_form').is(':visible'))
-		updateUserPass();
+	sendPassActionInit($(this).attr('id'));
 });
 
 // change theme
-send_pass_modal.find('#inputThemes input').on('click', function(){
+/*send_pass_modal.find('#inputThemes input').on('click', function(){
 	send_pass_modal.find('#inputThemes').find('label').removeClass('active');
 
 	$(this).parent().addClass('active');
@@ -78,12 +109,12 @@ send_pass_modal.find('#inputThemes input').on('click', function(){
 		updateUserPass();		
 
 
-});
+});*/
 
 
 $('#edit_name').on('click', function(){
 
-	send_pass_modal.find('#send_form').hide();
+	send_pass_modal.find('#send_form_share').hide();
 	send_pass_modal.find('#name_form').show();	
 
 });

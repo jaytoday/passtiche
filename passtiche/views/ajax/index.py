@@ -51,7 +51,6 @@ class SavePass(AjaxHandler):
 
         self.user = self.get_current_user()
         self.action = self.get_argument('action')
-        self.theme = self.get_argument('theme')
 
         # TODO: first check if there is user_pass key name
         if self.get_argument('user_pass',''):         
@@ -77,9 +76,11 @@ class SavePass(AjaxHandler):
         code = str_utils.genkey(length=5)
         self.user_pass = UserPass(key_name=code, code=code,owner=self.user, 
                 template=self.pass_template, pass_name=self.pass_template.name, pass_slug=self.pass_template.slug,
-                pass_id=self.pass_template.key().id(), action=self.action.lower(), theme=self.theme.lower())
+                pass_id=self.pass_template.key().id(), action=self.action.lower())
         if self.get_argument('owner_name',''):
             self.user_pass.owner_name = self.get_argument('owner_name')
+        if self.get_argument('theme',''):
+            self.user_pass.theme = self.get_argument('theme')
 
 
     def update(self):
@@ -87,7 +88,10 @@ class SavePass(AjaxHandler):
 
         self.user_pass = UserPass.get_by_key_name(self.get_argument('user_pass'))
         self.user_pass.action = self.action.lower()
-        self.user_pass.theme  = self.theme.lower()
+        if self.get_argument('theme',''):
+            self.user_pass.theme = self.get_argument('theme')
+        if self.get_argument('owner_name',''):
+            self.user_pass.owner_name = self.get_argument('owner_name')            
 
         # template ID, name, action, theme
 

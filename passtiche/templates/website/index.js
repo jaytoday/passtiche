@@ -6,11 +6,20 @@ var send_pass_modal = $('#sendPass:first');
 if (!window.location.hash)
     $('#subnav').find('li').removeClass('active');
 
+
+
 {% include "pass/gallery.js" %}
 
 {% include "pass/send_dialog.js" %}
 
-{% include "pass/download_dialog.js" %}
+
+
+
+// detect if pass should be opened
+
+if ('{{ linked_pass_template }}'){
+    $('.pass_item[pass_id="{{ linked_pass_template }}"]').find('.download_pass').click();
+}
 
 
 /*

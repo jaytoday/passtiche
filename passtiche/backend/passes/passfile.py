@@ -12,10 +12,20 @@ except:
 class PassFile(object):
 
 
-
-	def create(self, user_pass):
-
+	def __init__(self, user_pass=None, pass_template=None):
 		self.user_pass = user_pass
+		if user_pass:
+			self.pass_slug = self.user_pass.pass_slug
+			self.pass_name = self.user_pass.pass_name
+			self.action = self.user_pass.action
+		else:
+			self.pass_slug = pass_template.slug
+			self.pass_name = pass_template.name
+			self.action = 'download'
+
+
+	def create(self):
+
 
 		self.pass_json = {
 			"primaryFields": [{}],
@@ -28,8 +38,8 @@ class PassFile(object):
 			        "value" : "www.passtiche.com - offer and request gifts using PassBook"
 			      }
 			 ],
-			'pass_slug': self.user_pass.pass_slug,
-			'pass_name': self.user_pass.pass_name
+			'pass_slug': self.pass_slug,
+			'pass_name': self.pass_name
 
 		}
 
@@ -41,17 +51,22 @@ class PassFile(object):
 
 		
 		# first specify item
-		action_verb = self.user_pass.action.capitalize() + 'ed' 
+		action_verb = self.action.capitalize() + 'ed' 
 
 		# what is the item?
 		self.pass_json['primaryFields'][0]['label'] = '%s Item:' % action_verb
 		self.pass_json['primaryFields'][0]['key'] = 'p1'
-		self.pass_json['primaryFields'][0]['value'] = self.user_pass.pass_name
+		self.pass_json['primaryFields'][0]['value'] = self.pass_name
 
 		# who made the pass?
-		self.pass_json['secondaryFields'][0]['label'] = '%s By:' % action_verb
-		self.pass_json['secondaryFields'][0]['key'] = 's1'
-		self.pass_json['secondaryFields'][0]['value'] = self.user_pass.owner_name
+		if self.user_pass:
+			self.pass_json['secondaryFields'][0]['label'] = '%s By:' % action_verb
+			self.pass_json['secondaryFields'][0]['key'] = 's1'
+			self.pass_json['secondaryFields'][0]['value'] = self.user_pass.owner_name
+		else:
+			self.pass_json['secondaryFields'][0]['label'] = ''
+			self.pass_json['secondaryFields'][0]['key'] = 's1'
+			self.pass_json['secondaryFields'][0]['value'] = ''			
 
 		# when was the pass made?
 		self.pass_json['auxiliaryFields'][0]['label'] = '%s On %s' % (
@@ -67,6 +82,7 @@ class PassFile(object):
 			fetch_url = 'http://0.0.0.0:5000'
 		else:
 			fetch_url = 'http://passtiche.herokuapp.com'
+		logging.info('sending to heroku: %s' % self.pass_json)
 		response = urlfetch.fetch(fetch_url, payload=json.dumps(self.pass_json), method='POST', 
 				headers={'Content-Type': 'application/json;charset=UTF-8'}, deadline=60)
 		if response.status_code != 200:
@@ -75,6 +91,7 @@ class PassFile(object):
 			send_admin_email(subject='Heroku Error', message=response.content,
 				 user_agent=gae_utils.GetUserAgent(), ip=gae_utils.IPAddress(), url=gae_utils.GetUrl())
 			raise ValueError('heroku error')
+		logging.info('heroku response: %s' % len(response.content))
 		self.pass_file = response.content
 
 	def write(self, handler):
@@ -87,10 +104,11 @@ class PassFile(object):
 		        break
 		    handler.write(buf)
 		handler.set_header("Content-Type", "application/vnd.apple.pkpass")	
-		handler.set_header('Content-Disposition', "attachment; filename=%s.pkpass" % self.user_pass.pass_slug)
+		handler.set_header('Content-Disposition', "attachment; filename=%s.pkpass" % self.pass_slug)
 		strIO.close()  	
 
 
+'''
 
 
 	def _create(self, user_pass):
@@ -154,4 +172,5 @@ class PassFile(object):
 		    handler.write(buf)
 		handler.set_header("Content-Type", "application/vnd.apple.pkpass")	
 		handler.set_header('Content-Disposition', "attachment; filename=%s.pkpass" % self.user_pass.pass_slug)
-		self.output.close()  
+		self.output.close() 
+'''		 

@@ -3,7 +3,7 @@
 					<img class="pass sprite {{ pass_template.slug }}" _src="/static/images/pass/{{ pass_template.slug }}-small.png"></img>
 
 					<a href="#sendPass" class="pass_name" data-toggle="modal"><div class="img"><h3>{{ pass_template.name }}</h3></div></a>
-					{% if not is_mobile %}<div href="#sendPass" data-toggle="modal" class="targ"></div>{% end %}
+					<div href="#sendPass" class="targ {% if is_mobile %}is_mobile{% end %}"></div>
 					<div class="caption">
 					
 				
@@ -16,9 +16,9 @@
 								<!--<a class="btn btn-large btn-default request_pass" href="#sendPass" role="button" data-toggle="modal" ><i class="icon-download"></i> Request Gift</a>-->
 								<img style="height: 40px;
 margin: -1px 0 0px 4px;
-float: left;" src="/static/images/Add_to_Passbook_Badge_2x.png" id="download_pass" style="height: 40px;
+float: left;" src="/static/images/Add_to_Passbook_Badge_2x.png" class="download_pass" style="height: 40px;
 margin: 0 14px;"/>
-								<a class="btn btn-large btn-info offer_pass" href="#sendPass" role="button" data-toggle="modal" ><i class="icon-share icon-white"></i> Share Gift</a>
+								<a class="btn btn-large btn-info share_pass" href="#sendPass" role="button" ><i class="icon-share icon-white"></i> Share Gift</a>
 							
 			
 							</div>
