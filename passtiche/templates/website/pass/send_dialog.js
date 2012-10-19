@@ -35,7 +35,7 @@ function openPassDialog(pass_action, el){
 
 	incrementPassCount(pass_id, pass_action);
 
-	if (send_pass_modal.find('#downloading_pass').length > 0){
+	if (send_pass_modal.find('#downloading_pass:visible').length > 0){
 		var dd_href = $(document).data('base-url');
 		if (send_pass_modal.data('user_pass'))
 			dd_href += ('/ud/' + send_pass_modal.data('user_pass'));
@@ -45,8 +45,8 @@ function openPassDialog(pass_action, el){
 			window.location.href = dd_href;	
 		}, 100);
 		setTimeout(function(){
-		//	send_pass_modal.modal('hide');
-		}, 2500);		
+			send_pass_modal.modal('hide');
+		}, 1000);		
 
 	}
 
