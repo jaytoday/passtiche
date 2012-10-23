@@ -107,7 +107,7 @@ class PassDownload(PassticheIndex):
         self.render_output()
 
     def get_pass(self):
-        pass_template = PassTemplate.all().filter('short_code',int(self.pass_code)).get()
+        pass_template = PassTemplate.all().filter('short_code',self.pass_code).get()
         if not pass_template:
             # return 404
             raise ValueError('pass_template')
@@ -121,14 +121,14 @@ class UserPassDownload(PassDownload):
     def get_pass(self):
         user_pass = UserPass.get_by_key_name(self.pass_code)
         self.context['linked_user_pass'] = user_pass.code
-        self.context['linked_pass_template'] = user_pass.short_code           
+        self.context['linked_pass_template'] = user_pass.pass_code           
 
         
 
 class PassDirectDownload(ViewHandler):
     def get(self, pass_code):
         from model.passes import PassTemplate, UserPass
-        pass_template = PassTemplate.all().filter('short_code',int(self.pass_code)).get()
+        pass_template = PassTemplate.all().filter('short_code',self.pass_code).get()
         from backend.passes import passfile
         pass_creator = passfile.PassFile(pass_template=pass_template)
         pass_creator.create()

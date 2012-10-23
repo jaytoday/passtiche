@@ -20,7 +20,10 @@ class PassUpdate(object):
 		    slug = PassTemplate.get_slug(name)
 		keyname = slug
 		if location:
-			loc_code = loc_code = location['name'].lower().replace(' ','-')		    
+			if 'code' in location:
+				loc_code = location['code']
+			else:
+				loc_code = location['name'].lower().replace(' ','-')		    
 			keyname += "-%s" % loc_code
 		pass_template = PassTemplate.get_by_key_name(keyname)
 		if not pass_template:
@@ -50,13 +53,9 @@ class PassUpdate(object):
 				loc.region_code = 'san-francisco'
 			
 			loc.name = location['name']
-			if location['website']:
-				loc.website = location['website']
-			if location['yelp']:
-				loc.yelp = location['yelp']
-			if location['phone']:
-				loc.phone = location['phone']
-
+			for f in ['website', 'yelp', 'phone', 'street_address']:
+				if f in location:
+					setattr(loc, f, location[f])
 
 
 			loc.put()

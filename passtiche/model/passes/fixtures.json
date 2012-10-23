@@ -16,11 +16,32 @@
          "neighborhood_name": "Civic Center / Tenderloin",
          "location":{
             "name": "Davies Symphony Hall",
+            "street_address": "201 Van Ness Ave (at Hayes St)",
             "website": "http://www.sfsymphony.org/about/",
             "yelp": "http://www.yelp.com/biz/davies-symphony-hall-san-francisco",
             "phone": "(415) 864-6000"
           }
-		}
+		},
+
+    {
+         "name": "Seasonal Cocktails",
+         "slug": "seasonal-cocktails",
+         "description": "This class teaches the culinary aspects of utilizing fresh seasonal ingredients in the creation and presentation of exceptional cocktails.",
+         "price": 70,
+         "schedule":   {  
+         "date_range": "Oct. 25 - Nov. 25",
+         "starts": "October 25",
+         "ends": "November 25",
+         "times": [{ "starts": "7pm", "ends": "9pm" }]
+       },
+         "neighborhood_name": "SOMA",
+         "location":{
+            "name": "Boothby Center for the Beverage Arts",
+            "code": "boothby-center",
+            "street_address": "1161 Mission St",
+            "yelp": "http://www.yelp.com/biz/boothby-center-for-the-beverage-arts-san-francisco"
+          }
+    }    
     
 ],
 
@@ -31,8 +52,12 @@
   "passes": ["louis-ck-davies-symphony-hall"]
 },
 {
+  "name": "Best Drinks",
+  "passes": ["seasonal-cocktails-boothby-center"]
+},
+{
   "name": "Date Night",
-  "passes": ["louis-ck-davies-symphony-hall"]
+  "passes": []
 }
 
 ]

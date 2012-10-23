@@ -160,7 +160,7 @@ border-radius: 4px;
 background: rgba(100, 100, 100, .5);
 text-align: center;
 box-shadow: 1px 1px 5px rgba(100, 100, 100, .5);
-
+min-height:70px;
 }
 
 .thumbnail .stats{
@@ -184,7 +184,7 @@ border-radius: 5px;
 }
 .thumbnail .caption {
 color: inherit !important;
-margin-top: 205px;
+margin-top: 202px;
 background: rgba(100, 100, 100, .25);
 border-radius: 4px;
 opacity: .8;

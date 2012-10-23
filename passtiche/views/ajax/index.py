@@ -75,7 +75,7 @@ class SavePass(AjaxHandler):
 
         code = str_utils.genkey(length=5)
         self.user_pass = UserPass(key_name=code, code=code,owner=self.user, 
-                template=self.pass_template, pass_name=self.pass_template.name, pass_slug=self.pass_template.slug, action=self.action.lower())
+                template=self.pass_template, pass_name=self.pass_template.name, pass_code=self.pass_template.short_code, action=self.action.lower())
         if self.get_argument('owner_name',''):
             self.user_pass.owner_name = self.get_argument('owner_name')
         if self.get_argument('theme',''):

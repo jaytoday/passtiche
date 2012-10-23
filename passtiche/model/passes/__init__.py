@@ -44,6 +44,7 @@ class PassTemplate(BaseModel):
     repeats = db.BooleanProperty(required=False)
     neighborhood_name = db.StringProperty()
     price = db.IntegerProperty(required=False)
+    lower_price = db.IntegerProperty(required=False) # if present, price acts like a price range
 
     # TODO: new fields will need to be maintained for simple starting soon queries
 
@@ -115,7 +116,7 @@ class UserPass(BaseModel):
     owner = db.ReferenceProperty(User)
     template = db.ReferenceProperty(PassTemplate, collection_name='user_passes')
     pass_name = db.StringProperty()
-    pass_slug = db.StringProperty()
+    pass_code = db.StringProperty()
 
     owner_name = db.StringProperty()
     owner_email = db.StringProperty() 

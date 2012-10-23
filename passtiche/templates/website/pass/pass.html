@@ -2,21 +2,40 @@
 				<div  class="thumbnail">
 					<img class="pass _sprite {{ pass_template.slug }}" src="/static/images/pass/{{ pass_template.key().name() }}.png"></img>
 
-					<a style="text-decoration: none;" href="#sendPass" class="pass_name" data-toggle="modal"><div class="img"><h3>{{ pass_template.name }}</h3>
-						<h7><span class="location" style="
-width: 180px;
-display: inline-block;
-text-align: left;
-padding-left: 0px;
-padding-right: 5px;
+					<a style="text-decoration: none;" href="#sendPass" class="pass_name" data-toggle="modal">
+
+
+
+				<div class="img"><h3>{{ pass_template.name }}</h3>
+<h7><span class="location" style="
+width: 169px;
+display: block;
+text-align: center;
+padding-left: 5px;
+padding-right: 0;
 text-overflow: ellipsis;
 overflow: hidden;
 white-space: nowrap;
-">{{ pass_template.location_name }}</span><span class="dates" style="
-    font-size: .9em;
-    color: #ddd;
-">{{ pass_template.schedule['date_range'] }}</span></h7>
-				</div></a>
+font-size: 13px;
+float: left;
+padding-top: 4px;
+">at {{ pass_template.location_name }}</span><span class="dates" style="
+font-size: 10px;
+color: #ddd;
+display: block;
+line-height: 16px;
+text-align: right;
+padding-right: 11px;
+float: right;
+width: 105px;
+">{{ pass_template.schedule['date_range'] }}<div style="
+    font-size: 1.2em;
+    text-align: right;
+    padding-right: 2px;
+">$50</div></span></h7>
+</div>
+
+			</a>
 					<div href="#sendPass" class="targ {% if is_mobile %}is_mobile{% end %}"></div>
 					<div class="caption">
 					

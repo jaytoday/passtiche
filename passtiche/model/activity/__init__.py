@@ -21,7 +21,11 @@ class Region(BaseModel):
 class Location(BaseModel):
 	# key name is code 
 	code = db.StringProperty() # davies-symphony-hall 
-	name = db.StringProperty() # Davies Symphony Hall	
+	name = db.StringProperty() # Davies Symphony Hall
+	phone = db.StringProperty()	
+	yelp = db.StringProperty()	
+	website = db.StringProperty()	
+	street_address = db.StringProperty()
 	region_name = db.StringProperty() # San Francisco
 	region_code = db.StringProperty() # san-francisco
 
