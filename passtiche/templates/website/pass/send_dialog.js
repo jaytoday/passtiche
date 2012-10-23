@@ -6,17 +6,18 @@ function openPassDialog(pass_action, el){
 	// el can be various buttons and targets
 	pass_item = el.parents('.pass_item:first');
 	pass_name = pass_item.attr('name');
-	pass_id = pass_item.attr('pass_id');
-	pass_slug = pass_item.attr('slug');
+	pass_code = pass_item.attr('code'); // only four characters
+	pass_keyname = pass_item.attr('keyname');
 
 
-	var pass_img_src = '/static/images/pass/' + pass_slug + '-small.png';
+	var pass_img_src = '/static/images/pass/' + pass_keyname + '.png';
 	var pass_description = pass_item.find('#description').html();
 	resetSendDialog();
 
 
 	send_pass_modal.data('pass_template', pass_name);
-	send_pass_modal.data('pass_template_id', pass_id);
+	send_pass_modal.data('pass_template_code', pass_code);
+	send_pass_modal.data('pass_template_keyname', pass_keyname);
 	send_pass_modal.data('pass_action', pass_action);
 	send_pass_modal.find('.pass_template:first').text(pass_name);	
 
@@ -33,13 +34,13 @@ function openPassDialog(pass_action, el){
 	send_pass_modal.modal('show');
 	
 
-	incrementPassCount(pass_id, pass_action);
+	incrementPassCount(pass_keyname, pass_action);
 
 	if (send_pass_modal.find('#downloading_pass:visible').length > 0){
 		var dd_href = $(document).data('base-url');
 		if (send_pass_modal.data('user_pass'))
 			dd_href += ('/ud/' + send_pass_modal.data('user_pass'));
-		else dd_href += ('/pd/' + pass_id);
+		else dd_href += ('/pd/' + pass_code);
 
 		setTimeout(function(){
 			window.location.href = dd_href;	
@@ -76,7 +77,7 @@ function sendPassActionInit(pass_action){
 			send_pass_modal.find('#name_form').hide();
 			send_pass_modal.find('#send_form_download').show();	
 
-		var pass_link =  $(document).data('domain') + '/p/' + send_pass_modal.data('pass_template_id');
+		var pass_link =  $(document).data('domain') + '/p/' + send_pass_modal.data('pass_template_code');
 		send_pass_modal.find('#inputLink').val(pass_link);
 		send_pass_modal.find('#link_text').attr('href','http://' + pass_link);
 

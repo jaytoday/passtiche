@@ -84,20 +84,17 @@ class PassticheIndex(ViewHandler):
 @cache(version_only=False)
 def get_passes():
     # TODO: this should be cached!
-    from model.passes import PassTemplate
+    from model.passes import PassTemplate, PassList
     pass_dict = {
-        'popular': [],
-        'friends': [],
-        'romantic': []
+        'new-and-upcoming': [],
+        'best-drinks': [],
+        'date-night': []
     }
-    all_passes = PassTemplate.all().order('-modified').fetch(1000)
-    for pass_template in all_passes:
-        if 'popular' in pass_template.tags:
-            pass_dict['popular'].append(pass_template)
-        if 'friends' in pass_template.tags:
-            pass_dict['friends'].append(pass_template)
-        if 'romantic' in pass_template.tags:
-            pass_dict['romantic'].append(pass_template)  
+    all_lists = PassList.all().fetch(1000)
+    for pass_list in all_lists:
+        if pass_list.key().name() in pass_dict.keys():
+            list_passes = PassTemplate.get_by_key_name(pass_list.passes)
+            pass_dict[pass_list.key().name()] = list_passes 
     return pass_dict                              
                 
 
@@ -110,11 +107,11 @@ class PassDownload(PassticheIndex):
         self.render_output()
 
     def get_pass(self):
-        pass_template = PassTemplate.get_by_id(int(self.pass_code))
+        pass_template = PassTemplate.all().filter('short_code',int(self.pass_code)).get()
         if not pass_template:
             # return 404
             raise ValueError('pass_template')
-        self.context['linked_pass_template'] = pass_template.key().id()
+        self.context['linked_pass_template'] = pass_template.short_code
 
 
 
@@ -124,14 +121,14 @@ class UserPassDownload(PassDownload):
     def get_pass(self):
         user_pass = UserPass.get_by_key_name(self.pass_code)
         self.context['linked_user_pass'] = user_pass.code
-        self.context['linked_pass_template'] = user_pass.pass_id           
+        self.context['linked_pass_template'] = user_pass.short_code           
 
         
 
 class PassDirectDownload(ViewHandler):
     def get(self, pass_code):
         from model.passes import PassTemplate, UserPass
-        pass_template = PassTemplate.get_by_id(int(pass_code))
+        pass_template = PassTemplate.all().filter('short_code',int(self.pass_code)).get()
         from backend.passes import passfile
         pass_creator = passfile.PassFile(pass_template=pass_template)
         pass_creator.create()

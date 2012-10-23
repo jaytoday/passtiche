@@ -2,7 +2,7 @@ DEFAULT_NAME = "Not Specified";
 
 function getPassData(){
      return {
-          'pass_template': send_pass_modal.data('pass_template_id'),
+          'pass_template': send_pass_modal.data('pass_template_keyname'),
           'action': send_pass_modal.data('pass_action'),
           'theme': send_pass_modal.find('#inputThemes').find('input:checked').val(),
           'owner_name': localStorage.getItem("user_name")
@@ -81,13 +81,13 @@ function updateUserPass(){
 };
 
 
-function incrementPassCount(pass_id, action){
+function incrementPassCount(pass_keyname, action){
 
 	   $.ajax({
      type: "POST",
      url: "/ajax/pass.save",
      data: {
-     	"pass_id": pass_id,
+     	"pass": pass_keyname,
      	"action": action,
      	"increment": true
      },

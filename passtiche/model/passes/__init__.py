@@ -6,6 +6,7 @@ from google.appengine.ext import db
 from model.base import BaseModel
 import model.util.properties
 from model.user import User
+from model import activity
 
 THEME_CODES = {
     "birthday": "b",
@@ -14,64 +15,58 @@ THEME_CODES = {
 }
 
 class PassTemplate(BaseModel):
-    """ Template for a pass
+    """ Activity template for a pass
 
     """ 
-
+    # key-name is slug + "-" + location
 
     owner = db.ReferenceProperty(User, required=False, collection_name='templates')
 
     name = db.StringProperty(required=True)  
+    location_code = db.StringProperty()  
+    location_name = db.StringProperty()
+    
     slug = db.StringProperty(required=False)  
+    short_code = db.StringProperty() # alphanumeric, used for short URL 
+
+    schedule = model.util.properties.PickledProperty(default={})
+    '''
+
+    {  
+       "date_range": "November 14 - 15th",
+       "starts": "November 14",
+       "ends": "November 15",
+
+       "times": [{ "starts": "7pm", "ends": "9pm" }]
+    }
+
+    '''
+    repeats = db.BooleanProperty(required=False)
+    neighborhood_name = db.StringProperty()
+    price = db.IntegerProperty(required=False)
+
+    # TODO: new fields will need to be maintained for simple starting soon queries
 
 
     image_key = db.StringProperty(required=False)
     tags = model.util.properties.PickledProperty(default=[])
 
-    requests = db.IntegerProperty(default=0)
-    offers = db.IntegerProperty(default=0)
+    saves = db.IntegerProperty(default=0)
+    shares = db.IntegerProperty(default=0)
     # in the future this will have to  
     description = db.TextProperty(required=False)
     # TODO: more information
 
 
-    @classmethod
-    def create_or_update(cls, name, slug=None, tags=None, image_file=None, description=None,  owner=None):
-        if not slug:
-            slug = cls.get_slug(name)
-        pass_template = cls.all().filter('slug', slug).get()
-        if not pass_template:
-            pass_template = cls(name=name, slug=slug)
-        pass_template.name = name
-
-        if description:
-            pass_template.description = description
-        if tags:
-            pass_template.tags = tags
-        if owner:
-            pass_template.owner = owner
-        if image_file:
-            pass # TODO
-        return pass_template
-
+    def full_name(self):
+        if not self.location_name:
+            return self.name
+        return "%s at %s" % (self.name, self.location_name)
     @classmethod    
     def update_from_json(cls):
-        try:    
-            import json
-        except:
-            from django.utils import simplejson as json   
-        import os
-
-        json_file = open('model/passes/fixtures.json').read()
-        fixtures_json = json.loads(json_file)
-
-        templates = []
-        for pass_template in fixtures_json['passes'][::-1]:
-            updated_template = cls.create_or_update(pass_template['name'], slug=pass_template.get('slug'), tags=pass_template.get('tags'), 
-                description=pass_template.get('description'))
-            templates.append(updated_template)
-
-        db.put(templates)
+        from backend.passes import fixtures
+        fixture_update = fixtures.FixtureUpdate(cls)
+        fixture_update.run()
 
 
 
@@ -93,6 +88,24 @@ class PassImage(BaseModel):
     deleted = db.BooleanProperty(default=False)  	
 
 
+class PassList(BaseModel):
+    # key name is code 
+    code = db.StringProperty() # new-and-upcoming
+
+    passes = db.ListProperty(str)
+    name = db.StringProperty()
+
+    owner = db.ReferenceProperty(User, required=False, collection_name='pass_lists')
+    
+
+
+    slug = db.StringProperty(required=False)  
+    image_key = db.StringProperty(required=False)
+
+    description = db.TextProperty(required=False)
+    region_code = db.StringProperty() # san-francisco
+
+
 
 class UserPass(BaseModel):
 
@@ -103,7 +116,6 @@ class UserPass(BaseModel):
     template = db.ReferenceProperty(PassTemplate, collection_name='user_passes')
     pass_name = db.StringProperty()
     pass_slug = db.StringProperty()
-    pass_id = db.IntegerProperty()
 
     owner_name = db.StringProperty()
     owner_email = db.StringProperty() 

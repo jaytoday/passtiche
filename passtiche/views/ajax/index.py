@@ -67,16 +67,15 @@ class SavePass(AjaxHandler):
     def create(self):
         from model.passes import UserPass, PassTemplate
         from utils import string as str_utils
-        self.pass_template_id = int(self.get_argument('pass_template'))
-        pass_template = PassTemplate.get_by_id(self.pass_template_id)
+        self.pass_template_keyname = self.get_argument('pass_template')
+        pass_template = PassTemplate.get_by_key_name(self.pass_template_keyname)
         if not pass_template:
             raise ValueError('pass_template')
         self.pass_template = pass_template
 
         code = str_utils.genkey(length=5)
         self.user_pass = UserPass(key_name=code, code=code,owner=self.user, 
-                template=self.pass_template, pass_name=self.pass_template.name, pass_slug=self.pass_template.slug,
-                pass_id=self.pass_template.key().id(), action=self.action.lower())
+                template=self.pass_template, pass_name=self.pass_template.name, pass_slug=self.pass_template.slug, action=self.action.lower())
         if self.get_argument('owner_name',''):
             self.user_pass.owner_name = self.get_argument('owner_name')
         if self.get_argument('theme',''):
@@ -97,12 +96,12 @@ class SavePass(AjaxHandler):
 
     def increment(self):
         from model.passes import UserPass, PassTemplate
-        pass_template = PassTemplate.get_by_id(int(self.get_argument('pass_id')))
+        pass_template = PassTemplate.get_by_key_name(self.get_argument('pass'))
         action = self.get_argument('action').lower()
         if action == 'offer':
-            pass_template.offers += 1
+            pass_template.shares += 1
         if action == 'request':
-            pass_template.requests +=1
+            pass_template.saves +=1
 
         pass_template.put()
 

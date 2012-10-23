@@ -3,11 +3,14 @@
 
 .subhead h1 {
 font-size: 52px;
+text-shadow: 0 1px 0 white;
+
 }
 
 .jumbotron p{
 	font-size: 16px;
 }
+
 
 
 #pass_description{
@@ -53,10 +56,16 @@ font-size: 14px;
 
 	.subhead h1{
 		font-size:39px;
+		max-width: 500px !important;
+		line-height: 50px !important;
+		margin: auto !important;
+
 	}
 
 	.jumbotron p {
 font-size: 12px;
+max-width: 440px !important;
+margin: 5px auto 10px;
 }
 
 #or_wrapper{
@@ -83,7 +92,9 @@ font-size: 18px;
 display:none;
 }
 .subhead h1 {
-font-size: 36px;
+padding-bottom:10px;
+font-size: 36px !important;
+line-height: 43px !important;
 }
 
 
@@ -93,14 +104,11 @@ font-size: 36px;
 	
 
 @media (max-width: 980px) and (min-width: 768px){
-.jumbotron h1 {
-font-size: 54px;
-}
+
 }
 .subnav:not(.subnav-fixed) { 
 	margin-bottom:20px;
 }
-
 
 
 
@@ -145,13 +153,14 @@ height:310px;
 
 .thumbnail .img {
 width: 294px;
-margin: 5px 0;
+margin: -11px 0;
 -webkit-border-radius: 4px;
 -moz-border-radius: 4px;
 border-radius: 4px;
-background: rgba(100, 100, 100, .2);
+background: rgba(100, 100, 100, .5);
 text-align: center;
 box-shadow: 1px 1px 5px rgba(100, 100, 100, .5);
+
 }
 
 .thumbnail .stats{
@@ -174,10 +183,11 @@ border-radius: 5px;
 	margin-bottom:-15px;
 }
 .thumbnail .caption {
-	color: inherit !important;
-	margin-top: 205px;
-background: rgba(100, 100, 100, .3);
+color: inherit !important;
+margin-top: 205px;
+background: rgba(100, 100, 100, .25);
 border-radius: 4px;
+opacity: .8;
 }
 
 .pass_item .pass_name{
@@ -390,7 +400,11 @@ margin-bottom: -20px;
 
 @media (max-width: 445px){
 .subhead h1 {
-font-size: 30px;
+font-size: 30px !important;
+}
+
+.subhead sup{
+	top: -15px !important;
 }
 
 #sendPass .__leftspan{
@@ -415,7 +429,7 @@ font-size: 30px;
 
 @media (max-width: 380px){
 .subhead h1{
-		font-size:28px;
+		font-size:28px !important;
 	}
 }
 
