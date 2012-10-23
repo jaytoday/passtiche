@@ -8,7 +8,7 @@
          "description": "Louis C.K., star of Louis and numerous stand-up specials, is touring new material this fall.",
          "price": 45,
          "schedule":   {  
-         "date_range": "Nov. 14 - 15th",
+         "date_range": "Nov. 14 - 15",
          "starts": "November 14",
          "ends": "November 15",
          "times": [{ "starts": "7pm" }]
@@ -41,7 +41,166 @@
             "street_address": "1161 Mission St",
             "yelp": "http://www.yelp.com/biz/boothby-center-for-the-beverage-arts-san-francisco"
           }
-    }    
+    },
+     {
+         "name": "Yo Ho Ho & a Bottle of Rum",
+         "slug": "yo-ho-ho",
+         "description": "Discover your inner pirate at Smuggler’s Cove, a Hayes Valley bar serving over 200 different kinds of rum. The tiki-inspired mutiplex is adorned with countless rum barrels and tiki totems, and is home to some of SF's best mixologists.",
+         "price_rating": 2,
+         "schedule":   {  
+         "date_range": "Everyday",
+         "times": [{ "starts": "5pm", "ends": "2am" }]
+       },
+         "neighborhood_name": "Hayes Valley",
+         "location":{
+            "name": "Smuggler's Cove",
+            "code": "smugglers",
+            "website": "http://smugglerscovesf.com/",
+            "street_address": "650 Gough Street",
+            "phone": "(415) 869-1900",
+            "yelp": "http://www.yelp.com/biz/smugglers-cove-san-francisco"
+          }
+    },
+         {
+         "name": "Adam Carolla Live",
+         "slug": "adam-carolla",
+         "description": "Adam Carolla is an American radio personality, television host, comedian, and actor. He hosts The Adam Carolla Show, a talk show distributed as a podcast which set the record as the 'most downloaded podcast' as judged by Guinness World Records.",
+         "price": 35,
+         "schedule":   {  
+         "date_range": "Nov. 17 - 18",
+         "starts": "November 17",
+         "ends": "November 18",          
+         "times": []
+       },
+         "neighborhood_name": "North Beach / Telegraph Hill",
+         "location":{
+            "name": "Cobb's Comedy Club",
+            "code": "cobbs",
+            "website": "http://smugglerscovesf.com/",
+            "street_address": "915 Columbus Ave",
+            "phone": "(415) 928-4320",
+            "yelp": "http://www.yelp.com/biz/cobbs-comedy-club-san-francisco"
+          }
+    },
+    {
+         "name": "Mr. Penumbra's Bookstore Materializes",
+         "slug": "mr-penumbra",
+         "description": "Celebrating the release of a new book by Robin Sloan. Experience the mysterious emergence of an enigmatic zone for books and the imagination.",
+         "price": 0,
+         "schedule":   {  
+         "date_range": "Nov. 17 - 18",
+         "starts": "November 17",
+         "ends": "November 18",          
+         "times": []
+       },
+         "neighborhood_name": "North Beach / Telegraph Hill",
+         "location":{
+            "name": "City Lights Bookstore",
+            "code": "city-lights",
+            "website": "http://www.citylights.com/bookstore/",
+            "street_address": "261 Columbus Ave",
+            "phone": "(415) 362-8193",
+            "yelp": "http://www.yelp.com/biz/city-lights-bookstore-san-francisco"
+          }
+    },
+        {
+         "name": "Napa Valley Film Festival",
+         "slug": "film-festival",
+         "description": "The Napa Valley Film Festival showcases the best in new independent filmmaking and world cinema. Our vision is to build community around the art of visual story-telling, with the viewing of films and discussions with filmmakers fueling lively conversation amongst old and new friends … and those conversations being enriched with the world-class food and wine of legendary Napa Valley.",
+        "price": 50,
+         "schedule":   {  
+         "date_range": "Nov. 7 - 11",
+         "starts": "November 7",
+         "ends": "November 11",          
+         "times": []
+       },
+         "location":{
+            "name": "Napa Valley",
+            "code": "napa-valley"
+          }
+    },
+          {
+         "name": "Pie-Making Workshop",
+         "slug": "pie-making",
+         "description": "Three Babes Bakeshop is teaming up with Salumeria for a series of hands-on classes all about pie-making. Just in time for the holiday season, each class will cover the art of crafting a different type of pie that will be perfect to bring to Thanksgiving dinner: custard pies, fruit pies, nut pies, and cream pies.",
+         "price": 75,
+         "neighborhood_name": "The Mission",
+         "schedule":   {  
+         "date_range": "Oct 25 - Nov 15",
+         "starts": "October 25",
+         "ends": "November 15",          
+         "times": []
+       },
+         "location":{
+            "name": "Salumeria",
+            "website": "http://www.salumeriasf.com/",
+            "yelp": "http://www.yelp.com/biz/salumeria-san-francisco"
+          }
+    },
+     {
+         "name": "Now Open: Chambers Eat + Drink",
+         "slug": "open",
+         "description": " There’s no sign out front, so look for big wooden doors, push through, leave the gritty streets of the Tenderloin behind, and you’ll soon find yourself in an upscale rec room with a flashy, mid-century modern club feel.",
+         "price_rating": 2,
+         "neighborhood_name": "Civic Center / Tenderloin",
+         "schedule":   {  
+         "weekday_range": "Tuesday - Sunday",       
+         "times": [{"starts": "5pm", "ends": "2am"}]
+       },
+         "location":{
+            "name": "Chambers Eat + Drink",
+            "code": "chambers-eat-drink",
+            "website": "http://www.chambers-sf.com/",
+            "yelp": "http://www.yelp.com/biz/chambers-eat-drink-san-francisco",
+            "opentable": "http://www.opentable.com/single.aspx?rid=60532&ref=",
+            "phone": "(415) 829-2316",
+            "street_address": "601 Eddy St."
+          }
+    },
+   {
+         "name": "Sunday 3-Course Prix Fixe",
+         "slug": "sunday-3-course",
+         "description": "Join RN74 each Sunday evening for a 3-course Prix Fixe menu for $39. The menu changes weekly featuring seasonally-inspired dishes and RN74 favorites. Rajat Parr, RN74's owner and Wine Director for the Mina Group, also offers $30 wine bottle specials.",
+         "price": 39,
+         "neighborhood_name": "SOMA",
+         "schedule":   {  
+            "times": [{"weekday_range": "Sunday", "starts": "5pm", "ends": "12am"}]
+       },
+         "location":{
+            "name": "RN74",
+            "website": "http://michaelmina.net/restaurants/locations/rn74.php?restaurant_id=3",
+            "opentable": "http://www.opentable.com/single.aspx?rid=31072&ref=",
+            "yelp": "http://www.yelp.com/biz/rn74-san-francisco",
+            "phone": "(415) 543-7474",
+            "street_address": "301 Mission St."
+          }
+    },
+   {
+         "name": "Now Open: Central Kitchen",
+         "slug": "open",
+         "description": "Central Kitchen is the new restaurant project in the Mission from the Flour + Water team. ",
+         "price_rating": 3,
+         "neighborhood_name": "The Mission",
+         "schedule":   {  
+            "times": [{"weekday_range": "Monday - Thursday", "starts": "5:30pm", "ends": "10pm"},
+            {"weekday_range": "Friday - Saturday", "starts": "5:30pm", "ends": "11pm"}]
+       },
+         "location":{
+            "name": "Central Kitchen",
+            "website": "http://www.centralkitchensf.com/",
+            "opentable": "http://www.opentable.com/single.aspx?rid=79243&ref=",
+            "yelp": "http://www.yelp.com/biz/central-kitchen-san-francisco",
+            "phone": "(415) 826-7004",
+            "street_address": "782 Florida St."
+          }
+    }   
+
+
+
+   
+
+
+
     
 ],
 
@@ -49,15 +208,15 @@
 
 {
   "name": "New And Upcoming",
-  "passes": ["louis-ck-davies-symphony-hall"]
+  "passes": ["louis-ck-davies-symphony-hall",  "mr-penumbra-city-lights", "film-festival-napa-valley", "adam-carolla-cobbs","pie-making-salumeria","open-chambers-eat-drink"]
 },
 {
   "name": "Best Drinks",
-  "passes": ["seasonal-cocktails-boothby-center"]
+  "passes": ["seasonal-cocktails-boothby-center","yo-ho-ho-smugglers", "open-chambers-eat-drink"]
 },
 {
   "name": "Date Night",
-  "passes": []
+  "passes": ["sunday-3-course-rn74","open-central-kitchen", "film-festival-napa-valley"]
 }
 
 ]

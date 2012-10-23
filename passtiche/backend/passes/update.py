@@ -15,7 +15,8 @@ class PassUpdate(object):
 	def __init__(self):
 		pass
 
-	def create_or_update(self, name=None, slug=None, description=None, price=None, schedule=None, neighborhood_name=None, location=None):
+	def create_or_update(self, name=None, slug=None, description=None, price=None, schedule=None, 
+			neighborhood_name=None, location=None, price_rating=None):
 		if not slug:
 		    slug = PassTemplate.get_slug(name)
 		keyname = slug
@@ -53,7 +54,7 @@ class PassUpdate(object):
 				loc.region_code = 'san-francisco'
 			
 			loc.name = location['name']
-			for f in ['website', 'yelp', 'phone', 'street_address']:
+			for f in ['website', 'yelp', 'phone', 'opentable','street_address']:
 				if f in location:
 					setattr(loc, f, location[f])
 

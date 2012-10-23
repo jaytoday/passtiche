@@ -24,6 +24,7 @@ class Location(BaseModel):
 	name = db.StringProperty() # Davies Symphony Hall
 	phone = db.StringProperty()	
 	yelp = db.StringProperty()	
+	opentable = db.StringProperty()	
 	website = db.StringProperty()	
 	street_address = db.StringProperty()
 	region_name = db.StringProperty() # San Francisco

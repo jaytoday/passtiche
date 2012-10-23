@@ -93,7 +93,7 @@ def get_passes():
     all_lists = PassList.all().fetch(1000)
     for pass_list in all_lists:
         if pass_list.key().name() in pass_dict.keys():
-            list_passes = PassTemplate.get_by_key_name(pass_list.passes)
+            list_passes = [ p for p in PassTemplate.get_by_key_name(pass_list.passes) if p]
             pass_dict[pass_list.key().name()] = list_passes 
     return pass_dict                              
                 

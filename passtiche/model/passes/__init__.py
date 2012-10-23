@@ -44,6 +44,7 @@ class PassTemplate(BaseModel):
     repeats = db.BooleanProperty(required=False)
     neighborhood_name = db.StringProperty()
     price = db.IntegerProperty(required=False)
+    price_rating = db.IntegerProperty(required=False) # number of dollars
     lower_price = db.IntegerProperty(required=False) # if present, price acts like a price range
 
     # TODO: new fields will need to be maintained for simple starting soon queries
