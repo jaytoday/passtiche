@@ -5,9 +5,7 @@
 <font color="#333333" size="5"><b>{{ user_pass.display_owner_name() }} sent you a PassBook pass.</b></font>
 <font color="#666666" size="3">
 <br/><br/>
-You have received 
-{% if user_pass.action == 'request' %}a request{% end %}{% if user_pass.action == 'offer' %}an offer{% end %}
-for <font color="#111" size="4">{{ user_pass.pass_name }}</font> from <i>{{ user_pass.display_owner_name() }} {% if user_pass.from_email %}({{ user_pass.from_email }}){% end %}</i>.
+You have received an invite to <font color="#111" size="4">{{ user_pass.pass_name }}</font> from <i>{{ user_pass.display_owner_name() }} {% if user_pass.owner_email %}({{ user_pass.owner_email }}){% end %}</i>.
 <br/><br/>
 Your pass is available for download on your iPhone or the latest version of Safari for Mac:<br/><br/>
     {{ user_pass.url() }}

@@ -27,9 +27,40 @@
       }
     }
 
-})
+});
+
+
+      $.fn.textfill = function(maxFontSize) {
+        maxFontSize = parseInt(maxFontSize, 10);
+        return this.each(function(){
+            var ourText = $("span", this),
+                parent = ourText.parent(),
+                maxHeight = parent.height(),
+                maxWidth = parent.width(),
+                fontSize = parseInt(ourText.css("fontSize"), 10),
+                factor = .023, 
+                multiplier = 1.45 - (factor * ourText.text().length),
+                newSize = (fontSize*(multiplier-0.1));
+
+                //console.log(parent.text(), multiplier, newSize);
+                if (newSize < 12)
+                  newSize = 12;
+
+            ourText.css(
+                "fontSize", 
+                (maxFontSize > 0 && newSize > maxFontSize) ? 
+                    maxFontSize : 
+                    newSize
+            );
+        });
+    };
+
 
 }(window.jQuery)
+
+
+// textfill used for gallery
+
 
 
 

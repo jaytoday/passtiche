@@ -6,9 +6,14 @@
 
 
 
-				<div class="img"><h3>{{ pass_template.name }}</h3>
-<h7><span class="location" style="
-width: 164px;
+				<div class="img"><h3 class="pass_title"><span>{{ pass_template.name }}</span></h3>
+<h7 style="background: rgba(50, 50, 50, .85);
+display: block;
+width: 100%;
+height: 36px;
+margin-top: -5px;
+padding-top: 4px;"><span class="location" style="
+width: 160px;
 display: block;
 text-align: left;
 padding-left: 10px;
@@ -19,7 +24,11 @@ white-space: nowrap;
 font-size: 13px;
 float: left;
 padding-top: 4px;
-">at {{ pass_template.location_name }}</span><span class="dates" style="
+">at {{ pass_template.location_name }}</span>
+
+{% set display_date = pass_template.display_date() %}
+
+<span class="dates" style="
 font-size: 10px;
 color: #ddd;
 display: block;
@@ -27,12 +36,12 @@ line-height: 16px;
 text-align: right;
 padding-right: 11px;
 float: right;
-width: 105px;
-">{{ pass_template.schedule.get('date_range','') }}<div style="
+width: 112px;
+">{% if display_date %} {{ display_date }}{% end %}<div style="
     font-size: 1.2em;
     text-align: right;
     padding-right: 2px;
-">$50</div></span></h7>
+">{{ pass_template.display_price() }}</div></span></h7>
 </div>
 
 			</a>

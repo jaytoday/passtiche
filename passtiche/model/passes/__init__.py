@@ -29,15 +29,17 @@ class PassTemplate(BaseModel):
     slug = db.StringProperty(required=False)  
     short_code = db.StringProperty() # alphanumeric, used for short URL 
 
+    starts = db.DateTimeProperty()
+    #ends = db.DateTimeProperty()
     schedule = model.util.properties.PickledProperty(default={})
     '''
 
     {  
-       "date_range": "November 14 - 15th",
+       "date_range": "Nov 14 - 15th",
        "starts": "November 14",
        "ends": "November 15",
 
-       "times": [{ "starts": "7pm", "ends": "9pm" }]
+       "times": [{ "weekday_range": "Tuesday - Wednesday", starts": "7pm", "ends": "9pm" }]
     }
 
     '''
@@ -55,7 +57,7 @@ class PassTemplate(BaseModel):
 
     saves = db.IntegerProperty(default=0)
     shares = db.IntegerProperty(default=0)
-    # in the future this will have to  
+ 
     description = db.TextProperty(required=False)
     # TODO: more information
 
@@ -64,6 +66,24 @@ class PassTemplate(BaseModel):
         if not self.location_name:
             return self.name
         return "%s at %s" % (self.name, self.location_name)
+
+    def display_price(self):
+        if self.price_rating:
+            return ''.join(["$" for r in range(self.price_rating)])
+        if self.price:
+            if self.lower_price:
+                return "$%s - $%s" % (self.lower_price, self.price)
+            return "$%s" % self.price
+        return "Free"
+
+    def display_date(self):
+        # date range or weekday range
+        if not self.schedule:
+            return "Everyday"
+        if 'date_range' in self.schedule:
+            return self.schedule['date_range']
+        return ', '.join([t['weekday_range'] for t in self.schedule['times'] if 'weekday_range' in t])
+
     @classmethod    
     def update_from_json(cls):
         from backend.passes import fixtures
@@ -119,6 +139,9 @@ class UserPass(BaseModel):
     pass_name = db.StringProperty()
     pass_code = db.StringProperty()
 
+    to_email = db.StringProperty() 
+    to_phone = db.StringProperty() 
+
     owner_name = db.StringProperty()
     owner_email = db.StringProperty() 
 
@@ -133,10 +156,5 @@ class UserPass(BaseModel):
     def display_owner_name(self):
         return self.owner_name or 'Someone'
 
-
-class SentUserPass(BaseModel):
-    user_pass = db.ReferenceProperty(UserPass, collection_name='sent_passes')
-    to_email = db.StringProperty() 
-    # other info - FB, etc. 
 
 

@@ -1,4 +1,5 @@
 
+$('.pass_title').textfill(30);
 
 
 $('i', '.stats').tooltip();

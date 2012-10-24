@@ -1,12 +1,10 @@
 
 $('#send_pass_btn').on('click', function(){
 	
-	var pass_data = { 'user_pass': send_pass_modal.data('user_pass') }
+	var pass_data = { }
 
 	//pass_data['theme'] = send_pass_modal.find('#inputThemes').find('input:checked').val();
 	pass_data['action'] = send_pass_modal.data('pass_action');
-
-	console.log(pass_data);	
 
 	send_pass_modal.find('#error_alert').hide();	
 
@@ -16,6 +14,14 @@ $('#send_pass_btn').on('click', function(){
 		return sendDialogError("Valid 'From' Email Address is Required");
 	*/
 	
+	if ($(this).parents('.send_form:first').attr('id') == 'send_form_download'){
+		var download = true;
+		pass_data['pass_template'] = send_pass_modal.data('pass_template_keyname');
+	}else{
+		var download = false;
+		pass_data['user_pass'] = send_pass_modal.data('user_pass') 
+	}
+
 	to_email = send_pass_modal.find('#inputToEmail').val();	
 	if (to_email.indexOf('@') > 1 )
 		pass_data['to_email'] = to_email;
@@ -28,6 +34,10 @@ $('#send_pass_btn').on('click', function(){
 		return sendDialogError("Valid Email Address or Phone Number is Required")	
 
 
+if (download && pass_data['to_phone'])
+	localStorage.setItem('user_phone', pass_data['to_phone']);
+if (download && pass_data['to_email'])
+	localStorage.setItem('user_email', pass_data['to_email']);
 
    $.ajax({
      type: "POST",
@@ -37,7 +47,7 @@ $('#send_pass_btn').on('click', function(){
      }
      });
 
-	//send_pass_modal.modal('hide');
+	send_pass_modal.modal('hide');
 
 
 });

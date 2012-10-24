@@ -8,7 +8,7 @@
          "description": "Louis C.K., star of Louis and numerous stand-up specials, is touring new material this fall.",
          "price": 45,
          "schedule":   {  
-         "date_range": "Nov. 14 - 15",
+         "date_range": "Nov 14 - 15",
          "starts": "November 14",
          "ends": "November 15",
          "times": [{ "starts": "7pm" }]
@@ -29,7 +29,7 @@
          "description": "This class teaches the culinary aspects of utilizing fresh seasonal ingredients in the creation and presentation of exceptional cocktails.",
          "price": 70,
          "schedule":   {  
-         "date_range": "Oct. 25 - Nov. 25",
+         "date_range": "Oct 25 - Nov 25",
          "starts": "October 25",
          "ends": "November 25",
          "times": [{ "starts": "7pm", "ends": "9pm" }]
@@ -67,7 +67,7 @@
          "description": "Adam Carolla is an American radio personality, television host, comedian, and actor. He hosts The Adam Carolla Show, a talk show distributed as a podcast which set the record as the 'most downloaded podcast' as judged by Guinness World Records.",
          "price": 35,
          "schedule":   {  
-         "date_range": "Nov. 17 - 18",
+         "date_range": "Nov 17 - 18",
          "starts": "November 17",
          "ends": "November 18",          
          "times": []
@@ -88,7 +88,7 @@
          "description": "Celebrating the release of a new book by Robin Sloan. Experience the mysterious emergence of an enigmatic zone for books and the imagination.",
          "price": 0,
          "schedule":   {  
-         "date_range": "Nov. 17 - 18",
+         "date_range": "Nov 17 - 18",
          "starts": "November 17",
          "ends": "November 18",          
          "times": []
@@ -109,7 +109,7 @@
          "description": "The Napa Valley Film Festival showcases the best in new independent filmmaking and world cinema. Our vision is to build community around the art of visual story-telling, with the viewing of films and discussions with filmmakers fueling lively conversation amongst old and new friends … and those conversations being enriched with the world-class food and wine of legendary Napa Valley.",
         "price": 50,
          "schedule":   {  
-         "date_range": "Nov. 7 - 11",
+         "date_range": "Nov 7 - 11",
          "starts": "November 7",
          "ends": "November 11",          
          "times": []
@@ -144,7 +144,7 @@
          "price_rating": 2,
          "neighborhood_name": "Civic Center / Tenderloin",
          "schedule":   {  
-         "weekday_range": "Tuesday - Sunday",       
+         "weekday_range": "Tues - Sun",       
          "times": [{"starts": "5pm", "ends": "2am"}]
        },
          "location":{
@@ -164,7 +164,7 @@
          "price": 39,
          "neighborhood_name": "SOMA",
          "schedule":   {  
-            "times": [{"weekday_range": "Sunday", "starts": "5pm", "ends": "12am"}]
+            "times": [{"weekday_range": "Sun", "starts": "5pm", "ends": "12am"}]
        },
          "location":{
             "name": "RN74",
@@ -182,8 +182,8 @@
          "price_rating": 3,
          "neighborhood_name": "The Mission",
          "schedule":   {  
-            "times": [{"weekday_range": "Monday - Thursday", "starts": "5:30pm", "ends": "10pm"},
-            {"weekday_range": "Friday - Saturday", "starts": "5:30pm", "ends": "11pm"}]
+            "times": [{"weekday_range": "Mon - Thurs", "starts": "5:30pm", "ends": "10pm"},
+            {"weekday_range": "Fri - Sat", "starts": "5:30pm", "ends": "11pm"}]
        },
          "location":{
             "name": "Central Kitchen",

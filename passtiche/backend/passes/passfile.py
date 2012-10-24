@@ -15,11 +15,11 @@ class PassFile(object):
 	def __init__(self, user_pass=None, pass_template=None):
 		self.user_pass = user_pass
 		if user_pass:
-			self.pass_slug = self.user_pass.pass_slug
+			self.pass_code = self.user_pass.pass_code
 			self.pass_name = self.user_pass.pass_name
 			self.action = self.user_pass.action
 		else:
-			self.pass_slug = pass_template.slug
+			self.pass_code = pass_template.key().name()
 			self.pass_name = pass_template.name
 			self.action = 'download'
 
@@ -38,7 +38,7 @@ class PassFile(object):
 			        "value" : "www.passtiche.com - offer and request gifts using PassBook"
 			      }
 			 ],
-			'pass_slug': self.pass_slug,
+			'pass_key': self.pass_code,
 			'pass_name': self.pass_name
 
 		}
@@ -104,7 +104,7 @@ class PassFile(object):
 		        break
 		    handler.write(buf)
 		handler.set_header("Content-Type", "application/vnd.apple.pkpass")	
-		handler.set_header('Content-Disposition', "attachment; filename=%s.pkpass" % self.pass_slug)
+		handler.set_header('Content-Disposition', "attachment; filename=%s.pkpass" % self.pass_code)
 		strIO.close()  	
 
 

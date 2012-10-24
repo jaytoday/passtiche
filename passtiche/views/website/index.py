@@ -128,7 +128,7 @@ class UserPassDownload(PassDownload):
 class PassDirectDownload(ViewHandler):
     def get(self, pass_code):
         from model.passes import PassTemplate, UserPass
-        pass_template = PassTemplate.all().filter('short_code',self.pass_code).get()
+        pass_template = PassTemplate.all().filter('short_code',pass_code).get()
         from backend.passes import passfile
         pass_creator = passfile.PassFile(pass_template=pass_template)
         pass_creator.create()

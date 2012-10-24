@@ -9,6 +9,7 @@ from views.base import BaseHandler, CookieHandler
 from backend.user import auth
 from google.appengine.ext.deferred import deferred
 from utils import gae as gae_utils
+from utils import string as str_utils
 try:    
     import json
 except:
@@ -66,7 +67,7 @@ class SavePass(AjaxHandler):
 
     def create(self):
         from model.passes import UserPass, PassTemplate
-        from utils import string as str_utils
+        
         self.pass_template_keyname = self.get_argument('pass_template')
         pass_template = PassTemplate.get_by_key_name(self.pass_template_keyname)
         if not pass_template:
@@ -113,10 +114,16 @@ class SavePass(AjaxHandler):
 class SendPass(AjaxHandler):
 
     def get(self):
+        action = self.get_argument('action','').lower()
+        getattr(self, action)()
+
+
+    def share(self):
         from_email = self.get_argument('from_email','')
-        to_email = self.get_argument('to_email')
+        to_email = self.get_argument('to_email','')
+        to_phone = self.get_argument('to_phone','')
         theme = self.get_argument('theme','')
-        action = self.get_argument('action','')
+        
         current_user = self.get_current_user()
         
         # TODO: refactor this to backend API
@@ -129,27 +136,73 @@ class SendPass(AjaxHandler):
         if from_email:
             self.user_pass.from_email = from_email
 
-        if action == 'Offer':
-            pass_template.offers += 1
-        if action == 'Request':
-            pass_template.requests += 1
+
+        pass_template.shares += 1
+
         db.put([self.user_pass, pass_template])
         self.context['user_pass'] = self.user_pass
 
 
         # two different emails - one for recipient, one for sender
-        self.email_recipient()
-        self.email_sender()   
+        self.share_email_recipient()
+        self.share_email_sender()   
 
         self.write('OK')
 
-    def email_recipient(self):
+
+
+
+    def download(self):
+        # TODO: create new UserPass to record that this user has this pass? 
+
+        to_email = self.get_argument('to_email','')
+        to_phone = self.get_argument('to_phone','')
+        theme = self.get_argument('theme','')
+        
+        current_user = self.get_current_user()
+        
+        # TODO: refactor this to backend API
+
+        from model.passes import UserPass, PassTemplate
+        pass_template = PassTemplate.get_by_key_name(self.get_argument('pass_template'))
+        code = str_utils.genkey(length=5)
+        self.user_pass = UserPass(key_name=code, code=code,owner=current_user, 
+                template=pass_template, pass_name=pass_template.name, pass_code=pass_template.short_code, action='download')
+
+        if to_email:
+            self.user_pass.to_email = to_email
+        if to_phone:
+            self.user_pass.to_phone = to_phone # TODO: sanitize
+
+        pass_template.saves += 1
+
+        db.put([self.user_pass, pass_template])
+        self.context['user_pass'] = self.user_pass
+
+        if to_email:
+            self.download_email()
+        if to_phone:
+            self.download_phone()
+
+        self.write('OK')        
+
+    def download_email(self):
+        from backend.mail.base import EmailMessage
+        email_msg = EmailMessage(subject="Here is your PassBook pass", to=self.user_pass.to_email, 
+            context=self.context, template='pass/download.html')
+        email_msg.send()  
+
+    def download_phone(self):
+        logging.info("TODO: phone") 
+
+
+    def share_email_recipient(self):
         from backend.mail.base import EmailMessage
         email_msg = EmailMessage(subject="You have been sent a PassBook pass", to=self.user_pass.to_email, 
             context=self.context, template='pass/recipient.html', sender=self.user_pass.from_email)
         email_msg.send()      
 
-    def email_sender(self):
+    def share_email_sender(self):
         from backend.mail.base import EmailMessage
         email_msg = EmailMessage(subject="Here is your PassBook pass", to=self.user_pass.from_email, 
             context=self.context, template='pass/sender.html')   

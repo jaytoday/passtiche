@@ -23,6 +23,13 @@ function openPassDialog(pass_action, el){
 
 	sendPassActionInit(pass_action);
 
+	if (localStorage.getItem('user_email'))
+		send_pass_modal.find('#send_form_download').find('#inputToEmail').val(localStorage.getItem('user_email'));
+
+	if (localStorage.getItem('user_phone'))
+		send_pass_modal.find('#send_form_download').find('#inputPhone').val(localStorage.getItem('user_phone'));
+
+
 
 	send_pass_modal.find('button', '#pass_action_choices').removeClass('active').filter('#' + pass_action).click();
 
