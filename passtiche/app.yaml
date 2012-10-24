@@ -1,7 +1,8 @@
 application: passtiche
 version: 0-05
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: true
 
 
 handlers:
@@ -30,31 +31,28 @@ handlers:
 - url: /console/static
   static_dir: console/app/view/static  
   
-- url: /console.*
-  script: console/app/console.py
-  login: admin
+###- url: /console.*
+###  script: console/app/console.py
+###  login: admin
   
-- url: /_ah/queue/deferred
-  script: $PYTHON_LIB/google/appengine/ext/deferred/handler.py
-  login: admin
 
 - url: /cron/.*
-  script: main.py
+  script: main.application
   login: admin
 
 - url: /admin/.*
-  script: main.py
+  script: main.application
   login: admin  
     
 
 - url: /.*
-  script: main.py 
+  script: main.application
   
   
 
 builtins:
   - remote_api: on
-  - datastore_admin: on
+  - default: on
   - appstats: on
   - deferred: on 
 

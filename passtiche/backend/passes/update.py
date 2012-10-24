@@ -16,7 +16,7 @@ class PassUpdate(object):
 		pass
 
 	def create_or_update(self, name=None, slug=None, description=None, price=None, schedule=None, 
-			neighborhood_name=None, location=None, price_rating=None):
+			neighborhood_name=None, location=None, price_rating=None, **kwargs):
 		if not slug:
 		    slug = PassTemplate.get_slug(name)
 		keyname = slug

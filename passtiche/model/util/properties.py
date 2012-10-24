@@ -9,7 +9,10 @@
     :license: BSD, see LICENSE.txt for more details.
 """
 import csv, pickle
-from django.utils import simplejson
+try:    
+    import json
+except:
+    from django.utils import simplejson as json
 from cStringIO import StringIO
 
 from google.appengine.ext import db
