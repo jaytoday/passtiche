@@ -81,7 +81,7 @@ class PassticheIndex(ViewHandler):
             self.context['ua_type'] = 'upgrade_OSX'  
 
 
-@cache(version_only=False)
+@cache(version_only=True) # set False once this is stable
 def get_passes():
     # TODO: this should be cached!
     from model.passes import PassTemplate, PassList
@@ -102,11 +102,12 @@ class PassDownload(PassticheIndex):
 
     def get(self, pass_code):
         self.pass_code = pass_code
-       
+        
         self.get_pass()           
         self.render_output()
 
     def get_pass(self):
+
         pass_template = PassTemplate.all().filter('short_code',self.pass_code).get()
         if not pass_template:
             # return 404
@@ -119,6 +120,7 @@ class PassDownload(PassticheIndex):
 class UserPassDownload(PassDownload):
 
     def get_pass(self):
+
         user_pass = UserPass.get_by_key_name(self.pass_code)
         self.context['linked_user_pass'] = user_pass.code
         self.context['linked_pass_template'] = user_pass.pass_code           
@@ -127,6 +129,7 @@ class UserPassDownload(PassDownload):
 
 class PassDirectDownload(ViewHandler):
     def get(self, pass_code):
+
         from model.passes import PassTemplate, UserPass
         pass_template = PassTemplate.all().filter('short_code',pass_code).get()
         from backend.passes import passfile

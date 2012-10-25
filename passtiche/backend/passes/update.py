@@ -57,6 +57,8 @@ class PassUpdate(object):
 				loc.region_code = 'san-francisco'
 			
 			loc.name = location['name']
+			if neighborhood_name:
+				loc.neighborhood_name = neighborhood_name
 			for f in ['website', 'yelp', 'phone', 'opentable','street_address']:
 				if f in location:
 					setattr(loc, f, location[f])

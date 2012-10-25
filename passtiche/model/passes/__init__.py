@@ -84,6 +84,18 @@ class PassTemplate(BaseModel):
             return self.schedule['date_range']
         return ', '.join([t['weekday_range'] for t in self.schedule['times'] if 'weekday_range' in t])
 
+    def display_time(self):
+        # date range or weekday range
+        if not self.schedule or 'times' not in self.schedule:
+            return ""
+        times = []
+        for time_info in self.schedule['times']:
+            time_str = time_info["starts"]
+            if "ends" in time_info:
+                time_str += " - %s" % time_info['ends']
+            times.append(time_str)
+        return ", ".join(times)
+
     @classmethod    
     def update_from_json(cls):
         from backend.passes import fixtures
@@ -91,7 +103,9 @@ class PassTemplate(BaseModel):
         fixture_update.run()
 
 
-
+    def get_location(self):
+        from model.activity import Location
+        return Location.get_by_key_name(self.location_code)
 
     @classmethod
     def get_slug(cls, name):

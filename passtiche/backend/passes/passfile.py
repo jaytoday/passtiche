@@ -15,10 +15,12 @@ class PassFile(object):
 	def __init__(self, user_pass=None, pass_template=None):
 		self.user_pass = user_pass
 		if user_pass:
+			self.pass_template = self.user_pass.template
 			self.pass_code = self.user_pass.pass_code
 			self.pass_name = self.user_pass.pass_name
 			self.action = self.user_pass.action
 		else:
+			self.pass_template = pass_template
 			self.pass_code = pass_template.key().name()
 			self.pass_name = pass_template.name
 			self.action = 'download'
@@ -27,11 +29,55 @@ class PassFile(object):
 	def create(self):
 
 
+
 		self.pass_json = {
-			"primaryFields": [{}],
-			"secondaryFields": [{}],
-			"auxiliaryFields": [{}],
-			"backFields" : [
+
+			"headerFields": [  {
+			        "key" : "header",
+			        "label" : self.pass_template.name, # name
+			        "value" : "Header Field" # large
+			      }],			
+			"primaryFields": [  {
+			        "key" : "primary",
+			        "label" : "", # on image
+			        "value" : ""
+			      }],
+			"secondaryFields": [  {
+			        "key" : "price",
+			        "label" : "Price",
+			        "value" : self.pass_template.display_price()
+			      },{
+			        "key" : "secondary2",
+			        "label" : "   ",
+			        "value" : "   "
+			      },{
+			        "key" : "date_time",
+			        "label" : self.pass_template.display_date(),
+			        "value" : self.pass_template.display_time()
+			      }],
+			"auxiliaryFields": [{
+			        "key" : "loc_name",
+			        "label" : "at %s" % self.pass_template.location_name,
+			        "value" : "",
+			        "alignment": "PKTextAlignmentRight",
+			      }  ],
+
+			"backFields" : [ # description, location details, 
+			      {
+			        "key" : "description",
+			        "label" : "Event Description",
+			        "value" : self.pass_template.description
+			      },
+			      {
+			        "key" : "location",
+			        "label" : "",
+			        "value" : ""
+			      }, 
+			      {
+			        "key" : "venue",
+			        "label" : "",
+			        "value" : ""
+			      }, 
 			      {
 			        "key" : "about",
 			        "label" : "About This Pass",
@@ -43,7 +89,21 @@ class PassFile(object):
 
 		}
 
-		self.update_json()
+		self.pass_location = self.pass_template.get_location()
+		if self.pass_location:
+			self.pass_json['backFields'][1]['label']= 'Event Location'
+			self.pass_json['backFields'][1]['value'] = self.pass_location.street_address
+			if self.pass_template.neighborhood_name:
+				self.pass_json['backFields'][1]['value'] += " (%s)" % self.pass_template.neighborhood_name
+			self.pass_json['backFields'][2]['label']= 'Venue Information'
+			if self.pass_location.phone:
+				self.pass_json['backFields'][2]['value'] += self.pass_location.phone
+			if self.pass_location.yelp:
+				self.pass_json['backFields'][2]['value'] += " %s" % self.pass_location.yelp
+
+
+
+		#self.update_json()
 		self.send_info()
 
 

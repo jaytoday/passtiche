@@ -26,6 +26,7 @@ class Location(BaseModel):
 	yelp = db.StringProperty()	
 	opentable = db.StringProperty()	
 	website = db.StringProperty()	
+	neighborhood_name = db.StringProperty()	
 	street_address = db.StringProperty()
 	region_name = db.StringProperty() # San Francisco
 	region_code = db.StringProperty() # san-francisco
