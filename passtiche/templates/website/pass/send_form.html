@@ -42,7 +42,7 @@ width: 178px;">
  <div class="alert" style="max-width:260px;">
   
 {% comment "generic, upgrade_iOS, upgrade_OSX, mountain_lion" %}
-{% if ua_type == 'generic' %}
+{% if ua_type == 'generic' or True %}
  You can email or text this pass to your iPhone or iPod Touch. 
 {% end %}
  {% if ua_type == 'upgrade_iOS' %}
@@ -51,8 +51,19 @@ To download this pass, update this device to iOS 6 from the Settings menu.
  {% if ua_type == 'upgrade_OSX' %}
 To download this pass, update to OS X Mountain Lion from the Mac App Store.
 {% end %}
- {% if ua_type == 'mountain_lion' %}
+ {% if ua_type == 'mountain_lion' and False %}
+
+<img src="/static/images/safari.jpeg" style="
+    height: 62px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 0 rgba(50,50,50,.2);
+">
+<div style="position: absolute;width: 200px;margin: -50px 81px;font-size: 16px;">
 To download this pass, use the Safari web browser.
+</div>
+
+
+
 {% end %}
 
 </div>

@@ -577,7 +577,7 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini{*padding-top:1px;*padding-
 .alert .close{position:relative;top:-2px;right:-21px;line-height:20px;}
 .alert-success{background-color:#caeecf;border-color:#b7e8b6;color:#38b44a;}
 .alert-danger,.alert-error{background-color:#fadfdd;border-color:#f8d0d4;color:#df382c;}
-.alert-info{background-color:#e7b8d1;border-color:#de9ecb;color:#772953;}
+.alert-info{background-color: rgba(231, 184, 209, .33 );border-color:#de9ecb;color:#772953;}
 .alert-block{padding-top:14px;padding-bottom:14px;}
 .alert-block>p,.alert-block>ul{margin-bottom:0;}
 .alert-block p+p{margin-top:5px;}

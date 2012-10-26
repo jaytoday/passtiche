@@ -138,22 +138,41 @@ cursor: pointer;
 box-shadow: 2px 2px 2px #999;
 padding:0;
 border:none;
+height:248px;
 }
 
 .thumbnail > .pass {
 display: block;
-width: 320px;
-margin: 40px -20px;
+width: 313px;
+margin: 80px -0px;
 position: absolute;
-border-radius: 5px;
+
 opacity: .8;
-height: 185px;
+height: 117px;
 -webkit-filter: grayscale(0.3) brightness(0.1) contrast(1.8) saturate(1.3) sepia(.5);
 max-width: none;
 }
 
 .thumbnail:hover > .pass{
 	-webkit-filter: grayscale(0) brightness(0.1) contrast(2.2) saturate(1.9) sepia(.7);
+}
+
+.thumbnail .location{
+	max-width: 229px;
+display: block;
+text-align: left;
+padding-left: 10px;
+padding-right: 10px;
+text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
+font-size: 13px;
+position: absolute;
+margin: 14px 0;
+background: rgba(250, 250, 250, .05);
+padding-top: 1px;
+padding-bottom:2px;
+border-radius: 5px;
 }
 
 .thumbnail .img {
@@ -191,10 +210,8 @@ border-radius: 5px;
 }
 .thumbnail .caption {
 color: inherit !important;
-margin-top: 224px;
+margin-top: 196px;
 background: rgba(250, 250, 250, .5);
-border-radius: 4px;
-
 }
 
 .pass_item .pass_name{
@@ -360,6 +377,10 @@ width: 220px;
 float:left;
 }
 
+#sendPass .leftspan{
+	display:none;
+}
+
 #sendPass #pass_theme{ 
 
 height: auto;
@@ -382,6 +403,7 @@ img#pass_preview{
 width: 85px;
 max-height: 85px;
 float: left;
+
 }
 
 #sendPass .leftspan{
@@ -451,7 +473,26 @@ font-size: 30px !important;
 	}
 }
 
+/* Pass Details */
 
+.pass_details_inner{
+margin: 15px 0;
+border-width: 2px;
+padding: 15px 10px;
+
+
+border-width: 2px;
+}
+.pass_details_inner .clr{
+	height:1px;
+}
+.pass_details_inner .field_type{
+	font-size:9px; margin-top:5px;
+}
+
+.pass_details_inner .field_value{
+	line-height:14px;
+}
 /* Image Sprite for Passes */
 
 .sprite { background: url('/static/images/pass_sprite.jpg') no-repeat top left; width: 290px; height: 320px;  } 

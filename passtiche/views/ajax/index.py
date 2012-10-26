@@ -119,7 +119,7 @@ class SendPass(AjaxHandler):
 
 
     def share(self):
-        from_email = self.get_argument('from_email','')
+
         to_email = self.get_argument('to_email','')
         to_phone = self.get_argument('to_phone','')
         theme = self.get_argument('theme','')
@@ -132,9 +132,11 @@ class SendPass(AjaxHandler):
         
         self.user_pass = UserPass.get_by_key_name(self.get_argument('user_pass'))
         pass_template = self.user_pass.template
-        self.user_pass.to_email = to_email
-        if from_email:
-            self.user_pass.from_email = from_email
+
+        if to_email:
+            self.user_pass.to_email = to_email
+        if to_phone:
+            self.user_pass.to_phone = self.sanitize_phone(to_phone)
 
 
         pass_template.shares += 1
@@ -144,8 +146,11 @@ class SendPass(AjaxHandler):
 
 
         # two different emails - one for recipient, one for sender
-        self.share_email_recipient()
-        self.share_email_sender()   
+        if to_email:
+            self.share_email_recipient()
+        if to_phone:
+            self.share_phone_recipient()
+        #self.share_email_sender()   
 
         self.write('OK')
 
@@ -172,7 +177,7 @@ class SendPass(AjaxHandler):
         if to_email:
             self.user_pass.to_email = to_email
         if to_phone:
-            self.user_pass.to_phone = to_phone # TODO: sanitize
+            self.user_pass.to_phone = self.sanitize_phone(to_phone)
 
         pass_template.saves += 1
 
@@ -193,7 +198,12 @@ class SendPass(AjaxHandler):
         email_msg.send()  
 
     def download_phone(self):
-        logging.info("TODO: phone") 
+        from backend.phone import send_sms
+        send_sms("Download Your Pass: %s" % self.user_pass.url(), self.user_pass.to_phone)
+
+    def share_phone_recipient(self):
+        from backend.phone import send_sms
+        send_sms("Download a Pass From %s: %s" % (self.user_pass.owner_name, self.user_pass.url()), self.user_pass.to_phone)
 
 
     def share_email_recipient(self):
@@ -206,7 +216,12 @@ class SendPass(AjaxHandler):
         from backend.mail.base import EmailMessage
         email_msg = EmailMessage(subject="Here is your PassBook pass", to=self.user_pass.from_email, 
             context=self.context, template='pass/sender.html')   
-        email_msg.send()   
+        email_msg.send()
+
+    def sanitize_phone(self, number):
+        number = number.replace('-','').replace(' ','').replace('(','').replace(')','')  
+        if not number.startswith('1'): number = "1" + number
+        return number 
         
         
 class AccountPayment(AjaxHandler):

@@ -103,6 +103,7 @@ class PassTemplate(BaseModel):
         fixture_update.run()
 
 
+    # TODO: cache? 
     def get_location(self):
         from model.activity import Location
         return Location.get_by_key_name(self.location_code)
@@ -111,6 +112,12 @@ class PassTemplate(BaseModel):
     def get_slug(cls, name):
         from utils.string import safe_slugify
         return safe_slugify(name)
+
+    def display_description(self, limit=35):
+        from utils.string import truncate_by_words_if_long
+        s = self.description
+        s = truncate_by_words_if_long(s, limit)
+        return s
 
 
 

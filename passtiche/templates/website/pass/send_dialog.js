@@ -37,6 +37,9 @@ function openPassDialog(pass_action, el){
 
 	send_pass_modal.find('#pass_preview').attr('src', pass_img_src);
 
+	var pass_details = pass_item.find('.pass_details_container:last').html();
+	send_pass_modal.find('.pass_details_wrapper:first').html(pass_details);
+
 
 	send_pass_modal.modal('show');
 	

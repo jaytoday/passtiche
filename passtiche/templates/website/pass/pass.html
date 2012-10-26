@@ -12,19 +12,7 @@ display: block;
 width: 100%;
 height: 36px;
 margin-top: -5px;
-padding-top: 4px;"><span class="location" style="
-width: 160px;
-display: block;
-text-align: left;
-padding-left: 10px;
-padding-right: 0;
-text-overflow: ellipsis;
-overflow: hidden;
-white-space: nowrap;
-font-size: 13px;
-float: left;
-padding-top: 4px;
-">at {{ pass_template.location_name }}</span>
+padding-top: 4px;"><span class="location">at {{ pass_template.location_name }}</span>
 
 {% set display_date = pass_template.display_date() %}
 
@@ -71,4 +59,5 @@ margin-right: 4px;" class="icon-share icon-white"></i> Share</a>
 						</div>
 					</div>
 				</div>
+				{% include "pass_details.html" %}
 			</div>
