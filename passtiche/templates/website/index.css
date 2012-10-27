@@ -143,12 +143,12 @@ height:248px;
 
 .thumbnail > .pass {
 display: block;
-width: 313px;
-margin: 80px -0px;
+width: 315px;
+margin: 69px -0px;
 position: absolute;
-
+z-index:0;
 opacity: .8;
-height: 117px;
+height: 130px;
 -webkit-filter: grayscale(0.3) brightness(0.1) contrast(1.8) saturate(1.3) sepia(.5);
 max-width: none;
 }
@@ -168,8 +168,8 @@ overflow: hidden;
 white-space: nowrap;
 font-size: 13px;
 position: absolute;
-margin: 14px 0;
-background: rgba(250, 250, 250, .05);
+margin: -20px 0;
+background: rgba(200, 200, 200, .025);
 padding-top: 1px;
 padding-bottom:2px;
 border-radius: 5px;
@@ -215,7 +215,7 @@ background: rgba(250, 250, 250, .5);
 }
 
 .pass_item .pass_name{
-
+z-index:1000;
 position: relative;
 color: white;
 text-shadow: 0 1px 0 #111;

@@ -41,43 +41,42 @@
   <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="10">
 
 
-  <!-- Navbar
-    ================================================== -->
- <div class="navbar navbar-fixed-top navbar-inverse">
-   <div class="navbar-inner" style="_background:url('/static/images/xmas.png');">
-     <div class="container" style="height:47px;">
-       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-       </a>
-       <a class="brand" href="#"><img src="/static/images/logo/logo_white_text_small.png" _style="
-    background:rgba(100, 0, 0, .8);
-    padding: 4px 16px;
-    border-radius: 5px;
-    margin-top: -10px;
-"></a>
-       <div class="nav-collapse" id="main-menu" style="float:right; margin-left:0px;">
-<ul class="nav" id="main-menu-left" style="display:none;">
-  <li class="top"><a onclick="pageTracker._link(this.href); return false;" href="/#foo">Foo</a></li>
-  <li class="top"><a id="swatch-link" href="/#bar">Bar</a></li>
-  <li class="dropdown top">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">FooBar <b class="caret"></b></a>
-    <ul class="dropdown-menu" id="swatch-menu">
-      <li><a href="/#bar">Bar</a></li>
-      <li class="divider"></li>
-      <li><a href="/#foo">Foo</a></li>
-    </ul>
-  </li>
+ {% include "navbar.html" %}
 
-       </div>
-     </div>
-   </div>
- </div>
-
-  <div class="container">
+  <div id="body_container" class="page container">
+    
     {% block body %}{% end %}
+
     </div><!-- /container -->
+
+  <div style="display:none;" id="about_container" class="page container">
+    
+    <div id="about">
+      <h1>About Passtiche</h1>
+      <h3>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum xLorem ipsum</h3>
+      <h3>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum xLorem ipsum</h3>
+    </div>
+
+    <div id="team">
+      <h1>Team</h1>
+      <h3>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum xLorem ipsum</h3>
+      <h3>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum xLorem ipsum</h3>
+    </div>
+
+    </div><!-- /container -->    
+
+      <div style="display:none;" id="developers_container" class="page container">
+    
+    <div id="developers">
+      <h1>Developers</h1>
+      <h3>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum xLorem ipsum</h3>
+      <h3>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum xLorem ipsum</h3>
+    </div>
+
+    
+    </div><!-- /container -->    
+
+
 
 
 

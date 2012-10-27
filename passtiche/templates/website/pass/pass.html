@@ -1,38 +1,43 @@
 <div class="pass_item span4" name="{{ pass_template.name }}" keyname="{{ pass_template.key().name() }}" code="{{ pass_template.short_code }}">
 				<div  class="thumbnail">
-					<img class="pass _sprite {{ pass_template.slug }}" src="/static/images/pass/{{ pass_template.key().name() }}.jpeg"></img>
-
+				
 					<a style="display:block;text-decoration: none;" href="#sendPass" class="pass_name" data-toggle="modal">
 
 
 
 				<div class="img"><h3 class="pass_title"><span>{{ pass_template.name }}</span></h3>
-<h7 style="background: rgba(50, 50, 50, .85);
+<div style="background: rgba(50, 50, 50, 1);
 display: block;
 width: 100%;
-height: 36px;
+min-height: 25px;
 margin-top: -5px;
-padding-top: 4px;"><span class="location">at {{ pass_template.location_name }}</span>
+padding-top: 4px;">
 
 {% set display_date = pass_template.display_date() %}
 
-<span class="dates" style="
+<div class="dates" style="
 font-size: 10px;
 color: #ddd;
 display: block;
 line-height: 16px;
 text-align: right;
 padding-right: 11px;
-float: right;
-width: 112px;
-">{% if display_date %} {{ display_date }}{% end %}<div style="
+width: 280px;
+">{% if display_date %} {{ display_date }}{% else %}<div style="height:4px;"></div>{% end %}<div style="
     font-size: 1.2em;
     text-align: right;
     padding-right: 2px;
-">{{ pass_template.display_price() }}</div></span></h7>
+">{{ pass_template.display_price() }}</div></div>
+
+<div class="location">at {{ pass_template.location_name }}</div>
+
+</div>
 </div>
 
 			</a>
+				<img class="pass _sprite {{ pass_template.slug }}" src="/static/images/pass/{{ pass_template.key().name() }}.jpeg"></img>
+
+
 					<div href="#sendPass" class="targ {% if is_mobile %}is_mobile{% end %}"></div>
 					<div class="caption">
 					

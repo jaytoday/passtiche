@@ -1,3 +1,4 @@
+{% include "navbar.js" %}
 
 {% if is_mobile %}
 	$(document).data('is-mobile', true);
