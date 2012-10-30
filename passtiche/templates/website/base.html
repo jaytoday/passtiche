@@ -49,30 +49,16 @@
 
     </div><!-- /container -->
 
-  <div style="display:none;" id="about_container" class="page container">
+  <div style="display:none;max-width:540px;" id="about_container" class="page container" >
     
-    <div id="about">
-      <h1>About Passtiche</h1>
-      <h3>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum xLorem ipsum</h3>
-      <h3>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum xLorem ipsum</h3>
-    </div>
-
-    <div id="team">
-      <h1>Team</h1>
-      <h3>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum xLorem ipsum</h3>
-      <h3>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum xLorem ipsum</h3>
-    </div>
+   {% include "about.html" %}
 
     </div><!-- /container -->    
 
-      <div style="display:none;" id="developers_container" class="page container">
+      <div style="display:none;max-width:540px;" id="developers_container" class="page container">
     
-    <div id="developers">
-      <h1>Developers</h1>
-      <h3>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum xLorem ipsum</h3>
-      <h3>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum xLorem ipsum</h3>
-    </div>
-
+ 
+ {% include "developers.html" %}
     
     </div><!-- /container -->    
 
@@ -88,7 +74,7 @@
     <script src="/static/js/application.js"></script> 
     <script>
     $(function(){
-        {% include "base.js" %}
+        {% include "js/base.js" %}
         {% block js %} {% end %}
     });
     </script>

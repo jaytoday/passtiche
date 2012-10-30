@@ -244,27 +244,25 @@ class AccountPayment(AjaxHandler):
         db.put([user, payment])
         
             
-class RequestInvite(AjaxHandler):
+class EmailSignup(AjaxHandler):
 
     def get(self):
         from model.user import MailingList
         email = self.get_argument('email','')
+        if 'developer' in self.get_argument('signup'):
+            signup = 'developer'
+        else:
+            signup = 'enduser'
         if not email:
             logging.error('invite request w/o email')
             return
-        if self.get_argument('plan',''):
-            new_item = False
-            list_item = MailingList.all().filter('email',email).get()
-            if self.get_argument('launch_partner','') == 'true':
-                list_item.launch_partner = True
-            list_item.plan = self.get_argument('plan')
-        else:
-            new_item = True
-            list_item = MailingList(email=email)
-        
+        # TODO: check for existing items
+        list_item = MailingList(email=email, signup_type=signup)
+        if self.get_argument('dev_type',''):
+            list_item.dev_type = self.get_argument('dev_type')
         list_item.put()
 
-        if new_item:
+        if list_item: # new item if check is being done
             from backend.admin import send_admin_email 
             msg = 'Invite Request - %s <br/>Accept: %s/admin/mail?type=%s&email=%s' % (email, self.context['base_url'], 'invite', email)
             deferred.defer(send_admin_email, subject=msg, message=msg)
@@ -279,8 +277,8 @@ def invite_email(email):
     email_msg = EmailMessage(
         duplicate_check=False,
         campaign='INVITE_REQUEST',
-        sender='james@hiptype.com',
-        subject="Setting you up with a Hiptype account", 
+        sender='james@passtiche.com',
+        subject="Setting you up with a Passtiche account", 
         to=email, 
         context={ 'email': email }, 
         template="invite_request.html")

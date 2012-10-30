@@ -114,6 +114,7 @@ class MailingList(BaseModel):
     """ Keep in touch with person"""
     name = db.StringProperty(required=False)
     signup_type = db.StringProperty(required=False)
+    dev_type = db.StringProperty(required=False)
     email = db.EmailProperty(required=True)
     confirm = db.BooleanProperty(required=False)
     sent_messages = properties.PickledProperty(required=False) # strings   

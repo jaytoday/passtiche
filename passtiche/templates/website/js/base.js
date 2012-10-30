@@ -1,4 +1,5 @@
 {% include "navbar.js" %}
+{% include "signup.js" %}
 
 {% if is_mobile %}
 	$(document).data('is-mobile', true);

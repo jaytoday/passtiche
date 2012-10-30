@@ -35,7 +35,7 @@ class PassFile(object):
 			"headerFields": [  {
 			        "key" : "header",
 			        "label" : self.pass_template.name, # name
-			        "value" : "Header Field" # large
+			        "value" : "" # large
 			      }],			
 			"primaryFields": [  {
 			        "key" : "primary",

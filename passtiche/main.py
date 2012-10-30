@@ -82,7 +82,7 @@ application = tornado.wsgi.WSGIApplication([
      (r'/ud/(?P<pass_code>[^\/]+)/?', index.UserPassDirectDownload),               
 
     # ajax
-    (r'/ajax/user\.request_invite/?', ajax_index.RequestInvite), 
+    (r'/ajax/user\.email_signup/?', ajax_index.EmailSignup), 
 
     (r'/ajax/pass\.save/?', ajax_index.SavePass),    
     (r'/ajax/pass\.send/?', ajax_index.SendPass),     

@@ -8,7 +8,7 @@ text-shadow: 0 1px 0 white;
 }
 
 .jumbotron p{
-	font-size: 16px;
+	font-size: 15px;
 }
 
 
@@ -168,11 +168,15 @@ overflow: hidden;
 white-space: nowrap;
 font-size: 13px;
 position: absolute;
-margin: -20px 0;
+margin: 12px 0;
 background: rgba(200, 200, 200, .025);
 padding-top: 1px;
 padding-bottom:2px;
 border-radius: 5px;
+}
+
+.thumbnail .location.short{
+	margin-top:2px;
 }
 
 .thumbnail .img {
@@ -213,12 +217,28 @@ color: inherit !important;
 margin-top: 196px;
 background: rgba(250, 250, 250, .5);
 }
-
+.thumbnail:hover .caption, .thumbnail:hover .pass_title{
+	background: rgba(250, 250, 250, .8) !important;
+} 
 .pass_item .pass_name{
 z-index:1000;
 position: relative;
 color: white;
 text-shadow: 0 1px 0 #111;
+}
+
+.pass_item .pass_details{
+	background: rgba(50, 50, 50, 1);
+display: block;
+width: 100%;
+min-height: 25px;
+margin-top: -5px;
+padding-top: 4px;
+}
+
+
+.thumbnail:hover .pass_details{
+		background: rgba(30, 30, 30, 1);
 }
 
 .pass_item .targ{
@@ -310,7 +330,7 @@ margin-left: 90px;
 
 #sendPass .leftspan {
 margin-left:0;
-width:140px;
+width:150px;
 }
 
 #sendPass .rightspan #theme_control{ 
@@ -487,11 +507,16 @@ border-width: 2px;
 	height:1px;
 }
 .pass_details_inner .field_type{
-	font-size:9px; margin-top:5px;
+	font-size:12px; margin-top:5px; line-height:15px;
+}
+
+.pass_details_inner .description{
+    font-size: 9px;
+line-height: 13px;
 }
 
 .pass_details_inner .field_value{
-	line-height:14px;
+	line-height:15px;
 }
 /* Image Sprite for Passes */
 

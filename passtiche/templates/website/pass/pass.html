@@ -6,14 +6,11 @@
 
 
 				<div class="img"><h3 class="pass_title"><span>{{ pass_template.name }}</span></h3>
-<div style="background: rgba(50, 50, 50, 1);
-display: block;
-width: 100%;
-min-height: 25px;
-margin-top: -5px;
-padding-top: 4px;">
+<div class="pass_details">
 
 {% set display_date = pass_template.display_date() %}
+
+<div class="location {% if len(pass_template.location_name) <= 27 %}short{% end %}">at {{ pass_template.location_name }}</div>
 
 <div class="dates" style="
 font-size: 10px;
@@ -29,7 +26,6 @@ width: 280px;
     padding-right: 2px;
 ">{{ pass_template.display_price() }}</div></div>
 
-<div class="location">at {{ pass_template.location_name }}</div>
 
 </div>
 </div>
