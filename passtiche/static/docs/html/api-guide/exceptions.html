@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Passtiche Docs</title>
+    <link href="/docs/img/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/docs/css/prettify.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/default.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  /*
+  _gaq.push(['_setAccount', 'UA-18852272-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+*/
+
+    </script>
+  </head>
+  <body onload="prettyPrint()" class="exceptions-page">
+
+  <div class="wrapper">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a>
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/docs"><img src="/static/images/logo/icon_small.png" style="
+    float: left;
+    height: 20px;
+    margin-right: 8px;"> Passtiche Documentation</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/docs">Home</a></li>
+               <li><a href="/docs/tutorial/quickstart.html">Get Started</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Guide <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+
+                  <li><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
+                  <li><a href="/docs/api_methods/update_pass.html">Update Pass</a></li>
+                  <li><a href="/docs/api_methods/find_location.html">Find Location</a></li>
+                  <li><a href="/docs/api_methods/update_location.html">Update Location</a></li> 
+                  <li><a href="/docs/api_methods/find_list.html">Find List</a></li>
+                  <li><a href="/docs/api_methods/update_list.html">Update List</a></li>  
+
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
+                  <li><a href="/docs/api-guide/exceptions.html">Exceptions</a></li>
+                  <li><a href="/docs/api-guide/status-codes.html">Status codes</a></li>
+                  <li><a href="/docs/api-guide/settings.html">Settings</a></li>       
+                  <li><a href="/docs/topics/button.html">Button</a></li>
+                  <li><a href="/docs/topics/release-notes.html">Release Notes</a></li>
+                  <li><a href="/docs/topics/credits.html">Credits</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <!-- TODO
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Version: 2.0.0 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Trunk</a></li>
+                  <li><a href="#">2.0.0</a></li>
+                </ul>
+              </li>
+            -->
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="body-content">
+      <div class="container-fluid">
+        <div class="row-fluid">
+
+          <div class="span3">
+            <!-- TODO
+            <p style="margin-top: -12px">
+              <a class="btn btn-mini btn-primary" style="width: 60px">&laquo; previous</a>
+              <a class="btn btn-mini btn-primary" style="float: right; margin-right: 8px; width: 60px;">next &raquo;</a>
+            </p>
+          -->
+            <div id="table-of-contents">
+              <ul class="nav nav-list side-nav well sidebar-nav-fixed">
+                <li class="main"><a href="#exceptions">Exceptions</a></li>
+<li><a href="#exception-handling-in-rest-framework-views">Exception handling in REST framework views</a></li>
+<li class="main"><a href="#api-reference">API Reference</a></li>
+<li><a href="#apiexception">APIException</a></li>
+<li><a href="#parseerror">ParseError</a></li>
+<li><a href="#permissiondenied">PermissionDenied</a></li>
+<li><a href="#methodnotallowed">MethodNotAllowed</a></li>
+<li><a href="#unsupportedmediatype">UnsupportedMediaType</a></li>
+<li><a href="#throttled">Throttled</a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div id="main-content" class="span9">
+            <p><a class="github" href="https://github.com/passtiche/passtiche-client/tree/master/docs/exceptions.py"><span class="label label-info">exceptions.py</span></a></p>
+<h1 id="exceptions">Exceptions</h1>
+<blockquote>
+<p>Exceptions… allow error handling to be organized cleanly in a central or high-level place within the program structure.</p>
+<p>&mdash; Doug Hellmann, <a href="http://www.doughellmann.com/articles/how-tos/python-exception-handling/index.html">Python Exception Handling Techniques</a></p>
+</blockquote>
+<h2 id="exception-handling-in-rest-framework-views">Exception handling in REST framework views</h2>
+<p>REST framework's views handle various exceptions, and deal with returning appropriate error responses.</p>
+<p>The handled exceptions are:</p>
+<ul>
+<li>Subclasses of <code>APIException</code> raised inside REST framework.</li>
+<li>Django's <code>Http404</code> exception.</li>
+<li>Django's <code>PermissionDenied</code> exception.</li>
+</ul>
+<p>In each case, REST framework will return a response with an appropriate status code and content-type.  The body of the response will include any additional details regarding the nature of the error.</p>
+<p>By default all error responses will include a key <code>details</code> in the body of the response, but other keys may also be included.</p>
+<p>For example, the following request:</p>
+<pre class="prettyprint lang-py"><code>DELETE http://api.example.com/foo/bar HTTP/1.1
+Accept: application/json
+</code></pre>
+<p>Might receive an error response indicating that the <code>DELETE</code> method is not allowed on that resource:</p>
+<pre class="prettyprint lang-py"><code>HTTP/1.1 405 Method Not Allowed
+Content-Type: application/json; charset=utf-8
+Content-Length: 42
+
+{"detail": "Method 'DELETE' not allowed."}
+</code></pre>
+<hr />
+<h1 id="api-reference">API Reference</h1>
+<h2 id="apiexception">APIException</h2>
+<p><strong>Signature:</strong> <code>APIException(detail=None)</code></p>
+<p>The <strong>base class</strong> for all exceptions raised inside REST framework.</p>
+<p>To provide a custom exception, subclass <code>APIException</code> and set the <code>.status_code</code> and <code>.detail</code> properties on the class.</p>
+<h2 id="parseerror">ParseError</h2>
+<p><strong>Signature:</strong> <code>ParseError(detail=None)</code></p>
+<p>Raised if the request contains malformed data when accessing <code>request.DATA</code> or <code>request.FILES</code>.</p>
+<p>By default this exception results in a response with the HTTP status code "400 Bad Request".</p>
+<h2 id="permissiondenied">PermissionDenied</h2>
+<p><strong>Signature:</strong> <code>PermissionDenied(detail=None)</code></p>
+<p>Raised when an incoming request fails the permission checks.</p>
+<p>By default this exception results in a response with the HTTP status code "403 Forbidden".</p>
+<h2 id="methodnotallowed">MethodNotAllowed</h2>
+<p><strong>Signature:</strong> <code>MethodNotAllowed(method, detail=None)</code></p>
+<p>Raised when an incoming request occurs that does not map to a handler method on the view.</p>
+<p>By default this exception results in a response with the HTTP status code "405 Method Not Allowed".</p>
+<h2 id="unsupportedmediatype">UnsupportedMediaType</h2>
+<p><strong>Signature:</strong> <code>UnsupportedMediaType(media_type, detail=None)</code></p>
+<p>Raised if there are no parsers that can handle the content type of the request data when accessing <code>request.DATA</code> or <code>request.FILES</code>.</p>
+<p>By default this exception results in a response with the HTTP status code "415 Unsupported Media Type".</p>
+<h2 id="throttled">Throttled</h2>
+<p><strong>Signature:</strong> <code>Throttled(wait=None, detail=None)</code></p>
+<p>Raised when an incoming request fails the throttling checks.</p>
+<p>By default this exception results in a response with the HTTP status code "429 Too Many Requests".</p>
+          </div><!--/span-->
+        </div><!--/row-->
+      </div><!--/.fluid-container-->
+    </div><!--/.body content-->
+
+      <div id="push"></div>
+  </div><!--/.wrapper -->
+
+  <footer class="span12">
+    <p><a href="http://www.passtiche.com/">Passtiche</a>.</a></p>
+  </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/docs/js/jquery-1.8.1-min.js"></script>
+    <script src="/docs/js/prettify-1.0.js"></script>
+    <script src="/docs/js/bootstrap-2.1.1-min.js"></script>
+    <script>
+      //$('.side-nav').scrollspy()
+      var shiftWindow = function() { scrollBy(0, -50) };
+      if (location.hash) shiftWindow();
+      window.addEventListener("hashchange", shiftWindow);
+
+      $('.dropdown-menu').on('click touchstart', function(event) {
+        event.stopPropagation();
+      });
+    </script>
+</body></html>

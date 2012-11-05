@@ -1,0 +1,10 @@
+
+ {% for pl in lists %}
+<div style="margin:5px; padding:5px;">
+
+<a class="edit_list btn btn-primary" >{{ pl.name }}</a>
+<div class="edit" style="display:none;">
+	{% include "edit.html" %}
+</div>
+</div>
+{% end %}

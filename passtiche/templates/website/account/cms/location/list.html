@@ -1,0 +1,10 @@
+
+ {% for l in locations %}
+<div style="margin:5px; padding:5px;">
+
+<a class="edit_location btn btn-primary" >{{ l.name }}</a>
+<div class="edit" style="display:none;">
+	{% include "edit.html" %}
+</div>
+</div>
+{% end %}

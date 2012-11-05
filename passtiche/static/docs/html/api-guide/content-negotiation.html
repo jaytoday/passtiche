@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Passtiche Docs</title>
+    <link href="/docs/img/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/docs/css/prettify.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/default.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  /*
+  _gaq.push(['_setAccount', 'UA-18852272-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+*/
+
+    </script>
+  </head>
+  <body onload="prettyPrint()" class="content-negotiation-page">
+
+  <div class="wrapper">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a>
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/docs"><img src="/static/images/logo/icon_small.png" style="
+    float: left;
+    height: 20px;
+    margin-right: 8px;"> Passtiche Documentation</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/docs">Home</a></li>
+               <li><a href="/docs/tutorial/quickstart.html">Get Started</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Guide <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+
+                  <li><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
+                  <li><a href="/docs/api_methods/update_pass.html">Update Pass</a></li>
+                  <li><a href="/docs/api_methods/find_location.html">Find Location</a></li>
+                  <li><a href="/docs/api_methods/update_location.html">Update Location</a></li> 
+                  <li><a href="/docs/api_methods/find_list.html">Find List</a></li>
+                  <li><a href="/docs/api_methods/update_list.html">Update List</a></li>  
+
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
+                  <li><a href="/docs/api-guide/exceptions.html">Exceptions</a></li>
+                  <li><a href="/docs/api-guide/status-codes.html">Status codes</a></li>
+                  <li><a href="/docs/api-guide/settings.html">Settings</a></li>       
+                  <li><a href="/docs/topics/button.html">Button</a></li>
+                  <li><a href="/docs/topics/release-notes.html">Release Notes</a></li>
+                  <li><a href="/docs/topics/credits.html">Credits</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <!-- TODO
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Version: 2.0.0 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Trunk</a></li>
+                  <li><a href="#">2.0.0</a></li>
+                </ul>
+              </li>
+            -->
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="body-content">
+      <div class="container-fluid">
+        <div class="row-fluid">
+
+          <div class="span3">
+            <!-- TODO
+            <p style="margin-top: -12px">
+              <a class="btn btn-mini btn-primary" style="width: 60px">&laquo; previous</a>
+              <a class="btn btn-mini btn-primary" style="float: right; margin-right: 8px; width: 60px;">next &raquo;</a>
+            </p>
+          -->
+            <div id="table-of-contents">
+              <ul class="nav nav-list side-nav well sidebar-nav-fixed">
+                <li class="main"><a href="#content-negotiation">Content negotiation</a></li>
+<li><a href="#determining-the-accepted-renderer">Determining the accepted renderer</a></li>
+<li class="main"><a href="#custom-content-negotiation">Custom content negotiation</a></li>
+<li><a href="#example">Example</a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div id="main-content" class="span9">
+            <p><a class="github" href="https://github.com/passtiche/passtiche-client/tree/master/docs/negotiation.py"><span class="label label-info">negotiation.py</span></a></p>
+<h1 id="content-negotiation">Content negotiation</h1>
+<blockquote>
+<p>HTTP has provisions for several mechanisms for "content negotiation" - the process of selecting the best representation for a given response when there are multiple representations available.</p>
+<p>&mdash; <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html">RFC 2616</a>, Fielding et al.</p>
+</blockquote>
+<p>Content negotiation is the process of selecting one of multiple possible representations to return to a client, based on client or server preferences.</p>
+<h2 id="determining-the-accepted-renderer">Determining the accepted renderer</h2>
+<p>REST framework uses a simple style of content negotiation to determine which media type should be returned to a client, based on the available renderers, the priorities of each of those renderers, and the client's <code>Accept:</code> header.  The style used is partly client-driven, and partly server-driven.</p>
+<ol>
+<li>More specific media types are given preference to less specific media types.</li>
+<li>If multiple media types have the same specificity, then preference is given to based on the ordering of the renderers configured for the given view.</li>
+</ol>
+<p>For example, given the following <code>Accept</code> header:</p>
+<pre class="prettyprint lang-py"><code>application/json; indent=4, application/json, application/yaml, text/html, */*
+</code></pre>
+<p>The priorities for each of the given media types would be:</p>
+<ul>
+<li><code>application/json; indent=4</code></li>
+<li><code>application/json</code>, <code>application/yaml</code> and <code>text/html</code></li>
+<li><code>*/*</code></li>
+</ul>
+<p>If the requested view was only configured with renderers for <code>YAML</code> and <code>HTML</code>, then REST framework would select whichever renderer was listed first in the <code>renderer_classes</code> list or <code>DEFAULT_RENDERER_CLASSES</code> setting.</p>
+<p>For more information on the <code>HTTP Accept</code> header, see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">RFC 2616</a> </p>
+<hr />
+<p><strong>Note</strong>: "q" values are not taken into account by REST framework when determining preference.  The use of "q" values negatively impacts caching, and in the author's opinion they are an unnecessary and overcomplicated approach to content negotiation.</p>
+<p>This is a valid approach as the HTTP spec deliberately underspecifies how a server should weight server-based preferences against client-based preferences.</p>
+<hr />
+<h1 id="custom-content-negotiation">Custom content negotiation</h1>
+<p>It's unlikely that you'll want to provide a custom content negotiation scheme for REST framework, but you can do so if needed.  To implement a custom content negotiation scheme override <code>BaseContentNegotiation</code>.</p>
+<p>REST framework's content negotiation classes handle selection of both the appropriate parser for the request, and the appropriate renderer for the response,  so you should implement both the <code>.select_parser(request, parsers)</code> and <code>.select_renderer(request, renderers, format_suffix)</code> methods.</p>
+<h2 id="example">Example</h2>
+<p>The following is a custom content negotiation class which ignores the client
+request when selecting the appropriate parser or renderer.</p>
+<pre class="prettyprint lang-py"><code>class IgnoreClientContentNegotiation(BaseContentNegotiation):
+    def select_parser(self, request, parsers):
+        """
+        Select the first parser in the `.parser_classes` list.
+        """
+        return parsers[0]
+
+    def select_renderer(self, request, renderers, format_suffix):
+        """
+        Select the first renderer in the `.renderer_classes` list.
+        """
+        return renderers[0]
+</code></pre>
+          </div><!--/span-->
+        </div><!--/row-->
+      </div><!--/.fluid-container-->
+    </div><!--/.body content-->
+
+      <div id="push"></div>
+  </div><!--/.wrapper -->
+
+  <footer class="span12">
+    <p><a href="http://www.passtiche.com/">Passtiche</a>.</a></p>
+  </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/docs/js/jquery-1.8.1-min.js"></script>
+    <script src="/docs/js/prettify-1.0.js"></script>
+    <script src="/docs/js/bootstrap-2.1.1-min.js"></script>
+    <script>
+      //$('.side-nav').scrollspy()
+      var shiftWindow = function() { scrollBy(0, -50) };
+      if (location.hash) shiftWindow();
+      window.addEventListener("hashchange", shiftWindow);
+
+      $('.dropdown-menu').on('click touchstart', function(event) {
+        event.stopPropagation();
+      });
+    </script>
+</body></html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Passtiche Docs</title>
+    <link href="/docs/img/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/docs/css/prettify.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/default.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  /*
+  _gaq.push(['_setAccount', 'UA-18852272-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+*/
+
+    </script>
+  </head>
+  <body onload="prettyPrint()" class="generic-views-page">
+
+  <div class="wrapper">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a>
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/docs"><img src="/static/images/logo/icon_small.png" style="
+    float: left;
+    height: 20px;
+    margin-right: 8px;"> Passtiche Documentation</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/docs">Home</a></li>
+               <li><a href="/docs/tutorial/quickstart.html">Get Started</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Guide <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+
+                  <li><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
+                  <li><a href="/docs/api_methods/update_pass.html">Update Pass</a></li>
+                  <li><a href="/docs/api_methods/find_location.html">Find Location</a></li>
+                  <li><a href="/docs/api_methods/update_location.html">Update Location</a></li> 
+                  <li><a href="/docs/api_methods/find_list.html">Find List</a></li>
+                  <li><a href="/docs/api_methods/update_list.html">Update List</a></li>  
+
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
+                  <li><a href="/docs/api-guide/exceptions.html">Exceptions</a></li>
+                  <li><a href="/docs/api-guide/status-codes.html">Status codes</a></li>
+                  <li><a href="/docs/api-guide/settings.html">Settings</a></li>       
+                  <li><a href="/docs/topics/button.html">Button</a></li>
+                  <li><a href="/docs/topics/release-notes.html">Release Notes</a></li>
+                  <li><a href="/docs/topics/credits.html">Credits</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <!-- TODO
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Version: 2.0.0 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Trunk</a></li>
+                  <li><a href="#">2.0.0</a></li>
+                </ul>
+              </li>
+            -->
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="body-content">
+      <div class="container-fluid">
+        <div class="row-fluid">
+
+          <div class="span3">
+            <!-- TODO
+            <p style="margin-top: -12px">
+              <a class="btn btn-mini btn-primary" style="width: 60px">&laquo; previous</a>
+              <a class="btn btn-mini btn-primary" style="float: right; margin-right: 8px; width: 60px;">next &raquo;</a>
+            </p>
+          -->
+            <div id="table-of-contents">
+              <ul class="nav nav-list side-nav well sidebar-nav-fixed">
+                <li class="main"><a href="#generic-views">Generic views</a></li>
+<li><a href="#examples">Examples</a></li>
+<li class="main"><a href="#api-reference">API Reference</a></li>
+<li><a href="#createapiview">CreateAPIView</a></li>
+<li><a href="#listapiview">ListAPIView</a></li>
+<li><a href="#retrieveapiview">RetrieveAPIView</a></li>
+<li><a href="#destroyapiview">DestroyAPIView</a></li>
+<li><a href="#updateapiview">UpdateAPIView</a></li>
+<li><a href="#listcreateapiview">ListCreateAPIView</a></li>
+<li><a href="#retrievedestroyapiview">RetrieveDestroyAPIView</a></li>
+<li><a href="#retrieveupdatedestroyapiview">RetrieveUpdateDestroyAPIView</a></li>
+<li class="main"><a href="#base-views">Base views</a></li>
+<li><a href="#genericapiview">GenericAPIView</a></li>
+<li><a href="#multipleobjectapiview">MultipleObjectAPIView</a></li>
+<li><a href="#singleobjectapiview">SingleObjectAPIView</a></li>
+<li class="main"><a href="#mixins">Mixins</a></li>
+<li><a href="#listmodelmixin">ListModelMixin</a></li>
+<li><a href="#createmodelmixin">CreateModelMixin</a></li>
+<li><a href="#retrievemodelmixin">RetrieveModelMixin</a></li>
+<li><a href="#updatemodelmixin">UpdateModelMixin</a></li>
+<li><a href="#destroymodelmixin">DestroyModelMixin</a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div id="main-content" class="span9">
+            <p><a class="github" href="https://github.com/passtiche/passtiche-client/tree/master/docs/mixins.py"><span class="label label-info">mixins.py</span></a>
+<a class="github" href="https://github.com/passtiche/passtiche-client/tree/master/docs/generics.py"><span class="label label-info">generics.py</span></a></p>
+<h1 id="generic-views">Generic views</h1>
+<blockquote>
+<p>Django’s generic views... were developed as a shortcut for common usage patterns... They take certain common idioms and patterns found in view development and abstract them so that you can quickly write common views of data without having to repeat yourself.</p>
+<p>&mdash; <a href="https://docs.djangoproject.com/en/dev/ref/class-based-views/#base-vs-generic-views">Django Documentation</a></p>
+</blockquote>
+<p>One of the key benefits of class based views is the way they allow you to compose bits of reusable behaviour.  REST framework takes advantage of this by providing a number of pre-built views that provide for commonly used patterns. </p>
+<p>The generic views provided by REST framework allow you to quickly build API views that map closely to your database models.</p>
+<p>If the generic views don't suit the needs of your API, you can drop down to using the regular <code>APIView</code> class, or reuse the mixins and base classes used by the generic views to compose your own set of reusable generic views. </p>
+<h2 id="examples">Examples</h2>
+<p>Typically when using the generic views, you'll override the view, and set several class attributes.</p>
+<pre class="prettyprint lang-py"><code>class UserList(generics.ListCreateAPIView):
+    model = User
+    serializer_class = UserSerializer
+    permission_classes = (IsAdminUser,)
+    paginate_by = 100
+</code></pre>
+<p>For more complex cases you might also want to override various methods on the view class.  For example.</p>
+<pre class="prettyprint lang-py"><code>class UserList(generics.ListCreateAPIView):
+    model = User
+    serializer_class = UserSerializer
+    permission_classes = (IsAdminUser,)
+
+    def get_paginate_by(self, queryset):
+        """
+        Use smaller pagination for HTML representations.
+        """
+        page_size_param = self.request.QUERY_PARAMS.get('page_size')
+        if page_size_param:
+            return int(page_size_param)
+        return 100
+</code></pre>
+<p>For very simple cases you might want to pass through any class attributes using the <code>.as_view()</code> method.  For example, your URLconf might include something the following entry.</p>
+<pre class="prettyprint lang-py"><code>url(r'^/users/', ListCreateAPIView.as_view(model=User) name='user-list')
+</code></pre>
+<hr />
+<h1 id="api-reference">API Reference</h1>
+<p>The following classes are the concrete generic views.  If you're using generic views this is normally the level you'll be working at unless you need heavily customized behavior.</p>
+<h2 id="createapiview">CreateAPIView</h2>
+<p>Used for <strong>create-only</strong> endpoints.</p>
+<p>Provides <code>post</code> method handlers.</p>
+<p>Extends: <a href="#genericapiview">GenericAPIView</a>, <a href="#createmodelmixin">CreateModelMixin</a></p>
+<h2 id="listapiview">ListAPIView</h2>
+<p>Used for <strong>read-only</strong> endpoints to represent a <strong>collection of model instances</strong>.</p>
+<p>Provides a <code>get</code> method handler.</p>
+<p>Extends: <a href="#multipleobjectapiview">MultipleObjectAPIView</a>, <a href="#listmodelmixin">ListModelMixin</a></p>
+<h2 id="retrieveapiview">RetrieveAPIView</h2>
+<p>Used for <strong>read-only</strong> endpoints to represent a <strong>single model instance</strong>.</p>
+<p>Provides a <code>get</code> method handler.</p>
+<p>Extends: <a href="#singleobjectapiview">SingleObjectAPIView</a>, <a href="#retrievemodelmixin">RetrieveModelMixin</a></p>
+<h2 id="destroyapiview">DestroyAPIView</h2>
+<p>Used for <strong>delete-only</strong> endpoints for a <strong>single model instance</strong>.</p>
+<p>Provides a <code>delete</code> method handler.</p>
+<p>Extends: <a href="#singleobjectapiview">SingleObjectAPIView</a>, <a href="#destroymodelmixin">DestroyModelMixin</a></p>
+<h2 id="updateapiview">UpdateAPIView</h2>
+<p>Used for <strong>update-only</strong> endpoints for a <strong>single model instance</strong>.</p>
+<p>Provides a <code>put</code> method handler.</p>
+<p>Extends: <a href="#singleobjectapiview">SingleObjectAPIView</a>, <a href="#updatemodelmixin">UpdateModelMixin</a></p>
+<h2 id="listcreateapiview">ListCreateAPIView</h2>
+<p>Used for <strong>read-write</strong> endpoints to represent a <strong>collection of model instances</strong>.</p>
+<p>Provides <code>get</code> and <code>post</code> method handlers.</p>
+<p>Extends: <a href="#multipleobjectapiview">MultipleObjectAPIView</a>, <a href="#listmodelmixin">ListModelMixin</a>, <a href="#createmodelmixin">CreateModelMixin</a></p>
+<h2 id="retrievedestroyapiview">RetrieveDestroyAPIView</h2>
+<p>Used for <strong>read or delete</strong> endpoints to represent a <strong>single model instance</strong>.</p>
+<p>Provides <code>get</code> and <code>delete</code> method handlers.</p>
+<p>Extends: <a href="#singleobjectapiview">SingleObjectAPIView</a>, <a href="#retrievemodelmixin">RetrieveModelMixin</a>, <a href="#destroymodelmixin">DestroyModelMixin</a></p>
+<h2 id="retrieveupdatedestroyapiview">RetrieveUpdateDestroyAPIView</h2>
+<p>Used for <strong>read-write-delete</strong> endpoints to represent a <strong>single model instance</strong>.</p>
+<p>Provides <code>get</code>, <code>put</code> and <code>delete</code> method handlers.</p>
+<p>Extends: <a href="#singleobjectapiview">SingleObjectAPIView</a>, <a href="#retrievemodelmixin">RetrieveModelMixin</a>, <a href="#updatemodelmixin">UpdateModelMixin</a>, <a href="#destroymodelmixin">DestroyModelMixin</a></p>
+<hr />
+<h1 id="base-views">Base views</h1>
+<p>Each of the generic views provided is built by combining one of the base views below, with one or more mixin classes.</p>
+<h2 id="genericapiview">GenericAPIView</h2>
+<p>Extends REST framework's <code>APIView</code> class, adding support for serialization of model instances and model querysets.</p>
+<h2 id="multipleobjectapiview">MultipleObjectAPIView</h2>
+<p>Provides a base view for acting on a single object, by combining REST framework's <code>APIView</code>, and Django's <a href="https://docs.djangoproject.com/en/dev/ref/class-based-views/mixins-multiple-object/">MultipleObjectMixin</a>.</p>
+<p><strong>See also:</strong> ccbv.co.uk documentation for <a href="http://ccbv.co.uk/projects/Django/1.4/django.views.generic.list/MultipleObjectMixin/">MultipleObjectMixin</a>.</p>
+<h2 id="singleobjectapiview">SingleObjectAPIView</h2>
+<p>Provides a base view for acting on a single object, by combining REST framework's <code>APIView</code>, and Django's <a href="https://docs.djangoproject.com/en/dev/ref/class-based-views/mixins-single-object/">SingleObjectMixin</a>.</p>
+<p><strong>See also:</strong> ccbv.co.uk documentation for <a href="http://ccbv.co.uk/projects/Django/1.4/django.views.generic.detail/SingleObjectMixin/">SingleObjectMixin</a>.</p>
+<hr />
+<h1 id="mixins">Mixins</h1>
+<p>The mixin classes provide the actions that are used to provide the basic view behaviour.  Note that the mixin classes provide action methods rather than defining the handler methods such as <code>.get()</code> and <code>.post()</code> directly.  This allows for more flexible composition of behaviour. </p>
+<h2 id="listmodelmixin">ListModelMixin</h2>
+<p>Provides a <code>.list(request, *args, **kwargs)</code> method, that implements listing a queryset.</p>
+<p>Should be mixed in with <a href="#multipleobjectapiview">MultipleObjectAPIView</a>.</p>
+<h2 id="createmodelmixin">CreateModelMixin</h2>
+<p>Provides a <code>.create(request, *args, **kwargs)</code> method, that implements creating and saving a new model instance.</p>
+<p>Should be mixed in with any <a href="#genericapiview">GenericAPIView</a>.</p>
+<h2 id="retrievemodelmixin">RetrieveModelMixin</h2>
+<p>Provides a <code>.retrieve(request, *args, **kwargs)</code> method, that implements returning an existing model instance in a response.</p>
+<p>Should be mixed in with <a href="#singleobjectapiview">SingleObjectAPIView</a>.</p>
+<h2 id="updatemodelmixin">UpdateModelMixin</h2>
+<p>Provides a <code>.update(request, *args, **kwargs)</code> method, that implements updating and saving an existing model instance.</p>
+<p>Should be mixed in with <a href="#singleobjectapiview">SingleObjectAPIView</a>.</p>
+<h2 id="destroymodelmixin">DestroyModelMixin</h2>
+<p>Provides a <code>.destroy(request, *args, **kwargs)</code> method, that implements deletion of an existing model instance.</p>
+<p>Should be mixed in with <a href="#singleobjectapiview">SingleObjectAPIView</a>.</p>
+          </div><!--/span-->
+        </div><!--/row-->
+      </div><!--/.fluid-container-->
+    </div><!--/.body content-->
+
+      <div id="push"></div>
+  </div><!--/.wrapper -->
+
+  <footer class="span12">
+    <p><a href="http://www.passtiche.com/">Passtiche</a>.</a></p>
+  </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/docs/js/jquery-1.8.1-min.js"></script>
+    <script src="/docs/js/prettify-1.0.js"></script>
+    <script src="/docs/js/bootstrap-2.1.1-min.js"></script>
+    <script>
+      //$('.side-nav').scrollspy()
+      var shiftWindow = function() { scrollBy(0, -50) };
+      if (location.hash) shiftWindow();
+      window.addEventListener("hashchange", shiftWindow);
+
+      $('.dropdown-menu').on('click touchstart', function(event) {
+        event.stopPropagation();
+      });
+    </script>
+</body></html>

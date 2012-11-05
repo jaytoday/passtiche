@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Passtiche Docs</title>
+    <link href="/docs/img/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/docs/css/prettify.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/default.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  /*
+  _gaq.push(['_setAccount', 'UA-18852272-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+*/
+
+    </script>
+  </head>
+  <body onload="prettyPrint()" class="5-relationships-and-hyperlinked-apis-page">
+
+  <div class="wrapper">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a>
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/docs"><img src="/static/images/logo/icon_small.png" style="
+    float: left;
+    height: 20px;
+    margin-right: 8px;"> Passtiche Documentation</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/docs">Home</a></li>
+               <li><a href="/docs/tutorial/quickstart.html">Get Started</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Guide <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+
+                  <li><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
+                  <li><a href="/docs/api_methods/update_pass.html">Update Pass</a></li>
+                  <li><a href="/docs/api_methods/find_location.html">Find Location</a></li>
+                  <li><a href="/docs/api_methods/update_location.html">Update Location</a></li> 
+                  <li><a href="/docs/api_methods/find_list.html">Find List</a></li>
+                  <li><a href="/docs/api_methods/update_list.html">Update List</a></li>  
+
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
+                  <li><a href="/docs/api-guide/exceptions.html">Exceptions</a></li>
+                  <li><a href="/docs/api-guide/status-codes.html">Status codes</a></li>
+                  <li><a href="/docs/api-guide/settings.html">Settings</a></li>       
+                  <li><a href="/docs/topics/button.html">Button</a></li>
+                  <li><a href="/docs/topics/release-notes.html">Release Notes</a></li>
+                  <li><a href="/docs/topics/credits.html">Credits</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <!-- TODO
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Version: 2.0.0 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Trunk</a></li>
+                  <li><a href="#">2.0.0</a></li>
+                </ul>
+              </li>
+            -->
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="body-content">
+      <div class="container-fluid">
+        <div class="row-fluid">
+
+          <div class="span3">
+            <!-- TODO
+            <p style="margin-top: -12px">
+              <a class="btn btn-mini btn-primary" style="width: 60px">&laquo; previous</a>
+              <a class="btn btn-mini btn-primary" style="float: right; margin-right: 8px; width: 60px;">next &raquo;</a>
+            </p>
+          -->
+            <div id="table-of-contents">
+              <ul class="nav nav-list side-nav well sidebar-nav-fixed">
+                <li class="main"><a href="#tutorial-5---relationships-&-hyperlinked-apis">Tutorial 5 - Relationships & Hyperlinked APIs</a></li>
+<li><a href="#creating-an-endpoint-for-the-root-of-our-api">Creating an endpoint for the root of our API</a></li>
+<li><a href="#creating-an-endpoint-for-the-highlighted-snippets">Creating an endpoint for the highlighted snippets</a></li>
+<li><a href="#hyperlinking-our-api">Hyperlinking our API</a></li>
+<li><a href="#making-sure-our-url-patterns-are-named">Making sure our URL patterns are named</a></li>
+<li><a href="#adding-pagination">Adding pagination</a></li>
+<li><a href="#reviewing-our-work">Reviewing our work</a></li>
+<li><a href="#onwards-and-upwards">Onwards and upwards</a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div id="main-content" class="span9">
+            <h1 id="tutorial-5-relationships-hyperlinked-apis">Tutorial 5 - Relationships &amp; Hyperlinked APIs</h1>
+<p>At the moment relationships within our API are represented by using primary keys.  In this part of the tutorial we'll improve the cohesion and discoverability of our API, by instead using hyperlinking for relationships. </p>
+<h2 id="creating-an-endpoint-for-the-root-of-our-api">Creating an endpoint for the root of our API</h2>
+<p>Right now we have endpoints for 'snippets' and 'users', but we don't have a single entry point to our API.  To create one, we'll use a regular function-based view and the <code>@api_view</code> decorator we introduced earlier.</p>
+<pre class="prettyprint lang-py"><code>from rest_framework import renderers
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+
+@api_view(('GET',))
+def api_root(request, format=None):
+    return Response({
+        'users': reverse('user-list', request=request),
+        'snippets': reverse('snippet-list', request=request)
+    })
+</code></pre>
+<p>Notice that we're using REST framework's <code>reverse</code> function in order to return fully-qualified URLs.</p>
+<h2 id="creating-an-endpoint-for-the-highlighted-snippets">Creating an endpoint for the highlighted snippets</h2>
+<p>The other obvious thing that's still missing from our pastebin API is the code highlighting endpoints.</p>
+<p>Unlike all our other API endpoints, we don't want to use JSON, but instead just present an HTML representation.  There are two style of HTML renderer provided by REST framework, one for dealing with HTML rendered using templates, the other for dealing with pre-rendered HTML.  The second renderer is the one we'd like to use for this endpoint.</p>
+<p>The other thing we need to consider when creating the code highlight view is that there's no existing concrete generic view that we can use.  We're not returning an object instance, but instead a property of an object instance.</p>
+<p>Instead of using a concrete generic view, we'll use the base class for representing instances, and create our own <code>.get()</code> method. In your snippets.views add:</p>
+<pre class="prettyprint lang-py"><code>from rest_framework import renderers
+from rest_framework.response import Response
+
+class SnippetHighlight(generics.SingleObjectAPIView):
+    model = Snippet
+    renderer_classes = (renderers.StaticHTMLRenderer,)
+
+    def get(self, request, *args, **kwargs):
+        snippet = self.get_object()
+        return Response(snippet.highlighted)
+</code></pre>
+<p>As usual we need to add the new views that we've created in to our URLconf.
+We'll add a url pattern for our new API root:</p>
+<pre class="prettyprint lang-py"><code>url(r'^$', 'api_root'),
+</code></pre>
+<p>And then add a url pattern for the snippet highlights:</p>
+<pre class="prettyprint lang-py"><code>url(r'^snippets/(?P&lt;pk&gt;[0-9]+)/highlight/$', views.SnippetHighlight.as_view()),
+</code></pre>
+<h2 id="hyperlinking-our-api">Hyperlinking our API</h2>
+<p>Dealing with relationships between entities is one of the more challenging aspects of Web API design.  There are a number of different ways that we might choose to represent a relationship:</p>
+<ul>
+<li>Using primary keys.</li>
+<li>Using hyperlinking between entities.</li>
+<li>Using a unique identifying slug field on the related entity.</li>
+<li>Using the default string representation of the related entity.</li>
+<li>Nesting the related entity inside the parent representation.</li>
+<li>Some other custom representation.</li>
+</ul>
+<p>REST framework supports all of these styles, and can apply them across forward or reverse relationships, or apply them across custom managers such as generic foreign keys.</p>
+<p>In this case we'd like to use a hyperlinked style between entities.  In order to do so, we'll modify our serializers to extend <code>HyperlinkedModelSerializer</code> instead of the existing <code>ModelSerializer</code>.</p>
+<p>The <code>HyperlinkedModelSerializer</code> has the following differences from <code>ModelSerializer</code>:</p>
+<ul>
+<li>It does not include the <code>pk</code> field by default.</li>
+<li>It includes a <code>url</code> field, using <code>HyperlinkedIdentityField</code>.</li>
+<li>Relationships use <code>HyperlinkedRelatedField</code> and <code>ManyHyperlinkedRelatedField</code>,
+  instead of <code>PrimaryKeyRelatedField</code> and <code>ManyPrimaryKeyRelatedField</code>.</li>
+</ul>
+<p>We can easily re-write our existing serializers to use hyperlinking.</p>
+<pre class="prettyprint lang-py"><code>class SnippetSerializer(serializers.HyperlinkedModelSerializer):
+    owner = serializers.Field(source='owner.username')
+    highlight = serializers.HyperlinkedIdentityField(view_name='snippet-highlight', format='html')
+
+    class Meta:
+        model = models.Snippet
+        fields = ('url', 'highlight', 'owner',
+                  'title', 'code', 'linenos', 'language', 'style')
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    snippets = serializers.ManyHyperlinkedRelatedField(view_name='snippet-detail')
+
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'snippets')
+</code></pre>
+<p>Notice that we've also added a new <code>'highlight'</code> field.  This field is of the same type as the <code>url</code> field, except that it points to the <code>'snippet-highlight'</code> url pattern, instead of the <code>'snippet-detail'</code> url pattern.</p>
+<p>Because we've included format suffixed URLs such as <code>'.json'</code>, we also need to indicate on the <code>highlight</code> field that any format suffixed hyperlinks it returns should use the <code>'.html'</code> suffix.</p>
+<h2 id="making-sure-our-url-patterns-are-named">Making sure our URL patterns are named</h2>
+<p>If we're going to have a hyperlinked API, we need to make sure we name our URL patterns.  Let's take a look at which URL patterns we need to name.</p>
+<ul>
+<li>The root of our API refers to <code>'user-list'</code> and <code>'snippet-list'</code>.</li>
+<li>Our snippet serializer includes a field that refers to <code>'snippet-highlight'</code>.</li>
+<li>Our user serializer includes a field that refers to <code>'snippet-detail'</code>.</li>
+<li>Our snippet and user serializers include <code>'url'</code> fields that by default will refer to <code>'{model_name}-detail'</code>, which in this case will be <code>'snippet-detail'</code> and <code>'user-detail'</code>.</li>
+</ul>
+<p>After adding all those names into our URLconf, our final <code>'urls.py'</code> file should look something like this:</p>
+<pre class="prettyprint lang-py"><code># API endpoints
+urlpatterns = format_suffix_patterns(patterns('snippets.views',
+    url(r'^$', 'api_root'),
+    url(r'^snippets/$',
+        views.SnippetList.as_view(),
+        name='snippet-list'),
+    url(r'^snippets/(?P&lt;pk&gt;[0-9]+)/$',
+        views.SnippetDetail.as_view(),
+        name='snippet-detail'),
+    url(r'^snippets/(?P&lt;pk&gt;[0-9]+)/highlight/$'
+        views.SnippetHighlight.as_view(),
+        name='snippet-highlight'),
+    url(r'^users/$',
+        views.UserList.as_view(),
+        name='user-list'),
+    url(r'^users/(?P&lt;pk&gt;[0-9]+)/$',
+        views.UserInstance.as_view(),
+        name='user-detail')
+))
+
+# Login and logout views for the browsable API
+urlpatterns += patterns('',    
+    url(r'^api-auth/', include('rest_framework.urls',
+                               namespace='rest_framework'))
+)
+</code></pre>
+<h2 id="adding-pagination">Adding pagination</h2>
+<p>The list views for users and code snippets could end up returning quite a lot of instances, so really we'd like to make sure we paginate the results, and allow the API client to step through each of the individual pages.</p>
+<p>We can change the default list style to use pagination, by modifying our <code>settings.py</code> file slightly.  Add the following setting:</p>
+<pre class="prettyprint lang-py"><code>REST_FRAMEWORK = {
+    'PAGINATE_BY': 10
+}
+</code></pre>
+<p>Note that settings in REST framework are all namespaced into a single dictionary setting, named 'REST_FRAMEWORK', which helps keep them well seperated from your other project settings.</p>
+<p>We could also customize the pagination style if we needed too, but in this case we'll just stick with the default.</p>
+<h2 id="reviewing-our-work">Reviewing our work</h2>
+<p>If we open a browser and navigate to the browseable API, you'll find that you can now work your way around the API simply by following links.</p>
+<p>You'll also be able to see the 'highlight' links on the snippet instances, that will take you to the hightlighted code HTML representations.</p>
+<p>We've now got a complete pastebin Web API, which is fully web browseable, and comes complete with authentication, per-object permissions, and multiple renderer formats.</p>
+<p>We've walked through each step of the design process, and seen how if we need to customize anything we can gradually work our way down to simply using regular Django views.</p>
+<p>You can review the final <a href="https://github.com/tomchristie/rest-framework-tutorial">tutorial code</a> on GitHub, or try out a live example in <a href="http://restframework.herokuapp.com/">the sandbox</a>. </p>
+<h2 id="onwards-and-upwards">Onwards and upwards</h2>
+<p>We've reached the end of our tutorial.  If you want to get more involved in the REST framework project, here's a few places you can start:</p>
+<ul>
+<li>Contribute on <a href="https://github.com/tomchristie/django-rest-framework">GitHub</a> by reviewing and subitting issues, and making pull requests.</li>
+<li>Join the <a href="https://groups.google.com/forum/?fromgroups#!forum/django-rest-framework">REST framework discussion group</a>, and help build the community.</li>
+<li>Follow the author <a href="https://twitter.com/_tomchristie">on Twitter</a> and say hi.</li>
+</ul>
+<p><strong>Now go build some awesome things.</strong></p>
+          </div><!--/span-->
+        </div><!--/row-->
+      </div><!--/.fluid-container-->
+    </div><!--/.body content-->
+
+      <div id="push"></div>
+  </div><!--/.wrapper -->
+
+  <footer class="span12">
+    <p><a href="http://www.passtiche.com/">Passtiche</a>.</a></p>
+  </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/docs/js/jquery-1.8.1-min.js"></script>
+    <script src="/docs/js/prettify-1.0.js"></script>
+    <script src="/docs/js/bootstrap-2.1.1-min.js"></script>
+    <script>
+      //$('.side-nav').scrollspy()
+      var shiftWindow = function() { scrollBy(0, -50) };
+      if (location.hash) shiftWindow();
+      window.addEventListener("hashchange", shiftWindow);
+
+      $('.dropdown-menu').on('click touchstart', function(event) {
+        event.stopPropagation();
+      });
+    </script>
+</body></html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<title>Dashboard Admin</title>
+	
+	<meta charset="utf-8">
+	
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	{% comment "TODO get rid of redundant js/css" %}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<link rel="stylesheet" href="/static/css/cms/font-awesome.css">
+	
+	<link rel="stylesheet" href="/static/css/cms/bootstrap.css">
+	<link rel="stylesheet" href="/static/css/cms/bootstrap-responsive.css">
+
+	<link rel="stylesheet" href="/static/css/cms/ui-lightness/jquery-ui-1.8.21.custom.css">	
+	
+	<link rel="stylesheet" href="/static/css/cms/application.css">
+	<link rel="stylesheet" href="/static/css/cms/pages/dashboard.css">
+
+	<script src="/static/js/cms/libs/modernizr-2.5.3.min.js"></script>
+
+</head>
+
+<body>
+	
+<div id="wrapper">
+	
+
+{% comment "nav.html" %}
+
+
+	
+	
+{% comment "header.html" %}
+
+
+
+
+
+<div id="content">
+
+	<div class="container">
+		
+		<div class="row">
+			
+			<div class="span4">
+	<div class="nav-collapse" style="background: #1D354D;
+width: 100%;
+float: left;
+margin-bottom: 20px;">
+			<ul id="main-nav" class="nav pull-left" style="cursor:pointer;">
+				<li class="active">
+					<a data-target="#passes" id='pass_link'>
+						<span>Passes</span>        					
+					</a>
+				</li>
+				<li>
+					<a data-target="#locations" id='location_link'>
+						<span>Locations</span>        					
+					</a>
+				</li>	
+				<li>
+					<a data-target="#lists" id='list_link'>
+						<span>Lists</span>        					
+					</a>
+				</li>							
+			</ul>
+			
+</div>
+				<div id="masthead" style="clear:both;overflow:hidden;">
+					
+					<div class="container">
+						
+						<div class="masthead-pad" style="padding-left:15px;">
+
+				<div class="tab-content">
+
+						<div class="tab-pane active" id="passes">
+							<a class="btn" id="new_pass">New Pass</a>
+							<div id="pass_template_list" style="margin:20px 0;">
+									<!-- Pass Template List Items Added Via Ajax -->
+							</div>
+						</div>
+
+						<div class="tab-pane" id="locations">
+							<a class="btn" id="new_location">New Location</a>
+							<div id="pass_location_list" style="margin:20px 0;">
+									<!-- Pass Location List Items Added Via Ajax -->
+							</div>
+						</div>
+
+						<div class="tab-pane" id="lists">
+							<a class="btn" id="new_location">New List</a>
+							<div id="pass_list_list" style="margin:20px 0;">
+									<!-- Pass List List Items Added Via Ajax -->
+							</div>
+						</div>
+
+				</div><!-- tab content -->
+						</div><!-- masthead-pad -->
+					</div>
+				</div>
+
+
+			</div> <!-- /.span4 -->
+			
+			<div class="span8">
+			<div id="content_edit_wrapper">
+
+				<!-- This is where edit forms go -->
+
+			</div>
+			</div> <!-- /.span8 -->
+			
+			<div id="new_pass_wrapper" style="display:none;">
+				{% set p = None %}
+				{% include "pass/edit.html" %}
+			</div>
+			<div id="new_location_wrapper" style="display:none;">
+				{% set l = None %}
+				{% include "location/edit.html" %}
+			</div>
+			<div id="new_list_wrapper" style="display:none;">
+				{% set pl = None %}
+				{% include "list/edit.html" %}
+			</div>						
+
+		</div> <!-- /.row -->
+		
+		
+	</div> <!-- /.container -->
+
+</div> <!-- /#content -->
+
+</div> <!-- /#wrapper -->
+
+
+
+{% if False %}
+<div id="footer">
+		
+	<div class="container">
+		
+		<div class="row">
+			
+			<div class="span6">
+				© 2012 <a href="http://jumpstartui.com">Jumpstart UI</a>, all rights reserved.
+			</div> <!-- /span6 -->
+			
+			<div id="builtby" class="span6">
+				<a href="http://jumpstartui.com">Built by Jumpstart.</a>				
+			</div> <!-- /.span6 -->
+			
+		</div> <!-- /row -->
+		
+	</div> <!-- /container -->
+	
+</div> <!-- /#footer -->
+{% end %}
+
+
+
+
+<script src="/static/js/cms/libs/jquery-1.7.2.min.js"></script>
+<script src="/static/js/cms/libs/jquery-ui-1.8.21.custom.min.js"></script>
+<script src="/static/js/cms/libs/jquery.ui.touch-punch.min.js"></script>
+
+<script src="/static/js/cms/libs/bootstrap/bootstrap.min.js"></script>
+
+<script src="/static/js/cms/Theme.js"></script>
+<script src="/static/js/cms/Charts.js"></script>
+
+<script src="/static/js/cms/plugins/excanvas/excanvas.min.js"></script>
+<script src="/static/js/cms/plugins/flot/jquery.flot.js"></script>
+<script src="/static/js/cms/plugins/flot/jquery.flot.pie.js"></script>
+<script src="/static/js/cms/plugins/flot/jquery.flot.orderBars.js"></script>
+<script src="/static/js/cms/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="/static/js/cms/plugins/flot/jquery.flot.resize.js"></script>
+
+<script src="/static/js/cms/demos/charts/line.js"></script>
+<script src="/static/js/cms/demos/charts/donut.js"></script>
+
+<script>
+
+$(function () {
+	
+	Theme.init ();
+
+	{% include "js/cms.js" %}
+	
+});
+
+
+
+</script>
+
+</body>
+</html>

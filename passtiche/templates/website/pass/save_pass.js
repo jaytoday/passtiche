@@ -17,6 +17,7 @@ function updateUserPassLink(){
           
 }
 function createUserPass(){
+ 
 
      // TODO: if pass is already created, update instead - use user_pass data attr for modal
      var name_val = $('#name_form').find('#inputName').val();

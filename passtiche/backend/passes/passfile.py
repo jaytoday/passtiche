@@ -103,6 +103,7 @@ class PassFile(object):
 
 
 
+		self.pass_json['backFields'] = [b for b in self.pass_json['backFields'] if b['value']]
 		#self.update_json()
 		self.send_info()
 

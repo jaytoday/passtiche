@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Passtiche Docs</title>
+    <link href="/docs/img/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/docs/css/prettify.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/default.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  /*
+  _gaq.push(['_setAccount', 'UA-18852272-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+*/
+
+    </script>
+  </head>
+  <body onload="prettyPrint()" class="serializers-page">
+
+  <div class="wrapper">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a>
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/docs"><img src="/static/images/logo/icon_small.png" style="
+    float: left;
+    height: 20px;
+    margin-right: 8px;"> Passtiche Documentation</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/docs">Home</a></li>
+               <li><a href="/docs/tutorial/quickstart.html">Get Started</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Guide <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+
+                  <li><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
+                  <li><a href="/docs/api_methods/update_pass.html">Update Pass</a></li>
+                  <li><a href="/docs/api_methods/find_location.html">Find Location</a></li>
+                  <li><a href="/docs/api_methods/update_location.html">Update Location</a></li> 
+                  <li><a href="/docs/api_methods/find_list.html">Find List</a></li>
+                  <li><a href="/docs/api_methods/update_list.html">Update List</a></li>  
+
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
+                  <li><a href="/docs/api-guide/exceptions.html">Exceptions</a></li>
+                  <li><a href="/docs/api-guide/status-codes.html">Status codes</a></li>
+                  <li><a href="/docs/api-guide/settings.html">Settings</a></li>       
+                  <li><a href="/docs/topics/button.html">Button</a></li>
+                  <li><a href="/docs/topics/release-notes.html">Release Notes</a></li>
+                  <li><a href="/docs/topics/credits.html">Credits</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <!-- TODO
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Version: 2.0.0 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Trunk</a></li>
+                  <li><a href="#">2.0.0</a></li>
+                </ul>
+              </li>
+            -->
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="body-content">
+      <div class="container-fluid">
+        <div class="row-fluid">
+
+          <div class="span3">
+            <!-- TODO
+            <p style="margin-top: -12px">
+              <a class="btn btn-mini btn-primary" style="width: 60px">&laquo; previous</a>
+              <a class="btn btn-mini btn-primary" style="float: right; margin-right: 8px; width: 60px;">next &raquo;</a>
+            </p>
+          -->
+            <div id="table-of-contents">
+              <ul class="nav nav-list side-nav well sidebar-nav-fixed">
+                <li class="main"><a href="#serializers">Serializers</a></li>
+<li><a href="#declaring-serializers">Declaring Serializers</a></li>
+<li><a href="#serializing-objects">Serializing objects</a></li>
+<li><a href="#deserializing-objects">Deserializing objects</a></li>
+<li><a href="#validation">Validation</a></li>
+<li><a href="#dealing-with-nested-objects">Dealing with nested objects</a></li>
+<li><a href="#creating-custom-fields">Creating custom fields</a></li>
+<li class="main"><a href="#modelserializers">ModelSerializers</a></li>
+<li><a href="#specifying-fields-explicitly">Specifying fields explicitly</a></li>
+<li><a href="#relational-fields">Relational fields</a></li>
+<li><a href="#specifying-which-fields-should-be-included">Specifying which fields should be included</a></li>
+<li><a href="#specifiying-nested-serialization">Specifiying nested serialization</a></li>
+<li><a href="#customising-the-default-fields">Customising the default fields</a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div id="main-content" class="span9">
+            <p><a class="github" href="https://github.com/passtiche/passtiche-client/tree/master/docs/serializers.py"><span class="label label-info">serializers.py</span></a></p>
+<h1 id="serializers">Serializers</h1>
+<blockquote>
+<p>Expanding the usefulness of the serializers is something that we would
+like to address. However, it's not a trivial problem, and it
+will take some serious design work. Any offers to help out in this
+area would be gratefully accepted.</p>
+<p>&mdash; Russell Keith-Magee, <a href="https://groups.google.com/d/topic/django-users/sVFaOfQi4wY/discussion">Django users group</a></p>
+</blockquote>
+<p>Serializers allow complex data such as querysets and model instances to be converted to native python datatypes that can then be easily rendered into <code>JSON</code>, <code>XML</code> or other content types.  Serializers also provide deserialization, allowing parsed data to be converted back into complex types, after first validating the incoming data.</p>
+<p>REST framework's serializers work very similarly to Django's <code>Form</code> and <code>ModelForm</code> classes.  It provides a <code>Serializer</code> class which gives you a powerful, generic way to control the output of your responses, as well as a <code>ModelSerializer</code> class which provides a useful shortcut for creating serializers that deal with model instances and querysets.</p>
+<h2 id="declaring-serializers">Declaring Serializers</h2>
+<p>Let's start by creating a simple object we can use for example purposes:</p>
+<pre class="prettyprint lang-py"><code>class Comment(object):
+    def __init__(self, email, content, created=None):
+        self.email = email
+        self.content = content
+        self.created = created or datetime.datetime.now()
+
+comment = Comment(email='leila@example.com', content='foo bar')
+</code></pre>
+<p>We'll declare a serializer that we can use to serialize and deserialize <code>Comment</code> objects.
+Declaring a serializer looks very similar to declaring a form:</p>
+<pre class="prettyprint lang-py"><code>class CommentSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    content = serializers.CharField(max_length=200)
+    created = serializers.DateTimeField()
+
+    def restore_object(self, attrs, instance=None):
+        if instance:
+            instance.title = attrs['title']
+            instance.content = attrs['content']
+            instance.created = attrs['created']
+            return instance
+        return Comment(**attrs)
+</code></pre>
+<p>The first part of serializer class defines the fields that get serialized/deserialized.  The <code>restore_object</code> method defines how fully fledged instances get created when deserializing data.  The <code>restore_object</code> method is optional, and is only required if we want our serializer to support deserialization.</p>
+<h2 id="serializing-objects">Serializing objects</h2>
+<p>We can now use <code>CommentSerializer</code> to serialize a comment, or list of comments.  Again, using the <code>Serializer</code> class looks a lot like using a <code>Form</code> class.</p>
+<pre class="prettyprint lang-py"><code>serializer = CommentSerializer(instance=comment)
+serializer.data
+# {'email': u'leila@example.com', 'content': u'foo bar', 'created': datetime.datetime(2012, 8, 22, 16, 20, 9, 822774)}
+</code></pre>
+<p>At this point we've translated the model instance into python native datatypes.  To finalise the serialization process we render the data into <code>json</code>.</p>
+<pre class="prettyprint lang-py"><code>stream = JSONRenderer().render(data)
+stream
+# '{"email": "leila@example.com", "content": "foo bar", "created": "2012-08-22T16:20:09.822"}'
+</code></pre>
+<h2 id="deserializing-objects">Deserializing objects</h2>
+<p>Deserialization is similar.  First we parse a stream into python native datatypes... </p>
+<pre class="prettyprint lang-py"><code>data = JSONParser().parse(stream)
+</code></pre>
+<p>...then we restore those native datatypes into a fully populated object instance.</p>
+<pre class="prettyprint lang-py"><code>serializer = CommentSerializer(data)
+serializer.is_valid()
+# True
+serializer.object
+# &lt;Comment object at 0x10633b2d0&gt;
+&gt;&gt;&gt; serializer.deserialize('json', stream)
+</code></pre>
+<h2 id="validation">Validation</h2>
+<p>When deserializing data, you always need to call <code>is_valid()</code> before attempting to access the deserialized object.  If any validation errors occur, the <code>.errors</code> and <code>.non_field_errors</code> properties will contain the resulting error messages.</p>
+<h3 id="field-level-validation">Field-level validation</h3>
+<p>You can specify custom field-level validation by adding <code>validate_&lt;fieldname&gt;()</code> methods to your <code>Serializer</code> subclass. These are analagous to <code>clean_&lt;fieldname&gt;</code> methods on Django forms, but accept slightly different arguments. They take a dictionary of deserialized attributes as a first argument, and the field name in that dictionary as a second argument (which will be either the name of the field or the value of the <code>source</code> argument to the field, if one was provided). Your <code>validate_&lt;fieldname&gt;</code> methods should either just return the attrs dictionary or raise a <code>ValidationError</code>. For example:</p>
+<pre class="prettyprint lang-py"><code>from rest_framework import serializers
+
+class BlogPostSerializer(serializers.Serializer):
+    title = serializers.CharField(max_length=100)
+    content = serializers.CharField()
+
+    def validate_title(self, attrs, source):
+        """
+        Check that the blog post is about Django
+        """
+        value = attrs[source]
+        if "Django" not in value:
+            raise serializers.ValidationError("Blog post is not about Django")
+        return attrs
+</code></pre>
+<h3 id="final-cross-field-validation">Final cross-field validation</h3>
+<p>To do any other validation that requires access to multiple fields, add a method called <code>validate</code> to your <code>Serializer</code> subclass. This method takes a single argument, which is the <code>attrs</code> dictionary. It should raise a <code>ValidationError</code> if necessary, or just return <code>attrs</code>.</p>
+<h2 id="dealing-with-nested-objects">Dealing with nested objects</h2>
+<p>The previous example is fine for dealing with objects that only have simple datatypes, but sometimes we also need to be able to represent more complex objects,
+where some of the attributes of an object might not be simple datatypes such as strings, dates or integers.</p>
+<p>The <code>Serializer</code> class is itself a type of <code>Field</code>, and can be used to represent relationships where one object type is nested inside another.</p>
+<pre class="prettyprint lang-py"><code>class UserSerializer(serializers.Serializer):
+    email = serializers.Field()
+    username = serializers.Field()
+
+class CommentSerializer(serializers.Serializer):
+    user = UserSerializer()
+    title = serializers.Field()
+    content = serializers.Field()
+    created = serializers.Field()
+</code></pre>
+<hr />
+<p><strong>Note</strong>: Nested serializers are only suitable for read-only representations, as there are cases where they would have ambiguous or non-obvious behavior if used when updating instances.  For read-write representations you should always use a flat representation, by using one of the <code>RelatedField</code> subclasses.</p>
+<hr />
+<h2 id="creating-custom-fields">Creating custom fields</h2>
+<p>If you want to create a custom field, you'll probably want to override either one or both of the <code>.to_native()</code> and <code>.from_native()</code> methods.  These two methods are used to convert between the intial datatype, and a primative, serializable datatype.  Primative datatypes may be any of a number, string, date/time/datetime or None.  They may also be any list or dictionary like object that only contains other primative objects.</p>
+<p>The <code>.to_native()</code> method is called to convert the initial datatype into a primative, serializable datatype.  The <code>from_native()</code> method is called to restore a primative datatype into it's initial representation.</p>
+<p>Let's look at an example of serializing a class that represents an RGB color value:</p>
+<pre class="prettyprint lang-py"><code>class Color(object):
+    """
+    A color represented in the RGB colorspace.
+    """
+    def __init__(self, red, green, blue):
+        assert(red &gt;= 0 and green &gt;= 0 and blue &gt;= 0)
+        assert(red &lt; 256 and green &lt; 256 and blue &lt; 256)
+        self.red, self.green, self.blue = red, green, blue
+
+class ColourField(serializers.WritableField):
+    """
+    Color objects are serialized into "rgb(#, #, #)" notation.
+    """
+    def to_native(self, obj):
+        return "rgb(%d, %d, %d)" % (obj.red, obj.green, obj.blue)
+
+    def from_native(self, data):
+        data = data.strip('rgb(').rstrip(')')
+        red, green, blue = [int(col) for col in data.split(',')]
+        return Color(red, green, blue)
+</code></pre>
+<p>By default field values are treated as mapping to an attribute on the object.  If you need to customize how the field value is accessed and set you need to override <code>.field_to_native()</code> and/or <code>.field_from_native()</code>.</p>
+<p>As an example, let's create a field that can be used represent the class name of the object being serialized:</p>
+<pre class="prettyprint lang-py"><code>class ClassNameField(serializers.WritableField):
+    def field_to_native(self, obj, field_name):
+        """
+        Serialize the object's class name, not an attribute of the object.
+        """
+        return obj.__class__.__name__
+
+    def field_from_native(self, data, field_name, into):
+        """
+        We don't want to set anything when we revert this field.
+        """
+        pass
+</code></pre>
+<hr />
+<h1 id="modelserializers">ModelSerializers</h1>
+<p>Often you'll want serializer classes that map closely to model definitions.
+The <code>ModelSerializer</code> class lets you automatically create a Serializer class with fields that corrospond to the Model fields.</p>
+<pre class="prettyprint lang-py"><code>class AccountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+</code></pre>
+<p><strong>[TODO: Explain model field to serializer field mapping in more detail]</strong></p>
+<h2 id="specifying-fields-explicitly">Specifying fields explicitly</h2>
+<p>You can add extra fields to a <code>ModelSerializer</code> or override the default fields by declaring fields on the class, just as you would for a <code>Serializer</code> class.</p>
+<pre class="prettyprint lang-py"><code>class AccountSerializer(serializers.ModelSerializer):
+    url = CharField(source='get_absolute_url', read_only=True)
+    group = NaturalKeyField()
+
+    class Meta:
+        model = Account
+</code></pre>
+<p>Extra fields can correspond to any property or callable on the model.</p>
+<h2 id="relational-fields">Relational fields</h2>
+<p>When serializing model instances, there are a number of different ways you might choose to represent relationships.  The default representation is to use the primary keys of the related instances.</p>
+<p>Alternative representations include serializing using natural keys, serializing complete nested representations, or serializing using a custom representation, such as a URL that uniquely identifies the model instances.</p>
+<p>The <code>PrimaryKeyRelatedField</code> and <code>HyperlinkedRelatedField</code> fields provide alternative flat representations.</p>
+<p>The <code>ModelSerializer</code> class can itself be used as a field, in order to serialize relationships using nested representations.</p>
+<p>The <code>RelatedField</code> class may be subclassed to create a custom representation of a relationship.  The subclass should override <code>.to_native()</code>, and optionally <code>.from_native()</code> if deserialization is supported.</p>
+<p>All the relational fields may be used for any relationship or reverse relationship on a model.</p>
+<h2 id="specifying-which-fields-should-be-included">Specifying which fields should be included</h2>
+<p>If you only want a subset of the default fields to be used in a model serializer, you can do so using <code>fields</code> or <code>exclude</code> options, just as you would with a <code>ModelForm</code>.</p>
+<p>For example:</p>
+<pre class="prettyprint lang-py"><code>class AccountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        exclude = ('id',)
+</code></pre>
+<h2 id="specifiying-nested-serialization">Specifiying nested serialization</h2>
+<p>The default <code>ModelSerializer</code> uses primary keys for relationships, but you can also easily generate nested representations using the <code>depth</code> option:</p>
+<pre class="prettyprint lang-py"><code>class AccountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        exclude = ('id',)
+        depth = 1
+</code></pre>
+<p>The <code>depth</code> option should be set to an integer value that indicates the depth of relationships that should be traversed before reverting to a flat representation.</p>
+<h2 id="customising-the-default-fields">Customising the default fields</h2>
+<p>You can create customized subclasses of <code>ModelSerializer</code> that use a different set of default fields for the representation, by overriding various <code>get_&lt;field_type&gt;_field</code> methods.</p>
+<p>Each of these methods may either return a field or serializer instance, or <code>None</code>.</p>
+<h3 id="get_pk_field">get_pk_field</h3>
+<p><strong>Signature</strong>: <code>.get_pk_field(self, model_field)</code></p>
+<p>Returns the field instance that should be used to represent the pk field.</p>
+<h3 id="get_nested_field">get_nested_field</h3>
+<p><strong>Signature</strong>: <code>.get_nested_field(self, model_field)</code></p>
+<p>Returns the field instance that should be used to represent a related field when <code>depth</code> is specified as being non-zero.</p>
+<h3 id="get_related_field">get_related_field</h3>
+<p><strong>Signature</strong>: <code>.get_related_field(self, model_field, to_many=False)</code></p>
+<p>Returns the field instance that should be used to represent a related field when <code>depth</code> is not specified, or when nested representations are being used and the depth reaches zero.</p>
+<h3 id="get_field">get_field</h3>
+<p><strong>Signature</strong>: <code>.get_field(self, model_field)</code></p>
+<p>Returns the field instance that should be used for non-relational, non-pk fields.</p>
+<h3 id="example">Example:</h3>
+<p>The following custom model serializer could be used as a base class for model serializers that should always exclude the pk by default.</p>
+<pre class="prettyprint lang-py"><code>class NoPKModelSerializer(serializers.ModelSerializer):
+    def get_pk_field(self, model_field):
+        return None
+</code></pre>
+          </div><!--/span-->
+        </div><!--/row-->
+      </div><!--/.fluid-container-->
+    </div><!--/.body content-->
+
+      <div id="push"></div>
+  </div><!--/.wrapper -->
+
+  <footer class="span12">
+    <p><a href="http://www.passtiche.com/">Passtiche</a>.</a></p>
+  </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/docs/js/jquery-1.8.1-min.js"></script>
+    <script src="/docs/js/prettify-1.0.js"></script>
+    <script src="/docs/js/bootstrap-2.1.1-min.js"></script>
+    <script>
+      //$('.side-nav').scrollspy()
+      var shiftWindow = function() { scrollBy(0, -50) };
+      if (location.hash) shiftWindow();
+      window.addEventListener("hashchange", shiftWindow);
+
+      $('.dropdown-menu').on('click touchstart', function(event) {
+        event.stopPropagation();
+      });
+    </script>
+</body></html>

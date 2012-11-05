@@ -30,7 +30,7 @@ class PassTemplate(BaseModel):
     short_code = db.StringProperty() # alphanumeric, used for short URL 
 
     starts = db.DateTimeProperty()
-    #ends = db.DateTimeProperty()
+    ends = db.DateTimeProperty()
     schedule = model.util.properties.PickledProperty(default={})
     '''
 

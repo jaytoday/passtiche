@@ -38,8 +38,9 @@
                 maxHeight = parent.height(),
                 maxWidth = parent.width(),
                 fontSize = parseInt(ourText.css("fontSize"), 10),
-                factor = .023, 
-                multiplier = 1.45 - (factor * ourText.text().length),
+                factor = .023, // increase this to increase shrinkage
+                base = 1.45, // increase this to increase base size
+                multiplier = base - (factor * ourText.text().length),
                 newSize = (fontSize*(multiplier-0.1));
 
                 //console.log(parent.text(), multiplier, newSize);

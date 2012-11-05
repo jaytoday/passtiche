@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Passtiche Docs</title>
+    <link href="/docs/img/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/docs/css/prettify.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/default.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  /*
+  _gaq.push(['_setAccount', 'UA-18852272-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+*/
+
+    </script>
+  </head>
+  <body onload="prettyPrint()" class="quickstart-page">
+
+  <div class="wrapper">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a>
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/docs"><img src="/static/images/logo/icon_small.png" style="
+    float: left;
+    height: 20px;
+    margin-right: 8px;"> Passtiche Documentation</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/docs">Home</a></li>
+               <li><a href="/docs/tutorial/quickstart.html">Get Started</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Guide <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+
+                  <li><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
+                  <li><a href="/docs/api_methods/update_pass.html">Update Pass</a></li>
+                  <li><a href="/docs/api_methods/find_location.html">Find Location</a></li>
+                  <li><a href="/docs/api_methods/update_location.html">Update Location</a></li> 
+                  <li><a href="/docs/api_methods/find_list.html">Find List</a></li>
+                  <li><a href="/docs/api_methods/update_list.html">Update List</a></li>  
+
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
+                  <li><a href="/docs/api-guide/exceptions.html">Exceptions</a></li>
+                  <li><a href="/docs/api-guide/status-codes.html">Status codes</a></li>
+                  <li><a href="/docs/api-guide/settings.html">Settings</a></li>       
+                  <li><a href="/docs/topics/button.html">Button</a></li>
+                  <li><a href="/docs/topics/release-notes.html">Release Notes</a></li>
+                  <li><a href="/docs/topics/credits.html">Credits</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <!-- TODO
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Version: 2.0.0 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Trunk</a></li>
+                  <li><a href="#">2.0.0</a></li>
+                </ul>
+              </li>
+            -->
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="body-content">
+      <div class="container-fluid">
+        <div class="row-fluid">
+
+          <div class="span3">
+            <!-- TODO
+            <p style="margin-top: -12px">
+              <a class="btn btn-mini btn-primary" style="width: 60px">&laquo; previous</a>
+              <a class="btn btn-mini btn-primary" style="float: right; margin-right: 8px; width: 60px;">next &raquo;</a>
+            </p>
+          -->
+            <div id="table-of-contents">
+              <ul class="nav nav-list side-nav well sidebar-nav-fixed">
+                <li class="main"><a href="#quickstart">Quickstart</a></li>
+<li><a href="#serializers">Serializers</a></li>
+<li><a href="#views">Views</a></li>
+<li><a href="#urls">URLs</a></li>
+<li><a href="#settings">Settings</a></li>
+<li><a href="#testing-our-api">Testing our API</a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div id="main-content" class="span9">
+            <h1 id="quickstart">Quickstart</h1>
+<p>We're going to create a simple API to allow admin users to view and edit the users and groups in the system.</p>
+<p>Create a new Django project, and start a new app called <code>quickstart</code>.  Once you've set up a database and got everything synced and ready to go open up the app's directory and we'll get coding...</p>
+<h2 id="serializers">Serializers</h2>
+<p>First up we're going to define some serializers in <code>quickstart/serializers.py</code> that we'll use for our data representations.</p>
+<pre class="prettyprint lang-py"><code>from django.contrib.auth.models import User, Group
+from rest_framework import serializers
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'email', 'groups')
+
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    permissions = serializers.ManySlugRelatedField(
+        slug_field='codename',
+        queryset=Permission.objects.all()
+    )
+
+    class Meta:
+        model = Group
+        fields = ('url', 'name', 'permissions')
+</code></pre>
+<p>Notice that we're using hyperlinked relations in this case, with <code>HyperlinkedModelSerializer</code>.  You can also use primary key and various other relationships, but hyperlinking is good RESTful design.</p>
+<p>We've also overridden the <code>permission</code> field on the <code>GroupSerializer</code>.  In this case we don't want to use a hyperlinked representation, but instead use the list of permission codenames associated with the group, so we've used a <code>ManySlugRelatedField</code>, using the <code>codename</code> field for the representation.</p>
+<h2 id="views">Views</h2>
+<p>Right, we'd better write some views then.  Open <code>quickstart/views.py</code> and get typing.</p>
+<pre class="prettyprint lang-py"><code>from django.contrib.auth.models import User, Group
+from rest_framework import generics
+from rest_framework.decorators import api_view
+from rest_framework.reverse import reverse
+from rest_framework.response import Response
+from quickstart.serializers import UserSerializer, GroupSerializer
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    """
+    The entry endpoint of our API.
+    """
+    return Response({
+        'users': reverse('user-list', request=request),
+        'groups': reverse('group-list', request=request),
+    })
+
+class UserList(generics.ListCreateAPIView):
+    """
+    API endpoint that represents a list of users.
+    """
+    model = User
+    serializer_class = UserSerializer
+
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    API endpoint that represents a single user.
+    """
+    model = User
+    serializer_class = UserSerializer
+
+class GroupList(generics.ListCreateAPIView):
+    """
+    API endpoint that represents a list of groups.
+    """
+    model = Group
+    serializer_class = GroupSerializer
+
+class GroupDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    API endpoint that represents a single group.
+    """
+    model = Group
+    serializer_class = GroupSerializer
+</code></pre>
+<p>Let's take a moment to look at what we've done here before we move on.  We have one function-based view representing the root of the API, and four class-based views which map to our database models, and specify which serializers should be used for representing that data.  Pretty simple stuff.</p>
+<h2 id="urls">URLs</h2>
+<p>Okay, let's wire this baby up.  On to <code>quickstart/urls.py</code>...</p>
+<pre class="prettyprint lang-py"><code>from django.conf.urls import patterns, url, include
+from rest_framework.urlpatterns import format_suffix_patterns
+from quickstart.views import UserList, UserDetail, GroupList, GroupDetail
+
+urlpatterns = patterns('quickstart.views',
+    url(r'^$', 'api_root'),
+    url(r'^users/$', UserList.as_view(), name='user-list'),
+    url(r'^users/(?P&lt;pk&gt;\d+)/$', UserDetail.as_view(), name='user-detail'),
+    url(r'^groups/$', GroupList.as_view(), name='group-list'),
+    url(r'^groups/(?P&lt;pk&gt;\d+)/$', GroupDetail.as_view(), name='group-detail'),
+)
+
+# Format suffixes
+urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'api'])
+
+# Default login/logout views
+urlpatterns += patterns('',
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+)
+</code></pre>
+<p>There's a few things worth noting here.</p>
+<p>Firstly the names <code>user-detail</code> and <code>group-detail</code> are important.  We're using the default hyperlinked relationships without explicitly specifying the view names, so we need to use names of the style <code>{modelname}-detail</code> to represent the model instance views.</p>
+<p>Secondly, we're modifying the urlpatterns using <code>format_suffix_patterns</code>, to append optional <code>.json</code> style suffixes to our URLs.</p>
+<p>Finally, we're including default login and logout views for use with the browsable API.  That's optional, but useful if your API requires authentication and you want to use the browseable API.</p>
+<h2 id="settings">Settings</h2>
+<p>We'd also like to set a few global settings.  We'd like to turn on pagination, and we want our API to only be accessible to admin users.</p>
+<pre class="prettyprint lang-py"><code>INSTALLED_APPS = (
+    ...
+    'rest_framework',
+)
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGINATE_BY': 10
+}
+</code></pre>
+<p>Okay, that's us done.</p>
+<hr />
+<h2 id="testing-our-api">Testing our API</h2>
+<p>We can now access our API, both from the command-line, using tools like <code>curl</code>...</p>
+<pre class="prettyprint lang-py"><code>bash: curl -H 'Accept: application/json; indent=4' -u admin:password http://127.0.0.1:8000/users/ 
+{
+    "count": 2, 
+    "next": null, 
+    "previous": null, 
+    "results": [
+        {
+            "email": "admin@example.com", 
+            "groups": [], 
+            "url": "http://127.0.0.1:8000/users/1/", 
+            "username": "admin"
+        }, 
+        {
+            "email": "tom@example.com", 
+            "groups": [                ], 
+            "url": "http://127.0.0.1:8000/users/2/", 
+            "username": "tom"
+        }
+    ]
+}
+</code></pre>
+<p>Or directly through the browser...</p>
+<p><img alt="Quick start image" src="../img/quickstart.png" /></p>
+<p>Great, that was easy!</p>
+<p>If you want to get a more in depth understanding of how REST framework fits together head on over to <a href="1-serialization.html">the tutorial</a>, or start browsing the <a href="../#api-guide">API guide</a>.</p>
+          </div><!--/span-->
+        </div><!--/row-->
+      </div><!--/.fluid-container-->
+    </div><!--/.body content-->
+
+      <div id="push"></div>
+  </div><!--/.wrapper -->
+
+  <footer class="span12">
+    <p><a href="http://www.passtiche.com/">Passtiche</a>.</a></p>
+  </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/docs/js/jquery-1.8.1-min.js"></script>
+    <script src="/docs/js/prettify-1.0.js"></script>
+    <script src="/docs/js/bootstrap-2.1.1-min.js"></script>
+    <script>
+      //$('.side-nav').scrollspy()
+      var shiftWindow = function() { scrollBy(0, -50) };
+      if (location.hash) shiftWindow();
+      window.addEventListener("hashchange", shiftWindow);
+
+      $('.dropdown-menu').on('click touchstart', function(event) {
+        event.stopPropagation();
+      });
+    </script>
+</body></html>

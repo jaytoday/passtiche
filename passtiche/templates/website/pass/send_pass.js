@@ -1,6 +1,6 @@
 
-$('#send_pass_btn').on('click', function(){
-	
+$('.send_pass_btn').on('click', function(){
+
 	var pass_data = { }
 
 	//pass_data['theme'] = send_pass_modal.find('#inputThemes').find('input:checked').val();
@@ -14,24 +14,28 @@ $('#send_pass_btn').on('click', function(){
 		return sendDialogError("Valid 'From' Email Address is Required");
 	*/
 	
-	if ($(this).parents('.send_form:first').attr('id') == 'send_form_download'){
+	var send_form = $(this).parents('.send_form:first');
+
+	if (send_form.attr('id') == 'send_form_download'){
 		var download = true;
 		pass_data['pass_template'] = send_pass_modal.data('pass_template_keyname');
 	}else{
+		if (!send_pass_modal.data('user_pass'))
+			console.error('no user pass');
 		var download = false;
 		pass_data['user_pass'] = send_pass_modal.data('user_pass') 
 	}
 
-	to_email = send_pass_modal.find('#inputToEmail').val();	
+	to_email = send_form.find('#inputToEmail').val();	
 	if (to_email.indexOf('@') > 1 )
 		pass_data['to_email'] = to_email;
 	
-	to_phone = send_pass_modal.find('#inputPhone').val();	
+	to_phone = send_form.find('#inputPhone').val();	
 	if (to_phone.length > 9)
 		pass_data['to_phone'] = to_phone;
 
 	if (!pass_data['to_email'] && !pass_data['to_phone'])	
-		return sendDialogError("Valid Email Address or Phone Number is Required")	
+		return sendDialogError("Valid Email Address or Phone Number is Required");	
 
 
 if (download && pass_data['to_phone'])

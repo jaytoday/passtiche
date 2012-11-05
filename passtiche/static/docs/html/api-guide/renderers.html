@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Passtiche Docs</title>
+    <link href="/docs/img/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/docs/css/prettify.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/default.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  /*
+  _gaq.push(['_setAccount', 'UA-18852272-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+*/
+
+    </script>
+  </head>
+  <body onload="prettyPrint()" class="renderers-page">
+
+  <div class="wrapper">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a>
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/docs"><img src="/static/images/logo/icon_small.png" style="
+    float: left;
+    height: 20px;
+    margin-right: 8px;"> Passtiche Documentation</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/docs">Home</a></li>
+               <li><a href="/docs/tutorial/quickstart.html">Get Started</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Guide <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+
+                  <li><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
+                  <li><a href="/docs/api_methods/update_pass.html">Update Pass</a></li>
+                  <li><a href="/docs/api_methods/find_location.html">Find Location</a></li>
+                  <li><a href="/docs/api_methods/update_location.html">Update Location</a></li> 
+                  <li><a href="/docs/api_methods/find_list.html">Find List</a></li>
+                  <li><a href="/docs/api_methods/update_list.html">Update List</a></li>  
+
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
+                  <li><a href="/docs/api-guide/exceptions.html">Exceptions</a></li>
+                  <li><a href="/docs/api-guide/status-codes.html">Status codes</a></li>
+                  <li><a href="/docs/api-guide/settings.html">Settings</a></li>       
+                  <li><a href="/docs/topics/button.html">Button</a></li>
+                  <li><a href="/docs/topics/release-notes.html">Release Notes</a></li>
+                  <li><a href="/docs/topics/credits.html">Credits</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <!-- TODO
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Version: 2.0.0 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Trunk</a></li>
+                  <li><a href="#">2.0.0</a></li>
+                </ul>
+              </li>
+            -->
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="body-content">
+      <div class="container-fluid">
+        <div class="row-fluid">
+
+          <div class="span3">
+            <!-- TODO
+            <p style="margin-top: -12px">
+              <a class="btn btn-mini btn-primary" style="width: 60px">&laquo; previous</a>
+              <a class="btn btn-mini btn-primary" style="float: right; margin-right: 8px; width: 60px;">next &raquo;</a>
+            </p>
+          -->
+            <div id="table-of-contents">
+              <ul class="nav nav-list side-nav well sidebar-nav-fixed">
+                <li class="main"><a href="#renderers">Renderers</a></li>
+<li><a href="#how-the-renderer-is-determined">How the renderer is determined</a></li>
+<li><a href="#setting-the-renderers">Setting the renderers</a></li>
+<li><a href="#ordering-of-renderer-classes">Ordering of renderer classes</a></li>
+<li class="main"><a href="#api-reference">API Reference</a></li>
+<li><a href="#jsonrenderer">JSONRenderer</a></li>
+<li><a href="#jsonprenderer">JSONPRenderer</a></li>
+<li><a href="#yamlrenderer">YAMLRenderer</a></li>
+<li><a href="#xmlrenderer">XMLRenderer</a></li>
+<li><a href="#templatehtmlrenderer">TemplateHTMLRenderer</a></li>
+<li><a href="#statichtmlrenderer">StaticHTMLRenderer</a></li>
+<li><a href="#browsableapirenderer">BrowsableAPIRenderer</a></li>
+<li class="main"><a href="#custom-renderers">Custom renderers</a></li>
+<li><a href="#example">Example</a></li>
+<li class="main"><a href="#advanced-renderer-usage">Advanced renderer usage</a></li>
+<li><a href="#varying-behaviour-by-media-type">Varying behaviour by media type</a></li>
+<li><a href="#designing-your-media-types">Designing your media types</a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div id="main-content" class="span9">
+            <p><a class="github" href="https://github.com/passtiche/passtiche-client/tree/master/docs/renderers.py"><span class="label label-info">renderers.py</span></a></p>
+<h1 id="renderers">Renderers</h1>
+<blockquote>
+<p>Before a TemplateResponse instance can be returned to the client, it must be rendered. The rendering process takes the intermediate representation of template and context, and turns it into the final byte stream that can be served to the client.</p>
+<p>&mdash; <a href="https://docs.djangoproject.com/en/dev/ref/template-response/#the-rendering-process">Django documentation</a></p>
+</blockquote>
+<p>REST framework includes a number of built in Renderer classes, that allow you to return responses with various media types.  There is also support for defining your own custom renderers, which gives you the flexibility to design your own media types.</p>
+<h2 id="how-the-renderer-is-determined">How the renderer is determined</h2>
+<p>The set of valid renderers for a view is always defined as a list of classes.  When a view is entered REST framework will perform content negotiation on the incoming request, and determine the most appropriate renderer to satisfy the request.</p>
+<p>The basic process of content negotiation involves examining the request's <code>Accept</code> header, to determine which media types it expects in the response.  Optionally, format suffixes on the URL may be used to explicitly request a particular representation.  For example the URL <code>http://example.com/api/users_count.json</code> might be an endpoint that always returns JSON data.</p>
+<p>For more information see the documentation on <a href="content-negotiation.html">content negotation</a>.</p>
+<h2 id="setting-the-renderers">Setting the renderers</h2>
+<p>The default set of renderers may be set globally, using the <code>DEFAULT_RENDERER_CLASSES</code> setting.  For example, the following settings would use <code>YAML</code> as the main media type and also include the self describing API.</p>
+<pre class="prettyprint lang-py"><code>REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.YAMLRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}
+</code></pre>
+<p>You can also set the renderers used for an individual view, using the <code>APIView</code> class based views.</p>
+<pre class="prettyprint lang-py"><code>class UserCountView(APIView):
+    """
+    A view that returns the count of active users, in JSON or JSONp.
+    """
+    renderer_classes = (JSONRenderer, JSONPRenderer)
+
+    def get(self, request, format=None):
+        user_count = User.objects.filter(active=True).count()
+        content = {'user_count': user_count}
+        return Response(content)
+</code></pre>
+<p>Or, if you're using the <code>@api_view</code> decorator with function based views.</p>
+<pre class="prettyprint lang-py"><code>@api_view(['GET'])
+@renderer_classes((JSONRenderer, JSONPRenderer))
+def user_count_view(request, format=None):
+    """
+    A view that returns the count of active users, in JSON or JSONp.
+    """
+    user_count = User.objects.filter(active=True).count()
+    content = {'user_count': user_count}
+    return Response(content)
+</code></pre>
+<h2 id="ordering-of-renderer-classes">Ordering of renderer classes</h2>
+<p>It's important when specifying the renderer classes for your API to think about what priority you want to assign to each media type.  If a client underspecifies the representations it can accept, such as sending an <code>Accept: */*</code> header, or not including an <code>Accept</code> header at all, then REST framework will select the first renderer in the list to use for the response.</p>
+<p>For example if your API serves JSON responses and the HTML browseable API, you might want to make <code>JSONRenderer</code> your default renderer, in order to send <code>JSON</code> responses to clients that do not specify an <code>Accept</code> header.</p>
+<p>If your API includes views that can serve both regular webpages and API responses depending on the request, then you might consider making <code>TemplateHTMLRenderer</code> your default renderer, in order to play nicely with older browsers that send <a href="http://www.gethifi.com/blog/browser-rest-http-accept-headers">broken accept headers</a>.</p>
+<hr />
+<h1 id="api-reference">API Reference</h1>
+<h2 id="jsonrenderer">JSONRenderer</h2>
+<p>Renders the request data into <code>JSON</code>.</p>
+<p>The client may additionally include an <code>'indent'</code> media type parameter, in which case the returned <code>JSON</code> will be indented.  For example <code>Accept: application/json; indent=4</code>.</p>
+<p><strong>.media_type</strong>: <code>application/json</code></p>
+<p><strong>.format</strong>: <code>'.json'</code></p>
+<h2 id="jsonprenderer">JSONPRenderer</h2>
+<p>Renders the request data into <code>JSONP</code>.  The <code>JSONP</code> media type provides a mechanism of allowing cross-domain AJAX requests, by wrapping a <code>JSON</code> response in a javascript callback.</p>
+<p>The javascript callback function must be set by the client including a <code>callback</code> URL query parameter.  For example <code>http://example.com/api/users?callback=jsonpCallback</code>.  If the callback function is not explicitly set by the client it will default to <code>'callback'</code>.</p>
+<p><strong>Note</strong>: If you require cross-domain AJAX requests, you may also want to consider using <a href="http://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a> as an alternative to <code>JSONP</code>.</p>
+<p><strong>.media_type</strong>: <code>application/javascript</code></p>
+<p><strong>.format</strong>: <code>'.jsonp'</code></p>
+<h2 id="yamlrenderer">YAMLRenderer</h2>
+<p>Renders the request data into <code>YAML</code>. </p>
+<p><strong>.media_type</strong>: <code>application/yaml</code></p>
+<p><strong>.format</strong>: <code>'.yaml'</code></p>
+<h2 id="xmlrenderer">XMLRenderer</h2>
+<p>Renders REST framework's default style of <code>XML</code> response content.</p>
+<p>Note that the <code>XML</code> markup language is used typically used as the base language for more strictly defined domain-specific languages, such as <code>RSS</code>, <code>Atom</code>, and <code>XHTML</code>.</p>
+<p>If you are considering using <code>XML</code> for your API, you may want to consider implementing a custom renderer and parser for your specific requirements, and using an existing domain-specific media-type, or creating your own custom XML-based media-type.</p>
+<p><strong>.media_type</strong>: <code>application/xml</code></p>
+<p><strong>.format</strong>: <code>'.xml'</code></p>
+<h2 id="templatehtmlrenderer">TemplateHTMLRenderer</h2>
+<p>Renders data to HTML, using Django's standard template rendering.
+Unlike other renderers, the data passed to the <code>Response</code> does not need to be serialized.  Also, unlike other renderers, you may want to include a <code>template_name</code> argument when creating the <code>Response</code>.</p>
+<p>The TemplateHTMLRenderer will create a <code>RequestContext</code>, using the <code>response.data</code> as the context dict, and determine a template name to use to render the context.</p>
+<p>The template name is determined by (in order of preference):</p>
+<ol>
+<li>An explicit <code>.template_name</code> attribute set on the response.</li>
+<li>An explicit <code>.template_name</code> attribute set on this class.</li>
+<li>The return result of calling <code>view.get_template_names()</code>.</li>
+</ol>
+<p>An example of a view that uses <code>TemplateHTMLRenderer</code>:</p>
+<pre class="prettyprint lang-py"><code>class UserInstance(generics.RetrieveUserAPIView):
+    """
+    A view that returns a templated HTML representations of a given user.
+    """
+    model = Users
+    renderer_classes = (TemplateHTMLRenderer,)
+
+    def get(self, request, *args, **kwargs)
+        self.object = self.get_object()
+        return Response({'user': self.object}, template_name='user_detail.html')
+</code></pre>
+<p>You can use <code>TemplateHTMLRenderer</code> either to return regular HTML pages using REST framework, or to return both HTML and API responses from a single endpoint.</p>
+<p>If you're building websites that use <code>TemplateHTMLRenderer</code> along with other renderer classes, you should consider listing <code>TemplateHTMLRenderer</code> as the first class in the <code>renderer_classes</code> list, so that it will be prioritised first even for browsers that send poorly formed <code>ACCEPT:</code> headers.</p>
+<p><strong>.media_type</strong>: <code>text/html</code></p>
+<p><strong>.format</strong>: <code>'.html'</code></p>
+<p>See also: <code>StaticHTMLRenderer</code></p>
+<h2 id="statichtmlrenderer">StaticHTMLRenderer</h2>
+<p>A simple renderer that simply returns pre-rendered HTML.  Unlike other renderers, the data passed to the response object should be a string representing the content to be returned.</p>
+<p>An example of a view that uses <code>TemplateHTMLRenderer</code>:</p>
+<pre class="prettyprint lang-py"><code>@api_view(('GET',))
+@renderer_classes((StaticHTMLRenderer,))
+def simple_html_view(request): 
+    data = '&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello, world&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;'
+    return Response(data)
+</code></pre>
+<p>You can use <code>TemplateHTMLRenderer</code> either to return regular HTML pages using REST framework, or to return both HTML and API responses from a single endpoint.</p>
+<p><strong>.media_type</strong>: <code>text/html</code></p>
+<p><strong>.format</strong>: <code>'.html'</code></p>
+<p>See also: <code>TemplateHTMLRenderer</code></p>
+<h2 id="browsableapirenderer">BrowsableAPIRenderer</h2>
+<p>Renders data into HTML for the Browseable API.  This renderer will determine which other renderer would have been given highest priority, and use that to display an API style response within the HTML page.</p>
+<p><strong>.media_type</strong>: <code>text/html</code></p>
+<p><strong>.format</strong>: <code>'.api'</code></p>
+<hr />
+<h1 id="custom-renderers">Custom renderers</h1>
+<p>To implement a custom renderer, you should override <code>BaseRenderer</code>, set the <code>.media_type</code> and <code>.format</code> properties, and implement the <code>.render(self, data, media_type=None, renderer_context=None)</code> method.</p>
+<p>The arguments passed to the <code>.render()</code> method are:</p>
+<h3 id="data"><code>data</code></h3>
+<p>The request data, as set by the <code>Response()</code> instantiation.</p>
+<h3 id="media_typenone"><code>media_type=None</code></h3>
+<p>Optional. If provided, this is the accepted media type, as determined by the content negotiation stage.</p>
+<p>Depending on the client's <code>Accept:</code> header, this may be more specific than the renderer's <code>media_type</code> attribute, and may include media type parameters.  For example <code>"application/json; nested=true"</code>.</p>
+<h3 id="renderer_contextnone"><code>renderer_context=None</code></h3>
+<p>Optional. If provided, this is a dictionary of contextual information provided by the view.</p>
+<p>By default this will include the following keys: <code>view</code>, <code>request</code>, <code>response</code>, <code>args</code>, <code>kwargs</code>.</p>
+<h2 id="example">Example</h2>
+<p>The following is an example plaintext renderer that will return a response with the <code>data</code> parameter as the content of the response.</p>
+<pre class="prettyprint lang-py"><code>from django.utils.encoding import smart_unicode
+from rest_framework import renderers
+
+class PlainText(renderers.BaseRenderer):
+    media_type = 'text/plain'
+    format = 'txt'
+
+    def render(self, data, media_type=None, renderer_context=None):
+        if isinstance(data, basestring):
+            return data
+        return smart_unicode(data)
+</code></pre>
+<hr />
+<h1 id="advanced-renderer-usage">Advanced renderer usage</h1>
+<p>You can do some pretty flexible things using REST framework's renderers.  Some examples...</p>
+<ul>
+<li>Provide either flat or nested representations from the same endpoint, depending on the requested media type.</li>
+<li>Serve both regular HTML webpages, and JSON based API responses from the same endpoints.</li>
+<li>Specify multiple types of HTML representation for API clients to use.</li>
+<li>Underspecify a renderer's media type, such as using <code>media_type = 'image/*'</code>, and use the <code>Accept</code> header to vary the encoding of the response. </li>
+</ul>
+<h2 id="varying-behaviour-by-media-type">Varying behaviour by media type</h2>
+<p>In some cases you might want your view to use different serialization styles depending on the accepted media type.  If you need to do this you can access <code>request.accepted_renderer</code> to determine the negotiated renderer that will be used for the response.</p>
+<p>For example:</p>
+<pre class="prettyprint lang-py"><code>@api_view(('GET',))
+@renderer_classes((TemplateHTMLRenderer, JSONRenderer))
+def list_users(request):
+    """
+    A view that can return JSON or HTML representations
+    of the users in the system.
+    """
+    queryset = Users.objects.filter(active=True)
+
+    if request.accepted_renderer.format == 'html':
+        # TemplateHTMLRenderer takes a context dict,
+        # and additionally requires a 'template_name'.
+        # It does not require serialization.
+        data = {'users': queryset}
+        return Response(data, template_name='list_users.html')
+
+    # JSONRenderer requires serialized data as normal.
+    serializer = UserSerializer(instance=queryset)
+    data = serializer.data
+    return Response(data)
+</code></pre>
+<h2 id="designing-your-media-types">Designing your media types</h2>
+<p>For the purposes of many Web APIs, simple <code>JSON</code> responses with hyperlinked relations may be sufficient.  If you want to fully embrace RESTful design and <a href="http://timelessrepo.com/haters-gonna-hateoas">HATEOAS</a> you'll need to consider the design and usage of your media types in more detail.</p>
+<p>In <a href="http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven">the words of Roy Fielding</a>, "A REST API should spend almost all of its descriptive effort in defining the media type(s) used for representing resources and driving application state, or in defining extended relation names and/or hypertext-enabled mark-up for existing standard media types.".</p>
+<p>For good examples of custom media types, see GitHub's use of a custom <a href="http://developer.github.com/v3/media/">application/vnd.github+json</a> media type, and Mike Amundsen's IANA approved <a href="http://www.amundsen.com/media-types/collection/">application/vnd.collection+json</a> JSON-based hypermedia.</p>
+          </div><!--/span-->
+        </div><!--/row-->
+      </div><!--/.fluid-container-->
+    </div><!--/.body content-->
+
+      <div id="push"></div>
+  </div><!--/.wrapper -->
+
+  <footer class="span12">
+    <p><a href="http://www.passtiche.com/">Passtiche</a>.</a></p>
+  </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/docs/js/jquery-1.8.1-min.js"></script>
+    <script src="/docs/js/prettify-1.0.js"></script>
+    <script src="/docs/js/bootstrap-2.1.1-min.js"></script>
+    <script>
+      //$('.side-nav').scrollspy()
+      var shiftWindow = function() { scrollBy(0, -50) };
+      if (location.hash) shiftWindow();
+      window.addEventListener("hashchange", shiftWindow);
+
+      $('.dropdown-menu').on('click touchstart', function(event) {
+        event.stopPropagation();
+      });
+    </script>
+</body></html>

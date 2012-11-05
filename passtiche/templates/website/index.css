@@ -366,8 +366,7 @@ padding: 4px 8px;
 
 img#pass_preview{
 width: 100%;
-max-height: 150px;
-border: 5px;
+height: 56px;
 border-radius: 5px;
 box-shadow: 2px 2px rgba(100, 100, 100, .6);
 }

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Passtiche Docs</title>
+    <link href="/docs/img/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/docs/css/prettify.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/default.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  /*
+  _gaq.push(['_setAccount', 'UA-18852272-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+*/
+
+    </script>
+  </head>
+  <body onload="prettyPrint()" class="responses-page">
+
+  <div class="wrapper">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a>
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/docs"><img src="/static/images/logo/icon_small.png" style="
+    float: left;
+    height: 20px;
+    margin-right: 8px;"> Passtiche Documentation</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/docs">Home</a></li>
+               <li><a href="/docs/tutorial/quickstart.html">Get Started</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Guide <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+
+                  <li><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
+                  <li><a href="/docs/api_methods/update_pass.html">Update Pass</a></li>
+                  <li><a href="/docs/api_methods/find_location.html">Find Location</a></li>
+                  <li><a href="/docs/api_methods/update_location.html">Update Location</a></li> 
+                  <li><a href="/docs/api_methods/find_list.html">Find List</a></li>
+                  <li><a href="/docs/api_methods/update_list.html">Update List</a></li>  
+
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
+                  <li><a href="/docs/api-guide/exceptions.html">Exceptions</a></li>
+                  <li><a href="/docs/api-guide/status-codes.html">Status codes</a></li>
+                  <li><a href="/docs/api-guide/settings.html">Settings</a></li>       
+                  <li><a href="/docs/topics/button.html">Button</a></li>
+                  <li><a href="/docs/topics/release-notes.html">Release Notes</a></li>
+                  <li><a href="/docs/topics/credits.html">Credits</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <!-- TODO
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Version: 2.0.0 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Trunk</a></li>
+                  <li><a href="#">2.0.0</a></li>
+                </ul>
+              </li>
+            -->
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="body-content">
+      <div class="container-fluid">
+        <div class="row-fluid">
+
+          <div class="span3">
+            <!-- TODO
+            <p style="margin-top: -12px">
+              <a class="btn btn-mini btn-primary" style="width: 60px">&laquo; previous</a>
+              <a class="btn btn-mini btn-primary" style="float: right; margin-right: 8px; width: 60px;">next &raquo;</a>
+            </p>
+          -->
+            <div id="table-of-contents">
+              <ul class="nav nav-list side-nav well sidebar-nav-fixed">
+                <li class="main"><a href="#responses">Responses</a></li>
+<li class="main"><a href="#creating-responses">Creating responses</a></li>
+<li><a href="#response()">Response()</a></li>
+<li class="main"><a href="#attributes">Attributes</a></li>
+<li><a href="#data">.data</a></li>
+<li><a href="#status_code">.status_code</a></li>
+<li><a href="#content">.content</a></li>
+<li><a href="#template_name">.template_name</a></li>
+<li><a href="#accepted_renderer">.accepted_renderer</a></li>
+<li><a href="#accepted_media_type">.accepted_media_type</a></li>
+<li><a href="#renderer_context">.renderer_context</a></li>
+<li class="main"><a href="#standard-httpresponse-attributes">Standard HttpResponse attributes</a></li>
+<li><a href="#render()">.render()</a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div id="main-content" class="span9">
+            <p><a class="github" href="https://github.com/passtiche/passtiche-client/tree/master/docs/response.py"><span class="label label-info">response.py</span></a></p>
+<h1 id="responses">Responses</h1>
+<blockquote>
+<p>Unlike basic HttpResponse objects, TemplateResponse objects retain the details of the context that was provided by the view to compute the response. The final output of the response is not computed until it is needed, later in the response process.</p>
+<p>&mdash; <a href="https://docs.djangoproject.com/en/dev/ref/template-response/">Django documentation</a></p>
+</blockquote>
+<p>REST framework supports HTTP content negotiation by providing a <code>Response</code> class which allows you to return content that can be rendered into multiple content types, depending on the client request.</p>
+<p>The <code>Response</code> class subclasses Django's <code>SimpleTemplateResponse</code>.  <code>Response</code> objects are initialised with data, which should consist of native python primatives.  REST framework then uses standard HTTP content negotiation to determine how it should render the final response content.</p>
+<p>There's no requirement for you to use the <code>Response</code> class, you can also return regular <code>HttpResponse</code> objects from your views if you want, but it provides a nicer interface for returning Web API responses.</p>
+<p>Unless you want to heavily customize REST framework for some reason, you should always use an <code>APIView</code> class or <code>@api_view</code> function for views that return <code>Response</code> objects.  Doing so ensures that the view can perform content negotiation and select the appropriate renderer for the response, before it is returned from the view.</p>
+<hr />
+<h1 id="creating-responses">Creating responses</h1>
+<h2 id="response">Response()</h2>
+<p><strong>Signature:</strong> <code>Response(data, status=None, template_name=None, headers=None)</code></p>
+<p>Unlike regular <code>HttpResponse</code> objects, you do not instantiate <code>Response</code> objects with rendered content.  Instead you pass in unrendered data, which may consist of any python primatives.</p>
+<p>The renderers used by the <code>Response</code> class cannot natively handle complex datatypes such as Django model instances, so you need to serialize the data into primative datatypes before creating the <code>Response</code> object.</p>
+<p>You can use REST framework's <code>Serializer</code> classes to perform this data serialization, or use your own custom serialization.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>data</code>: The serialized data for the response.</li>
+<li><code>status</code>: A status code for the response.  Defaults to 200.  See also <a href="status-codes.html">status codes</a>.</li>
+<li><code>template_name</code>: A template name to use if <code>HTMLRenderer</code> is selected.</li>
+<li><code>headers</code>: A dictionary of HTTP headers to use in the response.</li>
+</ul>
+<hr />
+<h1 id="attributes">Attributes</h1>
+<h2 id="data">.data</h2>
+<p>The unrendered content of a <code>Request</code> object.</p>
+<h2 id="status_code">.status_code</h2>
+<p>The numeric status code of the HTTP response.</p>
+<h2 id="content">.content</h2>
+<p>The rendered content of the response.  The <code>.render()</code> method must have been called before <code>.content</code> can be accessed.</p>
+<h2 id="template_name">.template_name</h2>
+<p>The <code>template_name</code>, if supplied.  Only required if <code>HTMLRenderer</code> or some other custom template renderer is the accepted renderer for the reponse.</p>
+<h2 id="accepted_renderer">.accepted_renderer</h2>
+<p>The renderer instance that will be used to render the response.</p>
+<p>Set automatically by the <code>APIView</code> or <code>@api_view</code> immediately before the response is returned from the view.</p>
+<h2 id="accepted_media_type">.accepted_media_type</h2>
+<p>The media type that was selected by the content negotiation stage.</p>
+<p>Set automatically by the <code>APIView</code> or <code>@api_view</code> immediately before the response is returned from the view.</p>
+<h2 id="renderer_context">.renderer_context</h2>
+<p>A dictionary of additional context information that will be passed to the renderer's <code>.render()</code> method.</p>
+<p>Set automatically by the <code>APIView</code> or <code>@api_view</code> immediately before the response is returned from the view.</p>
+<hr />
+<h1 id="standard-httpresponse-attributes">Standard HttpResponse attributes</h1>
+<p>The <code>Response</code> class extends <code>SimpleTemplateResponse</code>, and all the usual attributes and methods are also available on the response.  For example you can set headers on the response in the standard way:</p>
+<pre class="prettyprint lang-py"><code>response = Response()
+response['Cache-Control'] = 'no-cache'
+</code></pre>
+<h2 id="render">.render()</h2>
+<p><strong>Signature:</strong> <code>.render()</code></p>
+<p>As with any other <code>TemplateResponse</code>, this method is called to render the serialized data of the response into the final response content.  When <code>.render()</code> is called, the response content will be set to the result of calling the <code>.render(data, accepted_media_type, renderer_context)</code> method on the <code>accepted_renderer</code> instance.</p>
+<p>You won't typically need to call <code>.render()</code> yourself, as it's handled by Django's standard response cycle.</p>
+          </div><!--/span-->
+        </div><!--/row-->
+      </div><!--/.fluid-container-->
+    </div><!--/.body content-->
+
+      <div id="push"></div>
+  </div><!--/.wrapper -->
+
+  <footer class="span12">
+    <p><a href="http://www.passtiche.com/">Passtiche</a>.</a></p>
+  </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/docs/js/jquery-1.8.1-min.js"></script>
+    <script src="/docs/js/prettify-1.0.js"></script>
+    <script src="/docs/js/bootstrap-2.1.1-min.js"></script>
+    <script>
+      //$('.side-nav').scrollspy()
+      var shiftWindow = function() { scrollBy(0, -50) };
+      if (location.hash) shiftWindow();
+      window.addEventListener("hashchange", shiftWindow);
+
+      $('.dropdown-menu').on('click touchstart', function(event) {
+        event.stopPropagation();
+      });
+    </script>
+</body></html>

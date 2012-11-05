@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Passtiche Docs</title>
+    <link href="/docs/img/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/docs/css/prettify.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/default.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  /*
+  _gaq.push(['_setAccount', 'UA-18852272-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+*/
+
+    </script>
+  </head>
+  <body onload="prettyPrint()" class="browsable-api-page">
+
+  <div class="wrapper">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a>
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/docs">Django REST framework</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/docs">Home</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorial <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/docs/tutorial/quickstart.html">Quickstart</a></li>
+                  <li><a href="/docs/tutorial/1-serialization.html">1 - Serialization</a></li>
+                  <li><a href="/docs/tutorial/2-requests-and-responses.html">2 - Requests and responses</a></li>
+                  <li><a href="/docs/tutorial/3-class-based-views.html">3 - Class based views</a></li>
+                  <li><a href="/docs/tutorial/4-authentication-and-permissions.html">4 - Authentication and permissions</a></li>
+                  <li><a href="/docs/tutorial/5-relationships-and-hyperlinked-apis.html">5 - Relationships and hyperlinked APIs</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Guide <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/docs/api-guide/requests.html">Requests</a></li>
+                  <li><a href="/docs/api-guide/responses.html">Responses</a></li>
+                  <li><a href="/docs/api-guide/views.html">Views</a></li>
+                  <li><a href="/docs/api-guide/generic-views.html">Generic views</a></li>
+                  <li><a href="/docs/api-guide/parsers.html">Parsers</a></li>
+                  <li><a href="/docs/api-guide/renderers.html">Renderers</a></li>
+                  <li><a href="/docs/api-guide/serializers.html">Serializers</a></li>
+                  <li><a href="/docs/api-guide/fields.html">Serializer fields</a></li>
+                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
+                  <li><a href="/docs/api-guide/permissions.html">Permissions</a></li>
+                  <li><a href="/docs/api-guide/throttling.html">Throttling</a></li>
+                  <li><a href="/docs/api-guide/pagination.html">Pagination</a></li>
+                  <li><a href="/docs/api-guide/content-negotiation.html">Content negotiation</a></li>
+                  <li><a href="/docs/api-guide/format-suffixes.html">Format suffixes</a></li>
+                  <li><a href="/docs/api-guide/reverse.html">Returning URLs</a></li>
+                  <li><a href="/docs/api-guide/exceptions.html">Exceptions</a></li>
+                  <li><a href="/docs/api-guide/status-codes.html">Status codes</a></li>
+                  <li><a href="/docs/api-guide/settings.html">Settings</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/docs/topics/browser-enhancements.html">Browser enhancements</a></li>
+                  <li><a href="/docs/topics/browsable-api.html">The Browsable API</a></li>
+                  <li><a href="/docs/topics/rest-hypermedia-hateoas.html">REST, Hypermedia & HATEOAS</a></li>
+                  <li><a href="/docs/topics/rest-framework-2-announcement.html">2.0 Announcement</a></li>
+                  <li><a href="/docs/topics/release-notes.html">Release Notes</a></li>
+                  <li><a href="/docs/topics/credits.html">Credits</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <!-- TODO
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Version: 2.0.0 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Trunk</a></li>
+                  <li><a href="#">2.0.0</a></li>
+                </ul>
+              </li>
+            -->
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="body-content">
+      <div class="container-fluid">
+        <div class="row-fluid">
+
+          <div class="span3">
+            <!-- TODO
+            <p style="margin-top: -12px">
+              <a class="btn btn-mini btn-primary" style="width: 60px">&laquo; previous</a>
+              <a class="btn btn-mini btn-primary" style="float: right; margin-right: 8px; width: 60px;">next &raquo;</a>
+            </p>
+          -->
+            <div id="table-of-contents">
+              <ul class="nav nav-list side-nav well sidebar-nav-fixed">
+                <li class="main"><a href="#the-browsable-api">The Browsable API</a></li>
+<li><a href="#urls">URLs</a></li>
+<li><a href="#formats">Formats</a></li>
+<li><a href="#customizing">Customizing</a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div id="main-content" class="span9">
+            <h1 id="the-browsable-api">The Browsable API</h1>
+<blockquote>
+<p>It is a profoundly erroneous truism... that we should cultivate the habit of thinking of what we are doing. The precise opposite is the case. Civilization advances by extending the number of important operations which we can perform without thinking about them.</p>
+<p>&mdash; <a href="http://en.wikiquote.org/wiki/Alfred_North_Whitehead">Alfred North Whitehead</a>, An Introduction to Mathematics (1911)</p>
+</blockquote>
+<p>API may stand for Application <em>Programming</em> Interface, but humans have to be able to read the APIs, too; someone has to do the programming. Django REST Framework supports generating human-friendly HTML output for each resource when the <code>HTML</code> format is requested. These pages allow for easy browsing of resources, as well as forms for submitting data to the resources using <code>POST</code>, <code>PUT</code>, and <code>DELETE</code>.</p>
+<h2 id="urls">URLs</h2>
+<p>If you include fully-qualified URLs in your resource output, they will be 'urlized' and made clickable for easy browsing by humans. The <code>rest_framework</code> package includes a <a href="../api-guide/reverse.html"><code>reverse</code></a> helper for this purpose.</p>
+<h2 id="formats">Formats</h2>
+<p>By default, the API will return the format specified by the headers, which in the case of the browser is HTML. The format can be specified using <code>?format=</code> in the request, so you can look at the raw JSON response in a browser by adding <code>?format=json</code> to the URL. There are helpful extensions for viewing JSON in <a href="https://addons.mozilla.org/en-US/firefox/addon/jsonview/">Firefox</a> and <a href="https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc">Chrome</a>.</p>
+<h2 id="customizing">Customizing</h2>
+<p>To customize the look-and-feel, create a template called <code>api.html</code> and add it to your project, eg: <code>templates/rest_framework/api.html</code>, that extends the <code>rest_framework/base.html</code> template.</p>
+<p>The included browsable API template is built with <a href="http://getbootstrap.com">Bootstrap (2.1.1)</a>, making it easy to customize the look-and-feel.</p>
+<h3 id="theme">Theme</h3>
+<p>To replace the theme wholesale, add a <code>bootstrap_theme</code> block to your <code>api.html</code> and insert a <code>link</code> to the desired Bootstrap theme css file. This will completely replace the included theme.</p>
+<pre class="prettyprint lang-py"><code>{% block bootstrap_theme %}
+    &lt;link rel="stylesheet" href="/path/to/my/bootstrap.css" type="text/css"&gt;
+{% endblock %}
+</code></pre>
+<p>A suitable replacement theme can be generated using Bootstrap's <a href="http://twitter.github.com/bootstrap/customize.html#variables">Customize Tool</a>. Also, there are pre-made themes available at <a href="http://bootswatch.com/">Bootswatch</a>. To use any of the Bootswatch themes, simply download the theme's <code>bootstrap.min.css</code> file, add it to your project, and replace the default one as described above.</p>
+<p>You can also change the navbar variant, which by default is <code>navbar-inverse</code>, using the <code>bootstrap_navbar_variant</code> block. The empty <code>{% block bootstrap_navbar_variant %}{% endblock %}</code> will use the original Bootstrap navbar style.</p>
+<p>For more specific CSS tweaks, use the <code>extra_style</code> block instead.</p>
+<h3 id="blocks">Blocks</h3>
+<p>All of the blocks available in the browsable API base template that can be used in your <code>api.html</code>.</p>
+<ul>
+<li><code>blockbots</code>                  - <code>&lt;meta&gt;</code> tag that blocks crawlers</li>
+<li><code>bodyclass</code>                  - (empty) class attribute for the <code>&lt;body&gt;</code></li>
+<li><code>bootstrap_theme</code>            - CSS for the Bootstrap theme</li>
+<li><code>bootstrap_navbar_variant</code>   - CSS class for the navbar</li>
+<li><code>branding</code>                   - section of the navbar, see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap components</a></li>
+<li><code>breadcrumbs</code>                - Links showing resource nesting, allowing the user to go back up the resources. It's recommended to preserve these, but they can be overridden using the breadcrumbs block.</li>
+<li><code>extrastyle</code>                 - (empty) extra CSS for the page</li>
+<li><code>extrahead</code>                  - (empty) extra markup for the page <code>&lt;head&gt;</code></li>
+<li><code>footer</code>                     - Any copyright notices or similar footer materials can go here (by default right-aligned)</li>
+<li><code>global_heading</code>             - (empty) Use to insert content below the header but before the breadcrumbs.</li>
+<li><code>title</code>                      - title of the page</li>
+<li><code>userlinks</code>                  - This is a list of links on the right of the header, by default containing login/logout links. To add links instead of replace, use {{ block.super }} to preserve the authentication links.</li>
+</ul>
+<h4 id="components">Components</h4>
+<p>All of the <a href="http://twitter.github.com/bootstrap/components.html">Bootstrap components</a> are available.</p>
+<h5 id="tooltips">Tooltips</h5>
+<p>The browsable API makes use of the Bootstrap tooltips component. Any element with the <code>js-tooltip</code> class and a <code>title</code> attribute has that title content displayed in a tooltip on hover after a 1000ms delay.</p>
+<h3 id="advanced-customization">Advanced Customization</h3>
+<h4 id="context">Context</h4>
+<p>The context that's available to the template:</p>
+<ul>
+<li><code>allowed_methods</code>     : A list of methods allowed by the resource</li>
+<li><code>api_settings</code>        : The API settings</li>
+<li><code>available_formats</code>   : A list of formats allowed by the resource</li>
+<li><code>breadcrumblist</code>      : The list of links following the chain of nested resources</li>
+<li><code>content</code>             : The content of the API response</li>
+<li><code>description</code>         : The description of the resource, generated from its docstring</li>
+<li><code>name</code>                : The name of the resource</li>
+<li><code>post_form</code>           : A form instance for use by the POST form (if allowed)</li>
+<li><code>put_form</code>            : A form instance for use by the PUT form (if allowed)</li>
+<li><code>request</code>             : The request object</li>
+<li><code>response</code>            : The response object</li>
+<li><code>version</code>             : The version of Django REST Framework</li>
+<li><code>view</code>                : The view handling the request</li>
+<li><code>FORMAT_PARAM</code>        : The view can accept a format override</li>
+<li><code>METHOD_PARAM</code>        : The view can accept a method override</li>
+</ul>
+<h4 id="not-using-basehtml">Not using base.html</h4>
+<p>For more advanced customization, such as not having a Bootstrap basis or tighter integration with the rest of your site, you can simply choose not to have <code>api.html</code> extend <code>base.html</code>. Then the page content and capabilities are entirely up to you.</p>
+          </div><!--/span-->
+        </div><!--/row-->
+      </div><!--/.fluid-container-->
+    </div><!--/.body content-->
+
+      <div id="push"></div>
+  </div><!--/.wrapper -->
+
+  <footer class="span12">
+    <p>Sponsored by <a href="http://dabapps.com/">DabApps</a>.</a></p>
+  </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/docs/js/jquery-1.8.1-min.js"></script>
+    <script src="/docs/js/prettify-1.0.js"></script>
+    <script src="/docs/js/bootstrap-2.1.1-min.js"></script>
+    <script>
+      //$('.side-nav').scrollspy()
+      var shiftWindow = function() { scrollBy(0, -50) };
+      if (location.hash) shiftWindow();
+      window.addEventListener("hashchange", shiftWindow);
+
+      $('.dropdown-menu').on('click touchstart', function(event) {
+        event.stopPropagation();
+      });
+    </script>
+</body></html>

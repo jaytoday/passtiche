@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Passtiche Docs</title>
+    <link href="/docs/img/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/docs/css/prettify.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/default.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  /*
+  _gaq.push(['_setAccount', 'UA-18852272-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+*/
+
+    </script>
+  </head>
+  <body onload="prettyPrint()" class="fields-page">
+
+  <div class="wrapper">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a>
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/docs"><img src="/static/images/logo/icon_small.png" style="
+    float: left;
+    height: 20px;
+    margin-right: 8px;"> Passtiche Documentation</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/docs">Home</a></li>
+               <li><a href="/docs/tutorial/quickstart.html">Get Started</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Guide <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+
+                  <li><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
+                  <li><a href="/docs/api_methods/update_pass.html">Update Pass</a></li>
+                  <li><a href="/docs/api_methods/find_location.html">Find Location</a></li>
+                  <li><a href="/docs/api_methods/update_location.html">Update Location</a></li> 
+                  <li><a href="/docs/api_methods/find_list.html">Find List</a></li>
+                  <li><a href="/docs/api_methods/update_list.html">Update List</a></li>  
+
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
+                  <li><a href="/docs/api-guide/exceptions.html">Exceptions</a></li>
+                  <li><a href="/docs/api-guide/status-codes.html">Status codes</a></li>
+                  <li><a href="/docs/api-guide/settings.html">Settings</a></li>       
+                  <li><a href="/docs/topics/button.html">Button</a></li>
+                  <li><a href="/docs/topics/release-notes.html">Release Notes</a></li>
+                  <li><a href="/docs/topics/credits.html">Credits</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <!-- TODO
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Version: 2.0.0 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Trunk</a></li>
+                  <li><a href="#">2.0.0</a></li>
+                </ul>
+              </li>
+            -->
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="body-content">
+      <div class="container-fluid">
+        <div class="row-fluid">
+
+          <div class="span3">
+            <!-- TODO
+            <p style="margin-top: -12px">
+              <a class="btn btn-mini btn-primary" style="width: 60px">&laquo; previous</a>
+              <a class="btn btn-mini btn-primary" style="float: right; margin-right: 8px; width: 60px;">next &raquo;</a>
+            </p>
+          -->
+            <div id="table-of-contents">
+              <ul class="nav nav-list side-nav well sidebar-nav-fixed">
+                <li class="main"><a href="#serializer-fields">Serializer fields</a></li>
+<li><a href="#core-arguments">Core arguments</a></li>
+<li class="main"><a href="#generic-fields">Generic Fields</a></li>
+<li><a href="#field">Field</a></li>
+<li><a href="#writablefield">WritableField</a></li>
+<li><a href="#modelfield">ModelField</a></li>
+<li class="main"><a href="#typed-fields">Typed Fields</a></li>
+<li><a href="#booleanfield">BooleanField</a></li>
+<li><a href="#charfield">CharField</a></li>
+<li><a href="#choicefield">ChoiceField</a></li>
+<li><a href="#emailfield">EmailField</a></li>
+<li><a href="#datefield">DateField</a></li>
+<li><a href="#datetimefield">DateTimeField</a></li>
+<li><a href="#integerfield">IntegerField</a></li>
+<li><a href="#floatfield">FloatField</a></li>
+<li class="main"><a href="#relational-fields">Relational Fields</a></li>
+<li><a href="#relatedfield">RelatedField</a></li>
+<li><a href="#manyrelatedfield">ManyRelatedField</a></li>
+<li><a href="#primarykeyrelatedfield-/-manyprimarykeyrelatedfield">PrimaryKeyRelatedField / ManyPrimaryKeyRelatedField</a></li>
+<li><a href="#slugrelatedfield-/-manyslugrelatedfield">SlugRelatedField / ManySlugRelatedField</a></li>
+<li><a href="#hyperlinkedrelatedfield-/-manyhyperlinkedrelatedfield">HyperlinkedRelatedField / ManyHyperlinkedRelatedField</a></li>
+<li><a href="#hyperlinkedidentityfield">HyperLinkedIdentityField</a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div id="main-content" class="span9">
+            <p><a class="github" href="https://github.com/passtiche/passtiche-client/tree/master/docs/fields.py"><span class="label label-info">fields.py</span></a></p>
+<h1 id="serializer-fields">Serializer fields</h1>
+<blockquote>
+<p>Flat is better than nested.</p>
+<p>&mdash; <a href="http://www.python.org/dev/peps/pep-0020/">The Zen of Python</a></p>
+</blockquote>
+<p>Serializer fields handle converting between primative values and internal datatypes.  They also deal with validating input values, as well as retrieving and setting the values from their parent objects.</p>
+<hr />
+<p><strong>Note:</strong> The serializer fields are declared in fields.py, but by convention you should import them using <code>from rest_framework import serializers</code> and refer to fields as <code>serializers.&lt;FieldName&gt;</code>.</p>
+<hr />
+<h2 id="core-arguments">Core arguments</h2>
+<p>Each serializer field class constructor takes at least these arguments. Some Field classes take additional, field-specific arguments, but the following should always be accepted:</p>
+<h3 id="source"><code>source</code></h3>
+<p>The name of the attribute that will be used to populate the field.  May be a method that only takes a <code>self</code> argument, such as <code>Field(source='get_absolute_url')</code>, or may use dotted notation to traverse attributes, such as <code>Field(source='user.email')</code>.</p>
+<p>The value <code>source='*'</code> has a special meaning, and is used to indicate that the entire object should be passed through to the field.  This can be useful for creating nested representations.  (See the implementation of the <code>PaginationSerializer</code> class for an example.)</p>
+<p>Defaults to the name of the field.</p>
+<h3 id="read_only"><code>read_only</code></h3>
+<p>Set this to <code>True</code> to ensure that the field is used when serializing a representation, but is not used when updating an instance dureing deserialization.</p>
+<p>Defaults to <code>False</code></p>
+<h3 id="required"><code>required</code></h3>
+<p>Normally an error will be raised if a field is not supplied during deserialization.
+Set to false if this field is not required to be present during deserialization.</p>
+<p>Defaults to <code>True</code>.</p>
+<h3 id="default"><code>default</code></h3>
+<p>If set, this gives the default value that will be used for the field if none is supplied.  If not set the default behaviour is to not populate the attribute at all.</p>
+<h3 id="validators"><code>validators</code></h3>
+<p>A list of Django validators that should be used to validate deserialized values.</p>
+<h3 id="error_messages"><code>error_messages</code></h3>
+<p>A dictionary of error codes to error messages.</p>
+<h3 id="widget"><code>widget</code></h3>
+<p>Used only if rendering the field to HTML.
+This argument sets the widget that should be used to render the field.</p>
+<hr />
+<h1 id="generic-fields">Generic Fields</h1>
+<p>These generic fields are used for representing arbitrary model fields or the output of model methods.</p>
+<h2 id="field">Field</h2>
+<p>A generic, <strong>read-only</strong> field.  You can use this field for any attribute that does not need to support write operations.</p>
+<p>For example, using the following model.</p>
+<pre class="prettyprint lang-py"><code>class Account(models.Model):
+    owner = models.ForeignKey('auth.user')
+    name = models.CharField(max_length=100)
+    created = models.DateTimeField(auto_now_add=True)
+    payment_expiry = models.DateTimeField()
+
+    def has_expired(self):
+        now = datetime.datetime.now()
+        return now &gt; self.payment_expiry
+</code></pre>
+<p>A serializer definition that looked like this:</p>
+<pre class="prettyprint lang-py"><code>class AccountSerializer(serializers.HyperlinkedModelSerializer):
+    expired = Field(source='has_expired')
+
+    class Meta:
+        fields = ('url', 'owner', 'name', 'expired')
+</code></pre>
+<p>Would produce output similar to:</p>
+<pre class="prettyprint lang-py"><code>{
+    'url': 'http://example.com/api/accounts/3/',
+    'owner': 'http://example.com/api/users/12/',
+    'name': 'FooCorp business account', 
+    'expired': True
+}
+</code></pre>
+<p>By default, the <code>Field</code> class will perform a basic translation of the source value into primative datatypes, falling back to unicode representations of complex datatypes when necessary.</p>
+<p>You can customize this  behaviour by overriding the <code>.to_native(self, value)</code> method.</p>
+<h2 id="writablefield">WritableField</h2>
+<p>A field that supports both read and write operations.  By itself <code>WriteableField</code> does not perform any translation of input values into a given type.  You won't typically use this field directly, but you may want to override it and implement the <code>.to_native(self, value)</code> and <code>.from_native(self, value)</code> methods.</p>
+<h2 id="modelfield">ModelField</h2>
+<p>A generic field that can be tied to any arbitrary model field.  The <code>ModelField</code> class delegates the task of serialization/deserialization to it's associated model field.  This field can be used to create serializer fields for custom model fields, without having to create a new custom serializer field.</p>
+<p><strong>Signature:</strong> <code>ModelField(model_field=&lt;Django ModelField class&gt;)</code></p>
+<hr />
+<h1 id="typed-fields">Typed Fields</h1>
+<p>These fields represent basic datatypes, and support both reading and writing values.</p>
+<h2 id="booleanfield">BooleanField</h2>
+<p>A Boolean representation.</p>
+<p>Corresponds to <code>django.db.models.fields.BooleanField</code>.</p>
+<h2 id="charfield">CharField</h2>
+<p>A text representation, optionally validates the text to be shorter than <code>max_length</code> and longer than <code>min_length</code>.</p>
+<p>Corresponds to <code>django.db.models.fields.CharField</code>
+or <code>django.db.models.fields.TextField</code>.</p>
+<p><strong>Signature:</strong> <code>CharField(max_length=None, min_length=None)</code></p>
+<h2 id="choicefield">ChoiceField</h2>
+<p>A field that can accept a value out of a limited set of choices.</p>
+<h2 id="emailfield">EmailField</h2>
+<p>A text representation, validates the text to be a valid e-mail address.</p>
+<p>Corresponds to <code>django.db.models.fields.EmailField</code></p>
+<h2 id="datefield">DateField</h2>
+<p>A date representation.</p>
+<p>Corresponds to <code>django.db.models.fields.DateField</code></p>
+<h2 id="datetimefield">DateTimeField</h2>
+<p>A date and time representation.</p>
+<p>Corresponds to <code>django.db.models.fields.DateTimeField</code></p>
+<h2 id="integerfield">IntegerField</h2>
+<p>An integer representation.</p>
+<p>Corresponds to <code>django.db.models.fields.IntegerField</code>, <code>django.db.models.fields.SmallIntegerField</code>, <code>django.db.models.fields.PositiveIntegerField</code> and <code>django.db.models.fields.PositiveSmallIntegerField</code></p>
+<h2 id="floatfield">FloatField</h2>
+<p>A floating point representation.</p>
+<p>Corresponds to <code>django.db.models.fields.FloatField</code>.</p>
+<hr />
+<h1 id="relational-fields">Relational Fields</h1>
+<p>Relational fields are used to represent model relationships.  They can be applied to <code>ForeignKey</code>, <code>ManyToManyField</code> and <code>OneToOneField</code> relationships, as well as to reverse relationships, and custom relationships such as <code>GenericForeignKey</code>.</p>
+<h2 id="relatedfield">RelatedField</h2>
+<p>This field can be applied to any of the following:</p>
+<ul>
+<li>A <code>ForeignKey</code> field.</li>
+<li>A <code>OneToOneField</code> field.</li>
+<li>A reverse OneToOne relationship</li>
+<li>Any other "to-one" relationship.</li>
+</ul>
+<p>By default <code>RelatedField</code> will represent the target of the field using it's <code>__unicode__</code> method.</p>
+<p>You can customise this behaviour by subclassing <code>ManyRelatedField</code>, and overriding the <code>.to_native(self, value)</code> method.</p>
+<h2 id="manyrelatedfield">ManyRelatedField</h2>
+<p>This field can be applied to any of the following:</p>
+<ul>
+<li>A <code>ManyToManyField</code> field.</li>
+<li>A reverse ManyToMany relationship.</li>
+<li>A reverse ForeignKey relationship</li>
+<li>Any other "to-many" relationship.</li>
+</ul>
+<p>By default <code>ManyRelatedField</code> will represent the targets of the field using their <code>__unicode__</code> method.</p>
+<p>For example, given the following models:</p>
+<pre class="prettyprint lang-py"><code>class TaggedItem(models.Model):
+    """
+    Tags arbitrary model instances using a generic relation.
+
+    See: https://docs.djangoproject.com/en/dev/ref/contrib/contenttypes/
+    """
+    tag = models.SlugField()
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+
+    def __unicode__(self):
+        return self.tag
+
+class Bookmark(models.Model):
+    """
+    A bookmark consists of a URL, and 0 or more descriptive tags.
+    """
+    url = models.URLField()
+    tags = GenericRelation(TaggedItem)
+</code></pre>
+<p>And a model serializer defined like this:</p>
+<pre class="prettyprint lang-py"><code>class BookmarkSerializer(serializers.ModelSerializer):
+    tags = serializers.ManyRelatedField(source='tags')
+
+    class Meta:
+        model = Bookmark
+        exclude = ('id',)
+</code></pre>
+<p>Then an example output format for a Bookmark instance would be:</p>
+<pre class="prettyprint lang-py"><code>{
+    'tags': [u'django', u'python'],
+    'url': u'https://www.djangoproject.com/'
+}
+</code></pre>
+<h2 id="primarykeyrelatedfield-manyprimarykeyrelatedfield">PrimaryKeyRelatedField / ManyPrimaryKeyRelatedField</h2>
+<p><code>PrimaryKeyRelatedField</code> and <code>ManyPrimaryKeyRelatedField</code> will represent the target of the relationship using it's primary key.</p>
+<p>Be default these fields read-write, although you can change this behaviour using the <code>read_only</code> flag.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>queryset</code> - All relational fields must either set a queryset, or set <code>read_only=True</code></li>
+</ul>
+<h2 id="slugrelatedfield-manyslugrelatedfield">SlugRelatedField / ManySlugRelatedField</h2>
+<p><code>SlugRelatedField</code> and <code>ManySlugRelatedField</code> will represent the target of the relationship using a unique slug.</p>
+<p>Be default these fields read-write, although you can change this behaviour using the <code>read_only</code> flag.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>slug_field</code> - The field on the target that should used as the representation.  This should be a field that uniquely identifies any given instance.  For example, <code>username</code>.</li>
+<li><code>queryset</code> - All relational fields must either set a queryset, or set <code>read_only=True</code></li>
+</ul>
+<h2 id="hyperlinkedrelatedfield-manyhyperlinkedrelatedfield">HyperlinkedRelatedField / ManyHyperlinkedRelatedField</h2>
+<p><code>HyperlinkedRelatedField</code> and <code>ManyHyperlinkedRelatedField</code> will represent the target of the relationship using a hyperlink.</p>
+<p>Be default, <code>HyperlinkedRelatedField</code> is read-write, although you can change this behaviour using the <code>read_only</code> flag.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>view_name</code> - The view name that should be used as the target of the relationship.  <strong>required</strong>.</li>
+<li><code>format</code> - If using format suffixes, hyperlinked fields will use the same format suffix for the target unless overridden by using the <code>format</code> argument.</li>
+<li><code>queryset</code> - All relational fields must either set a queryset, or set <code>read_only=True</code></li>
+</ul>
+<h2 id="hyperlinkedidentityfield">HyperLinkedIdentityField</h2>
+<p>This field can be applied as an identity relationship, such as the <code>'url'</code> field on  a HyperlinkedModelSerializer.</p>
+<p>This field is always read-only.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>view_name</code> - The view name that should be used as the target of the relationship.  <strong>required</strong>.</li>
+<li><code>format</code> - If using format suffixes, hyperlinked fields will use the same format suffix for the target unless overridden by using the <code>format</code> argument.</li>
+</ul>
+          </div><!--/span-->
+        </div><!--/row-->
+      </div><!--/.fluid-container-->
+    </div><!--/.body content-->
+
+      <div id="push"></div>
+  </div><!--/.wrapper -->
+
+  <footer class="span12">
+    <p><a href="http://www.passtiche.com/">Passtiche</a>.</a></p>
+  </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/docs/js/jquery-1.8.1-min.js"></script>
+    <script src="/docs/js/prettify-1.0.js"></script>
+    <script src="/docs/js/bootstrap-2.1.1-min.js"></script>
+    <script>
+      //$('.side-nav').scrollspy()
+      var shiftWindow = function() { scrollBy(0, -50) };
+      if (location.hash) shiftWindow();
+      window.addEventListener("hashchange", shiftWindow);
+
+      $('.dropdown-menu').on('click touchstart', function(event) {
+        event.stopPropagation();
+      });
+    </script>
+</body></html>

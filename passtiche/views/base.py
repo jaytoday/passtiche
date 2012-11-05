@@ -50,7 +50,7 @@ class BaseHandler(tornado.web.RequestHandler):
     def write_error(self, status_code, **kwargs):
         
         import traceback
-        if self.settings.get("debug") and "exc_info" in kwargs:
+        if False:#self.settings.get("debug") and "exc_info" in kwargs:
             exc_info = kwargs["exc_info"]
             trace_info = ''.join(["%s<br/>" % line for line in traceback.format_exception(*exc_info)])
             request_info = ''.join(["<strong>%s</strong>: %s<br/>" % (k, self.request.__dict__[k] ) for k in self.request.__dict__.keys()])
@@ -103,18 +103,6 @@ class BaseHandler(tornado.web.RequestHandler):
         self._finished = True
         return
         
-        
-    def error_output(self, error, err_msg):        
-        context = { 
-            'title': 'Unexpected Error',
-            'message': "An unexpected error occurred while loading this page.<br/><br/> "
-                + "We will take a look at this problem as soon as possible.<br/>"
-                + "Email us at <b>team@fitwand.com</b> if we can do anything to help."
-            }
-        return self.write('Error: %s' % err_msg)
-        #return self.render("mobile/static_page.html", **context)  
-        
-                   
   
     def get_login_url(self, ret=None):
         if not ret:

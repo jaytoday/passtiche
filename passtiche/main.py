@@ -51,13 +51,18 @@ settings = {
 
 from views import gae 
 
-from views.website import index, auth
+from views.website import index, auth, account
 
 from views.ajax import index as ajax_index, mobile as ajax_mobile
 
 from views.mobile import index as mobile_index
 
-from views import admin
+from views.api import passes as pass_api
+from views.api import location as loc_api
+from views.api import passlist as list_api
+
+
+from views import admin, services
 
 
 application = tornado.wsgi.WSGIApplication([
@@ -66,6 +71,8 @@ application = tornado.wsgi.WSGIApplication([
     # index - # TODO - new dashboard module
     #(r"/", index.LandingPage),
     (r"/", index.PassticheIndex),
+
+    (r"/cms", account.CMS),
 
  
 
@@ -88,6 +95,13 @@ application = tornado.wsgi.WSGIApplication([
     (r'/ajax/pass\.send/?', ajax_index.SendPass),     
 
 
+    (r'/api/(?P<api_version>[\d\.]*)/pass\.find/?', pass_api.FindPass), 
+    (r'/api/(?P<api_version>[\d\.]*)/pass\.update/?', pass_api.UpdatePass), 
+    (r'/api/(?P<api_version>[\d\.]*)/loc\.find/?', loc_api.FindLocation), 
+    (r'/api/(?P<api_version>[\d\.]*)/loc\.update/?', loc_api.UpdateLocation), 
+    (r'/api/(?P<api_version>[\d\.]*)/list\.find/?', list_api.FindList),  
+    (r'/api/(?P<api_version>[\d\.]*)/list\.update/?', list_api.UpdateList), 
+
     # mobile
     #(r'/mobile/?', mobile_index.UploadScreenshot),    
 
@@ -98,8 +112,10 @@ application = tornado.wsgi.WSGIApplication([
 
 
 
+     (r'/_4sq_callback/?', services.FoursquareCallback), 
+     (r'/_4sq_push/?', services.FoursquarePush), 
     # Apple push service URL
-     (r'/_ps/?', gae.ChannelDisconnect), # TODO
+     (r'/_ps/?', services.APNS), 
 
     # GAE handlers
      (r'/_ah/channel/disconnected/', gae.ChannelDisconnect),
@@ -107,7 +123,7 @@ application = tornado.wsgi.WSGIApplication([
      
   
       
-    #(r'.*', index.PageNotFound)
+    (r'.*', index.PageNotFound)
     # TODO: for 404 deliver static compiled resource
             
 ], **settings)

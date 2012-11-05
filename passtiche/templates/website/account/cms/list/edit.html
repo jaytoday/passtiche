@@ -1,0 +1,15 @@
+
+<div>
+  <fieldset>
+    <legend>{% if pl %}{{ pl.name }}{% else %}New List{% end %}</legend>
+    <input type="text"  placeholder="List Name" id="name" {% if pl and pl.name %}value="{{ pl.name }}"{% end %}>
+
+   <!-- <span class="help-block">Example block-level help text here.</span>
+    <label class="checkbox">
+      <input type="checkbox"> Check me out
+    </label>-->
+
+   <div style="height:20px;clear:both"></div><div> <a style="font-size:20px;margin-left:20px;" class="save_list btn">Save</a>
+   </div>
+  </fieldset>
+</div>

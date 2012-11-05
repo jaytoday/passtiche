@@ -1,0 +1,10 @@
+
+<div>
+  <fieldset>
+    <legend>{% if l %}{{ l.name }}{% else %}New Location{% end %}</legend>
+    <input type="text"  placeholder="Location Name" id="name" {% if l and l.name %}value="{{ l.name }}"{% end %}>
+
+   <div style="height:20px;clear:both"></div><div> <a style="font-size:20px;margin-left:20px;" class="save_pass btn">Save</a>
+   </div>
+  </fieldset>
+</div>

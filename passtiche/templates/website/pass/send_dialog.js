@@ -18,10 +18,9 @@ function openPassDialog(pass_action, el){
 	send_pass_modal.data('pass_template', pass_name);
 	send_pass_modal.data('pass_template_code', pass_code);
 	send_pass_modal.data('pass_template_keyname', pass_keyname);
-	send_pass_modal.data('pass_action', pass_action);
 	send_pass_modal.find('.pass_template:first').text(pass_name);	
 
-	sendPassActionInit(pass_action);
+	//sendPassActionInit(pass_action);
 
 	if (localStorage.getItem('user_email'))
 		send_pass_modal.find('#send_form_download').find('#inputToEmail').val(localStorage.getItem('user_email'));
@@ -67,6 +66,8 @@ function openPassDialog(pass_action, el){
 function sendPassActionInit(pass_action){
 
 	send_pass_modal.find('.pass_action:first').text(pass_action);
+
+	send_pass_modal.data('pass_action', pass_action);
 
 	// click default theme
 	//send_pass_modal.find('input:first', '#inputThemes').click();

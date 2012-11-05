@@ -209,7 +209,7 @@ class SendPass(AjaxHandler):
     def share_email_recipient(self):
         from backend.mail.base import EmailMessage
         email_msg = EmailMessage(subject="You have been sent a PassBook pass", to=self.user_pass.to_email, 
-            context=self.context, template='pass/recipient.html', sender=self.user_pass.from_email)
+            context=self.context, template='pass/recipient.html', sender=self.user_pass.owner_email)
         email_msg.send()      
 
     def share_email_sender(self):
