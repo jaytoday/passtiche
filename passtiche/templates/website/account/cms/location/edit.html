@@ -1,10 +1,37 @@
 
+
 <div>
   <fieldset>
     <legend>{% if l %}{{ l.name }}{% else %}New Location{% end %}</legend>
     <input type="text"  placeholder="Location Name" id="name" {% if l and l.name %}value="{{ l.name }}"{% end %}>
 
-   <div style="height:20px;clear:both"></div><div> <a style="font-size:20px;margin-left:20px;" class="save_pass btn">Save</a>
+    <label>code</label>
+    <input type="text" id="code"  {% if l %}disabled value="{{ l.code }}"{% end %}>
+    <div style="height:15px;"></div>
+     <label>phone number</label>
+    <input type="text" id="phone" {% if l and l.phone %}value="{{ l.phone }}"{% end %}>
+     <label>yelp</label>
+    <input type="text" id="yelp" {% if l and l.yelp %}value="{{ l.yelp }}"{% end %}> 
+     <label>opentable</label>
+    <input type="text" id="opentable" {% if l and l.opentable %}value="{{ l.opentable }}"{% end %}>   
+      <label>website</label>
+     <input type="text" id="website" {% if l and l.website %}value="{{ l.website }}"{% end %}>   
+      <label>neighborhood_name</label>
+    <input type="text" id="neighborhood_name" {% if l and l.neighborhood_name %}value="{{ l.neighborhood_name }}"{% end %}>      
+      <label>street address</label>
+    <input type="text" id="street_address" {% if l and l.street_address %}value="{{ l.street_address }}"{% end %}>    
+      <label>region name</label>
+  <input type="text" id="region_name" {% if l and l.region_name %}value="{{ l.region_name }}"{% else %}value="san-francisco"{% end %}> 
+     <label>region code</label>
+    <input type="text" id="region_code" {% if l and l.region_code %}value="{{ l.region_code }}"{% else %}value="san-francisco"{% end %}> 
+                            
+
+   <div style="height:20px;clear:both"></div><div> <a style="font-size:20px;margin-left:20px;" class="save_location btn">Save</a>
+  {% if l %}
+  <div style="height:20px;clear:both"></div><div> <a style="font-size:10px;margin-left:20px;" class="delete_location btn btn-mini">Delete</a>
+  {% end %}
+  <input type="hidden" id="delete">
+
    </div>
   </fieldset>
 </div>

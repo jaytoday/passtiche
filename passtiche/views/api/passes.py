@@ -64,7 +64,10 @@ class UpdatePass(PassHandler):
 		from backend.passes import update
 		updater = update.PassUpdate()		
 		updated_template = updater.create_or_update(**pass_dict)
-		db.put(updated_template)
+		if self.get_argument('delete',''):
+			db.delete(updated_template)
+		else:
+			db.put(updated_template)
 		self.find_passes()	
 
 

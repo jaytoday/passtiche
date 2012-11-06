@@ -27,6 +27,12 @@
 
 	<script src="/static/js/cms/libs/modernizr-2.5.3.min.js"></script>
 
+<script src="/static/js/cms/libs/jquery-1.7.2.min.js"></script>
+
+<script src="/static/js/cms/libs/bootstrap/bootstrap.min.js"></script>
+
+<script src="/static/js/cms/Theme.js"></script>
+
 </head>
 
 <body>
@@ -56,7 +62,7 @@
 width: 100%;
 float: left;
 margin-bottom: 20px;">
-			<ul id="main-nav" class="nav pull-left" style="cursor:pointer;">
+			<ul id="main-nav" class="nav pull-left" style="cursor:pointer;padding-left:15px;">
 				<li class="active">
 					<a data-target="#passes" id='pass_link'>
 						<span>Passes</span>        					
@@ -169,29 +175,11 @@ margin-bottom: 20px;">
 
 
 
-<script src="/static/js/cms/libs/jquery-1.7.2.min.js"></script>
-<script src="/static/js/cms/libs/jquery-ui-1.8.21.custom.min.js"></script>
-<script src="/static/js/cms/libs/jquery.ui.touch-punch.min.js"></script>
-
-<script src="/static/js/cms/libs/bootstrap/bootstrap.min.js"></script>
-
-<script src="/static/js/cms/Theme.js"></script>
-<script src="/static/js/cms/Charts.js"></script>
-
-<script src="/static/js/cms/plugins/excanvas/excanvas.min.js"></script>
-<script src="/static/js/cms/plugins/flot/jquery.flot.js"></script>
-<script src="/static/js/cms/plugins/flot/jquery.flot.pie.js"></script>
-<script src="/static/js/cms/plugins/flot/jquery.flot.orderBars.js"></script>
-<script src="/static/js/cms/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="/static/js/cms/plugins/flot/jquery.flot.resize.js"></script>
-
-<script src="/static/js/cms/demos/charts/line.js"></script>
-<script src="/static/js/cms/demos/charts/donut.js"></script>
 
 <script>
 
 $(function () {
-	
+
 	Theme.init ();
 
 	{% include "js/cms.js" %}
@@ -201,6 +189,7 @@ $(function () {
 
 
 </script>
+
 
 </body>
 </html>

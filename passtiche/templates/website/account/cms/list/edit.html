@@ -4,12 +4,17 @@
     <legend>{% if pl %}{{ pl.name }}{% else %}New List{% end %}</legend>
     <input type="text"  placeholder="List Name" id="name" {% if pl and pl.name %}value="{{ pl.name }}"{% end %}>
 
-   <!-- <span class="help-block">Example block-level help text here.</span>
-    <label class="checkbox">
-      <input type="checkbox"> Check me out
-    </label>-->
+    <label>Passes</label>
+    <span class="help-block">(foo-pass-keyname bar-pass-keyname third-pass-keyname)</span>
+    <textarea id="passes" style="width: 320px;
+height: 200px;
+">{% if pl %}{% for i in pl.passes %}{{ i }} {% end %}{% end %}</textarea>
 
    <div style="height:20px;clear:both"></div><div> <a style="font-size:20px;margin-left:20px;" class="save_list btn">Save</a>
    </div>
+   {% if pl %}
+  <div style="height:20px;clear:both"></div><div> <a style="font-size:10px;margin-left:20px;" class="delete_list btn btn-mini">Delete</a></div>
+  {% end %}
+  <input type="hidden" id="delete">  
   </fieldset>
 </div>

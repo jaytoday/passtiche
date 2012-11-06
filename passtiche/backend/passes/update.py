@@ -20,16 +20,8 @@ class PassUpdate(object):
 		if not slug:
 		    slug = PassTemplate.get_slug(name)
 		keyname = slug
-		if location_code:
-			loc_code = location_code
-		elif location: # for fixtures code
-			if 'code' in location:
-				loc_code = location['code']
-			else:
-				loc_code = location['name'].lower().replace(' ','-')
-		
-		if loc_code:		    
-			keyname += "-%s" % loc_code
+		if location_code:    
+			keyname += "-%s" % location_code
 
 		logging.info('getting pass template %s' % keyname)
 		pass_template = PassTemplate.get_by_key_name(keyname)
@@ -51,7 +43,6 @@ class PassUpdate(object):
 			pass_template.price_rating = price_rating	
 
 		if schedule:
-			
 
 			pass_template.schedule = schedule
 
@@ -61,27 +52,13 @@ class PassUpdate(object):
 		if neighborhood_name:
 			pass_template.neighborhood_name = neighborhood_name
 
-		if location and not location_code:
+
+		if location_code:
 			from model.activity import Location
-
-			loc = Location.get_by_key_name(keyname)
-			if not loc:
-				loc = Location(key_name=loc_code, code=loc_code)
-				loc.region_name = 'San Francisco'
-				loc.region_code = 'san-francisco'
-			
-			loc.name = location['name']
-			if neighborhood_name:
-				loc.neighborhood_name = neighborhood_name
-			for f in ['website', 'yelp', 'phone', 'opentable','street_address']:
-				if f in location:
-					setattr(loc, f, location[f])
-
-
-			loc.put()
-
+			loc = Location.get_by_key_name(location_code)
 			pass_template.location_code = loc.code
 			pass_template.location_name = loc.name
+
 
 
 		return pass_template	
@@ -189,22 +166,9 @@ def get_times(schedule):
 
 		return starts_time, None
 
+	return None, None
 
 
 
-class PassListUpdate(object):
 
-	def __init__(self):
-		pass
-
-	def create_or_update(self, name=None, passes=None):
-		# TODO: passes should be both pass slug and location name/code
-		code = name.lower().replace(' ','-')
-		pass_list = PassList.get_by_key_name(code)
-		if not pass_list:
-			pass_list = PassList(key_name=code, code=code)
-		pass_list.name = name
-		pass_list.passes = passes
-		pass_list.region_code = 'san-francisco'
-		return pass_list
 

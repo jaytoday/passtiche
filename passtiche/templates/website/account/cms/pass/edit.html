@@ -74,6 +74,10 @@ margin-bottom: -3px;">[{ "starts": "7pm", "ends": "9pm"  }]</span></label>
     </label>-->
 
    <div style="height:20px;clear:both"></div><div> <a style="font-size:20px;margin-left:20px;" class="save_pass btn">Save</a>
+  {% if p %}
+  <div style="height:20px;clear:both"></div><div> <a style="font-size:10px;margin-left:20px;" class="delete_pass btn btn-mini">Delete</a>
+  {% end %}  
+   <input type="hidden" id="delete"> 
    </div>
   </fieldset>
 </div>

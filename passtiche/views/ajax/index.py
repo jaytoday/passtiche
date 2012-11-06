@@ -115,6 +115,11 @@ class SendPass(AjaxHandler):
 
     def get(self):
         action = self.get_argument('action','').lower()
+        from backend.admin import send_admin_email 
+        from google.appengine.ext.deferred import deferred
+        deferred.defer(send_admin_email, 
+                subject='Sent Pass - %s %s' % (self.get_argument('to_email',''), self.get_argument('to_phone','')), 
+                message='Arguments: %s' % self.request.arguments)
         getattr(self, action)()
 
 
