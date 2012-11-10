@@ -128,6 +128,10 @@ display: none;
 	margin:11px 0 0 8px;
 }
 
+li.spaced{
+line-height: 28px;
+margin: 0 0 15px;
+}
 
 
 /* Sign Up Form */
@@ -160,7 +164,7 @@ display: none;
 }
 
 .sign_up_form#developer_form:after {
-  content: "Passtiche for Developers Beta";
+  content: "Passtiche for Publishers Beta";
 }
 
 .sign_up_form#enduser_form:after {

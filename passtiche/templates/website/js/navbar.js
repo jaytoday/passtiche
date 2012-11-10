@@ -17,6 +17,10 @@ $('.navbar-fixed-top').find('a').on('click', function(){
 	if ($(this).attr('id') == 'developers_link')
 		$('#developers_container').show();	
 
+	if ($(this).attr('id') == 'publishers_link')
+		$('#publishers_container').show();		
+
+
 	
 	$(this).addClass('active');	
 
@@ -28,6 +32,8 @@ function navBarInit(){
         return $('a#about_link:first').click();
     if (initial_url_frag == '#developers')
         return $('a#developers_link:first').click();
+    if (initial_url_frag == '#publishers')
+        return $('a#publishers_link:first').click();    
 };
 
 navBarInit();

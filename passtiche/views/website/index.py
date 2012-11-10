@@ -81,7 +81,7 @@ class PassticheIndex(ViewHandler):
             self.context['ua_type'] = 'upgrade_OSX'  
 
 
-@cache(version_only=True) # set False once this is stable
+#@cache(version_only=True) # set False once this is stable
 def get_passes():
     # TODO: this should be cached!
     from model.passes import PassTemplate, PassList
@@ -92,9 +92,16 @@ def get_passes():
     }
     all_lists = PassList.all().fetch(1000)
     for pass_list in all_lists:
+        logging.info('getting %s passes for list %s:' % (len(pass_list.passes), pass_list.name) )
         if pass_list.key().name() in pass_dict.keys():
+            # this is only for curated chosen lists
+
             list_passes = [ p for p in PassTemplate.get_by_key_name(pass_list.passes) if p]
             pass_dict[pass_list.key().name()] = list_passes 
+
+            for p in pass_dict[pass_list.key().name()]:
+                logging.info(p.name)
+
     return pass_dict                              
                 
 

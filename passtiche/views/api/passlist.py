@@ -39,7 +39,10 @@ class UpdateList(ListHandler):
 				list_dict[f] = self.get_argument(f)
 
 
-		list_dict['passes'] = list_dict['passes'].split(' ')
+		import re
+		# remove extra spaces
+		list_dict['passes'] = re.sub(' +',' ', list_dict['passes'])
+		list_dict['passes'] = [ p for p in list_dict['passes'].split(' ') if p ]
 
 		from backend.passlist import update
 		updater = update.PassListUpdate()		

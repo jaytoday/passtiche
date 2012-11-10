@@ -33,9 +33,18 @@ width: 280px;
 			</a>
 				<img class="pass _sprite {{ pass_template.slug }}" src="/static/images/pass/{{ pass_template.key().name() }}.jpeg"></img>
 
+<img src="/static/images/Add_to_Passbook_Badge_2x.png" class="download_pass" style="width: 100px;
+height: 30px;
+margin: -3px 9px 0px 0px;
+position: absolute;
+bottom: 8px;
+left: 8px;
+border: 5px solid rgba(0, 0, 0, .15);
+border-radius: 5px;"/>
 
 					<div href="#sendPass" class="targ {% if is_mobile %}is_mobile{% end %}"></div>
-					<div class="caption">
+				
+				<!--	<div class="caption">
 					
 				
 						<div class="btn-toolbar" style='margin-top:0;'>
@@ -44,7 +53,7 @@ width: 280px;
 								 <span class="val">{{ pass_template.shares or 0 }}</span>
 								 <div></div></div>
 							<div style="position:relative;height:37px;padding-top: 2px;" class=" download_container">
-								<!--<a class="btn btn-large btn-default request_pass" href="#sendPass" role="button" data-toggle="modal" ><i class="icon-download"></i> Request Gift</a>-->
+		
 								<img src="/static/images/Add_to_Passbook_Badge_2x.png" class="download_pass" style="width: 122px;height: 40px;
 margin: -3px 9px 0px 0px;
 float: left;"/>
@@ -58,7 +67,10 @@ margin-right: 4px;" class="icon-share icon-white"></i> Share</a>
 			
 							</div>
 						</div>
-					</div>
+					</div> -->
+
+
+
 				</div>
 				{% include "pass_details.html" %}
 			</div>

@@ -103,6 +103,8 @@ def set_daterange(start_time, end_time):
 
 def get_times(schedule):
 	""" TODO: local time! """
+	ends_time = None
+	starts_time = None
 	if not schedule.get('times'):
 		return None, None # no exact starting time
 	starts_time_str = schedule['times'][0].get('starts','').replace('am','AM').replace('pm','PM')
