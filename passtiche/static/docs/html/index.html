@@ -42,26 +42,29 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-            <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a>
+           <!-- <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a> -->
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/docs"><img src="/static/images/logo/icon_small.png" style="
-    float: left;
-    height: 20px;
-    margin-right: 8px;"> Passtiche Documentation</a>
-          <div class="nav-collapse collapse">
+       <a class="brand" href="/docs"> <img src="http://localhost:8080/static/images/logo/logo_white_text_small.png" style="
+    width: 125px;
+    margin-bottom: -4px;
+    margin-top: -7px;
+    height: 34px;
+    margin-right: 15px;
+">   Passbook Badges for Local Listings</a>
+          <div class="nav-collapse collapse" style="float:right; margin-right:10px;">
             <ul class="nav">
-              <li><a href="/docs">Home</a></li>
-               <li><a href="/docs/tutorial/quickstart.html">Get Started</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Guide <b class="caret"></b></a>
+          
+              <li class="dropdown" style="display:none;">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer API <b class="caret"></b></a>
                 <ul class="dropdown-menu">
+                  <li><a href="/docs/api-guide/exceptions.html">API Overview</a></li>
+                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
 
-
-                  <li><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
+                  <li style="margin-top:20px;"><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
                   <li><a href="/docs/api_methods/update_pass.html">Update Pass</a></li>
                   <li><a href="/docs/api_methods/find_location.html">Find Location</a></li>
                   <li><a href="/docs/api_methods/update_location.html">Update Location</a></li> 
@@ -70,18 +73,18 @@
 
                 </ul>
               </li>
-              <li class="dropdown">
+            <!--  <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
-                  <li><a href="/docs/api-guide/exceptions.html">Exceptions</a></li>
+                 
+                 
                   <li><a href="/docs/api-guide/status-codes.html">Status codes</a></li>
                   <li><a href="/docs/api-guide/settings.html">Settings</a></li>       
                   <li><a href="/docs/topics/button.html">Button</a></li>
                   <li><a href="/docs/topics/release-notes.html">Release Notes</a></li>
                   <li><a href="/docs/topics/credits.html">Credits</a></li>
                 </ul>
-              </li>
+              </li> -->
             </ul>
             <ul class="nav pull-right">
               <!-- TODO
@@ -112,71 +115,110 @@
           -->
             <div id="table-of-contents">
               <ul class="nav nav-list side-nav well sidebar-nav-fixed">
-                <li class="main"><a href="#passtiche-developer-platform">Passtiche Developer Platform</a></li>
-<li><a href="#requirements">Requirements</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#getting-started">Getting Started</a></li>
-<li><a href="#support">Support</a></li>
-<li><a href="#license">License</a></li>
+                <li class="main"><a href="#passtiche-overview">Passtiche Overview</a></li>
+<div style="height:5px;"></div><li><a href="#passtiche-for-websites">Passtiche For Websites</a></li>
+<li><a href="#customizing-passes">Customizing Passes</a></li>
 
               </ul>
             </div>
           </div>
 
           <div id="main-content" class="span9">
-            <iframe src="http://ghbtns.com/github-btn.html?user=passtiche&amp;repo=passtiche-client&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+            <!--<iframe src="http://ghbtns.com/github-btn.html?user=passtiche&amp;repo=passtiche-client&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>-->
 
-<h1 id="passtiche-developer-platform">Passtiche Developer Platform</h1>
-<p>Passtiche Platform intro.</p>
-<p>There is also a sandbox API you can use for testing purposes, <a href="http://restframework.herokuapp.com/">available here</a>.</p>
-<p><strong>Below</strong>: <em>Screenshot from the browseable API</em></p>
-<p><img alt="Screenshot" src="/static/images/boarding.png" /></p>
-<h2 id="requirements">Requirements</h2>
-<h2 id="installation">Installation</h2>
-<h2 id="getting-started">Getting Started</h2>
-<p>Can't wait to get started?  The <a href="tutorial/quickstart.html">Getting Started guide</a> is the fastest way to get up and running with REST framework.</p>
-<h3 id="api-methods">API Methods:</h3>
-<ul>
-<li><a href="api_methods/find_pass.html">Find Pass</a></li>
-<li><a href="api_methods/update_pass.html">Create/Update Pass</a></li>
-<li><a href="api_methods/find_location.html">Find Location</a></li>
-<li><a href="api_methods/update_location.html">Create/Update Location</a></li>
-<li><a href="api_methods/find_list.html">Find List</a></li>
-<li><a href="api_methods/update_list.html">Create/Update List</a></li>
-</ul>
-<h3 id="other-api-topics">Other API Topics:</h3>
-<ul>
-<li><a href="api-guide/authentication.html">Authentication</a></li>
-<li><a href="api-guide/exceptions.html">Exceptions</a></li>
-<li><a href="api-guide/status-codes.html">Status codes</a></li>
-<li><a href="api-guide/settings.html">Settings</a></li>
-<li><a href="topics/button.html">Button</a></li>
-<li><a href="topics/release-notes.html">Release Notes</a></li>
-<li><a href="topics/credits.html">Credits</a></li>
-</ul>
-<h2 id="support">Support</h2>
-<p>For support please see the <a href="https://groups.google.com/forum/?fromgroups#!forum/django-rest-framework">REST framework discussion group</a>, or try the  <code>#restframework</code> channel on <code>irc.freenode.net</code>.</p>
-<p>Please contact <a href="mailto:james@passtiche.com">Passtiche</a> </p>
-<h2 id="license">License</h2>
-<p>Copyright (c) 2012, Passtiche
-All rights reserved.</p>
-<p>Redistribution and use in source and binary forms, with or without 
-modification, are permitted provided that the following conditions are met:</p>
-<p>Redistributions of source code must retain the above copyright notice, this 
-list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this 
-list of conditions and the following disclaimer in the documentation and/or 
-other materials provided with the distribution.</p>
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE 
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<div style="display:none;">
+# Passtiche Overview
+</div>
+
+<h2 style="line-height:38px;color:#666;"><a style="color:black;" href="http://www.passtiche.com">Passtiche</a> Enhances Local Listings With<br/> Customizable <i style="color:#333;">Add to Passbook</i> Badges</h2>
+
+<p><br/>
+<div style="height:10px;"></div></p>
+<p>Passtiche helps you add Passbook support to your local listings <i>(events, reviews, etc.)</i> in just a few seconds.</p>
+
+<div style="height:10px;"></div>
+
+<h4 style="line-height:32px;color:#666;">Passbook: A Powerful New Channel for Local Marketing</h4>
+
+<p><a href="http://www.apple.com/ios/whats-new/#passbook" target="_blank">Apple Passbook<sup style="font-size: 11px;margin-right: -1px;top: -7px;">®</sup></a> is where iPhone and iPod Touch owners store and access boarding passes, tickets, coupons and more.
+</p>
+
+<p>Fortune 500 companies such as Starbucks and startups like AirBnb and Eventbrite are now offering support for Passbook and taking advantage of powerful marketing features that include <b>push notifications</b> and <b>location-based reminders</b>.</p>
+<h4 style="line-height:32px;color:#666;">Passtiche Simplifies Passbook for Local Marketers</h4>
+
+<p></p>Setting up your own Passbook server is time-consuming, difficult, and highly technical. Passtiche provides the marketing benefits with simple snippets of code you can add to your website in a few minutes.</p>
+<p> </p>
+<p> </p></p>
+<p><br/></p>
+<h2 id="passtiche-for-websites">Passtiche For Websites</h2>
+<p>You can add Passbook support to your site by adding the Passtiche Javascript code snippet to your site and using HTML attributes to specify which links to convert into <i>Add to Passbook</i> badges.</p>
+<h3 id="wzxhzdk29-setup-the-passtiche-javascript-library">&nbsp; Setup the Passtiche Javascript Library</h3>
+<div style="margin: 0 20px 20px;">
+Start by pasting the following code snippet to your website:
+
+<div style="width: 100%;
+height: 60px;
+margin: 20px 20px 0;">
+<pre style="float:left;"><code>&lt;script src="http://passtiche.com/js"&gt;&lt;/script&gt;</code></pre>
+</div>
+
+This markup should be placed at the bottom of your website's HTML (or generated-HTML) structure, before the closing &lt;body&gt; tag.
+
+</div>
+
+<h3 id="wzxhzdk30-add-links-with-pass-badge-attributes">&nbsp; Add Links With Pass Badge Attributes</h3>
+<div style="margin: 0 20px 20px;">
+Once the javascript library has loaded, it will automatically replace links containing a special <code>data-passtiche</code> attribute with a Passtiche <i>Add to Passbook</i> badge.
+
+Here is an example of a link that contains a location name:
+
+<div style="width: 100%;
+height: 60px;
+margin: 20px 20px 0;">
+<pre style="float:left;"><code>&lt;a data-passtiche-loc="Roxie Theater" data-passtiche-city="San Francisco" &gt;&lt;/a&gt;</code></pre>
+</div>
+
+Here is the badge as it would appear:
+<div style="margin:15px;text-align:center;max-width:500px;">
+<div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-passtiche-loc="Local Pub" data-passtiche-city="San Francisco"></a> </div>
+</div>
+<br/>
+Here is an example of a link that specifies a location as well as an event name, price and description.
+
+<div style="width: 100%;
+height: 60px;
+margin: 20px 20px 0;">
+<pre style="float:left;"><code>&lt;a data-passtiche-loc="21st Amendment" data-passtiche-name="Sample a Dozen Beers" data-passtiche-price="10" data-passtiche-description="Try this sampling a dozen beers beer beer" data-passtiche-city="San Francisco" &gt;&lt;/a&gt;</code></pre>
+</div>
+
+Here is the badge as it would appear:
+<div style="margin:15px;text-align:center;max-width:500px;">
+<div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-passtiche-loc="Local Pub" data-passtiche-city="San Francisco" data-passtiche-name="Sample a Dozen Beers" data-passtiche-price="10" data-passtiche-description="Try this sampling a dozen beers beer beer" ></a> </div>
+</div>
+
+More examples will be posted soon that incorporate <a href="http://microformats.org/wiki/hcard">hCard</a> and <a href="http://ogp.me/">Open Graph</a> metadata. 
+</div>
+
+<div style="height:10px;"></div>
+
+<h2 id="customizing-passes">Customizing Passes</h2>
+<p>From the <a>Passtiche Dashboard</a> you can manage the appearance and content of your passes. 
+<div style="height:1px;"></div></p>
+<h3 id="wzxhzdk35-customizing-pass-appearance">&nbsp; Customizing Pass Appearance:</h3>
+<div style="margin: 0 20px 20px;">
+You can add your own logo and color scheme using optional parameters included with your Passtiche Javascript Library code snippet. You can test these settings using a visual editor. More details coming soon. 
+</div>
+
+<h3 id="wzxhzdk36-customizing-pass-content">&nbsp; Customizing Pass Content:</h3>
+<div style="margin: 0 20px 20px;">
+You can edit the details of any pass you have created using a built-in CMS. More details coming soon. 
+</div>
+
+<p><br/></p>
+<h3 id="support">Support</h3>
+<p>Please contact <a href="mailto:james@passtiche.com">Passtiche</a>  <!-- Discussion Group, etc. --></p>
+<h3 id="agreement-to-passtiche-terms-and-apple-guidelines">Agreement to Passtiche Terms and Apple Guidelines</h3>
+<p>By using this service you agree to the <a href="docs/topics/license.html">Passtiche License and Terms</a> and the <a href="https://developer.apple.com/passbook/AddToPassbookBadgeGuidelines.pdf">Add to Passbook Badge Guidelines</a> provided by Apple. </p>
           </div><!--/span-->
         </div><!--/row-->
       </div><!--/.fluid-container-->
@@ -195,6 +237,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
     <script src="/docs/js/jquery-1.8.1-min.js"></script>
     <script src="/docs/js/prettify-1.0.js"></script>
     <script src="/docs/js/bootstrap-2.1.1-min.js"></script>
+    <script src="/js"></script>
     <script>
       //$('.side-nav').scrollspy()
       var shiftWindow = function() { scrollBy(0, -50) };

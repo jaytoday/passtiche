@@ -10,6 +10,9 @@ except:
 import os
 
 
+def get_loc_code(name):
+	return name.lower().replace(' ','-')
+	
 class LocationUpdate(object):
 
 	def __init__(self):
@@ -22,7 +25,7 @@ class LocationUpdate(object):
 		if code:
 			loc_code = code
 		else:
-			loc_code = name.lower().replace(' ','-')
+			loc_code = get_loc_code(name)
 		
 		loc = Location.get_by_key_name(loc_code)
 		if not loc:

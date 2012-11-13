@@ -15,13 +15,20 @@ class PassHandler(APIHandler):
 
 	def find_passes(self):
 		query_args = {}
-		for f in ['query', 'order']:
+		for f in ['query', 'order', 'create', 'passes']:
 			if self.get_argument(f,''):
 				query_args[f] = self.get_argument(f)
+
 		from backend.passes import find
 		self.context['passes'] = find.find_passes(**query_args)
 		if self.get_argument('output','') == 'html':
 			self.render("website/account/cms/pass/list.html", **self.context)	
+		else:
+			self.write_json({'passes': [ self.pass_dict(p) for p in self.context['passes'] ]})
+			return
+
+	def pass_dict(self, p):
+		return { 'name': p.name, 'short_code': p.short_code }
 
 class FindPass(PassHandler):
 

@@ -37,10 +37,15 @@ class PassticheIndex(ViewHandler):
     """ Main website view """
     
     def get(self):
+        if 'costanza' in gae_utils.base_url():
+            return self.costanza()
         self.render_output()
 
+    def costanza(self):
+        self.write(static_page(None, "website/costanza.html", context=self.context))
+
     def render_output(self):
-        for f in ['linked_pass_template','linked_user_pass']:
+        for f in ['linked_pass_template','linked_user_pass', 'linked_pass_entity']:
             if f not in self.context:
                 self.context[f] = ''
         self.context['pass_templates'] = get_passes()
@@ -120,6 +125,7 @@ class PassDownload(PassticheIndex):
             # return 404
             raise ValueError('pass_template')
         self.context['linked_pass_template'] = pass_template.short_code
+        self.context['linked_pass_entity'] = pass_template
 
 
 
@@ -130,7 +136,8 @@ class UserPassDownload(PassDownload):
 
         user_pass = UserPass.get_by_key_name(self.pass_code)
         self.context['linked_user_pass'] = user_pass.code
-        self.context['linked_pass_template'] = user_pass.pass_code           
+        self.context['linked_pass_template'] = user_pass.pass_code 
+        self.context['linked_pass_entity'] = user_pass # need to get template?       
 
         
 

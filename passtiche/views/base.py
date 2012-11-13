@@ -70,6 +70,15 @@ class BaseHandler(tornado.web.RequestHandler):
                            </html>""" % (error, error, 
                                         trace_info, request_info))
                                         
+    
+    def write_json(self, dict):
+        try:    
+            import json
+        except:
+            from django.utils import simplejson as json
+
+        self.write(json.dumps(dict))
+
     def send_error(self, *args, **kwargs):
         self.set_status(500) # always 500?
         from utils.gae import error_msg

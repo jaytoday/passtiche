@@ -3,6 +3,12 @@
 <div id="new-and-upcoming"  class="pass_container">
 	<div class="offset" style="margin-top:-25px;">
 <!--<h5><i class="icon-comment"></i> &nbsp; New &amp; Upcoming</h5>-->
+{% if linked_pass_entity %}
+	{% set pass_template = linked_pass_entity %}
+	{% set subtract_pass = pass_templates['new-and-upcoming'].pop() %}
+	{% include "pass.html" %}
+{% end %}
+
 {% for pass_template in pass_templates['new-and-upcoming'] %}
 	{% include "pass.html" %}
 {% end %}

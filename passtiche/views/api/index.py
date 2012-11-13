@@ -24,3 +24,8 @@ class APIHandler(BaseHandler):
             raise ValueError("API Version")
 
         self.api_version = api_version
+
+
+    def write_json(self, dict):
+        # TODO: response codes, etc.
+        return super(APIHandler, self).write_json(dict)

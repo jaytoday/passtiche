@@ -26,6 +26,8 @@ def remove_linebreaks(text):
     return re.sub(r"(?<=[a-z])[\r\n]+"," ", text)
     
 def safe_slugify(s):
+    if not s:
+        return
     return '_'.join(re.findall('[a-z]+', s.lower()))
     
 def genkey(longer = False, length=None):

@@ -18,27 +18,35 @@ class PassUpdate(object):
 	def create_or_update(self, name=None, slug=None, description=None, price=None, schedule=None, 
 			neighborhood_name=None, location=None, location_code=None, price_rating=None, **kwargs):
 		if not slug:
-		    slug = PassTemplate.get_slug(name)
+		    slug = PassTemplate.get_slug(name) or 'event'
 		keyname = slug
 		if location_code:    
 			keyname += "-%s" % location_code
 
-		logging.info('getting pass template %s' % keyname)
-		pass_template = PassTemplate.get_by_key_name(keyname)
-		if pass_template:
-			logging.info('found pass template %s' % keyname)
+		logging.info(kwargs)
+		if kwargs.get('new'):
+			pass_template = None
 		else:
+			logging.info('getting pass template %s' % keyname)
+			pass_template = PassTemplate.get_by_key_name(keyname)
+			if pass_template:
+				logging.info('found pass template %s' % keyname)
+		
+		if not pass_template:
 			logging.info('creating new pass template')
+			if not name:
+				name = 'Unknown Event'
 			pass_template = PassTemplate(key_name=keyname, name=name, slug=slug)
 			from utils import string as str_utils
 			code = str_utils.genkey(length=4)
 			pass_template.short_code = code
-		pass_template.name = name
+		elif name:
+				pass_template.name = name
 
 		if description:
 		    pass_template.description = description
 		if price:
-			pass_template.price = price
+			pass_template.price = int(price)
 		if price_rating is not None:
 			pass_template.price_rating = price_rating	
 
@@ -54,8 +62,11 @@ class PassUpdate(object):
 
 
 		if location_code:
-			from model.activity import Location
-			loc = Location.get_by_key_name(location_code)
+			if location:
+				loc = location
+			else:
+				from model.activity import Location
+				loc = Location.get_by_key_name(location_code)
 			pass_template.location_code = loc.code
 			pass_template.location_name = loc.name
 

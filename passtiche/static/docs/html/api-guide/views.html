@@ -42,26 +42,29 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-            <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a>
+           <!-- <a class="repo-link btn btn-primary btn-small" href="https://github.com/passtiche/passtiche-docs/tree/master">GitHub</a> -->
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/docs"><img src="/static/images/logo/icon_small.png" style="
-    float: left;
-    height: 20px;
-    margin-right: 8px;"> Passtiche Documentation</a>
-          <div class="nav-collapse collapse">
+       <a class="brand" href="/docs"> <img src="http://localhost:8080/static/images/logo/logo_white_text_small.png" style="
+    width: 125px;
+    margin-bottom: -4px;
+    margin-top: -7px;
+    height: 34px;
+    margin-right: 15px;
+">   Passbook Badges for Local Listings</a>
+          <div class="nav-collapse collapse" style="float:right; margin-right:10px;">
             <ul class="nav">
-              <li><a href="/docs">Home</a></li>
-               <li><a href="/docs/tutorial/quickstart.html">Get Started</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Guide <b class="caret"></b></a>
+          
+              <li class="dropdown" style="display:none;">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer API <b class="caret"></b></a>
                 <ul class="dropdown-menu">
+                  <li><a href="/docs/api-guide/exceptions.html">API Overview</a></li>
+                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
 
-
-                  <li><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
+                  <li style="margin-top:20px;"><a href="/docs/api_methods/find_pass.html">Find Pass</a></li>
                   <li><a href="/docs/api_methods/update_pass.html">Update Pass</a></li>
                   <li><a href="/docs/api_methods/find_location.html">Find Location</a></li>
                   <li><a href="/docs/api_methods/update_location.html">Update Location</a></li> 
@@ -70,18 +73,18 @@
 
                 </ul>
               </li>
-              <li class="dropdown">
+            <!--  <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Topics <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/docs/api-guide/authentication.html">Authentication</a></li>
-                  <li><a href="/docs/api-guide/exceptions.html">Exceptions</a></li>
+                 
+                 
                   <li><a href="/docs/api-guide/status-codes.html">Status codes</a></li>
                   <li><a href="/docs/api-guide/settings.html">Settings</a></li>       
                   <li><a href="/docs/topics/button.html">Button</a></li>
                   <li><a href="/docs/topics/release-notes.html">Release Notes</a></li>
                   <li><a href="/docs/topics/credits.html">Credits</a></li>
                 </ul>
-              </li>
+              </li> -->
             </ul>
             <ul class="nav pull-right">
               <!-- TODO
@@ -256,6 +259,7 @@ def view(request):
     <script src="/docs/js/jquery-1.8.1-min.js"></script>
     <script src="/docs/js/prettify-1.0.js"></script>
     <script src="/docs/js/bootstrap-2.1.1-min.js"></script>
+    <script src="/js"></script>
     <script>
       //$('.side-nav').scrollspy()
       var shiftWindow = function() { scrollBy(0, -50) };

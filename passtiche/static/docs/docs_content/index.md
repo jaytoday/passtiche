@@ -1,78 +1,115 @@
-<iframe src="http://ghbtns.com/github-btn.html?user=passtiche&amp;repo=passtiche-client&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+<!--<iframe src="http://ghbtns.com/github-btn.html?user=passtiche&amp;repo=passtiche-client&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>-->
+
+<div style="display:none;">
+# Passtiche Overview
+</div>
+
+<h2 style="line-height:38px;color:#666;"><a style="color:black;" href="http://www.passtiche.com">Passtiche</a> Enhances Local Listings With<br/> Customizable <i style="color:#333;">Add to Passbook</i> Badges</h2>
+<br/>
+<div style="height:10px;"></div>
+
+<p>Passtiche helps you add Passbook support to your local listings <i>(events, reviews, etc.)</i> in just a few seconds.</p>
 
 
-# Passtiche Developer Platform 
+<div style="height:10px;"></div>
+<h4 style="line-height:32px;color:#666;">Passbook: A Powerful New Channel for Local Marketing</h4>
+<p><a href="http://www.apple.com/ios/whats-new/#passbook" target="_blank">Apple Passbook<sup style="font-size: 11px;margin-right: -1px;top: -7px;">®</sup></a> is where iPhone and iPod Touch owners store and access boarding passes, tickets, coupons and more.
+</p> Fortune 500 companies such as Starbucks and startups like AirBnb and Eventbrite are now offering support for Passbook and taking advantage of powerful marketing features that include <b>push notifications</b> and <b>location-based reminders</b>.
+
+<h4 style="line-height:32px;color:#666;">Passtiche Simplifies Passbook for Local Marketers</h4>
+
+</p>Setting up your own Passbook server is time-consuming, difficult, and highly technical. Passtiche provides the marketing benefits with simple snippets of code you can add to your website in a few minutes.</p>
+<p> </p>
+<p> </p>
+
+<br/>
 
 
-Passtiche Platform intro.
+## Passtiche For Websites
 
-There is also a sandbox API you can use for testing purposes, [available here][sandbox].
+You can add Passbook support to your site by adding the Passtiche Javascript code snippet to your site and using HTML attributes to specify which links to convert into <i>Add to Passbook</i> badges.
 
-**Below**: *Screenshot from the browseable API*
+### &nbsp; Setup the Passtiche Javascript Library 
 
-![Screenshot][image]
+<div style="margin: 0 20px 20px;">
+Start by pasting the following code snippet to your website:
 
-## Requirements
+<div style="width: 100%;
+height: 60px;
+margin: 20px 20px 0;">
+<pre style="float:left;"><code>&lt;script src="http://passtiche.com/js"&gt;&lt;/script&gt;</code></pre>
+</div>
 
-## Installation
+This markup should be placed at the bottom of your website's HTML (or generated-HTML) structure, before the closing &lt;body&gt; tag.
 
-
-## Getting Started
-
-Can't wait to get started?  The [Getting Started guide][quickstart] is the fastest way to get up and running with REST framework.
-
-
-
-### API Methods:
-
-* [Find Pass][find_pass]
-* [Create/Update Pass][update_pass]
-* [Find Location][find_location]
-* [Create/Update Location][update_location]
-* [Find List][find_list]
-* [Create/Update List][update_list]
-
-### Other API Topics:
- 
-* [Authentication][authentication]
-* [Exceptions][exceptions]
-* [Status codes][status]
-* [Settings][settings]
-* [Button][button]
-* [Release Notes][release-notes]
-* [Credits][credits]
+</div>
 
 
-## Support
 
-For support please see the [REST framework discussion group][group], or try the  `#restframework` channel on `irc.freenode.net`.
+### &nbsp; Add Links With Pass Badge Attributes
 
-Please contact [Passtiche][email] 
+<div style="margin: 0 20px 20px;">
+Once the javascript library has loaded, it will automatically replace links containing a special <code>data-passtiche</code> attribute with a Passtiche <i>Add to Passbook</i> badge. 
 
-## License
+Here is an example of a link that contains a location name:
 
-Copyright (c) 2012, Passtiche
-All rights reserved.
+<div style="width: 100%;
+height: 60px;
+margin: 20px 20px 0;">
+<pre style="float:left;"><code>&lt;a data-passtiche-loc="Roxie Theater" data-passtiche-city="San Francisco" &gt;&lt;/a&gt;</code></pre>
+</div>
 
-Redistribution and use in source and binary forms, with or without 
-modification, are permitted provided that the following conditions are met:
+Here is the badge as it would appear:
+<div style="margin:15px;text-align:center;max-width:500px;">
+<div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-passtiche-loc="Local Pub" data-passtiche-city="San Francisco"></a> </div>
+</div>
+<br/>
+Here is an example of a link that specifies a location as well as an event name, price and description.
 
-Redistributions of source code must retain the above copyright notice, this 
-list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this 
-list of conditions and the following disclaimer in the documentation and/or 
-other materials provided with the distribution.
+<div style="width: 100%;
+height: 60px;
+margin: 20px 20px 0;">
+<pre style="float:left;"><code>&lt;a data-passtiche-loc="21st Amendment" data-passtiche-name="Sample a Dozen Beers" <br/>data-passtiche-price="10" data-passtiche-description="Try this sampling a dozen beers beer beer" data-passtiche-city="San Francisco" &gt;&lt;/a&gt;</code></pre>
+</div>
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE 
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Here is the badge as it would appear:
+<div style="margin:15px;text-align:center;max-width:500px;">
+<div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-passtiche-loc="Local Pub" data-passtiche-city="San Francisco" data-passtiche-name="Sample a Dozen Beers" data-passtiche-price="10" data-passtiche-description="Try this sampling a dozen beers beer beer" ></a> </div>
+</div>
+
+More examples will be posted soon that incorporate <a href="http://microformats.org/wiki/hcard">hCard</a> and <a href="http://ogp.me/">Open Graph</a> metadata. 
+</div>
+
+<div style="height:10px;"></div>
+
+
+## Customizing Passes
+
+From the <a>Passtiche Dashboard</a> you can manage the appearance and content of your passes. 
+<div style="height:1px;"></div>
+### &nbsp; Customizing Pass Appearance:
+
+<div style="margin: 0 20px 20px;">
+You can add your own logo and color scheme using optional parameters included with your Passtiche Javascript Library code snippet. You can test these settings using a visual editor. More details coming soon. 
+</div>
+
+### &nbsp; Customizing Pass Content:
+
+<div style="margin: 0 20px 20px;">
+You can edit the details of any pass you have created using a built-in CMS. More details coming soon. 
+</div>
+
+<br/>
+### Support
+
+Please contact [Passtiche][email]  <!-- Discussion Group, etc. -->
+
+### Agreement to Passtiche Terms and Apple Guidelines
+
+By using this service you agree to the [Passtiche License and Terms][license] and the <a href="https://developer.apple.com/passbook/AddToPassbookBadgeGuidelines.pdf">Add to Passbook Badge Guidelines</a> provided by Apple. 
+
+
+
 
 [travis]: http://travis-ci.org/tomchristie/django-rest-framework?branch=master
 [travis-build-image]: https://secure.travis-ci.org/tomchristie/django-rest-framework.png?branch=restframework2
@@ -85,6 +122,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 [quickstart]: tutorial/quickstart.md
 
+[license]: docs/topics/license.md
 [find_pass]: api_methods/find_pass.md
 [update_pass]: api_methods/update_pass.md
 [find_location]: api_methods/find_location.md

@@ -72,6 +72,8 @@ for (dirpath, dirnames, filenames) in os.walk(docs_dir):
             template = template.replace('{{ title }}', title)
             template = template.replace('{{ anchor }}', anchor)
             toc += template + '\n'
+            if 'Passtiche Overview' in template:
+                toc += '<div style="height:5px;"></div>'
 
         content = markdown.markdown(text, ['headerid'])
 

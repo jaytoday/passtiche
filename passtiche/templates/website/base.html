@@ -4,7 +4,7 @@
   <head>
 
     <meta charset="utf-8">
-    <title>passtiche - offer and request gifts with PassBook passes</title>
+    <title>{% block title %}passtiche{% end %}</title>
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
 {% if is_mobile %}
        <meta name="viewport" content="width=380,user-scalable=no">
@@ -40,8 +40,9 @@
 
   <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="10">
 
-
+{% block nav %}
  {% include "navbar.html" %}
+ {% end %}
 
   <div id="body_container" class="page container">
     

@@ -11,3 +11,5 @@ Find existing pass content for a given location or event.
 
 * **query** - search term
 
+* **passes** - JSON encoded list of multiple passes, with name, loc, city, etc.  
+
