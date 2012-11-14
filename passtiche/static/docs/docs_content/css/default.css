@@ -2,6 +2,7 @@
    below the navbar, which is fixed at >980px screen widths. */
 pre {
   font-size: 12px;
+
 }
 
 .dropdown .dropdown-menu {
@@ -64,7 +65,7 @@ body hr {
 
 /* Code blocks should scroll horizontally */
 pre {
-  overflow: auto;
+  overflow-y: auto;
   word-wrap: normal;
   white-space: pre;
 }
@@ -104,7 +105,7 @@ pre {
    to breath on the left. */
 @media (min-width: 768px) {
   #main-content {
-    padding-left: 1em;
+    padding-left: 3.5em;
   }
 }
 
@@ -201,7 +202,7 @@ body a:hover{
      .sidebar-nav-fixed {
          position:fixed;
          width:19%;
-         max-width: 240px;
+         max-width: 157px;
      }
 
      .navbar {

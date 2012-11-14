@@ -136,7 +136,7 @@
 <div style="height:10px;"></div></p>
 <p>Passtiche helps you add Passbook support to your local listings <i>(events, reviews, etc.)</i> in just a few seconds.</p>
 
-<div style="height:10px;"></div>
+<div style="height:3px;"></div>
 
 <h4 style="line-height:32px;color:#666;">Passbook: A Powerful New Channel for Local Marketing</h4>
 
@@ -144,33 +144,33 @@
 </p>
 
 <p>Fortune 500 companies such as Starbucks and startups like AirBnb and Eventbrite are now offering support for Passbook and taking advantage of powerful marketing features that include <b>push notifications</b> and <b>location-based reminders</b>.</p>
-<h4 style="line-height:32px;color:#666;">Passtiche Simplifies Passbook for Local Marketers</h4>
+<h4 style="line-height:32px;color:#666;margin-top:30px;">Passtiche Simplifies Passbook for Local Marketers</h4>
 
-<p></p>Setting up your own Passbook server is time-consuming, difficult, and highly technical. Passtiche provides the marketing benefits with simple snippets of code you can add to your website in a few minutes.</p>
+<p></p>Setting up your own Passbook server is time-consuming, difficult, and highly technical.</p><p> Passtiche provides the marketing benefits of Passbook with simple code snippets you can add to your website in a few minutes.</p>
 <p> </p>
 <p> </p></p>
 <p><br/></p>
 <h2 id="passtiche-for-websites">Passtiche For Websites</h2>
-<p>You can add Passbook support to your site by adding the Passtiche Javascript code snippet to your site and using HTML attributes to specify which links to convert into <i>Add to Passbook</i> badges.</p>
-<h3 id="wzxhzdk29-setup-the-passtiche-javascript-library">&nbsp; Setup the Passtiche Javascript Library</h3>
+<p>You can add Passbook support to your site by adding the Passtiche Javascript code snippet and using HTML attributes to specify which links to convert into <i>Add to Passbook</i> badges.</p>
+<h3 id="wzxhzdk31-setup-the-passtiche-javascript-library">&nbsp; Setup the Passtiche Javascript Library</h3>
 <div style="margin: 0 20px 20px;">
 Start by pasting the following code snippet to your website:
 
 <div style="width: 100%;
 height: 60px;
 margin: 20px 20px 0;">
-<pre style="float:left;"><code>&lt;script src="http://passtiche.com/js"&gt;&lt;/script&gt;</code></pre>
+<pre style="float:left;"><code style="font-size:1.3em;">&lt;script src="http://passtiche.com/js"&gt;&lt;/script&gt;</code></pre>
 </div>
 
 This markup should be placed at the bottom of your website's HTML (or generated-HTML) structure, before the closing &lt;body&gt; tag.
 
 </div>
 
-<h3 id="wzxhzdk30-add-links-with-pass-badge-attributes">&nbsp; Add Links With Pass Badge Attributes</h3>
+<h3 id="wzxhzdk32-add-links-with-pass-badge-attributes">&nbsp; Add Links With Pass Badge Attributes</h3>
 <div style="margin: 0 20px 20px;">
 Once the javascript library has loaded, it will automatically replace links containing a special <code>data-passtiche</code> attribute with a Passtiche <i>Add to Passbook</i> badge.
 
-Here is an example of a link that contains a location name:
+Here is an example of a link that specifies the name of a location with a <code>data-passtiche-loc</code> attribute:
 
 <div style="width: 100%;
 height: 60px;
@@ -182,21 +182,26 @@ Here is the badge as it would appear:
 <div style="margin:15px;text-align:center;max-width:500px;">
 <div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-passtiche-loc="Local Pub" data-passtiche-city="San Francisco"></a> </div>
 </div>
-<br/>
-Here is an example of a link that specifies a location as well as an event name, price and description.
+
+<div style="height:20px;"></div>
+
+<h4 style="line-height:32px;color:#666;">Add Events &amp; Activities to Your Pass</h4>
+
+Here's the markup and resulting badge for for a link containing <code>data-passtiche</code> attributes for an activity name and price.
 
 <div style="width: 100%;
 height: 60px;
 margin: 20px 20px 0;">
-<pre style="float:left;"><code>&lt;a data-passtiche-loc="21st Amendment" data-passtiche-name="Sample a Dozen Beers" data-passtiche-price="10" data-passtiche-description="Try this sampling a dozen beers beer beer" data-passtiche-city="San Francisco" &gt;&lt;/a&gt;</code></pre>
+<pre style="float:left;"><code>&lt;a data-passtiche-loc="21st Amendment" data-passtiche-name="Sample a Dozen Beers" data-passtiche-price="10" data-passtiche-city="San Francisco" &gt;&lt;/a&gt;</code></pre>
 </div>
-
-Here is the badge as it would appear:
 <div style="margin:15px;text-align:center;max-width:500px;">
 <div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-passtiche-loc="Local Pub" data-passtiche-city="San Francisco" data-passtiche-name="Sample a Dozen Beers" data-passtiche-price="10" data-passtiche-description="Try this sampling a dozen beers beer beer" ></a> </div>
 </div>
 
-More examples will be posted soon that incorporate <a href="http://microformats.org/wiki/hcard">hCard</a> and <a href="http://ogp.me/">Open Graph</a> metadata. 
+<div class="alert">
+    Support for <a href="http://microformats.org/wiki/hcard">hCard</a> and <a href="http://ogp.me/">Open Graph</a> metadata is coming soon!
+</div>
+
 </div>
 
 <div style="height:10px;"></div>
@@ -204,12 +209,12 @@ More examples will be posted soon that incorporate <a href="http://microformats.
 <h2 id="customizing-passes">Customizing Passes</h2>
 <p>From the <a>Passtiche Dashboard</a> you can manage the appearance and content of your passes. 
 <div style="height:1px;"></div></p>
-<h3 id="wzxhzdk35-customizing-pass-appearance">&nbsp; Customizing Pass Appearance:</h3>
+<h3 id="wzxhzdk37-customizing-pass-appearance">&nbsp; Customizing Pass Appearance:</h3>
 <div style="margin: 0 20px 20px;">
 You can add your own logo and color scheme using optional parameters included with your Passtiche Javascript Library code snippet. You can test these settings using a visual editor. More details coming soon. 
 </div>
 
-<h3 id="wzxhzdk36-customizing-pass-content">&nbsp; Customizing Pass Content:</h3>
+<h3 id="wzxhzdk38-customizing-pass-content">&nbsp; Customizing Pass Content:</h3>
 <div style="margin: 0 20px 20px;">
 You can edit the details of any pass you have created using a built-in CMS. More details coming soon. 
 </div>

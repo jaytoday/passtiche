@@ -11,14 +11,14 @@
 <p>Passtiche helps you add Passbook support to your local listings <i>(events, reviews, etc.)</i> in just a few seconds.</p>
 
 
-<div style="height:10px;"></div>
+<div style="height:3px;"></div>
 <h4 style="line-height:32px;color:#666;">Passbook: A Powerful New Channel for Local Marketing</h4>
 <p><a href="http://www.apple.com/ios/whats-new/#passbook" target="_blank">Apple Passbook<sup style="font-size: 11px;margin-right: -1px;top: -7px;">®</sup></a> is where iPhone and iPod Touch owners store and access boarding passes, tickets, coupons and more.
 </p> Fortune 500 companies such as Starbucks and startups like AirBnb and Eventbrite are now offering support for Passbook and taking advantage of powerful marketing features that include <b>push notifications</b> and <b>location-based reminders</b>.
 
-<h4 style="line-height:32px;color:#666;">Passtiche Simplifies Passbook for Local Marketers</h4>
+<h4 style="line-height:32px;color:#666;margin-top:30px;">Passtiche Simplifies Passbook for Local Marketers</h4>
 
-</p>Setting up your own Passbook server is time-consuming, difficult, and highly technical. Passtiche provides the marketing benefits with simple snippets of code you can add to your website in a few minutes.</p>
+</p>Setting up your own Passbook server is time-consuming, difficult, and highly technical.</p><p> Passtiche provides the marketing benefits of Passbook with simple code snippets you can add to your website in a few minutes.</p>
 <p> </p>
 <p> </p>
 
@@ -27,7 +27,7 @@
 
 ## Passtiche For Websites
 
-You can add Passbook support to your site by adding the Passtiche Javascript code snippet to your site and using HTML attributes to specify which links to convert into <i>Add to Passbook</i> badges.
+You can add Passbook support to your site by adding the Passtiche Javascript code snippet and using HTML attributes to specify which links to convert into <i>Add to Passbook</i> badges.
 
 ### &nbsp; Setup the Passtiche Javascript Library 
 
@@ -37,7 +37,7 @@ Start by pasting the following code snippet to your website:
 <div style="width: 100%;
 height: 60px;
 margin: 20px 20px 0;">
-<pre style="float:left;"><code>&lt;script src="http://passtiche.com/js"&gt;&lt;/script&gt;</code></pre>
+<pre style="float:left;"><code style="font-size:1.3em;">&lt;script src="http://passtiche.com/js"&gt;&lt;/script&gt;</code></pre>
 </div>
 
 This markup should be placed at the bottom of your website's HTML (or generated-HTML) structure, before the closing &lt;body&gt; tag.
@@ -51,7 +51,9 @@ This markup should be placed at the bottom of your website's HTML (or generated-
 <div style="margin: 0 20px 20px;">
 Once the javascript library has loaded, it will automatically replace links containing a special <code>data-passtiche</code> attribute with a Passtiche <i>Add to Passbook</i> badge. 
 
-Here is an example of a link that contains a location name:
+
+
+Here is an example of a link that specifies the name of a location with a <code>data-passtiche-loc</code> attribute:
 
 <div style="width: 100%;
 height: 60px;
@@ -63,21 +65,29 @@ Here is the badge as it would appear:
 <div style="margin:15px;text-align:center;max-width:500px;">
 <div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-passtiche-loc="Local Pub" data-passtiche-city="San Francisco"></a> </div>
 </div>
-<br/>
-Here is an example of a link that specifies a location as well as an event name, price and description.
+
+
+<div style="height:20px;"></div>
+
+
+
+<h4 style="line-height:32px;color:#666;">Add Events &amp; Activities to Your Pass</h4>
+
+Here's the markup and resulting badge for for a link containing <code>data-passtiche</code> attributes for an activity name and price.
 
 <div style="width: 100%;
 height: 60px;
 margin: 20px 20px 0;">
-<pre style="float:left;"><code>&lt;a data-passtiche-loc="21st Amendment" data-passtiche-name="Sample a Dozen Beers" <br/>data-passtiche-price="10" data-passtiche-description="Try this sampling a dozen beers beer beer" data-passtiche-city="San Francisco" &gt;&lt;/a&gt;</code></pre>
+<pre style="float:left;"><code>&lt;a data-passtiche-loc="21st Amendment" data-passtiche-name="Sample a Dozen Beers" data-passtiche-price="10" data-passtiche-city="San Francisco" &gt;&lt;/a&gt;</code></pre>
 </div>
-
-Here is the badge as it would appear:
 <div style="margin:15px;text-align:center;max-width:500px;">
 <div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-passtiche-loc="Local Pub" data-passtiche-city="San Francisco" data-passtiche-name="Sample a Dozen Beers" data-passtiche-price="10" data-passtiche-description="Try this sampling a dozen beers beer beer" ></a> </div>
 </div>
 
-More examples will be posted soon that incorporate <a href="http://microformats.org/wiki/hcard">hCard</a> and <a href="http://ogp.me/">Open Graph</a> metadata. 
+<div class="alert">
+	Support for <a href="http://microformats.org/wiki/hcard">hCard</a> and <a href="http://ogp.me/">Open Graph</a> metadata is coming soon!
+</div>
+
 </div>
 
 <div style="height:10px;"></div>
