@@ -47,9 +47,9 @@ handlers:
 - url: /console/static
   static_dir: console/app/view/static  
   
-###- url: /console.*
-###  script: console/app/console.py
-###  login: admin
+- url: /console.*
+  script: console.app.console.app
+  login: admin
   
 
 - url: /cron/.*

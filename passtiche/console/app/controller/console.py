@@ -20,7 +20,6 @@
 import os
 import re
 import sys
-import cgi
 import sets
 import string
 import logging
@@ -40,6 +39,11 @@ from google.appengine.ext        import webapp
 from google.appengine.ext.webapp import template
 
 from autoexec import *
+
+try:
+    import json
+except:
+    import django.utils.simplejson as json
 
 # Unpicklable statements to seed new sessions with.
 INITIAL_UNPICKLABLES = [
@@ -189,7 +193,7 @@ class Statement(ConsoleHandler):
         self.response.headers['Content-Type'] = 'application/x-javascript'
         response = self.buildResponse(code, out, err, exc_type, output_templating)
         response['result'] = result
-        self.response.out.write(simplejson.dumps(response))
+        self.response.out.write(json.dumps(response))
 
     def formatConsoleError(self, code, exc_type, exc_value):
         """Format a ConsoleError exception for sending back to the client."""
@@ -305,7 +309,7 @@ class Banner(ConsoleHandler):
         os.environ['SERVER_SOFTWARE'], custom_msg, um_msg)
 
         self.response.headers['Content-Type'] = 'application/x-javascript'
-        self.response.out.write(simplejson.dumps({'banner':banner}))
+        self.response.out.write(json.dumps({'banner':banner}))
 
 class Page(ConsoleHandler):
     """A human-visible "page" that presents itself to a person."""

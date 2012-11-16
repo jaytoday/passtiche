@@ -8,7 +8,14 @@
 <br/>
 <div style="height:10px;"></div>
 
-<p>Passtiche helps you add Passbook support to your local listings <i>(events, reviews, etc.)</i> in just a few seconds.</p>
+<p style="
+    font-size: 16px;
+"><img src="http://localhost:8080/badge" style="
+    height: 40px;
+    width: 123px;
+    float: left;
+    margin-right: 41px;
+"> <a>Passtiche</a> is a website plugin that adds Passbook support to your local listings <i>(events, reviews, etc.)</i> in just a few seconds.</p>
 
 
 <div style="height:3px;"></div>
@@ -22,13 +29,14 @@
 <p> </p>
 <p> </p>
 
-<br/>
+<div style="height:30px;"></div>
 
 
-## Passtiche For Websites
+## Add Passtiche To Your Website
 
 You can add Passbook support to your site by adding the Passtiche Javascript code snippet and using HTML attributes to specify which links to convert into <i>Add to Passbook</i> badges.
 
+<div style="height:15px;"></div>
 ### &nbsp; Setup the Passtiche Javascript Library 
 
 <div style="margin: 0 20px 20px;">
@@ -37,7 +45,7 @@ Start by pasting the following code snippet to your website:
 <div style="width: 100%;
 height: 60px;
 margin: 20px 20px 0;">
-<pre style="float:left;"><code style="font-size:1.3em;">&lt;script src="http://passtiche.com/js"&gt;&lt;/script&gt;</code></pre>
+<pre style="float:left;"><code style="font-size:1.3em;">&lt;script src="<span class="atv">http://passtiche.com/js</span>"&gt;&lt;/script&gt;</code></pre>
 </div>
 
 This markup should be placed at the bottom of your website's HTML (or generated-HTML) structure, before the closing &lt;body&gt; tag.
@@ -49,54 +57,69 @@ This markup should be placed at the bottom of your website's HTML (or generated-
 ### &nbsp; Add Links With Pass Badge Attributes
 
 <div style="margin: 0 20px 20px;">
-Once the javascript library has loaded, it will automatically replace links containing a special <code>data-passtiche</code> attribute with a Passtiche <i>Add to Passbook</i> badge. 
+Once the javascript library has loaded, it will automatically replace links containing a special <code>data-pass</code> attribute with a Passtiche <i>Add to Passbook</i> badge. 
 
 
 
-Here is an example of a link that specifies the name of a location with a <code>data-passtiche-loc</code> attribute:
-
-<div style="width: 100%;
-height: 60px;
-margin: 20px 20px 0;">
-<pre style="float:left;"><code>&lt;a data-passtiche-loc="Roxie Theater" data-passtiche-city="San Francisco" &gt;&lt;/a&gt;</code></pre>
-</div>
-
-Here is the badge as it would appear:
-<div style="margin:15px;text-align:center;max-width:500px;">
-<div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-passtiche-loc="Local Pub" data-passtiche-city="San Francisco"></a> </div>
-</div>
-
-
-<div style="height:20px;"></div>
-
-
-
-<h4 style="line-height:32px;color:#666;">Add Events &amp; Activities to Your Pass</h4>
-
-Here's the markup and resulting badge for for a link containing <code>data-passtiche</code> attributes for an activity name and price.
+Here is an example of a link that specifies the name of a location with a <code>data-pass-loc</code> attribute:
 
 <div style="width: 100%;
 height: 60px;
 margin: 20px 20px 0;">
-<pre style="float:left;"><code>&lt;a data-passtiche-loc="21st Amendment" data-passtiche-name="Sample a Dozen Beers" data-passtiche-price="10" data-passtiche-city="San Francisco" &gt;&lt;/a&gt;</code></pre>
+<pre style="float:left;"><code>&lt;a <span class="atv">data-pass-loc</span>="<span class="kwd">Roxie Theater</span>" <span class="atv">data-pass-city</span>="<span class="kwd">San Francisco</span>" &gt;&lt;/a&gt;</code></pre>
 </div>
+
+Here is the badge rendered when this link is on a page with the Passtiche JS library:
 <div style="margin:15px;text-align:center;max-width:500px;">
-<div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-passtiche-loc="Local Pub" data-passtiche-city="San Francisco" data-passtiche-name="Sample a Dozen Beers" data-passtiche-price="10" data-passtiche-description="Try this sampling a dozen beers beer beer" ></a> </div>
+<div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-pass-loc="Local Pub" data-pass-city="San Francisco"></a> </div>
 </div>
 
 <div class="alert">
-	Support for <a href="http://microformats.org/wiki/hcard">hCard</a> and <a href="http://ogp.me/">Open Graph</a> metadata is coming soon!
+	<b>Passtiche now also supports open standards!</b> <div style="height:10px;"></div> You can use <a href="http://microformats.org/wiki/hcard">hCard</a> and <a href="http://ogp.me/">Open Graph</a> in addition to <code>data-pass</code> attributes.
+</div>
+<div style="height:20px;"></div>
+
+
+<h3>Add Optional Event/Activity Info</h3>
+
+Here's the markup and resulting badge for for a link containing <code>data-pass</code> attributes for an activity name and price.
+
+<div style="width: 100%;
+height: 60px;
+margin: 20px 20px 0;">
+<pre style="float:left;"><code>&lt;a <span class="atv">data-pass-loc</span>="<span class="kwd">21st Amendment</span>" <span class="atv">data-pass-name</span>="<span class="kwd">Sample a Dozen Beers</span>"<br/> <span class="atv">data-pass-price</span>=<span class="kwd">"10</span>" <span class="atv">data-pass-city</span>="<span class="kwd">San Francisco</span>" &gt;&lt;/a&gt;</code></pre>
+</div>
+<div style="margin:15px;text-align:center;max-width:500px;">
+<div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-pass-loc="Local Pub" data-pass-city="San Francisco" data-pass-name="Sample a Dozen Beers" data-pass-price="10" ></a> </div>
 </div>
 
-</div>
+<h4 style="color:#666;">Data Attribute Details</h4>
+
+<i>Remember to prefix these attributes with <code>data-pass-</code></i>
 
 <div style="height:10px;"></div>
 
+<ul>
+	<li><b>loc</b> - (<b><i>required</i></b>) Name of location</li>
+	<li><b>city</b> - (<b><i>required</i></b>) Name of city containing location</li>
+	<div style="height:10px;"></div>
+	<li><b>name</b> - (<b><i>required</i></b>) Name of activity/event</li>
+	<li><b>price</b> - (<b><i>required</i></b>) Price of activity/event</li>
+	<li><b>description</b> - (<b><i>required</i></b>) Description of activity/event</li>
+</ul>
 
-## Customizing Passes
+You can also use <code>data-pass-id</code> to specify a 4-character ID code for an existing pass. <div style="height:2px;"></div><i style="font-size:.8em;">No other attributes are required when an ID is specified.</i>
+
+</div>
+
+
+<div style="height:30px;"></div>
+
+
+## Customize Your Passes
 
 From the <a>Passtiche Dashboard</a> you can manage the appearance and content of your passes. 
-<div style="height:1px;"></div>
+<div style="height:5px;"></div>
 ### &nbsp; Customizing Pass Appearance:
 
 <div style="margin: 0 20px 20px;">
@@ -110,9 +133,12 @@ You can edit the details of any pass you have created using a built-in CMS. More
 </div>
 
 <br/>
+<div style="display:none;">
 ### Support
 
 Please contact [Passtiche][email]  <!-- Discussion Group, etc. -->
+
+</div>
 
 ### Agreement to Passtiche Terms and Apple Guidelines
 

@@ -47,6 +47,15 @@ class FindPass(object):
 		
 
 		logging.info('getting pass: %s' % p)
+
+		if p.get('id'):
+			logging.info('getting pass with ID %s' % p['id'])
+			pass_template = PassTemplate.all().filter('short_code', p['id']).get()
+			if pass_template:
+				logging.info('found pass template')
+				return pass_template
+			else:
+				raise ValueError(p['id'])
 		
 		# first get or create location. 
 
@@ -59,6 +68,9 @@ class FindPass(object):
 		# TODO: check for slug looking for an existing template
 
 		location_finder = loc_find.FindLocation()
+
+		if 'loc' not in p:
+			raise ValueError('loc')
 
 		pass_loc = location_finder.find(query=p.get('loc'), create='true')
 
@@ -116,7 +128,24 @@ class FindPass(object):
 
 
 
-@cache(version_only=True) # set False once this is stable
+@cache(version_only=True) # set Falsclient = foursquare.Foursquare(client_id='YOUR_CLIENT_ID', client_secret='YOUR_CLIENT_SECRET')e once this is stable
 def find_passes(**kwargs):
 	pass_finder = FindPass()
 	return pass_finder.find(**kwargs)
+
+
+
+
+
+def foursquare_search(query, near='San Francisco'):
+	from lib import foursquare
+	push_secret = 'NGFSOBAGZEXL02AZ440CSQNVZ2NSRURDNEOALD2JRD5FTQY3'
+	client = foursquare.Foursquare(
+		client_id='UR5G1U3BIGAJKZBW0YIEXY0AT0Z3IEOQECOOUTAVGFTQBNOG', 
+		client_secret='QFEPRCNCP551A2WREOLGUW5RUC3GYUHSOE2DAD1DA3KCWWY2')
+	search_params = {'query': query, 'near': near, 'radius': '50000', 'intent': 'browse'}
+
+	response = client.venues.search(params=search_params)
+	logging.info('foursquare response: %s' % response)
+	return response.get('venues',[])
+

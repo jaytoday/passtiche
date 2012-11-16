@@ -53,7 +53,7 @@ PassticheBadger = {
 			*/
 	
 
-			passtiche.badgelinks = $('a[data-passtiche-loc]');
+			passtiche.badgelinks = $('a[data-pass-loc], a[data-pass-id]');
 
 			passtiche.badge_data = { 'create': true, 'passes': [] }; // create passes if they don't already exist 
 
@@ -91,10 +91,10 @@ PassticheBadger = {
 				var pass_data = {};
 
 
-				$(['loc', 'city', 'name', 'price', 'description']).each(function(i, attr){
+				$(['loc', 'city', 'name', 'price', 'description', 'id']).each(function(i, attr){
 		
 
-					var attr_val = badgeLinkEl.attr('data-passtiche-' + attr);
+					var attr_val = badgeLinkEl.attr('data-pass-' + attr);
 					if (attr_val)
 						pass_data[attr] = attr_val;
 

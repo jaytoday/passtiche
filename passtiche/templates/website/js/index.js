@@ -7,7 +7,6 @@ if (!window.location.hash)
     $('#subnav').find('li').removeClass('active');
 
 
-
 {% include "../pass/gallery.js" %}
 
 {% include "../pass/send_dialog.js" %}

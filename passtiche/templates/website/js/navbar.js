@@ -1,5 +1,9 @@
 $('.navbar-fixed-top').find('a').on('click', function(){
 
+	if ($(this).attr('href') && $(this).attr('href').indexOf('#') < 0)
+		// link to external site
+		return;
+
 	if ($(this).hasClass('dropdown-toggle')) return;
 	$('.page.container').hide();
 	$('.navbar-fixed-top').find('a').removeClass('active');
@@ -16,6 +20,8 @@ $('.navbar-fixed-top').find('a').on('click', function(){
 		$('#about_container').show();
 	if ($(this).attr('id') == 'developers_link')
 		$('#developers_container').show();	
+	if ($(this).attr('id') == 'signup_link')
+		$('#signup_container').show();		
 
 	if ($(this).attr('id') == 'publishers_link')
 		$('#publishers_container').show();		
@@ -33,7 +39,9 @@ function navBarInit(){
     if (initial_url_frag == '#developers')
         return $('a#developers_link:first').click();
     if (initial_url_frag == '#publishers')
-        return $('a#publishers_link:first').click();    
+        return $('a#publishers_link:first').click(); 
+        if (initial_url_frag == '#signup')
+        return $('a#signup_link:first').click();        
 };
 
 navBarInit();

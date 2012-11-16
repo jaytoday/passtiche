@@ -41,7 +41,10 @@ from google.appengine.api import mail
 from google.appengine.api import xmpp
 from google.appengine.api import urlfetch
 
-import django.utils.simplejson as simplejson
+try:
+	import json
+except:
+	import django.utils.simplejson as json
 
 
 from model.util.methods import count_entities
