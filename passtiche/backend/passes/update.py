@@ -2,6 +2,7 @@ import logging
 import time, datetime
 from model.passes import PassTemplate, PassList
 from google.appengine.ext import db
+from google.appengine.api import search
 try:
  
     import json
@@ -9,6 +10,7 @@ except:
     from django.utils import simplejson as json   
 import os
 
+_INDEX_NAME = 'pass'
 
 class PassUpdate(object):
 
@@ -40,6 +42,16 @@ class PassUpdate(object):
 			from utils import string as str_utils
 			code = str_utils.genkey(length=4)
 			pass_template.short_code = code
+
+			pass_doc = search.Document(fields=[search.TextField(name='name', value=name),
+                search.TextField(name='code', value=code),
+                search.TextField(name='keyname', value=keyname),
+                search.TextField(name='loc', value=(location_code or '')),
+                search.TextField(name='location_name', value=location.name),
+                search.DateField(name='date', value=datetime.datetime.now().date())])
+			logging.info('adding pass doc to index')
+			search.Index(name=_INDEX_NAME).add(pass_doc)
+
 		elif name:
 				pass_template.name = name
 

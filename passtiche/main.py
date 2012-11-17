@@ -128,21 +128,4 @@ application = tornado.wsgi.WSGIApplication([
             
 ], **settings)
 
-# admin
-"""
-(r"/admin/bin/([0-9a-zA-Z-_]+)/?", admin.BinView),
-(r"/admin/login/(?P<email>[^\/]+)?", auth.AdminLogin),
-(r"/admin/mail/?", admin.Email),
 
-# cron
-(r'/cron/(?P<package_name>[^\/]+)/?(?P<script_name>[^\/]+)?', cron.CronHandler),
- 
-"""
-
-
-def main():
-    wsgiref.handlers.CGIHandler().run(application)
-
-
-if __name__ == "__main__":
-    main()

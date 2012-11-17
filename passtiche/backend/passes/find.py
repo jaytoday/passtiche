@@ -2,15 +2,17 @@ import logging
 import time, datetime
 from model.passes import PassTemplate, PassList
 from google.appengine.ext import db
+from google.appengine.api import search
 from utils.cache import cache
 try:
  
     import json
 except:
     from django.utils import simplejson as json   
-import os
+import os, string
 
-
+_INDEX_NAME = 'pass'
+_ENCODE_TRANS_TABLE = string.maketrans('-: .@', '_____')
 
 class FindPass(object):
 
@@ -57,45 +59,49 @@ class FindPass(object):
 			else:
 				raise ValueError(p['id'])
 		
-		# first get or create location. 
-
-		# if new location, definitely create, if not new, search for name and location and then create.
-
-		# city is present but ignore it for now 
-
-		# TODO: what to do if no loc? 
-
-		# TODO: check for slug looking for an existing template
-
-		location_finder = loc_find.FindLocation()
 
 		if 'loc' not in p:
 			raise ValueError('loc')
 
-		pass_loc = location_finder.find(query=p.get('loc'), create='true')
 
-		pass_loc.put() # TODO: optimize saves
+		# first do search for pass name and location.
+		# If no result, get location and create new pass 
+		pass_template = None
+		pass_results = self.search(p)
+		if pass_results:
+			pass_template_doc = pass_results[0]
+			logging.info(pass_template_doc)
+			for f in pass_template_doc.fields:
+				logging.info(f.name)
+				logging.info(f.value)
 
-		logging.info('got loc %s for pass %s' % (pass_loc.code, p))
-
-
-		p['location_code'] = pass_loc.code
-		p['location'] = pass_loc
-
-		pass_query = PassTemplate.all()
-		
-		pass_query = pass_query.filter('name', p.get('name',''))
-
-		pass_query = pass_query.filter('location_code', p['location_code'])
-
-		pass_template = pass_query.get()
+			pass_template = PassTemplate.get_by_key_name(pass_template_doc.fields[2].value)
+			if not pass_template:
+				logging.error('DID NOT GET PASS TEMPLATE FROM SEARCH RESULTS KEYNAME')
 
 		if pass_template:
 			logging.info('Found existing template for name %s and location %s' % (
 				p.get('name'), p.get('location_code')))
 
+			return pass_template
+
 			# if description is included, should it update existing template?
 		else:
+			logging.info('no pass template. getting location')
+
+			# first get location, then create new pass 
+
+			location_finder = loc_find.FindLocation()
+			pass_loc = location_finder.find(query=p.get('loc'), create='true')
+
+			pass_loc.put() # TODO: optimize saves
+
+			logging.info('got loc %s for pass %s' % (pass_loc.code, p))
+
+
+			p['location_code'] = pass_loc.code
+			p['location'] = pass_loc
+
 			logging.info('Creating New Template. No template found for name %s and location %s' % (
 				p.get('name'), p.get('location_code')))
 			from backend.passes import update as pass_update
@@ -103,10 +109,10 @@ class FindPass(object):
 			logging.info('Pass update kwargs: %s' % p)
 			pass_template = pass_updater.create_or_update(**p)
 
-		if save:
-			pass_template.put() # optimize
+			if save:
+				pass_template.put() # optimize
 
-		return pass_template
+			return pass_template
 
 
 	def find_for_list(self):
@@ -126,6 +132,31 @@ class FindPass(object):
 
 		return pass_templates
 
+
+	def search(self, p):
+		"""
+			TODO: because foursquare changes location names, this could result in false negatives
+			when using the original location name for a search.
+		"""
+		logging.info('searching for pass')
+		# sort results by author descending
+		expr_list = [search.SortExpression(
+		    expression='name', default_value='',
+		    direction=search.SortExpression.DESCENDING), 
+		search.SortExpression(
+		    expression='location_name', default_value='',
+		    direction=search.SortExpression.DESCENDING)]
+		# construct the sort options 
+		sort_opts = search.SortOptions(
+		     expressions=expr_list)
+		query_options = search.QueryOptions(
+		    limit=3,
+		    sort_options=sort_opts)
+		query_obj = search.Query(query_string='name:"%s" location_name:"%s"' % (
+				p['name'], p['loc']), options=query_options)
+		results = search.Index(name=_INDEX_NAME).search(query=query_obj).results
+		logging.info(results)
+		return results
 
 
 @cache(version_only=True) # set Falsclient = foursquare.Foursquare(client_id='YOUR_CLIENT_ID', client_secret='YOUR_CLIENT_SECRET')e once this is stable

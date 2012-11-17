@@ -2,13 +2,15 @@ import logging
 import time, datetime
 from model.activity import Location
 from google.appengine.ext import db
+from google.appengine.api import search
 try:
  
     import json
 except:
     from django.utils import simplejson as json   
-import os
+import os, string
 
+_INDEX_NAME = 'loc'
 
 def get_loc_code(name):
 	return name.lower().replace(' ','-')
@@ -30,6 +32,12 @@ class LocationUpdate(object):
 		loc = Location.get_by_key_name(loc_code)
 		if not loc:
 			loc = Location(key_name=loc_code, code=loc_code, name=name)
+			loc_doc = search.Document(fields=[search.TextField(name='name', value=name),
+                search.TextField(name='code', value=loc_code),
+                search.DateField(name='date', value=datetime.datetime.now().date())])
+			logging.info('adding loc doc to index')
+			search.Index(name=_INDEX_NAME).add(loc_doc)
+
 			self.get_loc_info(loc)
 		elif name:
 				loc.name = name
@@ -101,7 +109,7 @@ class LocationUpdate(object):
 		from model.activity import LocationData
 		loc_data = LocationData(code=loc.code)		
 		loc_data.foursquare = venues
-		logging.info('foursquare data: %s' % pp.pformat(venues))
+		logging.info('foursquare data: %s' % pp.pformat(venues[:3]))
 		loc_data.put()
 
 		for v in venues:
@@ -114,7 +122,8 @@ class LocationUpdate(object):
 			loc.fsq_id = v.get('id')
 			loc.fsq_checkins = v.get('stats',{}).get('checkinsCount',0)
 			loc.categories = [c['name'] for c in v.get('categories')]
-			loc.name = v.get('name')
+			# disabled name change for now since it breaks search
+			#loc.name = v.get('name')
 			if v.get('contact',{}).get('formattedPhone'):
 				loc.phone = v['contact']['formattedPhone']
 			if v.get('location',{}):
