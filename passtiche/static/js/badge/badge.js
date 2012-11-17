@@ -25,9 +25,14 @@ if(/^[\],:{}\s]*$/.test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,'@').
 throw new SyntaxError('JSON.parse');};}}());
 
 
-BASE_URL = 'http://localhost:8080'
+
+if (window.location.href.indexOf('localhost') > -1)
+	BASE_URL = 'http://localhost:8080';
+else
+	BASE_URL = 'http://www.passtiche.com';
 
 // TODO: implement as a proper js lib with different methods and options 
+// TODO: dynamically compile and cache 
 
 /*
 

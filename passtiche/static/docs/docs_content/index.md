@@ -10,7 +10,7 @@
 
 <p style="
     font-size: 16px;
-"><img src="http://localhost:8080/badge" style="
+"><img src="/badge" style="
     height: 40px;
     width: 123px;
     float: left;
@@ -21,7 +21,7 @@
 <div style="height:3px;"></div>
 <h4 style="line-height:32px;color:#666;">Passbook: A Powerful New Channel for Local Marketing</h4>
 <p><a href="http://www.apple.com/ios/whats-new/#passbook" target="_blank">Apple Passbook<sup style="font-size: 11px;margin-right: -1px;top: -7px;">®</sup></a> is where iPhone and iPod Touch owners store and access boarding passes, tickets, coupons and more.
-</p> Fortune 500 companies such as Starbucks and startups like AirBnb and Eventbrite are now offering support for Passbook and taking advantage of powerful marketing features that include <b>push notifications</b> and <b>location-based reminders</b>.
+</p> Fortune 500 companies such as Starbucks and startups like AirBnb and Eventbrite are now offering support for Passbook and taking advantage of powerful marketing features that include push notifications and location-based reminders. <b>Passbook is the <i>only</i> way for local marketers to use push notifications without an app installed on the customer's device.</b>
 
 <h4 style="line-height:32px;color:#666;margin-top:30px;">Passtiche Simplifies Passbook for Local Marketers</h4>
 

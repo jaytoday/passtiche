@@ -28,8 +28,15 @@ class Location(BaseModel):
 	website = db.StringProperty()	
 	neighborhood_name = db.StringProperty()	
 	street_address = db.StringProperty()
+
 	region_name = db.StringProperty() # San Francisco
 	region_code = db.StringProperty() # san-francisco
+	
+	lat = db.FloatProperty()
+	lng = db.FloatProperty()
+	categories = model.util.properties.PickledProperty(default=[])
+	fsq_id = db.StringProperty() 
+	fsq_checkins = db.IntegerProperty() 
 
 	# TODO: coordinates, business information, phone number, website.....
 	image_key = db.StringProperty(required=False)
@@ -40,4 +47,6 @@ class Location(BaseModel):
 
 
 
-
+class LocationData(BaseModel):
+	code = db.StringProperty()
+	foursquare = model.util.properties.PickledProperty(default=[])
