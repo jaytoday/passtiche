@@ -71,6 +71,7 @@ application = tornado.wsgi.WSGIApplication([
     # index - # TODO - new dashboard module
     #(r"/", index.LandingPage),
     (r"/", index.PassticheIndex),
+    (r"/costanza", index.PassticheIndex),
 
     (r"/cms", account.CMS),
 

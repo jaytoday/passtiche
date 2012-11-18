@@ -37,7 +37,7 @@ class PassticheIndex(ViewHandler):
     """ Main website view """
     
     def get(self):
-        if 'costanza.co' in gae_utils.base_url():
+        if 'costanza.co' in gae_utils.base_url() or '/costanza' in gae_utils.GetUrl():
             return self.costanza()
         self.render_output()
 

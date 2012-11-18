@@ -7,10 +7,9 @@
 <head>
   <meta charset="UTF-8" />
   <base href="http://handbook.zaarly.com" />
-  <title>Zaarly Employee Handbook</title>
+  <title>Costanza</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link href="https://ssl.typography.com/675622/774420/css/fonts.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+  <link href='/static/css/costanza/style.css' rel='stylesheet' type='text/css' />
   <!--[if IE]>
   <script src='http://use.typekit.com/flt1fjp.js'></script>
   <script>try{Typekit.load();}catch(e){}</script>
@@ -21,7 +20,7 @@
   <div class="color-change" id="left"></div>
   <div class="color-change" id="right"></div>
   <div class="color-change" id="top">
-    <img src="/images/home.png" class="home" />
+    <img src="/static/images/costanza/home.png" class="home" />
     <!-- <span class="table-contents">Table of Contents</span> -->
   </div>
   <div class="color-change" id="bottom"></div>
@@ -230,7 +229,7 @@
         <li>It’s a powerful reminder to see a Zaarly Seller show up to the office toting something awesome for our team.</li>
         <li>Work happens anywhere, collaboration happens here, in the office we call home.</li>
       </ul>
-      <img src="/images/end.png" class="end" />
+   
       <div class='spacer'></div>
     </div>
   </div>
@@ -238,28 +237,60 @@
 
 
 
-  <script src='/javascripts/jquery-1.8.2.min.js'></script>
-  <script src='/javascripts/underscore-1.4.2.min.js'></script>
-  <script src='/javascripts/jquery.fittext.custom.js'></script>
+  <script src='/static/js/jquery.1.7.2.min.js'></script>
+  <script src='/static/js/underscore.js'></script>
+  <script src='/static/js/costanza/jquery.fittext.js'></script>
 
-  <script src='/javascripts/hammer/hmr.smoothie.js'></script>
-  <script src='/javascripts/hammer/hmr.sticky.js'></script>
-  <script src='/javascripts/hammer/hmr.stickyside.js'></script>
-  <script src='/javascripts/hammer/hmr.visible.js'></script>
-  <script src='/javascripts/hammer/jquery.photo.navigator.js'></script>
-
-  <script src='/javascripts/navigation.js'></script>
   <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-21533625-9']);
-    _gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+  (function() {
 
+  $(document).ready(function() {
+    var $window, colorChange, sections;
+    $(".navigation td").fitText(0.2, {
+      minFontSize: '30px',
+      maxFontSize: '40px'
+    });
+    $('#top span, .home').click(function() {
+      return $('.navigation td').each(function(index) {
+        var _this = this;
+        return setTimeout((function() {
+          return $(_this).addClass('active');
+        }), index * 50);
+      });
+    });
+    $('td a').click(function() {
+      return $('.navigation td').each(function(index) {
+        var _this = this;
+        return setTimeout((function() {
+          return $(_this).removeClass('active');
+        }), index * 50);
+      });
+    });
+    $window = $(window);
+    colorChange = $('.color-change');
+    sections = $('.layout-full').get().reverse();
+    return $window.scroll(function() {
+      var section, _i, _len, _results;
+      _results = [];
+      for (_i = 0, _len = sections.length; _i < _len; _i++) {
+        section = sections[_i];
+        if ($window.scrollTop() - $(section).offset().top > -100) {
+          colorChange.css({
+            'background-color': '#' + $(section).attr('id')
+          });
+          break;
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
+    });
+  });
+
+}).call(this);
+
+  // analytics
   </script>
 </body>
 </html>
