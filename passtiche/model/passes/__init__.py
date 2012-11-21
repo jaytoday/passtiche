@@ -64,6 +64,8 @@ class PassTemplate(BaseModel):
 
     def full_name(self):
         if not self.location_name:
+            if not self.name:
+                return self.location_name
             return self.name
         return "%s at %s" % (self.name, self.location_name)
 

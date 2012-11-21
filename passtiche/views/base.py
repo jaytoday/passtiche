@@ -50,7 +50,7 @@ class BaseHandler(tornado.web.RequestHandler):
     def write_error(self, status_code, **kwargs):
         
         import traceback
-        if False:#self.settings.get("debug") and "exc_info" in kwargs:
+        if gae_utils.Debug():
             exc_info = kwargs["exc_info"]
             trace_info = ''.join(["%s<br/>" % line for line in traceback.format_exception(*exc_info)])
             request_info = ''.join(["<strong>%s</strong>: %s<br/>" % (k, self.request.__dict__[k] ) for k in self.request.__dict__.keys()])
@@ -90,7 +90,7 @@ class BaseHandler(tornado.web.RequestHandler):
         else:
             for bot_agent in ['google','appengine','alexa','yahoo','bot','bing']:
                 if bot_agent in gae_utils.GetUserAgent().lower():
-                    return self.error_output(error, err_msg)
+                    return# self.error_output(error, err_msg)
             if '405: Method Not Allowed' in err_msg:
                 return self.error_output(error, err_msg)
                 

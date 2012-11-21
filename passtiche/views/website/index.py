@@ -37,6 +37,7 @@ class PassticheIndex(ViewHandler):
     """ Main website view """
     
     def get(self):
+        logging.info(gae_utils.base_url())
         if 'costanza.co' in gae_utils.base_url() or '/costanza' in gae_utils.GetUrl():
             return self.costanza()
         self.render_output()
@@ -137,7 +138,7 @@ class UserPassDownload(PassDownload):
         user_pass = UserPass.get_by_key_name(self.pass_code)
         self.context['linked_user_pass'] = user_pass.code
         self.context['linked_pass_template'] = user_pass.pass_code 
-        self.context['linked_pass_entity'] = user_pass # need to get template?       
+        self.context['linked_pass_entity'] = user_pass.template
 
         
 

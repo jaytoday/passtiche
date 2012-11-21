@@ -153,7 +153,7 @@ class FindPass(object):
 		    limit=3,
 		    sort_options=sort_opts)
 		query_obj = search.Query(query_string='name:"%s" location_name:"%s"' % (
-				p['name'], p['loc']), options=query_options)
+				p.get('name',''), p['loc']), options=query_options)
 		results = search.Index(name=_INDEX_NAME).search(query=query_obj).results
 		logging.info(results)
 		return results

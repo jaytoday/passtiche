@@ -6,6 +6,9 @@ def base_url():
     if Debug():
         return "http://localhost:8080"
     else:
+        return 'http://%s' % os.environ['HTTP_HOST']
+
+def website():
         from main import settings
         return settings["website"]
         

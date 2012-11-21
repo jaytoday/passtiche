@@ -17,6 +17,9 @@ except:
     
 class AjaxHandler(CookieHandler):
 
+    def __init__(self, *args, **kwargs):
+        return super(AjaxHandler, self).__init__(*args, **kwargs)
+
     def write(self, *args, **kwargs):
         return super(AjaxHandler, self).write(*args, **kwargs)
         
@@ -114,7 +117,7 @@ class SavePass(AjaxHandler):
 class SendPass(AjaxHandler):
 
     def get(self):
-        action = self.get_argument('action','').lower()
+        action = self.get_argument('action').lower()
         from backend.admin import send_admin_email 
         from google.appengine.ext.deferred import deferred
         deferred.defer(send_admin_email, 

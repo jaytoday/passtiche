@@ -71,7 +71,7 @@ margin: 20px 20px 0;">
 
 Here is the badge rendered when this link is on a page with the Passtiche JS library:
 <div style="margin:15px;text-align:center;max-width:500px;">
-<div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-pass-loc="Local Pub" data-pass-city="San Francisco"></a> </div>
+<div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-pass-loc="Roxie Theater" data-pass-city="San Francisco"></a> </div>
 </div>
 
 <div class="alert">
@@ -108,9 +108,17 @@ margin: 20px 20px 0;">
 	<li><b>description</b> - (<b><i>required</i></b>) Description of activity/event</li>
 </ul>
 
+<div style="height:1px;"></div>
+
 You can also use <code>data-pass-id</code> to specify a 4-character ID code for an existing pass. <div style="height:2px;"></div><i style="font-size:.8em;">No other attributes are required when an ID is specified.</i>
 
 </div>
+
+<div class="alert">
+	<b>Link to URL for an existing pass file</b> <div style="height:10px;"></div> Already have a <i>.pkpass</i> file ready to distribute?<br/> Link to your using the <code>data-pass-file</code> attribute.
+</div>
+<div style="height:20px;"></div>
+
 
 
 <div style="height:30px;"></div>
