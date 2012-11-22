@@ -14,7 +14,7 @@ from utils import gae as gae_utils
 class PassHandler(APIHandler):
 
 	def find_passes(self):
-		query_args = {}
+		query_args = { }
 		for f in ['query', 'order', 'create', 'passes']:
 			if self.get_argument(f,''):
 				query_args[f] = self.get_argument(f)

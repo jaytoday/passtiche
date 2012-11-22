@@ -19,6 +19,34 @@ import compile_widget
 
 THUMBNAIL_FILE_NAME = 'widget.wdgt/Default.png'
 
+
+# use  Cache-Control 
+
+def get_package(typ, package):
+    ''' combine script/css file content '''
+
+    contents = ""
+    for file_name in package:
+        file_path = os.path.join(root_dir, file_name)
+
+        _, file_contents = get_file(file_path)
+
+        contents += file_contents + "\n"
+
+    if typ == 'js':
+        contents = process_javascript(contents)
+
+    return (hashlib.sha1(contents).hexdigest(), contents)
+
+
+def get_data_url(fp):
+    _, ext = os.path.splitext(fp)
+    encoded = ""
+    with open(fp, "rb") as handle:
+        encoded = base64.standard_b64encode(handle.read())
+    return "data:" + mime[ext] + ";base64," + encoded
+
+
     
 class BaseResourceHandler(BaseHandler):
     pass
@@ -57,5 +85,6 @@ def get_media_image(media_key):
 class DownloadPass(BaseResourceHandler):
 
     def get(self, widget_key):
+        pass
         
      
