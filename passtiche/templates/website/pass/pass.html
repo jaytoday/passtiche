@@ -1,16 +1,19 @@
-<div class="pass_item span4" name="{{ pass_template.name }}" keyname="{{ pass_template.key().name() }}" code="{{ pass_template.short_code }}">
+<div class="pass_item span4" name="{{ pass_template.name or pass_template.location_name }}" keyname="{{ pass_template.key().name() }}" code="{{ pass_template.short_code }}">
 				<div  class="thumbnail">
 				
 					<a style="display:block;text-decoration: none;" href="#sendPass" class="pass_name" data-toggle="modal">
 
 
 
-				<div class="img"><h3 class="pass_title"><span>{{ pass_template.name }}</span></h3>
+				<div class="img">
+
+					<h3 class="pass_title"><span>{{ pass_template.short_name() }}</span></h3>
 <div class="pass_details">
 
-{% set display_date = pass_template.display_date() %}
 
 <div class="location {% if len(pass_template.location_name) <= 27 %}short{% end %}">at {{ pass_template.location_name }}</div>
+
+{% set display_date = pass_template.display_date() %}
 
 <div class="dates" style="
 font-size: 10px;

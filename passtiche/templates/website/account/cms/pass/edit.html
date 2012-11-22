@@ -12,7 +12,11 @@
     <textarea id="description" style="width: 420px;
 height: 112px;">{% if p and p.description %}{{ p.description }}{% end %}</textarea>
 
-
+    <label>Image</label>
+    {% if "image" and False %}
+      <img src=""/>
+    {% end %}
+    <a class="btn btn-mini" id="upload_img">Upload Image</a>
 
     <div style="clear:both;">
   	<div style="margin: 20px 0 20px 30px;

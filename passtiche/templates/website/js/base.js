@@ -25,3 +25,21 @@ $(document).keyup(function(e){
     }
         
 });
+
+$('.not_available').live('click', function(){
+
+  bootbox.dialog("This feature is not available", [{
+    "label" : "Continue",
+    
+    "callback": function() {
+     
+    }
+}], {
+    "backdrop" : "static",
+    "onEscape": "close",
+    "keyboard" : true,
+    "show"     : true,
+    "animate": false
+});
+
+});

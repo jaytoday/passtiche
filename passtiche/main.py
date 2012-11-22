@@ -79,6 +79,7 @@ application = tornado.wsgi.WSGIApplication([
 
     (r"/login", auth.Login),
     (r"/logout", auth.Logout),
+    (r"/signup", auth.Signup),
      # shortcut login
      (r'/login/(?P<email>[^\/]+)/?', auth.Login),
 

@@ -22,7 +22,7 @@ class PassTemplate(BaseModel):
 
     owner = db.ReferenceProperty(User, required=False, collection_name='templates')
 
-    name = db.StringProperty(required=True)  
+    name = db.StringProperty(required=False)  
     location_code = db.StringProperty()  
     location_name = db.StringProperty()
     
@@ -68,6 +68,9 @@ class PassTemplate(BaseModel):
                 return self.location_name
             return self.name
         return "%s at %s" % (self.name, self.location_name)
+
+    def short_name(self):
+        return self.name or self.location_name
 
     def display_price(self):
         if self.price_rating:

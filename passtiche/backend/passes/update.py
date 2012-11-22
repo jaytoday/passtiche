@@ -36,8 +36,6 @@ class PassUpdate(object):
 		
 		if not pass_template:
 			logging.info('creating new pass template')
-			if not name:
-				name = 'Unknown Event'
 			pass_template = PassTemplate(key_name=keyname, name=name, slug=slug)
 			from utils import string as str_utils
 			code = str_utils.genkey(length=4)

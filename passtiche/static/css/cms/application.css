@@ -220,7 +220,7 @@ select {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);
   border: 1px solid #dddddd;
 }
-/* Buttons */
+/* Buttons 
 .btn-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -235,8 +235,6 @@ select {
   border-color: #7da64b #7da64b #567233;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #7da64b;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .btn-primary:hover,
@@ -266,8 +264,7 @@ select {
   border-color: #1f718a #1f718a #113e4c;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #1f718a;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
+ 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .btn-secondary:hover,
@@ -297,8 +294,7 @@ select {
   border-color: #828282 #828282 #5c5c5c;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #828282;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
+ 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .btn-tertiary:hover,
@@ -314,6 +310,9 @@ select {
 .btn-tertiary.active {
   background-color: #696969 \9;
 }
+
+*/
+
 /* Dropdowns */
 .dropdown-menu {
   -webkit-border-radius: 5px;
@@ -832,7 +831,7 @@ jQuery UI Styles
   z-index: 2;
   width: 25px;
   height: 16px;
-  background: url(../img/jquery/handle.png) no-repeat;
+  background: url(/static/images/cms/jquery/handle.png) no-repeat;
   border: none;
   cursor: pointer;
 }
@@ -937,7 +936,7 @@ jQuery UI Styles
   margin-bottom: -0.6em;
   width: 15px;
   height: 24px;
-  background: url(../img/jquery/handle-vertical.png) no-repeat;
+  background: url(/static/images/cms/jquery/handle-vertical.png) no-repeat;
 }
 .ui-slider-vertical .ui-slider-handle:hover {
   background-position: 0 -24px;
@@ -1044,15 +1043,11 @@ jQuery UI Styles
 Signin
 
 ------------------------------------------------------------------- */
-body.login {
-  color: #838383;
-  font: 13px/1.7em 'Open Sans';
-  background: url(../img/signin/login-bg.png);
-}
+
 .account-container {
   width: 380px;
   display: block;
-  margin: 85px auto 0 auto;
+  margin: 15px auto 0 auto;
   background: #f9f9f9;
   border: 1px solid #d5d5d5;
   -webkit-border-radius: 4px;
@@ -1074,7 +1069,7 @@ body.login {
   display: none;
 }
 .login-fields input {
-  font-family: 'Open Sans';
+ 
   font-size: 13px;
   color: #8e8d8d;
   padding: 11px 15px 10px 50px;
@@ -1085,10 +1080,10 @@ body.login {
   box-shadow: inset 2px 2px 4px #f1f1f1;
 }
 .login-fields .username-field {
-  background: url(../img/signin/user.png) no-repeat;
+  background: url(/static/images/cms/signin/user.png) no-repeat;
 }
 .login-fields .password-field {
-  background: url(../img/signin/password.png) no-repeat;
+  background: url(/static/images/cms/signin/password.png) no-repeat;
 }
 .login-actions {
   float: left;
@@ -1119,7 +1114,6 @@ span.login-checkbox {
   margin-top: 31px;
 }
 span.login-checkbox  > input[type='checkbox'] {
-  opacity: 0;
   float: left;
   width: 15px;
 }
@@ -1131,7 +1125,7 @@ span.login-checkbox  > input[type='checkbox'] + label {
   margin: 0;
   font-size: 12px;
   line-height: 1.2em;
-  background: url(../img/signin/check.png) no-repeat 0 0;
+  background: url(/static/images/cms/signin/check.png) no-repeat 0 0;
   cursor: pointer;
 }
 span.login-checkbox  > input[type='checkbox']:checked + label {
@@ -1144,7 +1138,7 @@ span.login-checkbox  > input[type='checkbox']:checked + label {
   height: 32px;
   width: 157px;
   display: inline-block;
-  background: url(../img/signin/twitter_btn.png) no-repeat;
+  background: url(/static/images/cms/signin/twitter_btn.png) no-repeat;
 }
 .twitter:active,
 .fb:active {
@@ -1171,7 +1165,7 @@ span.login-checkbox  > input[type='checkbox']:checked + label {
 }
 .fb {
   width: 162px;
-  background: url(../img/signin/fb_btn.png) no-repeat;
+  background: url(/static/images/cms/signin/fb_btn.png) no-repeat;
 }
 .fb a {
   padding: 5px 0 0 31px;
@@ -1274,7 +1268,7 @@ Validation Styles
   display: inline-block;
   width: 15px;
   height: 15px;
-  background: url(../img/validation/validation-success.png) no-repeat 0 0;
+  background: url(/static/images/cms/validation/validation-success.png) no-repeat 0 0;
 }
 .control-group.success input + div.clean,
 .control-group.success select + div.clean,
@@ -1690,6 +1684,11 @@ Gallery
   left: 6px;
   right: 6px;
 }
+
+/*------------------------------------------------------------------
+ 
+Layout: Layout
+
 .preview {
   position: absolute;
   top: 7px;
@@ -1699,31 +1698,32 @@ Gallery
   width: 184px;
   height: 120px;
   background-color: rgba(0, 0, 0, 0.65);
-  background-image: url(../img/gallery/zoom.png);
+  background-image: url(/static/images/cms/gallery/zoom.png);
   background-position: 50% 50%;
   background-repeat: no-repeat;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-/*------------------------------------------------------------------
- 
-Layout: Layout
 
-------------------------------------------------------------------- */
+------------------------------------------------------------------- 
 body {
   font: 12px/1.7em 'Open Sans', arial, sans-serif;
   background: #FFF;
 }
+*/
+
 /*------------------------------------------------------------------
  
 Layout: Wrapper
 
-------------------------------------------------------------------- */
 html,
 body {
   height: 100%;
 }
+
+------------------------------------------------------------------- */
+
 #wrapper {
   min-height: 100%;
   height: auto !important;
@@ -1859,7 +1859,7 @@ Layout: Header
   font-size: 18px;
   font-weight: 600;
   line-height: 600;
-  background: url(../img/logo.png) no-repeat 0 0;
+  background: url(/static/images/cms/logo.png) no-repeat 0 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 #header .btn-navbar {

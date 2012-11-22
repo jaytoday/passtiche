@@ -4,7 +4,9 @@
 	<div class="alert alert-info pass_details_inner">
 
 
-		<div class="field_value" style="line-height:17px;">at {{ pass_template.location_name }}</div>
+	{% if pass_template.name %}
+	<div class="field_value" style="line-height:17px;">at {{ pass_template.location_name }}</div>
+	{% end %}
 		<div class="clr"></div>
 		<div class="field_type">{{ pass_template.display_date() }} {% if pass_template.display_date() and pass_template.display_time() %}<div style="margin-bottom:4px;"></div>{% end %}{{ pass_template.display_time() }}
 		</div>
