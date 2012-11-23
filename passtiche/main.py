@@ -73,7 +73,7 @@ application = tornado.wsgi.WSGIApplication([
     (r"/", index.PassticheIndex),
     (r"/costanza", index.PassticheIndex),
 
-    (r"/cms", account.CMS),
+    (r"/dashboard", account.Dashboard),
 
  
 

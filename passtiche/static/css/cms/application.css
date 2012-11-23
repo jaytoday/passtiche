@@ -1079,7 +1079,7 @@ Signin
   margin: 0;
   box-shadow: inset 2px 2px 4px #f1f1f1;
 }
-.login-fields .username-field {
+.login-fields .username-field, .login-fields .username-field:focus {
   background: url(/static/images/cms/signin/user.png) no-repeat;
 }
 .login-fields .password-field {
@@ -1121,11 +1121,11 @@ span.login-checkbox  > input[type='checkbox'] + label {
   clear: none;
   height: 15px;
   display: block;
-  padding: 0 0 0 22px;
-  margin: 0;
+  margin: 0 0 0 22px;
+
   font-size: 12px;
   line-height: 1.2em;
-  background: url(/static/images/cms/signin/check.png) no-repeat 0 0;
+  _background: url(/static/images/cms/signin/check.png) no-repeat 0 0;
   cursor: pointer;
 }
 span.login-checkbox  > input[type='checkbox']:checked + label {

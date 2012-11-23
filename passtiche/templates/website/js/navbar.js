@@ -1,6 +1,6 @@
 $('.navbar-fixed-top').find('a').on('click', function(){
 
-	if ($(this).attr('href') && $(this).attr('href').indexOf('#') < 0)
+	if (!$(this).attr('href') || $(this).attr('href').indexOf('#') < 0)
 		// link to external site
 		return;
 

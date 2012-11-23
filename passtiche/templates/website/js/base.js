@@ -26,9 +26,10 @@ $(document).keyup(function(e){
         
 });
 
-$('.not_available').live('click', function(){
+function showDialog(msg){
 
-  bootbox.dialog("This feature is not available", [{
+
+  bootbox.dialog(msg, [{
     "label" : "Continue",
     
     "callback": function() {
@@ -42,4 +43,9 @@ $('.not_available').live('click', function(){
     "animate": false
 });
 
+};
+
+$('.not_available').live('click', function(){
+
+  showDialog("This feature is not available");
 });

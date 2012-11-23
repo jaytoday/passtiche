@@ -12,7 +12,7 @@ INVITE_CODES = ['quirkyopus','borogoves', 'pro','jointheclub','press','yc','part
 PREMIUM_CODES = ['quirkyopus','borogoves']
 
      
-class CMS(ViewHandler):
+class Dashboard(ViewHandler):
 
 	def get(self):
 		self.render("website/account/cms/index.html", **self.context)		

@@ -192,12 +192,17 @@ class CookieHandler(BaseHandler):
         return self.get_user(create_user=True, **kwargs)
         
     def get_user(self, create_user=False, user_keyname=None, 
-        password=None, old_user=None, set_user=True, admin=False):
+        password=None, old_user=None, set_user=True, admin=False, **kwargs):
+
+
         """
 
         
         """
-
+        if password:
+            password = password.lower().strip()
+        else:
+            raise errors.PasswordError
         user = self.get_current_user()
         if user:
             if not user_keyname:
@@ -241,7 +246,7 @@ class CookieHandler(BaseHandler):
         else:
             # user doesn't exist
             if create_user:
-                new_user = self.create_new_user(user_keyname, password, set_user=set_user)
+                new_user = self.create_new_user(user_keyname, password, set_user=set_user, **kwargs)
                 if old_user:
                     self.transfer_user_data(old_user, new_user)
                 return new_user 
@@ -267,12 +272,12 @@ class CookieHandler(BaseHandler):
             raise errors.NoEntityError
 
     
-    def create_new_user(self, user_keyname, password, set_user=True):
+    def create_new_user(self, user_keyname, password, set_user=True, **kwargs):
         logging.info('creating user with keyname %s' % user_keyname)
         user_entity = User(key_name=user_keyname, username=user_keyname)
         if password:
             user_entity.password = password
-        if '@hiptype.com' not in user_keyname and not user_keyname.startswith('auto_gen'):
+        if '@passtiche.com' not in user_keyname and not user_keyname.startswith('auto_gen'):
             deferred.defer(send_admin_email, subject='New %s User: %s' % (
                  self._settings['title'], user_keyname),        
                 message='User %s just signed up for an account' % user_keyname,
@@ -284,7 +289,15 @@ class CookieHandler(BaseHandler):
             deferred.defer(send_welcome_email, 
                 user_entity.email, 
                 'Welcome to %s!' % self._settings['title'], 
-                _countdown=10) # 1300 22 minutes   
+                _countdown=10) # 1300 22 minutes
+
+        # optional args
+        for k in ['first_name', 'last_name']:
+            if kwargs.get(k):
+                v = kwargs.get(k)
+                setattr(user_entity, k, v)
+
+
         user_entity.put()
         if set_user:
             self.set_current_user(user_entity)
@@ -301,6 +314,15 @@ class CookieHandler(BaseHandler):
     def transfer_user_data(self, old_user, new_user):
         logging.info('TODO: transfer data from old user %s to new user %s' % (
             old_user.key().name(), new_user.key().name()))
+
+    def flat_args_dict(self):
+        # utility method for getting request args not in a list
+        args = self.request.arguments
+        fargs = {}
+        for k, v in args.items():
+            fargs[k] = v[0]
+        return fargs
+
         
 def send_welcome_email(to, subject):
     return logging.info('not sending welcome email for now')

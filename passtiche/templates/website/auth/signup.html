@@ -17,6 +17,33 @@ $(function () {
 
 	}
 
+	$('#submit_signup').on('click', function(){
+
+	var signup_form = $(this).parents('form');
+	// validate 
+	var email = signup_form.find('#email').val();
+	var pwd = signup_form.find('#password').val();
+	var confirm_pwd = signup_form.find('#confirm_password').val();
+	var terms_agree = signup_form.find('#terms_agree:checked');
+	if (email.indexOf('@') < 1)
+		return showDialog("a valid email address is required");
+
+
+	if (pwd.length < 4)
+		return showDialog("password must be at least 4 characters");		
+
+	if (pwd != confirm_pwd)
+		return showDialog("passwords do not match");
+
+	if (terms_agree.length < 1)
+		return showDialog("You must agree to the terms");
+
+
+
+	signup_form.submit();
+
+	});
+
 });
 {% end %}
 
@@ -30,7 +57,7 @@ $(function () {
 	
 	<div class="content clearfix">
 		
-		<form action="./index.html" method="post">
+		<form action="/signup" method="post">
 		
 			<h1>Create Your Account</h1>			
 			
@@ -52,13 +79,13 @@ $(function () {
 				<p>Create your free account:</p>
 				
 				<div class="field">
-					<label for="firstname">First Name:</label>
-					<input type="text" id="firstname" name="firstname" value="" placeholder="First Name" class="login" />
+					<label for="first_name">First Name:</label>
+					<input type="text" id="first_name" name="first_name" value="" placeholder="First Name" class="login" />
 				</div> <!-- /field -->
 				
 				<div class="field">
-					<label for="lastname">Last Name:</label>	
-					<input type="text" id="lastname" name="lastname" value="" placeholder="Last Name" class="login" />
+					<label for="last_name">Last Name:</label>	
+					<input type="text" id="last_name" name="last_name" value="" placeholder="Last Name" class="login" />
 				</div> <!-- /field -->
 				
 				
@@ -82,11 +109,11 @@ $(function () {
 			<div class="login-actions">
 				
 				<span class="login-checkbox">
-					<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
+					<input id="terms_agree" checked name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
 					<label class="choice" for="Field">I have read and agree with the Terms of Use.</label>
 				</span>
 									
-				<button class="button btn btn-primary btn-large">Register</button>
+				<a id="submit_signup" class="button btn btn-primary btn-large">Register</a>
 				
 			</div> <!-- .actions -->
 			
