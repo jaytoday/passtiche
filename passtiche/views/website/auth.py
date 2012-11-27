@@ -11,6 +11,8 @@ from backend import errors
 INVITE_CODES = ['quirkyopus','borogoves', 'pro','jointheclub','press','yc','partner']
 PREMIUM_CODES = ['quirkyopus','borogoves']
 
+ACCOUNT_HOME = '' # '/dashboard'
+
      
 class Login(ViewHandler):
 
@@ -48,7 +50,7 @@ class Login(ViewHandler):
             user_keyname=email.lower().strip(), 
             password=password.lower().strip(), admin=admin)
  
-        return self.redirect('/dashboard') 
+        return self.redirect(ACCOUNT_HOME) 
 
 
 class Signup(ViewHandler):
@@ -62,7 +64,7 @@ class Signup(ViewHandler):
 
         user = self.get_or_create_user(user_keyname=email.lower().strip(), **self.flat_args_dict())
         logging.info('signed up as user %s' % user.email)
-        self.redirect('/dashboard')
+        self.redirect(ACCOUNT_HOME)
         return
         
         return self.get()

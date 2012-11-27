@@ -22,6 +22,17 @@
 
 */
 
+
+body .header h1.smaller{
+  bottom: 26%;font-size: 63px;background: rgba(0, 0, 0, .5);max-width: 900px;margin: auto;padding: 7px 20px;border-radius: 15px;
+  }
+
+@media (max-width: 980px){
+  .header h1{
+    font-size:43px !important;
+  }
+}
+
 @font-face {
     font-family: 'museo-slab';
     src: url('/static/fonts/museo_slab_500-webfont.eot');

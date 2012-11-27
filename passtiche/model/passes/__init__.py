@@ -22,6 +22,8 @@ class PassTemplate(BaseModel):
 
     owner = db.ReferenceProperty(User, required=False, collection_name='templates')
 
+    url = db.StringProperty(required=False)  
+
     name = db.StringProperty(required=False)  
     location_code = db.StringProperty()  
     location_name = db.StringProperty()

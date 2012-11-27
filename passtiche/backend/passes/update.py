@@ -18,7 +18,10 @@ class PassUpdate(object):
 		pass
 
 	def create_or_update(self, name=None, slug=None, description=None, price=None, schedule=None, 
-			neighborhood_name=None, location=None, location_code=None, price_rating=None, api=False, **kwargs):
+			neighborhood_name=None, location=None, location_code=None, price_rating=None, api=False, href=None, **kwargs):
+		
+		if href:
+			return self.pass_file(href)
 		if not slug:
 		    slug = PassTemplate.get_slug(name) or 'event'
 		keyname = slug
@@ -81,6 +84,21 @@ class PassUpdate(object):
 			pass_template.location_name = loc.name
 
 
+
+		return pass_template
+
+
+	def pass_file(self, url):
+		safe_url = url
+		
+		pass_template = PassTemplate.get_by_key_name(url)
+		if not pass_template:
+			pass_template = PassTemplate(key_name=safe_url, url=url)
+			from utils import string as str_utils
+			code = str_utils.genkey(length=4)
+			pass_template.short_code = code			
+
+		# TODO: download and parse file to update it
 
 		return pass_template	
 

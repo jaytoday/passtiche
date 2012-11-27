@@ -44,6 +44,7 @@ class FindPass(object):
 	
 
 	def find_pass(self, p, save=True):
+		self.save = save
 
 		from backend.location import find as loc_find	 
 		
@@ -59,6 +60,10 @@ class FindPass(object):
 			else:
 				raise ValueError(p['id'])
 		
+
+		if 'href' in p:
+			# will search in update class
+			return self.create_or_update(p)
 
 		if 'loc' not in p:
 			raise ValueError('loc')
@@ -104,15 +109,8 @@ class FindPass(object):
 
 			logging.info('Creating New Template. No template found for name %s and location %s' % (
 				p.get('name'), p.get('location_code')))
-			from backend.passes import update as pass_update
-			pass_updater = pass_update.PassUpdate()
-			logging.info('Pass update kwargs: %s' % p)
-			pass_template = pass_updater.create_or_update(**p)
 
-			if save:
-				pass_template.put() # optimize
-
-			return pass_template
+			return self.create_or_update(p)
 
 
 	def find_for_list(self):
@@ -131,6 +129,18 @@ class FindPass(object):
 			pass_templates.append(pt)
 
 		return pass_templates
+
+
+	def create_or_update(self, p):
+		from backend.passes import update as pass_update
+		pass_updater = pass_update.PassUpdate()
+		logging.info('Pass update kwargs: %s' % p)
+		pass_template = pass_updater.create_or_update(**p)
+
+		if self.save:
+			pass_template.put() # optimize
+
+		return pass_template
 
 
 	def search(self, p):

@@ -58,7 +58,7 @@ PassticheBadger = {
 			*/
 	
 
-			passtiche.badgelinks = $('a[data-pass-loc], a[data-pass-id]');
+			passtiche.badgelinks = $('a[data-pass-loc], a[data-pass-id], a[href$=pkpass]');
 
 			passtiche.badge_data = { 'create': true, 'passes': [] }; // create passes if they don't already exist 
 
@@ -83,29 +83,42 @@ PassticheBadger = {
 		// add badge image and find or create pass
 
 				var badgeLinkEl = $(this);
+			
 
 				var badge_img  = $('<img style="width: 123px; height: 40px;" src="' + BASE_URL + '/badge"></img>');
 				badge_img.on('click', PassticheBadger.badgeClick)
 				
+				var badge_title = badgeLinkEl.text() || 'Add to Passbook';
 				badgeLinkEl.html(badge_img);
-
-				badgeLinkEl.attr('href', BASE_URL + '/not_found');
-
+				if (!badgeLinkEl.attr('title'))
+					badgeLinkEl.attr('title', badge_title);
 
 
 				var pass_data = {};
 
+				if (badgeLinkEl.filter('[href$=pkpass]').length > 0){
 
+					// linked pass
+					pass_data['href'] = badgeLinkEl.attr('href');
+
+
+
+				}else{
+				
 				$(['loc', 'city', 'name', 'price', 'description', 'id']).each(function(i, attr){
-		
 
-					var attr_val = badgeLinkEl.attr('data-pass-' + attr);
-					if (attr_val)
-						pass_data[attr] = attr_val;
+						var attr_val = badgeLinkEl.attr('data-pass-' + attr);
+						if (attr_val){
+							console.log(attr_val);
+							pass_data[attr] = attr_val;
+						}
+					});
+
+				}
 
 
-				});
-
+				
+				badgeLinkEl.attr('href', BASE_URL + '/not_found');
 
 				passtiche.badge_data['passes'].push(pass_data);	
 
@@ -115,6 +128,7 @@ PassticheBadger = {
 	 			// make ajax call to get badge data
 
 				passtiche.badge_data['passes'] = JSON.stringify(passtiche.badge_data['passes']);
+				console.log(passtiche.badge_data['passes']);
 
 				$.ajax({
 					type: "GET",

@@ -11,7 +11,7 @@
 <div class="pass_details">
 
 
-<div class="location {% if len(pass_template.location_name) <= 27 %}short{% end %}">at {{ pass_template.location_name }}</div>
+<div class="location {% if len(pass_template.location_name) <= 27 or True %}short{% end %}">at {{ pass_template.location_name }}</div>
 
 {% set display_date = pass_template.display_date() %}
 
@@ -23,7 +23,7 @@ line-height: 16px;
 text-align: right;
 padding-right: 11px;
 width: 280px;
-">{% if display_date %} {{ display_date }}{% else %}<div style="height:4px;"></div>{% end %}<div style="
+">{% if display_date and False %} {{ display_date }}{% else %}<div style="height:4px;"></div>{% end %}<div style="
     font-size: 1.2em;
     text-align: right;
     padding-right: 2px;
