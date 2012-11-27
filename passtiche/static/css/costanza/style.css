@@ -29,7 +29,12 @@ body .header h1.smaller{
 
 @media (max-width: 980px){
   .header h1{
-    font-size:43px !important;
+  
+    bottom: 26% !important;
+  }
+  body .header h1.smaller{
+      font-size:50px !important;
+      bottom: 19% !important;
   }
 }
 
@@ -3704,14 +3709,14 @@ img.preface{
 /* Smaller than standard 960 (devices and browsers) */
 @media only screen and (min-width: 1023px) and (max-width: 1150px) {
   /* line 317, ../sass/style.scss */
-  .text-container {
+  ._text-container {
     width: 650px;
   }
 
   /* line 322, ../sass/style.scss */
   .header h1 {
     font-size: 6em;
-    bottom: 38%;
+    bottom: 30%;
     position: absolute;
   }
   /* line 327, ../sass/style.scss */
@@ -3721,10 +3726,10 @@ img.preface{
   }
 }
 /* Tablet Portrait size to standard 960 (devices and browsers) */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (max-width: 1023px) {
   /* line 337, ../sass/style.scss */
   .text-container {
-    width: 600px;
+    width: 740px;
   }
 
   /* line 342, ../sass/style.scss */
@@ -3739,8 +3744,9 @@ img.preface{
     bottom: 22%;
   }
 }
-/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers)
+480-767 */
+@media only screen and (min-width: 0px) and (max-width: 0px) {
   /* line 357, ../sass/style.scss */
   .text-container {
     width: 80%;

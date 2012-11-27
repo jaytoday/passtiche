@@ -47,6 +47,7 @@ max-width: 940px;
 
 @media (max-width: 980px)  {
 
+
 .brand img{
 	margin-left:10px;
 }
@@ -81,7 +82,7 @@ height:40px;
 	}
 
 #main-menu .caret{
-	margin:8px 0 0 8px;
+	margin:8px 0 0 8px !important;
 }
 
 
@@ -106,6 +107,11 @@ height:40px;
 .sign_up_form{
     display:none;
 }
+
+#login_link, #account_link{
+  display:none;
+}
+
 }
 
 @media (max-width: 445px)  {
@@ -168,7 +174,7 @@ margin: 0 0 15px;
 }
 
 .sign_up_form#enduser_form:after {
-  content: "Get Your Beta Invite";
+  content: "Sign Up for Updates";
 }
 
 
@@ -177,5 +183,10 @@ margin: 0 0 15px;
 width: 400px;
 line-height:24px;
 margin:15px 0;
+}
+
+
+#footer {
+padding: 10px 0 0px;
 }
 

@@ -19,6 +19,12 @@ handlers:
   static_files: static/images/Add_to_Passbook_Badge_2x.png
   upload: /static/images/Add_to_Passbook_Badge_2x.png
 
+
+- url: /demo.pkpass
+  static_files: static/passes/Apple/Coupon.pkpass
+  upload: /static/passes/Apple/Coupon.pkpass
+
+
 - url: /channel.html
   static_files: static/channel.html
   upload: static/channel.html

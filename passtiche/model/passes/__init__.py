@@ -22,7 +22,10 @@ class PassTemplate(BaseModel):
 
     owner = db.ReferenceProperty(User, required=False, collection_name='templates')
 
-    url = db.StringProperty(required=False)  
+    # these fields are for external passes
+    url = db.StringProperty(required=False)
+    organizationName = db.StringProperty(required=False)  
+    pass_info = model.util.properties.PickledProperty(default={}) # full pass json object
 
     name = db.StringProperty(required=False)  
     location_code = db.StringProperty()  
@@ -112,6 +115,8 @@ class PassTemplate(BaseModel):
 
     # TODO: cache? 
     def get_location(self):
+        if not self.location_code:
+            return None
         from model.activity import Location
         return Location.get_by_key_name(self.location_code)
 

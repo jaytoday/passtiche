@@ -1,5 +1,6 @@
 {% comment "TODO: THIS REQUIRES TONS OF DATABASE CALLS!" %}
 {% set loc = pass_template.get_location() %}
+{% if loc %}
 <div class="pass_details_container" style="display:none;">
 	<div class="alert alert-info pass_details_inner">
 
@@ -28,3 +29,4 @@
 
 	</div>
 </div>
+{% end %}

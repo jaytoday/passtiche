@@ -3,6 +3,7 @@ import time, datetime
 from model.passes import PassTemplate, PassList
 from google.appengine.ext import db
 from google.appengine.api import search
+from google.appengine.ext.deferred import deferred
 try:
  
     import json
@@ -92,15 +93,74 @@ class PassUpdate(object):
 		safe_url = url
 		
 		pass_template = PassTemplate.get_by_key_name(url)
-		if not pass_template:
+		if pass_template:
+			new = False
+		else:
+			new = True
 			pass_template = PassTemplate(key_name=safe_url, url=url)
 			from utils import string as str_utils
 			code = str_utils.genkey(length=4)
-			pass_template.short_code = code			
+			pass_template.short_code = code
+			pass_template.put()			
 
 		# TODO: download and parse file to update it
+		# TODO: check last modified, only update if not modified in over x hours
+		if new or pass_template.modified < (datetime.datetime.now() - datetime.timedelta(hours=1):
+			logging.info('deferring update from passfile')
+			deferred.defer(update_from_passfile, url)
+		else:
+			logging.error('this pass was modified too recently')
+			deferred.defer(update_from_passfile, url)
 
 		return pass_template	
+
+
+
+def update_from_passfile(url):
+	pass_template = PassTemplate.get_by_key_name(url)
+	remote_pass = RemotePass()
+	logging.info('getting pass from URL')
+	remote_pass.from_url(url)
+
+	logging.info(remote_pass.pass_info)
+	pass_template.pass_info = remote_pass.pass_info
+	# get name from description? 
+
+	# TODO: other fields - [x][headerFields][secondaryFields][auxiliaryFields] - key/value
+	if 'description' in remote_pass.pass_info:
+		pass_template.name = remote_pass.pass_info['description']
+	if 'organizationName' in remote_pass.pass_info:
+		pass_template.organizationName = remote_pass.pass_info['organizationName']
+
+
+class RemotePass(object):
+
+	def __init__(self):
+		pass
+
+	def from_url(self, fetch_url):
+		from google.appengine.api import urlfetch
+		response = urlfetch.fetch(fetch_url, method='GET', deadline=60)
+		if response.status_code != 200:
+			# handle error
+			logging.error(response.content)
+			logging.error(response.status_code)
+			# send email to admin....
+			from backend.admin import send_admin_email 
+			deferred.defer(send_admin_email, 
+			        subject='Unable to get remote pass from URL %s' % fetch_url, 
+			        message= fetch_url)
+
+		logging.info('URL Response Length: %s' % len(response.content))
+		import StringIO
+		import zipfile
+		objZip = zipfile.ZipFile(StringIO.StringIO(response.content),'r')
+		pass_json = zipfile.ZipFile.read(objZip,'pass.json')
+		self.pass_info = json.loads(pass_json)
+
+
+
+
 
 
 
