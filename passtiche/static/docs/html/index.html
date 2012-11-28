@@ -117,8 +117,8 @@
               <ul class="nav nav-list side-nav well sidebar-nav-fixed">
                 <li class="main"><a href="#passtiche-overview">Passtiche Overview</a></li>
 <div style="height:5px;"></div><li><a href="#add-passtiche-to-your-website">Add Passtiche To Your Website</a></li>
-<li><a href="#badges-for-existing-passes">Badges for Existing Passes</a></li>
-<li><a href="#badges-for-new-passes">Badges for New Passes</a></li>
+<li><a href="#create-badges-for-existing-passes">Create Badges for Existing Passes</a></li>
+<li><a href="#create-badges-for-new-passes">Create Badges for New Passes</a></li>
 <li><a href="#customize-your-passes">Customize Your Passes</a></li>
 
               </ul>
@@ -145,7 +145,10 @@
     margin-right: 41px;
 "> <a>Passtiche</a> is a website plugin that adds Passbook support to your website or mobile app in just a few seconds.</p>
 
-<div style="height:30px;"></div>
+<div style="height:15px;"></div>
+
+<p><a href="/#about">Learn more about how Passtiche helps marketers</a></p>
+<div style="height:20px;"></div>
 
 <h2 id="add-passtiche-to-your-website">Add Passtiche To Your Website</h2>
 <p>You can add Passbook support to your site by adding the Passtiche Javascript code snippet and following the directions below to convert normal links into <i>Add to Passbook</i> badges.</p>
@@ -162,24 +165,24 @@ This markup should be placed at the bottom of your website's HTML (or generated-
 
 </div>
 
-<div style="height:15px;"></div>
+<div style="height:30px;"></div>
 
-<h2 id="badges-for-existing-passes">Badges for Existing Passes</h2>
+<h2 id="create-badges-for-existing-passes">Create Badges for Existing Passes</h2>
 <p>You can specify the location of an existing pass file to use the Passtiche download dialog and sharing features while using your own Passbook server or the Pass creation tool of your choice.</p>
 <p>To generate a badge for a pass file, include the Passtiche javascript library on the page and link to your pass file like you normally would:</p>
 <div style="width: 100%;
 height: 60px;
 margin: 20px 20px 0;">
-<pre style="float:left;"><code>&lt;a <span class="kwd">href</span>="<span class="atv">http://www.passtiche.com/demo.pkpass</span>" &gt;Download My Pass&lt;/a&gt;</code></pre>
+<pre style="float:left;"><code>&lt;a <span class="kwd">href</span>="<span class="atv">http://www.passtiche.com/demo.pkpass</span>"&gt;Download My Pass&lt;/a&gt;</code></pre>
 </div>
 
 <p>Here is the badge rendered when this link is on a page with the Passtiche JS library:
 <div style="margin:15px;text-align:center;max-width:500px;">
 <div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a href="http://www.passtiche.com/demo.pkpass">Download My Pass</a> </div>
 </div></p>
-<div style="height:15px;"></div>
+<div style="height:45px;"></div>
 
-<h2 id="badges-for-new-passes">Badges for New Passes</h2>
+<h2 id="create-badges-for-new-passes">Create Badges for New Passes</h2>
 <p>If you don't already have a pass created, you can use special <code>data-pass</code> attributes for <i>Add to Passbook</i> badges that link to automatically generated passes.<br />
 </p>
 <p>Here is an example of a link that specifies the name of a location with a <code>data-pass-loc</code> attribute:</p>
@@ -208,9 +211,12 @@ margin: 20px 20px 0;">
 <div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-pass-loc="Local Pub" data-pass-city="San Francisco" data-pass-name="Sample a Dozen Beers" data-pass-price="10" ></a> </div>
 </div>
 
+<div style="margin:5px 0 0 20px;">
+
 <h4 style="color:#666;">Data Attribute Details</h4>
 
-<p><i>Remember to prefix these attributes with <code>data-pass-</code></i></p>
+<i>Remember to prefix these attributes with <code>data-pass-</code></i>
+
 <div style="height:10px;"></div>
 
 <ul>
@@ -224,7 +230,12 @@ margin: 20px 20px 0;">
 
 <div style="height:1px;"></div>
 
-<p>You can also use <code>data-pass-id</code> to specify a 4-character ID code for an existing pass. <div style="height:2px;"></div><i style="font-size:.8em;">No other attributes are required when an ID is specified.</i></p>
+You can also use <code>data-pass-id</code> to specify a 4-character ID code for an existing pass. <div style="height:2px;"></div><i style="font-size:.8em;">No other attributes are required when an ID is specified.</i>
+
+</div>
+
+<div style="height:15px;"></div>
+
 <div class="alert">
     <b>Passtiche now also supports open standards!</b> <div style="height:10px;"></div> You can use <a href="http://microformats.org/wiki/hcard">hCard</a> and <a href="http://ogp.me/">Open Graph</a> in addition to <code>data-pass</code> attributes.
 </div>
@@ -234,12 +245,12 @@ margin: 20px 20px 0;">
 <h2 id="customize-your-passes">Customize Your Passes</h2>
 <p>From the <a>Passtiche Dashboard</a> you can manage the appearance and content of your passes. 
 <div style="height:5px;"></div></p>
-<h3 id="wzxhzdk62-customizing-pass-appearance">&nbsp; Customizing Pass Appearance:</h3>
+<h3 id="wzxhzdk53-customizing-pass-appearance">&nbsp; Customizing Pass Appearance:</h3>
 <div style="margin: 0 20px 20px;">
 You can add your own logo and color scheme using optional parameters included with your Passtiche Javascript Library code snippet. You can test these settings using a visual editor. More details coming soon. 
 </div>
 
-<h3 id="wzxhzdk63-customizing-pass-content">&nbsp; Customizing Pass Content:</h3>
+<h3 id="wzxhzdk54-customizing-pass-content">&nbsp; Customizing Pass Content:</h3>
 <div style="margin: 0 20px 20px;">
 You can edit the details of any pass you have created using a built-in CMS. More details coming soon. 
 </div>

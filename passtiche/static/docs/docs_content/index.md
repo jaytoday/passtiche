@@ -18,8 +18,11 @@
 "> <a>Passtiche</a> is a website plugin that adds Passbook support to your website or mobile app in just a few seconds.</p>
 
 
+<div style="height:15px;"></div>
 
-<div style="height:30px;"></div>
+<a href="/#about">Learn more about how Passtiche helps marketers</a>
+
+<div style="height:20px;"></div>
 
 
 ## Add Passtiche To Your Website
@@ -38,10 +41,10 @@ margin: 20px 20px 0;">
 This markup should be placed at the bottom of your website's HTML (or generated-HTML) structure, before the closing &lt;body&gt; tag.
 
 </div>
-<div style="height:15px;"></div>
+<div style="height:30px;"></div>
 
 
-## Badges for Existing Passes
+## Create Badges for Existing Passes
 
 You can specify the location of an existing pass file to use the Passtiche download dialog and sharing features while using your own Passbook server or the Pass creation tool of your choice.
 
@@ -51,7 +54,7 @@ To generate a badge for a pass file, include the Passtiche javascript library on
 <div style="width: 100%;
 height: 60px;
 margin: 20px 20px 0;">
-<pre style="float:left;"><code>&lt;a <span class="kwd">href</span>="<span class="atv">http://www.passtiche.com/demo.pkpass</span>" &gt;Download My Pass&lt;/a&gt;</code></pre>
+<pre style="float:left;"><code>&lt;a <span class="kwd">href</span>="<span class="atv">http://www.passtiche.com/demo.pkpass</span>"&gt;Download My Pass&lt;/a&gt;</code></pre>
 </div>
 
 Here is the badge rendered when this link is on a page with the Passtiche JS library:
@@ -59,8 +62,8 @@ Here is the badge rendered when this link is on a page with the Passtiche JS lib
 <div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a href="http://www.passtiche.com/demo.pkpass">Download My Pass</a> </div>
 </div>
 
-<div style="height:15px;"></div>
-## Badges for New Passes
+<div style="height:45px;"></div>
+## Create Badges for New Passes
 
 If you don't already have a pass created, you can use special <code>data-pass</code> attributes for <i>Add to Passbook</i> badges that link to automatically generated passes.  
 
@@ -93,6 +96,8 @@ margin: 20px 20px 0;">
 <div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a data-pass-loc="Local Pub" data-pass-city="San Francisco" data-pass-name="Sample a Dozen Beers" data-pass-price="10" ></a> </div>
 </div>
 
+<div style="margin:5px 0 0 20px;">
+
 <h4 style="color:#666;">Data Attribute Details</h4>
 
 <i>Remember to prefix these attributes with <code>data-pass-</code></i>
@@ -112,7 +117,9 @@ margin: 20px 20px 0;">
 
 You can also use <code>data-pass-id</code> to specify a 4-character ID code for an existing pass. <div style="height:2px;"></div><i style="font-size:.8em;">No other attributes are required when an ID is specified.</i>
 
+</div>
 
+<div style="height:15px;"></div>
 
 <div class="alert">
 	<b>Passtiche now also supports open standards!</b> <div style="height:10px;"></div> You can use <a href="http://microformats.org/wiki/hcard">hCard</a> and <a href="http://ogp.me/">Open Graph</a> in addition to <code>data-pass</code> attributes.

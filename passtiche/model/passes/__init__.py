@@ -84,7 +84,9 @@ class PassTemplate(BaseModel):
             if self.lower_price:
                 return "$%s - $%s" % (self.lower_price, self.price)
             return "$%s" % self.price
-        return "Free"
+        elif self.price is 0:
+            return "Free"
+        return ""
 
     def display_date(self):
         # date range or weekday range

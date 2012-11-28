@@ -105,12 +105,11 @@ class PassUpdate(object):
 
 		# TODO: download and parse file to update it
 		# TODO: check last modified, only update if not modified in over x hours
-		if new or pass_template.modified < (datetime.datetime.now() - datetime.timedelta(hours=1):
+		if new or pass_template.modified < (datetime.datetime.now() - datetime.timedelta(hours=1)):
 			logging.info('deferring update from passfile')
 			deferred.defer(update_from_passfile, url)
 		else:
-			logging.error('this pass was modified too recently')
-			deferred.defer(update_from_passfile, url)
+			logging.info('this pass was modified too recently')
 
 		return pass_template	
 
@@ -131,6 +130,8 @@ def update_from_passfile(url):
 		pass_template.name = remote_pass.pass_info['description']
 	if 'organizationName' in remote_pass.pass_info:
 		pass_template.organizationName = remote_pass.pass_info['organizationName']
+
+	pass_template.put()
 
 
 class RemotePass(object):

@@ -16,7 +16,7 @@ if (!window.location.hash)
 
 // detect if pass should be opened
 
-if ('{{ linked_pass_template }}'){
+if ('{{ linked_pass_template }}' && window.location.hash.indexOf('#') < 0){
     $('.pass_item[code="{{ linked_pass_template }}"]').find('.download_pass').click();
 }
 
