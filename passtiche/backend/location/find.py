@@ -77,5 +77,6 @@ class FindLocation(object):
 
 	@classmethod
 	def sanitize(cls, query):
-		return query.strip()
+		if query:
+			return query.strip()
 

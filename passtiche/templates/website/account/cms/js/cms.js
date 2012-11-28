@@ -23,6 +23,8 @@ filepicker.setKey('ATRlBg2IJSykUmbd13td0z');
 
 $('.upload_img').live('click', function(){
    img_uploader = $(this);
+
+   // TODO: dimensions should be 600w x 225h
 	filepicker.pick({
 	    mimetype: 'image/*',
 	    container: 'window',

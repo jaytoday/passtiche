@@ -45,9 +45,13 @@
 
   <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="10">
 
+<div class="wrapper">
+
 {% block nav %}
  {% include "navbar.html" %}
  {% end %}
+
+ <div id="page_containers" style="padding-top:75px;">
 
   <div id="body_container" class="page container">
     
@@ -84,9 +88,13 @@
     </div><!-- /container -->  
 
 
+
 <div style="height:60px;"></div>
 
-<div id="footer" class="navbar-inverse" style="max-width:100%; overflow-x:hidden;bottom: 0;
+</div>
+
+<div id="footer" class="footer navbar-inverse" style=" height: 42px; /* .push must be the same height as .footer */
+overflow-x:hidden;bottom:0;
 position: absolute;
 width: 100%;">
     
@@ -111,6 +119,8 @@ font-size: 1.1em;" href="http://www.costanza.co" target="_blank"><img src="/stat
     
   </div> <!-- /container -->
   
+</div>
+
 </div>
 
 

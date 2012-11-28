@@ -38,7 +38,9 @@ class LocationUpdate(object):
 			logging.info('adding loc doc to index')
 			search.Index(name=_INDEX_NAME).add(loc_doc)
 
+			# TODO: get updates after creation, but without overwriting manual values and being throttled
 			self.get_loc_info(loc)
+
 		elif name:
 				loc.name = name
 

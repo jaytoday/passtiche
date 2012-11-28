@@ -2,7 +2,23 @@
 
 body{
 	background: url('/static/images/body-bg.png');
+   padding-bottom:42px;   /* Height of the footer */
 }
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
+.wrapper {
+min-height: 100%;
+position: relative; 
+}
+
+
+
 
 .modal-header{
 	background: rgba(200, 200, 200, .2);

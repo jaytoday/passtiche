@@ -147,7 +147,13 @@ class PassDirectDownload(ViewHandler):
 
         from model.passes import PassTemplate, UserPass
         pass_template = PassTemplate.all().filter('short_code',pass_code).get()
+
+        # if this is an external pass, redirect to it
+        if pass_template.url: 
+            return self.redirect(pass_template.url)
+
         from backend.passes import passfile
+        # TODO: in the future this should be cached in advance if possible 
         pass_creator = passfile.PassFile(pass_template=pass_template)
         pass_creator.create()
         return pass_creator.write(self)    
