@@ -10,7 +10,7 @@ function openPassDialog(pass_action, el){
 	pass_keyname = pass_item.attr('keyname');
 
 
-	var pass_img_src = '/static/images/pass/' + pass_keyname + '.jpeg';
+	var pass_img_src = pass_item.find('img.pass').attr('src'); 
 	var pass_description = pass_item.find('#description').html();
 	resetSendDialog();
 

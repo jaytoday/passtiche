@@ -50,7 +50,7 @@ class UpdatePass(PassHandler):
 			'price_rating': len(self.get_argument('price_rating','')),
 			'neighborhood_name': self.get_argument('neighborhood_name',''),
 			'location_code': self.get_argument('location_code',''),
-
+			'image_url': self.get_argument('image_url', ''),
 			'schedule': {}						
 		}
 

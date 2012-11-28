@@ -58,6 +58,7 @@ class PassTemplate(BaseModel):
 
 
     image_key = db.StringProperty(required=False)
+    image_url = db.StringProperty(required=False)
     tags = model.util.properties.PickledProperty(default=[])
 
     saves = db.IntegerProperty(default=0)
@@ -76,6 +77,15 @@ class PassTemplate(BaseModel):
 
     def short_name(self):
         return self.name or self.location_name
+
+    def img(self):
+
+        if self.image_key:
+            return '/img/p/%s' % self.image_key
+        if self.image_url:
+            return self.image_url
+        import random
+        return '/static/images/pass/default/%s.jpg' % random.randint(1,4)
 
     def display_price(self):
         if self.price_rating:

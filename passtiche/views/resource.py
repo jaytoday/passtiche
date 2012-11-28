@@ -15,7 +15,6 @@ try:
 except:
     from django.utils import simplejson as json
     
-import compile_widget
 
 THUMBNAIL_FILE_NAME = 'widget.wdgt/Default.png'
 
@@ -54,13 +53,13 @@ class BaseResourceHandler(BaseHandler):
 
         
 
-class GalleryImage(BaseResourceHandler):
+class PassImageHandler(BaseResourceHandler):
     
     def get(self, media_key=""):
         self.set_header('Content-Type','image/png') # TODO: use saved content_type
         #self.set_header("Expires", "Thu, 15 Apr 2050 20:00:00 GMT")
         media_image = get_media_image(media_key)
-        logging.info('IMAGE: %s' % media_image)
+        #logging.info('IMAGE: %s' % media_image)
         if media_image:
             self.write(media_image)
         else:
@@ -69,16 +68,13 @@ class GalleryImage(BaseResourceHandler):
 
 @cache()    
 def get_media_image(media_key):
-    if media_key:
-        from model.widget import WidgetMedia
-        widget_media = WidgetMedia.get(media_key)
-        if widget_media:
-            return str(widget_media.media_file)
-        else:
-            return None
+    from model.passes import PassImage
+    pass_img = PassImage.get(media_key)
+    if pass_img:
+        return str(pass_img.image)
     else:
-        img_file = open('resources/thumbnail/2.jpg')
-        return str(img_file.read())
+        return None
+
 
 
     

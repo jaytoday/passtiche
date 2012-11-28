@@ -40,7 +40,7 @@ function SavePassTemplate(fieldset){
 
 	var pass_data = {'output': 'html'};
 
-		input_vals = ['name','slug','description','neighborhood_name','location_code','price', 'starts','ends','weekday_range','times','delete'];
+		input_vals = ['name','slug','image_url', 'description','neighborhood_name','location_code','price', 'starts','ends','weekday_range','times','delete'];
 	$(input_vals).each(function(i, f){
 		if (fieldset.find('#' + f).val())
 			pass_data[f] = fieldset.find('#' + f).val();
@@ -67,7 +67,8 @@ console.log(pass_data);
 
 $('.save_pass').live('click', function(){
 	var fieldset = $(this).parents('fieldset:first');
-	SavePassTemplate(fieldset)
+	SavePassTemplate(fieldset);
+
 });
 $('.delete_pass').live('click', function(){
 	if (!confirm('Are you sure you want to delete this?'))

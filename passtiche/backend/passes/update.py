@@ -19,9 +19,11 @@ class PassUpdate(object):
 		pass
 
 	def create_or_update(self, name=None, slug=None, description=None, price=None, schedule=None, 
-			neighborhood_name=None, location=None, location_code=None, price_rating=None, api=False, href=None, **kwargs):
+			neighborhood_name=None, location=None, location_code=None, price_rating=None, api=False, 
+			image_url=None, href=None, **kwargs):
 		
 		if href:
+			# this does not allow file-based passes to have updated listings on Passtiche
 			return self.pass_file(href)
 		if not slug:
 		    slug = PassTemplate.get_slug(name) or 'event'
@@ -62,7 +64,10 @@ class PassUpdate(object):
 		if price:
 			pass_template.price = int(price)
 		if price_rating is not None:
-			pass_template.price_rating = price_rating	
+			pass_template.price_rating = price_rating
+
+		if image_url:
+			pass_template.image_url = image_url	
 
 		if schedule:
 

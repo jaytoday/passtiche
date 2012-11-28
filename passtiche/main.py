@@ -62,7 +62,7 @@ from views.api import location as loc_api
 from views.api import passlist as list_api
 
 
-from views import admin, services
+from views import admin, services, resource
 
 
 application = tornado.wsgi.WSGIApplication([
@@ -105,7 +105,10 @@ application = tornado.wsgi.WSGIApplication([
     (r'/api/(?P<api_version>[\d\.]*)/list\.update/?', list_api.UpdateList), 
 
     # mobile
-    #(r'/mobile/?', mobile_index.UploadScreenshot),    
+    #(r'/mobile/?', mobile_index.UploadScreenshot), 
+
+    # resources
+    (r"/img/p/([0-9a-zA-Z-_]+)/?", resource.PassImageHandler),   
 
     # admin
     (r"/admin/login/(?P<email>[^\/]+)?", auth.AdminLogin),

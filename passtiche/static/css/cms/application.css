@@ -131,9 +131,7 @@ ul.list li {
 Bootstrap Styles
 
 ------------------------------------------------------------------- */
-.container {
-  position: relative;
-}
+
 select {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -2087,7 +2085,7 @@ Layout: Content
  
 Layout: Footer
 
-------------------------------------------------------------------- */
+-------------------------------------------------------------------
 #footer {
   padding: 20px 0;
   color: #ffffff;
@@ -2107,6 +2105,7 @@ Layout: Footer
 #footer #builtby {
   text-align: right;
 }
+ */
 /*------------------------------------------------------------------
  
 Layout: Responsive
@@ -2115,8 +2114,7 @@ Layout: Responsive
 @media (max-width: 767px) {
   #header,
   #masthead,
-  #extra,
-  #footer {
+  #extra {
     width: auto;
     padding-right: 20px;
     padding-left: 20px;
