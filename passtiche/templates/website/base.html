@@ -24,13 +24,17 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Le styles -->
+    <!-- Le styles 
+
+    TODO: consolidate -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
    
     <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="/static/css/docs.css" rel="stylesheet"> <!-- need this? -->
-
+  <link rel="stylesheet" href="/static/css/cms/application.css">
      <link href="/static/css/website/base.css" rel="stylesheet">
+     <link rel="stylesheet" href="/static/css/cms/font-awesome.css"> 
+     <!-- Don't need both Font Awesome and Twitter Glyphs -->
 
 
 {% block head %}
@@ -131,6 +135,8 @@ font-size: 1.1em;" href="http://www.costanza.co" target="_blank"><img src="/stat
     <script src="/static/js/jquery.1.7.2.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/application.js"></script> 
+    {% block js_tags %}{% end %}
+    <!-- <script src="/static/js/cms/libs/modernizr-2.5.3.min.js"></script> -->
     <script>
     $(function(){
         {% include "js/base.js" %}

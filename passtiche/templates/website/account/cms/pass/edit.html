@@ -20,11 +20,9 @@ height: 112px;">{% if p and p.description %}{{ p.description }}{% end %}</textar
     <input type="hidden" id="image_url"> 
 
     <div style="clear:both;">
-  	<div style="margin: 20px 0 20px 30px;
+  <div class="well" style="margin: 20px 0 20px 30px;
 padding: 10px;
-background: rgba(100, 100, 100, .1);
 float: left;
-border-radius: 10px;
 clear: both;">
     <label>Neighborhood Name</label>
     <input type="text" id="neighborhood_name" {% if p and p.neighborhood_name %}value="{{ p.neighborhood_name }}"{% end %}>
@@ -35,11 +33,9 @@ margin-bottom: -3px;"> &nbsp; cannot be edited</span></label>
 
 
   <div style="clear:both;">
-  	<div style="margin: 20px 0 20px 30px;
+  <div class="well" style="margin: 20px 0 20px 30px;
 padding: 10px;
-background: rgba(100, 100, 100, .1);
 float: left;
-border-radius: 10px;
 clear: both;">
     <label>Optional Price</label>
     $ <input type="text" id="price" {% if p and p.price %}value="{{ p.price }}"{% end %}>
@@ -49,11 +45,9 @@ clear: both;">
     </div></div>  
 
    <div style="clear:both;">
-  	<div style="margin: 20px 0 20px 30px;
+  	<div class="well" style="margin: 20px 0 20px 30px;
 padding: 10px;
-background: rgba(100, 100, 100, .1);
 float: left;
-border-radius: 10px;
 clear: both;">
     <label>Optional Date Starts</label>
     <input type="text" id="starts" {% if p and p.schedule.get('starts') %}value="{{p.schedule.get('starts') }}"{% end %}>

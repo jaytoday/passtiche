@@ -29,12 +29,23 @@ class PassFile(object):
 	def create(self):
 
 
+		if self.pass_template.name:
+			title = self.pass_template.name
+		else:
+			title = self.pass_template.location_name
 
+		"""
+
+		TODO: Universal Pass JSON Object that gets used whenever pass is rendered 
+
+		(One set of logic)
+
+		"""
 		self.pass_json = {
 
 			"headerFields": [  {
 			        "key" : "header",
-			        "label" : self.pass_template.name, # name
+			        "label" : title, # name
 			        "value" : "" # large
 			      }],			
 			"primaryFields": [  {
@@ -42,32 +53,14 @@ class PassFile(object):
 			        "label" : "", # on image
 			        "value" : ""
 			      }],
-			"secondaryFields": [  {
-			        "key" : "price",
-			        "label" : "Price",
-			        "value" : self.pass_template.display_price()
-			      },{
+			"secondaryFields": [{
 			        "key" : "secondary2",
 			        "label" : "   ",
 			        "value" : "   "
-			      },{
-			        "key" : "date_time",
-			        "label" : self.pass_template.display_date(),
-			        "value" : self.pass_template.display_time()
 			      }],
-			"auxiliaryFields": [{
-			        "key" : "loc_name",
-			        "label" : "at %s" % self.pass_template.location_name,
-			        "value" : "",
-			        "alignment": "PKTextAlignmentRight",
-			      }  ],
+			"auxiliaryFields": [ ],
 
-			"backFields" : [ # description, location details, 
-			      {
-			        "key" : "description",
-			        "label" : "Event Description",
-			        "value" : self.pass_template.description
-			      },
+			"backFields" : [ 
 			      {
 			        "key" : "location",
 			        "label" : "",
@@ -81,27 +74,60 @@ class PassFile(object):
 			      {
 			        "key" : "about",
 			        "label" : "About This Pass",
-			        "value" : "www.passtiche.com - offer and request gifts using PassBook"
+			        "value" : ""
 			      }
 			 ],
 			'pass_key': self.pass_code,
-			'pass_name': self.pass_name
+			'pass_name': title,
+			'image_url': self.pass_template.image_url
 
 		}
+		if self.pass_template.display_price():
+			self.pass_json['secondaryFields'].insert(0,{
+			        "key" : "price",
+			        "label" : "Price",
+			        "value" : self.pass_template.display_price()
+		})
+
+		if (self.pass_template.display_date() not in [None,'Everyday']) or self.pass_template.display_time():
+			self.pass_json['secondaryFields'].append({
+			        "key" : "date_time",
+			        "label" : self.pass_template.display_date(),
+			        "value" : self.pass_template.display_time()
+			      })
+
+
+		if self.pass_template.name:
+			self.pass_json['auxiliaryFields'].insert(0,{
+			        "key" : "loc_name",
+			        "label" : "at %s" % self.pass_template.location_name,
+			        "value" : "",
+			        "alignment": "PKTextAlignmentRight",
+			      })
+
+		if self.pass_template.description:
+			self.pass_json['backFields'].insert(0,{
+			        "key" : "description",
+			        "label" : "Event Description",
+			        "value" : self.pass_template.description
+			      })
 
 		self.pass_location = self.pass_template.get_location()
 		if self.pass_location:
 			self.pass_json['backFields'][1]['label']= 'Event Location'
-			self.pass_json['backFields'][1]['value'] = self.pass_location.street_address
+			if self.pass_location.street_address:
+				self.pass_json['backFields'][1]['value'] = self.pass_location.street_address
 			if self.pass_template.neighborhood_name:
 				self.pass_json['backFields'][1]['value'] += " (%s)" % self.pass_template.neighborhood_name
 			self.pass_json['backFields'][2]['label']= 'Venue Information'
 			if self.pass_location.phone:
-				self.pass_json['backFields'][2]['value'] += self.pass_location.phone
+				self.pass_json['backFields'][2]['value'] += '%s\n\n' % self.pass_location.phone
 			if self.pass_location.yelp:
-				self.pass_json['backFields'][2]['value'] += " %s" % self.pass_location.yelp
+				self.pass_json['backFields'][2]['value'] += "%s\n\n" % self.pass_location.yelp
 
 
+		self.pass_json['backFields'][2]['value'] += "\nThis pass was created with www.passtiche.com \n\n%s" % ( 
+			        	"Passtiche makes it easy to enhance online listings, coupons and tickets with instant Passbook badges ")
 
 		self.pass_json['backFields'] = [b for b in self.pass_json['backFields'] if b['value']]
 		#self.update_json()

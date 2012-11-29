@@ -1,35 +1,7 @@
-<!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-	<title>Dashboard Admin</title>
-	
-	<meta charset="utf-8">
-	
-	<meta name="description" content="">
-	<meta name="author" content="">
+{% extends "../../base.html" %}
 
-	{% comment "TODO get rid of redundant js/css" %}
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="apple-mobile-web-app-capable" content="yes">
 
-	<link rel="stylesheet" href="/static/css/cms/font-awesome.css">
-	
-	<link rel="stylesheet" href="/static/css/cms/bootstrap.css">
-	<link rel="stylesheet" href="/static/css/cms/bootstrap-responsive.css">
-
-	<link rel="stylesheet" href="/static/css/cms/ui-lightness/jquery-ui-1.8.21.custom.css">	
-	
-	<link rel="stylesheet" href="/static/css/cms/application.css">
-	<link rel="stylesheet" href="/static/css/cms/pages/dashboard.css">
-
-	<script src="/static/js/cms/libs/modernizr-2.5.3.min.js"></script>
-
-<script src="/static/js/cms/libs/jquery-1.7.2.min.js"></script>
-
-<script src="/static/js/cms/libs/bootstrap/bootstrap.min.js"></script>
+{% block js_tags %}
 
 <script src="/static/js/cms/Theme.js"></script>
 
@@ -37,22 +9,26 @@
 (function(a){if(window.filepicker){return}var b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===a.location.protocol?"https:":"http:")+"//api.filepicker.io/v1/filepicker.js";var c=a.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d={};d._queue=[];var e="pick,pickMultiple,read,write,writeUrl,export,convert,store,storeUrl,remove,stat,setKey,constructWidget,makeDropPane".split(",");var f=function(a,b){return function(){b.push([a,arguments])}};for(var g=0;g<e.length;g++){d[e[g]]=f(e[g],d._queue)}window.filepicker=d})(document); 
 </script>
 
-</head>
 
-<body>
+<script>
+
+$(function () {
+
+	Theme.init ();
+
+	{% include "js/cms.js" %}
 	
+});
+
+</script>
+
+{% end %}
+
+{% block body %}
+
+
 <div id="wrapper">
 	
-
-{% comment "nav.html" %}
-
-
-	
-	
-{% comment "header.html" %}
-
-
-
 
 
 <div id="content">
@@ -62,11 +38,12 @@
 		<div class="row">
 			
 			<div class="span4">
-	<div class="nav-collapse" style="background: #1D354D;
+	<div class="nav-collapse" style="
+	background:none;
 width: 100%;
 float: left;
-margin-bottom: 20px;">
-			<ul id="main-nav" class="nav pull-left" style="cursor:pointer;padding-left:15px;">
+margin-bottom: 0px;">
+			<ul id="main-nav" class="nav pull-left" style="cursor:pointer;padding-left:15px;margin-bottom:-2px;">
 				<li class="active">
 					<a data-target="#passes" id='pass_link'>
 						<span>Passes</span>        					
@@ -78,14 +55,17 @@ margin-bottom: 20px;">
 					</a>
 				</li>	
 				<li>
-					<a data-target="#lists" id='list_link'>
+					<a data-target="#lists" id='list_link' class='btn-green'>
 						<span>Lists</span>        					
 					</a>
 				</li>							
 			</ul>
 			
 </div>
-				<div id="masthead" style="clear:both;overflow:hidden;">
+				<div class="well" style="clear: both;
+overflow: hidden;
+background: rgba(255, 255, 255, .4);
+padding-left: 0;padding-top:30px;">
 					
 					<div class="container">
 						
@@ -123,7 +103,7 @@ margin-bottom: 20px;">
 			</div> <!-- /.span4 -->
 			
 			<div class="span8">
-			<div id="content_edit_wrapper">
+			<div id="content_edit_wrapper" class="well">
 
 				<!-- This is where edit forms go -->
 
@@ -154,46 +134,4 @@ margin-bottom: 20px;">
 
 
 
-{% if False %}
-<div id="footer">
-		
-	<div class="container">
-		
-		<div class="row">
-			
-			<div class="span6">
-				© 2012 <a href="http://jumpstartui.com">Jumpstart UI</a>, all rights reserved.
-			</div> <!-- /span6 -->
-			
-			<div id="builtby" class="span6">
-				<a href="http://jumpstartui.com">Built by Jumpstart.</a>				
-			</div> <!-- /.span6 -->
-			
-		</div> <!-- /row -->
-		
-	</div> <!-- /container -->
-	
-</div> <!-- /#footer -->
 {% end %}
-
-
-
-
-
-<script>
-
-$(function () {
-
-	Theme.init ();
-
-	{% include "js/cms.js" %}
-	
-});
-
-
-
-</script>
-
-
-</body>
-</html>

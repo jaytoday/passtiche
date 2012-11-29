@@ -59,7 +59,7 @@ a [class*=" icon-"] {
 li [class^="icon-"],
 li [class*=" icon-"] {
   display: inline-block;
-  width: 1.25em;
+  _width: 1.25em;
   text-align: center;
 }
 li .icon-large:before,

@@ -4,6 +4,8 @@ from model.base import BaseModel
 from google.appengine.ext import db
 from model.util import properties
 
+ADMINS = ['james@costanza.co']
+
 class User(BaseModel):
     # key name is email?
     email = db.EmailProperty(required=False)   # all lower case
@@ -51,6 +53,11 @@ class User(BaseModel):
                 return default
             return self.email
         return "%s %s" % (self.first_name, self.last_name)
+
+
+    def is_admin(self):
+        if self.email in ADMINS:
+            return True
         
     def photo_url(self):
         # TODO: get FB photo (or gravatar, or uploaded photo)

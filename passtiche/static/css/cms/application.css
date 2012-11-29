@@ -2,9 +2,9 @@
 
 [Application.css]
 
-	Project:		Dashboard
-	Version:		1.0
-	Last change:	10/10/2012	
+  Project:    Dashboard
+  Version:    1.0
+  Last change:  10/10/2012  
 
 
 -------------------------------------------------------------------*/
@@ -39,7 +39,7 @@
 
 [Typography Styles]
 
--------------------------------------------------------------------*/
+-------------------------------------------------------------------
 h1,
 h2,
 h3,
@@ -109,7 +109,7 @@ ul.list li {
 }
 [class^="icon-"]:not(.ui-icon),
 [class*="icon-"]:not(.ui-icon) {
-  background: none;
+  _background: none;
 }
 .icon-white,
 .nav-tabs > .active > a > [class^="icon-"],
@@ -311,7 +311,7 @@ select {
 
 */
 
-/* Dropdowns */
+/* Dropdowns 
 .dropdown-menu {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -435,7 +435,7 @@ body:not(:-moz-handler-blocked) .dropdown-submenu > a:after {
   opacity: 0.55;
   filter: alpha(opacity=55);
 }
-/* Nav Pills */
+/* Nav Pills 
 .nav-pills  > li  > a {
   margin-right: .75em;
   color: #333333;
@@ -1831,7 +1831,7 @@ Layout: Topbar
  
 Layout: Header
 
-------------------------------------------------------------------- */
+------------------------------------------------------------------- 
 #header {
   position: relative;
   z-index: 91;
@@ -1922,6 +1922,8 @@ Layout: Main Nav
 #main-nav  > li > a,
 #main-nav  > li > a:hover,
 #main-nav  > li.open > a {
+  background-color:#802c59;background-image:-moz-linear-gradient(top, #762E5E, #972954);background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#762E5E), to(#972954));background-image:-webkit-linear-gradient(top, #762E5E, #972954);background-image:-o-linear-gradient(top, #762E5E, #972954);background-image:linear-gradient(to bottom, #762E5E, #972954);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff862e5e', endColorstr='#ff772953', GradientType=0);border-color:#642246;}
+  #___deprecated{
   color: #ffffff;
   text-decoration: none;
   background-color: #1f3852;
@@ -1939,6 +1941,8 @@ Layout: Main Nav
 }
 #main-nav  > li > a:hover,
 #main-nav  > li.open > a {
+}
+  #___deprecated{
   background-color: #1b3148;
   background-image: -moz-linear-gradient(top, #1e3751, #16283a);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1e3751), to(#16283a));
@@ -1950,13 +1954,15 @@ Layout: Main Nav
 }
 #main-nav  > li.active > a {
   color: #192d42;
-  background: #ffffff;
+  background: rgba(255,255,255,.4);
   filter: none !important;
   border-bottom-color: #ffffff;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
   text-shadow: none;
+  padding-top: 7px;
+margin-top: 3px;
 }
 #main-nav  > li > a > i {
   position: relative;
