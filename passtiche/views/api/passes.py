@@ -10,12 +10,17 @@ from backend.user import auth
 from utils.cache import cache
 from utils import gae as gae_utils
 
+"""
+
+TODO: Account param should have corresponding token, some inherited account auth method
+
+"""
 
 class PassHandler(APIHandler):
 
 	def find_passes(self):
 		query_args = { }
-		for f in ['query', 'order', 'create', 'passes']:
+		for f in ['query', 'order', 'create', 'passes', 'account']:
 			if self.get_argument(f,''):
 				query_args[f] = self.get_argument(f)
 
@@ -67,6 +72,10 @@ class UpdatePass(PassHandler):
 		for f in ['price','price_rating']:
 			if pass_dict[f]:
 				pass_dict[f] = int(pass_dict[f])
+
+		if self.get_argument('account'):
+			from model.user import User
+			pass_dict['user'] = User.get_by_key_name(self.get_argument('account'))
 
 		from backend.passes import update
 		updater = update.PassUpdate()		

@@ -11,7 +11,7 @@ from backend import errors
 INVITE_CODES = ['quirkyopus','borogoves', 'pro','jointheclub','press','yc','partner']
 PREMIUM_CODES = ['quirkyopus','borogoves']
 
-ACCOUNT_HOME = '' # '/dashboard'
+ACCOUNT_HOME = '/dashboard'
 
      
 class Login(ViewHandler):
@@ -34,7 +34,7 @@ class Login(ViewHandler):
             self.error = 'No user found for this email address'           
             return self.get()
             
-        self.redirect('/dashboard')
+        self.redirect(ACCOUNT_HOME)
         
     def get(self, email=None):
         self.logout()
@@ -66,8 +66,7 @@ class Signup(ViewHandler):
         logging.info('signed up as user %s' % user.email)
         self.redirect(ACCOUNT_HOME)
         return
-        
-        return self.get()
+    
         
     def get(self):
         self.render('website/auth/signup.html', **self.context) 

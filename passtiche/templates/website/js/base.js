@@ -9,6 +9,11 @@
 $(document).data('base-url', '{{ base_url }}');
 $(document).data('domain', '{{ domain }}');
 
+{% if current_user %}
+// sometimes current user ID is used for direct API access
+  $(document).data('current_user', '{{ current_user.key().name() }}');  
+{% end %}
+
 $(document).keyup(function(e){
 
     if (e.keyCode == 13){ // enter, space is 32

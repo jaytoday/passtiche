@@ -128,8 +128,10 @@ class BaseHandler(tornado.web.RequestHandler):
         
     def render(self, template_file, get_current_user=False, **kwargs):
         kwargs['settings'] = self._settings
-        if get_current_user:
+        if get_current_user: # forces the get
             kwargs['current_user'] = self.get_current_user()
+        else:
+            kwargs['current_user'] = self.user
         kwargs['ip_address'] = str(os.environ.get('REMOTE_ADDR','')) 
         kwargs['error'] = self.error
         kwargs['debug'] = gae_utils.Debug()
@@ -155,6 +157,15 @@ class BaseHandler(tornado.web.RequestHandler):
         return tornado.web.RequestHandler.render_string(
             self, template_name, users=users, **kwargs)
 
+
+    def flat_args_dict(self):
+        # utility method for getting request args not in a list
+        args = self.request.arguments
+        fargs = {}
+        for k, v in args.items():
+            fargs[k] = v[0]
+        return fargs
+        
 
 COOKIE_DAYS = 30
 
@@ -292,11 +303,14 @@ class CookieHandler(BaseHandler):
                 _countdown=10) # 1300 22 minutes
 
         # optional args
-        for k in ['first_name', 'last_name']:
+        for k in ['first_name', 'last_name','phone','organization']:
             if kwargs.get(k):
                 v = kwargs.get(k)
                 setattr(user_entity, k, v)
 
+        from utils import string as str_utils
+        code = str_utils.genkey(length=7)
+        user_entity.short_code = code
 
         user_entity.put()
         if set_user:
@@ -315,13 +329,6 @@ class CookieHandler(BaseHandler):
         logging.info('TODO: transfer data from old user %s to new user %s' % (
             old_user.key().name(), new_user.key().name()))
 
-    def flat_args_dict(self):
-        # utility method for getting request args not in a list
-        args = self.request.arguments
-        fargs = {}
-        for k, v in args.items():
-            fargs[k] = v[0]
-        return fargs
 
         
 def send_welcome_email(to, subject):

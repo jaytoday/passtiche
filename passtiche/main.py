@@ -80,6 +80,9 @@ application = tornado.wsgi.WSGIApplication([
     (r"/login", auth.Login),
     (r"/logout", auth.Logout),
     (r"/signup", auth.Signup),
+
+    (r"/docs", index.Docs),
+    (r"/docs/(?P<path>[^\/]+)?", index.Docs),    
      # shortcut login
      (r'/login/(?P<email>[^\/]+)/?', auth.Login),
 
@@ -92,6 +95,10 @@ application = tornado.wsgi.WSGIApplication([
 
     # ajax
     (r'/ajax/user\.email_signup/?', ajax_index.EmailSignup), 
+    (r'/ajax/user\.edit/?', ajax_index.EditProfile), 
+
+
+
 
     (r'/ajax/pass\.save/?', ajax_index.SavePass),    
     (r'/ajax/pass\.send/?', ajax_index.SendPass),     

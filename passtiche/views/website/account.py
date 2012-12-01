@@ -15,5 +15,7 @@ PREMIUM_CODES = ['quirkyopus','borogoves']
 class Dashboard(ViewHandler):
 
 	def get(self):
-		self.render("website/account/cms/index.html", **self.context)		
+		if not self.get_current_user():
+			return self.redirect('/login')
+		self.render("website/account/cms/index.html", get_current_user=True, **self.context)		
 		return

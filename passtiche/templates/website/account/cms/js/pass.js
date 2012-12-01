@@ -1,16 +1,15 @@
 
 function updatePassTemplates(){
+	$.ajax({
+	type: "GET",
+	url: "/api/1/pass.find",
+	data: {'output': 'html', 'account': $(document).data('current_user') },
+	success: function(response){
+	// TODO: JS templating with JSON
+	renderPassTemplates(response);
 
-$.ajax({
-type: "GET",
-url: "/api/1/pass.find",
-data: {'output': 'html'},
-success: function(response){
-// TODO: JS templating with JSON
-renderPassTemplates(response);
-
-}
-});	   
+	}
+	});	   
 };
 
 function renderPassTemplates(resp_html){
@@ -24,12 +23,12 @@ $('#pass_link').parent().on('click', function(){
 
 
 $('a.edit_pass').live('click', function(){
-       $('#content_edit_wrapper').html($(this).parent().find('.edit').html());
+       $('#content_edit_wrapper').html($(this).parent().find('.edit').html()).show();
 });
 
 $('a#new_pass').on('click', function(){
 
-     $('#content_edit_wrapper').html($('#new_pass_wrapper').html());
+     $('#content_edit_wrapper').html($('#new_pass_wrapper').html()).show();
 
 });
 
@@ -38,9 +37,9 @@ $('a#new_pass').on('click', function(){
 
 function SavePassTemplate(fieldset){
 
-	var pass_data = {'output': 'html'};
+	var pass_data = {'output': 'html', 'account': $(document).data('current_user')};
 
-		input_vals = ['name','slug','image_url', 'description','neighborhood_name','location_code','price', 'starts','ends','weekday_range','times','delete'];
+		input_vals = ['name','slug','image_url', 'description','neighborhood_name','location_code','price', 'starts','ends','weekday_range','times','delete','organization','website'];
 	$(input_vals).each(function(i, f){
 		if (fieldset.find('#' + f).val())
 			pass_data[f] = fieldset.find('#' + f).val();

@@ -251,6 +251,34 @@ class AccountPayment(AjaxHandler):
 
         db.put([user, payment])
         
+
+class EditProfile(AjaxHandler):
+
+    def get(self):
+        user = self.get_current_user()
+        kwargs = self.flat_args_dict()
+        # optional args
+        for k in ['first_name', 'last_name','phone','organization','email','website']:
+            # TODO: sanitize
+            if kwargs.get(k):
+                v = kwargs.get(k)
+                setattr(user, k, v)      
+
+        if self.get_argument('domains',''):
+            from model.user import User
+            domains = [d.strip() for d in self.get_argument('domains').split(',')]
+            for d in domains:
+                # TODO: validate
+                # expensive...
+                logging.info('seeking matches for domain %s' % d)
+                domain_user = User.all().filter('domains', d).get() # there SHOULD only be one at most
+                if domain_user and domain_user.key().name() != user.key().name():
+                    self.write(
+                        'Domain "<i>%s</i>" has already been claimed by another account.<br/> Contact support@costanza.co if this domain belongs to you.' % d)
+                    return
+            user.domains = domains
+        user.put()
+
             
 class EmailSignup(AjaxHandler):
 

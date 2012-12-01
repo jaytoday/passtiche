@@ -51,17 +51,31 @@ $(function () {
 
 
 
+<!-- Text Under Box -->
+<div class="login-extra" style="margin-top:0">
+	Already have an account? <a href="/login">Login</a>
+</div> <!-- /login-extra -->
 
 
-<div class="account-container register stacked">
+<div class="account-container register stacked " style="width:460px;">
 	
+
 	<div class="content clearfix">
 		
-		<form action="/signup" method="post">
+		<form action="/signup" method="post" class="form-horizontal">
 		
-			<h1>Create Your Account</h1>			
+			<h1>Create Your Account</h1>		
+
+
+			{% if error %}
+			<div class="alert alert-error">
+				{{ error }}
+			</div>
+			{% end %}
+
 			
-			<div class="login-social">
+
+			<div class="login-social" style="display:none;">
 				<p>Sign in using social network:</p>
 				
 			
@@ -74,43 +88,61 @@ $(function () {
 				</div>
 			</div>
 			
-			<div class="login-fields">
+			<div class="signup-fields">
 				
-				<p>Create your free account:</p>
-				
-				<div class="field">
-					<label for="first_name">First Name:</label>
-					<input type="text" id="first_name" name="first_name" value="" placeholder="First Name" class="login" />
-				</div> <!-- /field -->
-				
-				<div class="field">
-					<label for="last_name">Last Name:</label>	
-					<input type="text" id="last_name" name="last_name" value="" placeholder="Last Name" class="login" />
-				</div> <!-- /field -->
-				
-				
-				<div class="field">
-					<label for="email">Email Address:</label>
-					<input type="text" id="email" name="email" value="" placeholder="Email" class="login"/>
-				</div> <!-- /field -->
-				
-				<div class="field">
-					<label for="password">Password:</label>
-					<input type="password" id="password" name="password" value="" placeholder="Password" class="login"/>
-				</div> <!-- /field -->
-				
-				<div class="field">
-					<label for="confirm_password">Confirm Password:</label>
-					<input type="password" id="confirm_password" name="confirm_password" value="" placeholder="Confirm Password" class="login"/>
-				</div> <!-- /field -->
-				
+		
+<fieldset style="margin-left: -33px;
+margin-top: 25px;">                      
+
+  <div class="control-group field-organization">           
+   <label class="control-label" for="organization">Organization</label>            <div class="controls">              <div class="input-xlarge"><input id="organization" name="organization" type="text"></div>  <div class="help-block"></div>            </div>          </div>
+
+	<div class="control-group field-first_name">            
+		<label class="control-label" for="first_name">First Name</label>            
+		<div class="controls">              
+			<div class="input-xlarge"><input id="first_name" name="first_name" type="text"></div>  <div class="help-block"></div>            </div>          </div>
+
+	<div class="control-group field-last_name">            
+		<label class="control-label" for="last_name">Last Name</label>           
+		 <div class="controls">              
+		 	<div class="input-xlarge"><input id="last_name" name="last_name" type="text"></div>  <div class="help-block"></div>            </div>          </div>
+
+	<div class="control-group field-phone">           
+	 <label class="control-label" for="phone">Phone</label>            
+	 <div class="controls">              
+	 	<div class="input-xlarge"><input id="phone" name="phone" type="tel"></div>  <div class="help-block"></div>            </div>
+	           </div>
+<div style="margin: 0 20px;"><hr></div>
+
+	<div class="control-group field-email">            
+		<label class="control-label" for="email">Email*</label>           
+		 <div class="controls">             
+		  <div class="input-xlarge"><input id="email" name="email" type="email"></div>  <div class="help-block"></div>            </div>          </div>	 	
+
+
+	<div class="control-group field-password">            
+		<label class="control-label" for="password">Password*</label>            
+		<div class="controls">              
+			<div class="input-xlarge"><input id="password" name="password" type="password"></div>  <div class="help-block"></div>            </div>          </div>
+
+
+	<div class="control-group field-confirm_password">            
+		<label class="control-label" for="confirm_password">Confirm Password*</label>            
+		<div class="controls">              
+			<div class="input-xlarge"><input id="confirm_password" name="confirm_password" type="password"></div>  <div class="help-block"></div>            </div>          </div> 
+
+	         </fieldset>
+
+
+
 			</div> <!-- /login-fields -->
 			
-			<div class="login-actions">
+			<div class="login-actions" style="margin-top:5px;">
 				
 				<span class="login-checkbox">
+					<p>*required</p>
 					<input id="terms_agree" checked name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
-					<label class="choice" for="Field">I have read and agree with the Terms of Use.</label>
+					<label class="choice" for="Field">I have read and agree with the <a href="/terms">Terms of Use.</label>
 				</span>
 									
 				<a id="submit_signup" class="button btn btn-primary btn-large">Register</a>
@@ -122,12 +154,6 @@ $(function () {
 	</div> <!-- /content -->
 	
 </div> <!-- /account-container -->
-
-
-<!-- Text Under Box -->
-<div class="login-extra">
-	Already have an account? <a href="/login">Login</a>
-</div> <!-- /login-extra -->
 
 
 

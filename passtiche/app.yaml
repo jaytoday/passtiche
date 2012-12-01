@@ -32,13 +32,7 @@ handlers:
 
    
 
-- url: /docs
-  static_files: static/docs/html/index.html
-  upload: static/docs/html/index.html
 
-
-- url: /docs/
-  static_dir: static/docs/html
 
 - url: /pf/
   static_dir: static/passes

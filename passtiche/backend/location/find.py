@@ -19,9 +19,13 @@ class FindLocation(object):
 	def __init__(self, *args):
 		pass
 
-	def find(self, query=None, create='true'):
+	def find(self, query=None, create='true', user=None, account=None, **kwargs):
 
-		self.query, self.create = self.sanitize(query), create
+		self.query, self.create, self.user = self.sanitize(query), create, user
+
+		if account:
+			from model.user import User
+			self.user = User.get_by_key_name(account)
 
 		if self.create == 'true':
 			self.create = True
@@ -55,7 +59,10 @@ class FindLocation(object):
 			
 			return loc # hasn't saved
 
-		locs = Location.all().fetch(1000)
+		loc_query = Location.all()
+		if self.user and not self.user.is_admin():
+			loc_query = loc_query.filter('owner', self.user)
+		locs = loc_query.fetch(1000)
 		return locs	
 
 	def search(self):

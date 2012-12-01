@@ -17,7 +17,7 @@
        <div class="nav-collapse" id="main-menu" style="float:right; margin-left:0px;">
 <ul class="nav" id="main-menu-left" >
 {% if current_user %}
-<li class="top" id="account_link" style="background: rgba(0, 0, 0, .1);"><a style="font-size:.8em;"><i class="icon-user icon-white"></i> &nbsp; {{ current_user.display_name() }}</a></li>
+<li class="top" id="account_link" style="background: rgba(0, 0, 0, .1);"><a style="font-size:.8em;" href='/dashboard'><i class="icon-user icon-white"></i> &nbsp; {{ current_user.display_name() }}</a></li>
 {% end %}
 
    <li class="dropdown top">
@@ -35,7 +35,7 @@
 <li class="top"><a href="/docs" id="docs_link" target="_blank">Tutorial &amp; Docs</a></li>    
 
 
- <li class="top" id="login_link">{% if current_user %}<a id="signout_link" href="/logout">Sign Out</a>{% else %}<a id="signup_link" href="/login">Sign In</a>{% end %}</li>
+ <li class="top" id="login_link">{% if current_user %}<a id="signout_link" href="/logout">Sign Out</a>{% else %}<a id="signup_link" href="/signup">Sign In</a>{% end %}</li>
     
 
        </div>

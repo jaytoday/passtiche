@@ -24,12 +24,12 @@ $('#list_link').parent().on('click', function(){
 
 
 $('a.edit_list').live('click', function(){
-       $('#content_edit_wrapper').html($(this).parent().find('.edit').html());
+       $('#content_edit_wrapper').html($(this).parent().find('.edit').html()).show();
 });
 
 $('a#new_list').on('click', function(){
 
-     $('#content_edit_wrapper').html($('#new_list_wrapper').html());
+     $('#content_edit_wrapper').html($('#new_list_wrapper').html()).show();
 
 });
 

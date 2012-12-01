@@ -6,12 +6,18 @@
 
 {% include "list.js" %}
 
+{% include "settings.js" %}
+
 
 /* Tabs */
+$(function(){
 $('#main-nav').find('li').on('click',function (e) {
-	$('#content_edit_wrapper').html('');
+
+	$('#content_edit_wrapper').html('').hide();
+
   $(this).find('a').tab('show');
 }).filter(':first').click();
+});
 
 
 /* Filepicker */

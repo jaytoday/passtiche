@@ -45,20 +45,28 @@ float: left;
 margin-bottom: 0px;">
 			<ul id="main-nav" class="nav pull-left" style="cursor:pointer;padding-left:15px;margin-bottom:-2px;">
 				<li class="active">
-					<a data-target="#passes" id='pass_link'>
+					<a data-target="#passes" href="#passes"  id='pass_link'>
 						<span>Passes</span>        					
 					</a>
 				</li>
 				<li>
-					<a data-target="#locations" id='location_link'>
+					<a data-target="#locations" href="#locations"  id='location_link'>
 						<span>Locations</span>        					
 					</a>
 				</li>	
+				{% if current_user and current_user.is_admin() %}
 				<li>
-					<a data-target="#lists" id='list_link' class='btn-green'>
+					<a data-target="#lists" href="#lists"  id='list_link' >
 						<span>Lists</span>        					
 					</a>
-				</li>							
+				</li>	
+				{% else %}
+				<li>
+					<a data-target="#settings" href="#settings" id='settings_link'>
+						<span><i class='icon-cog'></i> &nbsp; Settings</span>        					
+					</a>
+				</li>				
+				{% end %}						
 			</ul>
 			
 </div>
@@ -74,25 +82,42 @@ padding-left: 0;padding-top:30px;">
 				<div class="tab-content">
 
 						<div class="tab-pane active" id="passes">
-							<a class="btn" id="new_pass">New Pass</a>
+							<a class="btn" id="new_pass"><i class="icon-plus-sign"></i> New Pass</a>
 							<div id="pass_template_list" style="margin:20px 0;">
 									<!-- Pass Template List Items Added Via Ajax -->
 							</div>
 						</div>
 
 						<div class="tab-pane" id="locations">
-							<a class="btn" id="new_location">New Location</a>
+							<a class="btn" id="new_location"><i class="icon-plus-sign"></i> New Location</a>
 							<div id="pass_location_list" style="margin:20px 0;">
 									<!-- Pass Location List Items Added Via Ajax -->
 							</div>
 						</div>
 
 						<div class="tab-pane" id="lists">
-							<a class="btn" id="new_location">New List</a>
+							<a class="btn" id="new_location"><i class="icon-plus-sign"></i> New List</a>
 							<div id="pass_list_list" style="margin:20px 0;">
 									<!-- Pass List List Items Added Via Ajax -->
 							</div>
 						</div>
+
+							<div class="tab-pane" id="settings">
+								<div id="settings_links" style="line-height:40px;">
+									<a class="btn" id="edit_profile">Edit Profile</a>
+									<div id="edit_profile_inner" style="display:none;">
+										{% include "settings/edit_profile.html" %}
+									</div>
+									<br/>
+									<a class="btn" id="account_settings">Account Settings</a>
+									<div id="account_settings_inner" style="display:none;">
+											{% include "settings/account_settings.html" %}
+									</div>
+								</div>
+							<div id="pass_list_list" style="margin:20px 0;">
+									<!-- Pass List List Items Added Via Ajax -->
+							</div>
+						</div>		
 
 				</div><!-- tab content -->
 						</div><!-- masthead-pad -->

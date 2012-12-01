@@ -111,6 +111,20 @@ def get_passes():
     return pass_dict                              
                 
 
+class Docs(ViewHandler):
+    """ New landing page view """
+
+    def get(self, path=None):
+        if path:
+            docs_template = 'pages/%s.html' % path
+        else:
+            docs_template = 'index.html'
+
+        self.write(static_page(None, "website/docs/%s" % docs_template, context=self.context))
+
+
+# TODO: pass view module
+
 class PassDownload(PassticheIndex):
 
     def get(self, pass_code):
@@ -169,20 +183,6 @@ class UserPassDirectDownload(ViewHandler):
 
 
 
-class IndexView(ViewHandler):
-    """ New landing page view """
-
-    def get(self):
-        context = {'signed_in': self.get_current_user() > 0}
-        self.write(static_page(None, "website/toplevel/index.html", context=context))
-
-
-class Meeting(ViewHandler):
-    
-    def get(self):
-        self.redirect('http://meetings.io/hiptype')
-        return
-
         
 class PageNotFound(ViewHandler):
     """ """
@@ -199,8 +199,8 @@ class PageNotFound(ViewHandler):
         return self.page_not_found()      
         
 
-
-@cache(reset=gae_utils.Debug())
+# TODO: navbar and other elements can't be cached
+@cache(reset=True)#gae_utils.Debug())
 def static_page(page_name, template_file=None, context=None):
 
     handler = ViewHandler(mock_handler=True)

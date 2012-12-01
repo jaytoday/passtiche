@@ -365,7 +365,7 @@ body:not(:-moz-handler-blocked) .dropdown-submenu > a:after {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff94ba65', endColorstr='#ff94ba65', GradientType=0);
   background: #94ba65;
 }
-/* Modals */
+/* Modals
 .modal {
   border: none;
   -webkit-border-radius: 7px;
@@ -1933,7 +1933,7 @@ Layout: Main Nav
   background-image: -o-linear-gradient(top, #24415f, #172b3e);
   background-image: linear-gradient(to bottom, #24415f, #172b3e);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff24415f', endColorstr='#ff172b3e', GradientType=0);
+  _filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff24415f', endColorstr='#ff172b3e', GradientType=0);
   border: 1px solid #080f15;
   -webkit-box-shadow: inset 0 1px 0 #325b85;
   -moz-box-shadow: inset 0 1px 0 #325b85;
@@ -1952,17 +1952,13 @@ Layout: Main Nav
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1e3751', endColorstr='#ff16283a', GradientType=0);
 }
-#main-nav  > li.active > a {
-  color: #192d42;
-  background: rgba(255,255,255,.4);
-  filter: none !important;
-  border-bottom-color: #ffffff;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  text-shadow: none;
-  padding-top: 7px;
-margin-top: 3px;
+#main-nav  > li.active > a,#main-nav  > li > a:hover{
+
+  background:#672954;
+}
+#main-nav  > li.active > a{
+margin-top: 2px;
+padding-top:7px;
 }
 #main-nav  > li > a > i {
   position: relative;

@@ -1,6 +1,11 @@
 
 <div>
+    <span class="label label-danger" style="font-size: 15px;
+position: absolute;
+margin-top: -28px;
+padding: 3px 8px 4px;">List</span>
   <fieldset>
+
     <legend>{% if pl %}{{ pl.name }}{% else %}New List{% end %}</legend>
     <input type="text"  placeholder="List Name" id="name" {% if pl and pl.name %}value="{{ pl.name }}"{% end %}>
 

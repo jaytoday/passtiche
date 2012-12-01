@@ -1,7 +1,12 @@
 
 
 <div>
+      <span class="label label-danger" style="font-size: 15px;
+position: absolute;
+margin-top: -28px;
+padding: 3px 8px 4px;">Location</span>
   <fieldset>
+
     <legend>{% if l %}{{ l.name }}{% else %}New Location{% end %}</legend>
     <input type="text"  placeholder="Location Name" id="name" {% if l and l.name %}value="{{ l.name }}"{% end %}>
 
@@ -16,7 +21,7 @@
     <input type="text" id="opentable" {% if l and l.opentable %}value="{{ l.opentable }}"{% end %}>   
       <label>website</label>
      <input type="text" id="website" {% if l and l.website %}value="{{ l.website }}"{% end %}>   
-      <label>neighborhood_name</label>
+      <label>neighborhood</label>
     <input type="text" id="neighborhood_name" {% if l and l.neighborhood_name %}value="{{ l.neighborhood_name }}"{% end %}>      
       <label>street address</label>
     <input type="text" id="street_address" {% if l and l.street_address %}value="{{ l.street_address }}"{% end %}>    

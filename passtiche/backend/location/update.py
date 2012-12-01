@@ -22,7 +22,7 @@ class LocationUpdate(object):
 
 
 	def create_or_update(self, name=None, code=None, phone=None, yelp=None, opentable=None, website=None, 
-			neighborhood_name=None, street_address=None, region_name=None, region_code=None, **kwargs):
+			neighborhood_name=None, street_address=None, region_name=None, region_code=None, user=None, **kwargs):
 
 		if code:
 			loc_code = code
@@ -32,6 +32,8 @@ class LocationUpdate(object):
 		loc = Location.get_by_key_name(loc_code)
 		if not loc:
 			loc = Location(key_name=loc_code, code=loc_code, name=name)
+			if user and not user.is_admin():
+				loc.owner = user
 			loc_doc = search.Document(fields=[search.TextField(name='name', value=name),
                 search.TextField(name='code', value=loc_code),
                 search.DateField(name='date', value=datetime.datetime.now().date())])

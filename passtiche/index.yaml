@@ -38,6 +38,12 @@ indexes:
   - name: __key__
     direction: desc
 
+- kind: PassTemplate
+  properties:
+  - name: owner
+  - name: modified
+    direction: desc
+
 - kind: Widget
   properties:
   - name: user

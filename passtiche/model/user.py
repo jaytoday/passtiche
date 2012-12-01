@@ -10,10 +10,18 @@ class User(BaseModel):
     # key name is email?
     email = db.EmailProperty(required=False)   # all lower case
     password = properties.PickledProperty(required=False)
+
+    short_code = db.StringProperty(required=False)
     
     # optional fields
     first_name = db.StringProperty(required=False) # hidden to users?    
     last_name = db.StringProperty(required=False)
+    phone = db.StringProperty(required=False)  
+    organization = db.StringProperty(required=False)    
+    
+    website = db.StringProperty(required=False)
+    domains = db.ListProperty(str, required=True)
+    
 
     description = db.StringProperty(required=False)
     

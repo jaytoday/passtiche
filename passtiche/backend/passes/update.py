@@ -20,8 +20,10 @@ class PassUpdate(object):
 
 	def create_or_update(self, name=None, slug=None, description=None, price=None, schedule=None, 
 			neighborhood_name=None, location=None, location_code=None, price_rating=None, api=False, 
-			image_url=None, href=None, **kwargs):
+			image_url=None, href=None, user=None, organization=None, website=None, **kwargs):
 		
+		self.user = user
+
 		if href:
 			# this does not allow file-based passes to have updated listings on Passtiche
 			return self.pass_file(href)
@@ -47,11 +49,20 @@ class PassUpdate(object):
 			code = str_utils.genkey(length=4)
 			pass_template.short_code = code
 
+			if self.user and not self.user.is_admin():
+				pass_template.owner = self.user
+			if not location and location_code:
+				from model.activity import Location
+				location = Location.get_by_key_name(location_code)
+			if location:
+				location_name = location.name
+			else:
+				location_name = ''
 			pass_doc = search.Document(fields=[search.TextField(name='name', value=name),
                 search.TextField(name='code', value=code),
                 search.TextField(name='keyname', value=keyname),
                 search.TextField(name='loc', value=(location_code or '')),
-                search.TextField(name='location_name', value=location.name),
+                search.TextField(name='location_name', value=location_name),
                 search.DateField(name='date', value=datetime.datetime.now().date())])
 			logging.info('adding pass doc to index')
 			search.Index(name=_INDEX_NAME).add(pass_doc)
@@ -65,6 +76,11 @@ class PassUpdate(object):
 			pass_template.price = int(price)
 		if price_rating is not None:
 			pass_template.price_rating = price_rating
+
+		if organization:
+			pass_template.organization = organization
+		if website:
+			pass_template.website = website
 
 		if image_url:
 			pass_template.image_url = image_url	

@@ -14,10 +14,9 @@ from utils import gae as gae_utils
 class LocHandler(APIHandler):
 	
 	def find_locations(self):
-		query = self.get_argument('query','')
 		from backend.location import find
 		loc_finder = find.FindLocation()
-		self.context['locations'] = loc_finder.find()
+		self.context['locations'] = loc_finder.find(**self.flat_args_dict())
 		if self.get_argument('output','') == 'html':
 			self.render("website/account/cms/location/list.html", **self.context)	
 
@@ -41,6 +40,10 @@ class UpdateLocation(LocHandler):
 				if loc_dict[f] == ' ':
 					loc_dict[f] = '' # b/c this is not None it can remove a set property
 
+
+		if self.get_argument('account'):
+			from model.user import User
+			loc_dict['user'] = User.get_by_key_name(self.get_argument('account'))
 
 		from backend.location import update
 		updater = update.LocationUpdate()		

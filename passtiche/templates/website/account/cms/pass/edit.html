@@ -1,6 +1,11 @@
 
 <div>
+      <span class="label label-danger" style="font-size: 15px;
+position: absolute;
+margin-top: -28px;
+padding: 3px 8px 4px;">Pass</span>
   <fieldset>
+
     <legend>{% if p %}{{ p.name }}{% else %}New Pass{% end %}</legend>
     <input type="text"  placeholder="Pass Name" id="name" {% if p and p.name %}value="{{ p.name }}"{% end %}>
 
@@ -24,7 +29,7 @@ height: 112px;">{% if p and p.description %}{{ p.description }}{% end %}</textar
 padding: 10px;
 float: left;
 clear: both;">
-    <label>Neighborhood Name</label>
+    <label>Neighborhood</label>
     <input type="text" id="neighborhood_name" {% if p and p.neighborhood_name %}value="{{ p.neighborhood_name }}"{% end %}>
     <label>Optional Location Code <span class="help-block" style="font-size: .7em;
 margin-bottom: -3px;"> &nbsp; cannot be edited</span></label>
@@ -61,6 +66,20 @@ margin-bottom: -3px;">[{ "starts": "7pm", "ends": "9pm"  }]</span></label>
     <input type="text" id="times" {% if p and p.schedule.get('times') %}value="{{ p.schedule.get('times') }}"{% end %}>        
 
     </div></div> 
+
+
+       <div style="clear:both;" class="admin_only">
+    <div class="well" style="margin: 20px 0 20px 30px;
+padding: 10px;
+float: left;
+clear: both;">
+    <label>Organization</label>
+    <input type="text" id="organization" {% if p and p.organization %}value="{{ p.organization }}"{% end %}>
+    <label>Website</label>
+    <input type="text" id="website" {% if p and p.website %}value="{{ p.website }}"{% end %}>  
+    </div></div> 
+
+
 
 
    

@@ -20,7 +20,12 @@ class Region(BaseModel):
 
 class Location(BaseModel):
 	# key name is code 
+
 	code = db.StringProperty() # davies-symphony-hall 
+
+	owner = db.ReferenceProperty(User, required=False, collection_name='locations')
+
+
 	name = db.StringProperty() # Davies Symphony Hall
 	phone = db.StringProperty()	
 	yelp = db.StringProperty()	

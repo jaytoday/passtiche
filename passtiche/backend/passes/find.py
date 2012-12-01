@@ -19,10 +19,12 @@ class FindPass(object):
 	def __init__(self, *args):
 		pass
 
-	def find(self, query=None, order='-modified', create='true', fetch=1000, passes=None, **kwargs):
+	def find(self, query=None, order='-modified', create='true', fetch=1000, passes=None, account=None, **kwargs):
 		logging.info('finding passes')
 
-		self.query, self.order, self.create, self.fetch, self.passes = query, order, create, fetch, passes
+		self.user = kwargs.get('user')
+
+		self.query, self.order, self.create, self.fetch, self.passes, self.account = query, order, create, fetch, passes, account
 
 		if self.create == 'true':
 			self.create = True
@@ -36,6 +38,16 @@ class FindPass(object):
 			return self.find_pass({ 'name': query })
 			
 		qry = PassTemplate.all()
+
+		if account:
+			# account should be key name 
+			from model.user import User
+			self.user = User.get_by_key_name(account)
+
+		if self.user and not self.user.is_admin():
+			qry = qry.filter('owner', self.user)
+
+
 		if order:
 			qry = qry.order(order)
 		pass_templates = qry.fetch(fetch)

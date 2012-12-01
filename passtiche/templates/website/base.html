@@ -43,6 +43,15 @@
 
      <style>
         {% include "index.css" %}
+
+        {% if current_user and current_user.is_admin() %}
+
+        {% else %}
+        {% comment "not secure!" %}
+        .admin_only{
+          display:none;
+        }
+        {% end %}
       </style>
 
   </head>

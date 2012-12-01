@@ -1,0 +1,53 @@
+
+
+<div>
+      <span class="label label-danger" style="font-size: 15px;
+position: absolute;
+margin-top: -28px;
+padding: 3px 8px 4px;">Edit Profile</span>
+  
+
+
+<fieldset class="form-horizontal well" style="
+margin: 45px 0 0 25px;
+float: left;
+padding: 10px;">
+<div style="margin-left: -55px;
+margin-top: 15px;">                      
+
+  <div class="control-group field-organization">           
+   <label class="control-label" for="organization">Organization</label>            <div class="controls">              <div class="input-xlarge"><input id="organization" name="organization" type="text" value="{{ current_user.organization or '' }}"></div>  <div class="help-block"></div>            </div>          </div>
+
+  <div class="control-group field-website">           
+   <label class="control-label" for="website">Website</label>            <div class="controls">              <div class="input-xlarge"><input id="website" name="website" type="text" value="{{ current_user.website or '' }}"></div>  <div class="help-block"></div>            </div>          </div>   
+
+	<div class="control-group field-first_name">            
+		<label class="control-label" for="first_name">First Name</label>            
+		<div class="controls">              
+			<div class="input-xlarge"><input id="first_name" name="first_name" type="text" value="{{ current_user.first_name or '' }}"></div>  <div class="help-block"></div>            </div>          </div>
+
+	<div class="control-group field-last_name">            
+		<label class="control-label" for="last_name">Last Name</label>           
+		 <div class="controls">              
+		 	<div class="input-xlarge"><input id="last_name" name="last_name" type="text" value="{{ current_user.last_name or '' }}"></div>  <div class="help-block"></div>            </div>          </div>
+
+	<div class="control-group field-email">            
+		<label class="control-label" for="email">Email</label>           
+		 <div class="controls">             
+		  <div class="input-xlarge"><input id="email" name="email" type="email" value="{{ current_user.email or '' }}"></div>  <div class="help-block"></div>            </div>          </div>
+
+	<div class="control-group field-phone">           
+	 <label class="control-label" for="phone">Phone</label>            
+	 <div class="controls">              
+	 	<div class="input-xlarge"><input id="phone" name="phone" type="tel" value="{{ current_user.phone or '' }}"></div>  <div class="help-block"></div>            </div>          </div>
+
+</div>
+	         </fieldset>
+
+
+</div>
+
+
+   <div style="height:20px;clear:both"></div>
+   <div> <a style="font-size:20px;margin-left:20px;" id="save_profile" class="btn">Save</a></div>
+   
