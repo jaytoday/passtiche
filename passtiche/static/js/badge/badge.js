@@ -83,9 +83,40 @@ PassticheBadger = {
 		// add badge image and find or create pass
 
 				var badgeLinkEl = $(this);
-			
 
-				var badge_img  = $('<img style="width: 123px; height: 40px;" src="' + BASE_URL + '/badge"></img>');
+				DEFAULT_BADGE_HEIGHT = 40;
+				var badge_height = DEFAULT_BADGE_HEIGHT;
+
+				if (badgeLinkEl.attr('data-pass-size')){
+
+					if (parseInt(badgeLinkEl.attr('data-pass-size'))){
+	
+
+						badge_height = parseInt(badgeLinkEl.attr('data-pass-size'));
+						if (badge_height > 80 || badge_height < 20)
+							badge_height = DEFAULT_BADGE_HEIGHT;
+					};
+
+					if (badgeLinkEl.attr('data-pass-size') == 'xsmall'){
+						badge_height = 20;
+					}
+
+					if (badgeLinkEl.attr('data-pass-size') == 'small'){
+						badge_height = 30;
+					}
+					if (badgeLinkEl.attr('data-pass-size') == 'large'){
+						badge_height = 60;
+					}					
+					if (badgeLinkEl.attr('data-pass-size') == 'xlarge'){
+						badge_height = 70;
+					}	
+
+
+				}; // end pass size
+
+				var badge_width = parseInt(badge_height * 3.075);
+
+				var badge_img  = $('<img style="width: ' + badge_width + 'px; height: ' + badge_height + 'px;" src="' + BASE_URL + '/badge"></img>');
 				badge_img.on('click', PassticheBadger.badgeClick)
 				
 				var badge_title = badgeLinkEl.text() || 'Add to Passbook';

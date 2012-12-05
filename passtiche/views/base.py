@@ -164,7 +164,7 @@ class BaseHandler(tornado.web.RequestHandler):
         fargs = {}
         for k, v in args.items():
             fargs[k] = v[0]
-        return fargs
+        return fargs.copy()
         
 
 COOKIE_DAYS = 30
@@ -298,7 +298,7 @@ class CookieHandler(BaseHandler):
             
             #send_welcome_email(user_entity.email, 'Welcome to %s!' % self._settings['title'])
             deferred.defer(send_welcome_email, 
-                user_entity.email, 
+                user_entity, 
                 'Welcome to %s!' % self._settings['title'], 
                 _countdown=10) # 1300 22 minutes
 
@@ -331,16 +331,16 @@ class CookieHandler(BaseHandler):
 
 
         
-def send_welcome_email(to, subject):
-    return logging.info('not sending welcome email for now')
+def send_welcome_email(user, subject):
+
     from backend.mail.base import EmailMessage
     email_msg = EmailMessage(
         duplicate_check=False,
         campaign='SIGNUP',
         subject=subject, 
-        to=to, 
-        context={}, 
-        template="beta.html")
+        to=user.email, 
+        context={'user': user}, 
+        template="confirm.html")
     email_msg.send()  
     
        

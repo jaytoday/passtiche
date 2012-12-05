@@ -47,17 +47,10 @@ class UpdatePass(PassHandler):
 	def get(self, api_version):
 		self.check_version(api_version)	
 
-		pass_dict = {
-			'name': self.get_argument('name',''),
-			'slug': self.get_argument('slug',''),
-			'description': self.get_argument('description',''),
-			'price': self.get_argument('price',''),
-			'price_rating': len(self.get_argument('price_rating','')),
-			'neighborhood_name': self.get_argument('neighborhood_name',''),
-			'location_code': self.get_argument('location_code',''),
-			'image_url': self.get_argument('image_url', ''),
+		pass_dict = self.flat_args_dict()
+		pass_dict.update({
 			'schedule': {}						
-		}
+		})
 
 
 
@@ -69,9 +62,11 @@ class UpdatePass(PassHandler):
 		else:
 			pass_dict['schedule']['times'] = []
 
-		for f in ['price','price_rating']:
-			if pass_dict[f]:
-				pass_dict[f] = int(pass_dict[f])
+		if pass_dict.get('price') not in [None,'']: # TODO: use float instead?
+			pass_dict['price'] = int(pass_dict['price'].split('.')[0])
+		if pass_dict.get('price_rating'):
+			pass_dict['price_rating'] = len(pass_dict['price_rating'])
+		
 
 		if self.get_argument('account'):
 			from model.user import User

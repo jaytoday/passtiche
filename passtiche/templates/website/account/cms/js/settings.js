@@ -40,7 +40,10 @@ $('#save_account_settings').live('click', function(){
 	type: "POST",
 	url: "/ajax/user.edit",
 	data: settings_data,
-	success: editCallback
+	success: editCallback,
+	error: function(response){
+		showDialog('Error: Unable to save account settings');
+	}
 });
 
 });	 
@@ -58,7 +61,10 @@ $('#save_profile').live('click', function(){
 	type: "POST",
 	url: "/ajax/user.edit",
 	data: profile_data,
-	success: editCallback
+	success: editCallback,
+	error: function(response){
+		showDialog('Error: Unable to save profile');
+	}
 	});	 
 
 });

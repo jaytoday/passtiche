@@ -3507,6 +3507,13 @@ body {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
+.header_bg{
+  background-color: #802C59;
+background-image: -moz-linear-gradient(top, #762E5E, #972954);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#762E5E), to(#972954));
+background-image: -webkit-linear-gradient(top, #762E5E, #972954);
+background-image: -o-linear-gradient(top, #762E5E, #972954);
+}
 /* line 128, ../sass/style.scss */
 .navigation td.active {
   right: -10007px;

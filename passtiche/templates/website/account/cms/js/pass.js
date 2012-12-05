@@ -8,6 +8,9 @@ function updatePassTemplates(){
 	// TODO: JS templating with JSON
 	renderPassTemplates(response);
 
+	},
+	error: function(response){
+		showDialog('Error: Unable to retrieve passes');
 	}
 	});	   
 };
@@ -39,7 +42,7 @@ function SavePassTemplate(fieldset){
 
 	var pass_data = {'output': 'html', 'account': $(document).data('current_user')};
 
-		input_vals = ['name','slug','image_url', 'description','neighborhood_name','location_code','price', 'starts','ends','weekday_range','times','delete','organization','website'];
+		input_vals = ['name','slug','image_url', 'description','neighborhood_name','location_code','price', 'starts','ends','weekday_range','times','delete','organizationName','url'];
 	$(input_vals).each(function(i, f){
 		if (fieldset.find('#' + f).val())
 			pass_data[f] = fieldset.find('#' + f).val();
@@ -60,6 +63,9 @@ console.log(pass_data);
 	// TODO: JS templating with JSON
 	renderPassTemplates(response);
 
+	},
+	error: function(response){
+		showDialog('Error: Unable to save pass');
 	}
 	});	   
 };

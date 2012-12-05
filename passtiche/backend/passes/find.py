@@ -35,6 +35,7 @@ class FindPass(object):
 			return self.find_for_list()
 
 		if query:
+			logging.info('finding pass for query %s' % query)
 			return self.find_pass({ 'name': query })
 			
 		qry = PassTemplate.all()
@@ -45,12 +46,14 @@ class FindPass(object):
 			self.user = User.get_by_key_name(account)
 
 		if self.user and not self.user.is_admin():
+			logging.info('filtering for ownership by %s' % self.user.key().name())
 			qry = qry.filter('owner', self.user)
 
 
 		if order:
 			qry = qry.order(order)
 		pass_templates = qry.fetch(fetch)
+		logging.info('found pass templates: %s' % [pt.key().name() for pt in pass_templates])
 		return pass_templates	
 
 	
@@ -180,7 +183,7 @@ class FindPass(object):
 		logging.info(results)
 		return results
 
-
+# TODO: force refresh after update
 @cache(version_only=True) # set Falsclient = foursquare.Foursquare(client_id='YOUR_CLIENT_ID', client_secret='YOUR_CLIENT_SECRET')e once this is stable
 def find_passes(**kwargs):
 	pass_finder = FindPass()

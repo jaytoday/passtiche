@@ -2123,9 +2123,7 @@ Layout: Responsive
     margin-right: -20px;
     margin-left: -20px;
   }
-  #header {
-    border-top: 8px solid #222;
-  }
+ 
   #footer #builtby {
     text-align: left;
   }

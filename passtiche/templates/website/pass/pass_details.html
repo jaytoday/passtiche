@@ -4,6 +4,11 @@
 <div class="pass_details_container" style="display:none;">
 	<div class="alert alert-info pass_details_inner">
 
+		{% if pass_template.organizationName %}
+			<div class="field_value" style="font-size: 1.2em;
+margin-bottom: 10px;"><a  {% if pass_template.url %} target="_blank" href="{{ pass_template.url or '' }}"{% end %}><i  style="font-size: 15px;
+padding-top: 2px;" class='icon-info-sign'></i> {{ pass_template.organizationName }}</a></div>
+		{% end %}
 
 	{% if pass_template.name %}
 	<div class="field_value" style="line-height:17px;">at {{ pass_template.location_name }}</div>

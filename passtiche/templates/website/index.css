@@ -52,14 +52,18 @@ font-size: 14px;
 
 }
 
-@media (max-width: 640px)  {
+@media (max-width: 490px)  {
 
 	.subhead h1{
-		font-size:39px;
+		font-size:45px;
 		max-width: 500px !important;
 		line-height: 50px !important;
 		margin: auto !important;
 
+	}
+
+	#header_wrapper{
+		margin-bottom: 20px;
 	}
 
 	.jumbotron p {
@@ -91,17 +95,18 @@ font-size: 18px;
 .jumbotron p, #snippet_demo {
 display:none;
 }
-.subhead h1 {
-padding-bottom:10px;
-font-size: 36px !important;
-line-height: 43px !important;
-}
+
 
 
 }
 
 
-	
+	@media (max-width: 960px){
+
+		.jumbotron p{
+			width: 461px;
+		}
+	}
 
 @media (max-width: 980px) and (min-width: 768px){
 
@@ -476,7 +481,7 @@ margin-bottom: -20px;
 
 @media (max-width: 445px){
 .subhead h1 {
-font-size: 30px !important;
+font-size: 35px !important;
 }
 
 .subhead sup{

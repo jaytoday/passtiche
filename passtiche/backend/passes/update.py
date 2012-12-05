@@ -20,7 +20,7 @@ class PassUpdate(object):
 
 	def create_or_update(self, name=None, slug=None, description=None, price=None, schedule=None, 
 			neighborhood_name=None, location=None, location_code=None, price_rating=None, api=False, 
-			image_url=None, href=None, user=None, organization=None, website=None, **kwargs):
+			image_url=None, href=None, user=None, organizationName=None, url=None, **kwargs):
 		
 		self.user = user
 
@@ -77,10 +77,12 @@ class PassUpdate(object):
 		if price_rating is not None:
 			pass_template.price_rating = price_rating
 
-		if organization:
-			pass_template.organization = organization
-		if website:
-			pass_template.website = website
+		if organizationName:
+			pass_template.organizationName = organizationName
+		if url:
+			if not url.startswith('http://'):
+				url = 'http://%s' % url
+			pass_template.url = url
 
 		if image_url:
 			pass_template.image_url = image_url	

@@ -9,7 +9,10 @@ success: function(response){
 // TODO: JS templating with JSON
 renderLocations(response);
 
-}
+},
+	error: function(response){
+		showDialog('Error: Unable to find locations');
+	}
 });	   
 };
 
@@ -57,6 +60,9 @@ console.log(location_data);
 	// TODO: JS templating with JSON
 	renderLocations(response);
 
+	},
+	error: function(response){
+		showDialog('Error: Unable to save location');
 	}
 	});	   
 };
