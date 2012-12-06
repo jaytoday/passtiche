@@ -141,10 +141,10 @@ class SendPass(AjaxHandler):
         self.user_pass = UserPass.get_by_key_name(self.get_argument('user_pass'))
         pass_template = self.user_pass.template
 
-        if to_email:
-            self.user_pass.to_email = to_email
         if to_phone:
             self.user_pass.to_phone = self.sanitize_phone(to_phone)
+        elif to_email:
+            self.user_pass.to_email = to_email            
 
 
         pass_template.shares += 1

@@ -1,33 +1,33 @@
 
 
-<div id="new-and-upcoming"  class="pass_container">
+<div id="tickets"  class="pass_container">
 	<div class="offset" style="margin-top:-25px;">
 <!--<h5><i class="icon-comment"></i> &nbsp; New &amp; Upcoming</h5>-->
 {% if linked_pass_entity %}
 	{% set pass_template = linked_pass_entity %}
-	{% set subtract_pass = pass_templates['new-and-upcoming'].pop() %}
+	{% set subtract_pass = pass_templates['tickets'].pop() %}
 	{% include "pass.html" %}
 {% end %}
 
-{% for pass_template in pass_templates['new-and-upcoming'] %}
+{% for pass_template in pass_templates['tickets'] %}
 	{% include "pass.html" %}
 {% end %}
 </div>
 </div>
 
-<div id="best-drinks" class="pass_container">
+<div id="listings" class="pass_container">
 		<div class="offset">
-<h5><i class="icon-glass"></i> &nbsp;  Best Local Drinks</h5>
-{% for pass_template in pass_templates['best-drinks'] %}
+<h5><i class="icon-envelope-alt"></i> &nbsp;  Local Events</h5>
+{% for pass_template in pass_templates['listings'] %}
 	{% include "pass.html" %}
 {% end %}
 </div>
 </div>
 
-<div id="date-night"  class="pass_container">
+<div id="coupons"  class="pass_container">
 		<div class="offset">
-<h5><i class="icon-heart"></i> &nbsp;  Date Night</h5>
-{% for pass_template in pass_templates['date-night'] %}
+<h5><i class="icon-money"></i> &nbsp;  Coupons</h5>
+{% for pass_template in pass_templates['coupons'] %}
 	{% include "pass.html" %}
 {% end %}
 </div>

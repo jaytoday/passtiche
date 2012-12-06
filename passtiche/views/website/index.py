@@ -92,9 +92,9 @@ def get_passes():
     # TODO: this should be cached!
     from model.passes import PassTemplate, PassList
     pass_dict = {
-        'new-and-upcoming': [],
-        'best-drinks': [],
-        'date-night': []
+        'listings': [],
+        'tickets': [],
+        'coupons': []
     }
     all_lists = PassList.all().fetch(1000)
     for pass_list in all_lists:
@@ -163,7 +163,7 @@ class PassDirectDownload(ViewHandler):
         pass_template = PassTemplate.all().filter('short_code',pass_code).get()
 
         # if this is an external pass, redirect to it
-        if pass_template.url: 
+        if pass_template.url and 'pkpass' in pass_template.url: 
             return self.redirect(pass_template.url)
 
         from backend.passes import passfile

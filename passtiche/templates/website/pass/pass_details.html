@@ -17,7 +17,7 @@ padding-top: 2px;" class='icon-info-sign'></i> {{ pass_template.organizationName
 		<div class="field_type">{{ pass_template.display_date() }} {% if pass_template.display_date() and pass_template.display_time() %}<div style="margin-bottom:4px;"></div>{% end %}{{ pass_template.display_time() }}
 		</div>
 		<div class="clr"></div>
-		<div class="field_type">Price: <b>{{ pass_template.display_price() }}</b></div>
+		<div class="field_type">{% if pass_template.display_price() %}Price: <b>{{ pass_template.display_price() }}{% end %}</b></div>
 
 		<div class="clr"></div>
 		<div class="description field_type">{{ pass_template.display_description(limit=218) }}</div>

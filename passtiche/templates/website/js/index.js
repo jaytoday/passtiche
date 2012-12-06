@@ -4,7 +4,7 @@ var send_pass_modal = $('#sendPass:first');
 
 
 if (!window.location.hash)
-    $('#subnav').find('li').removeClass('active');
+    $('#subnav').find('li').removeClass('active').filter(':first').addClass('active');
 
 
 {% include "../pass/gallery.js" %}

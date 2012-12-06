@@ -93,6 +93,7 @@ body {
           padding-left:17px;
           padding-right:19px;
           font-size:15px;
+          color: rgba(1,1,1,.5);
 }
 .subnav .nav > .active > a,
 .subnav .nav > .active > a:hover {
