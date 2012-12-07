@@ -1,108 +1,68 @@
-<div id="send_form_{{ pass_action }}" class="send_form form-horizontal" style="display:none; padding-bottom:40px;">
-
- {% if pass_action == 'share' %}
-    <div class="control-group">
-
-    <label class="control-label" for="inputName2">Your Name: </label>
-    <div class="controls" style="margin-left:110px;">
-      <input type="text" id="inputName2" placeholder="" disabled="true" style="width:187px;">
-      <a style="
-    cursor: pointer;
-    margin: 5px 7px;
-    position: absolute;
-" title="edit name" id="edit_name"><i class="icon-edit"></i></a>
-    </div>
-  </div>
-  {% end %}
+<div id="send_form" class="send_form form-horizontal" style="padding-bottom:40px;">
 
 
-  <div id="send_details" style="{% if pass_action == 'share' %}margin-top:32px;{% end %}">
+  <div id="send_details" style="">
 
 
   <div class="control-group">
 
-    <label class="control-label" for="inputLink" style="font-size: 20px;width: 120px;margin-left: -9px;"> &nbsp; <a class="btn btn-info" target="_blank" style="margin-top: -6px;padding-left: 5px;margin-left: -7px;" id="link_text" href=""><i class=" icon-map-marker icon-white"></i> Pass Link</a></label>
+    <label class="control-label" for="inputLink" style="font-size: 20px;width: 120px;margin-left: -9px;"> &nbsp; <a class="btn" target="_blank" style="margin-top: -6px;padding-left: 5px;margin-left: -7px;" id="link_text" href=""><i class=" icon-map-marker icon-white"></i> Pass Link</a></label>
     <div class="controls" style="width:230px;">
       <input type="text" onclick="this.focus(); this.select()" id="inputLink" placeholder=""  style="font-size: 17px;
 padding: 4px 10px;
 width: 178px;">
+<div style="float: left;
+margin-left: -100px;
+font-size: 11px;
+margin-bottom: -18px;">
+<img style="width: 50px;" src="/static/images/safari.jpeg"> &nbsp; Visit link on Safari or iPhone to download pass
+</div>
     </div>
+
+   
+
   </div>
 
+
+
+{% if ua_type != 'dl' %}
 
 
 <hr>
 
-{% if pass_action == 'share' or (pass_action == 'download' and ua_type != 'dl') %}
-    {% comment "Sending Options" %}
+      {% comment "download_header.html" %}
 
 
- {% if pass_action == 'download' %}
+<ul id="passOptions" class="nav nav-pills" >
+  <li>
+    <a data-target="#pass_send_phone" data-toggle="pill">Send to iPhone</a>
+  </li>
+  <li><a data-target="#pass_share" data-toggle="pill">Share</a></li>
+  <li><a data-target="#pass_embed" data-toggle="pill">Embed Code</a></li>
+</ul>
 
-      {% include "download_header.html" %}
 
- {% end %}
+ 
+<div class="tab-content" style="padding-top:5px;overflow:hidden;">
+  <div class="tab-pane" id="pass_send_phone">
+    {% include "send_phone.html" %}
+  </div>
+  <div class="tab-pane" id="pass_share">
 
-
-  <div class="control-group" style="margin-top:-7px;margin-bottom: 7px;">
-
-    <label class="control-label" for="inputToEmail">Send Pass<br/> via Email:</label>
-    <div class="controls">
-      <input type="text" id="inputToEmail" placeholder="email@domain.com" style="font-size: 16px;
-padding: 7px 6px;
-margin-top: 6px;">
-    </div>
+    {% include "share.html" %}
   </div>
 
-  <div id="or_wrapper"><hr style="
-    margin: -1px 0 3px;
-    width: 72px;
-"><div style="
-    position: absolute;
-    margin: -17px 19px;
-    background: white;
-    padding: 3px 9px;
-    color: #777;
-    font-size: 11px;
-">or</div>
-</div>
+  <div class="tab-pane" id="pass_embed">
 
-    <div class="control-group" >
-    <label class="control-label" style="clear:both;" for="inputPhone">Send Pass<br/> via Phone:</label>
-    <div class="controls">
-      <input type="text" id="inputPhone" placeholder="555-555-5555" style="font-size: 16px;
-padding: 7px 6px;
-margin-top: 6px;">
+   {% include "embed.html" %}
+
  </div>
-  </div>
- <!--
-  <div class="control-group">
-    <label class="control-label" style="color:#777;" for="inputFrom">Your Email Address:</label>
-    <div class="controls">
-      <input type="text" id="inputFrom" placeholder="your email address">
-  <div style="font-size:10px;position: absolute;width: 220px;padding: 5px 3px;color: #777;line-height: 15px;">You will be emailed a receipt pass that will notify you when your recipient is nearby</div> </div>
-  </div>
-
--->
-
-
-<a id="send_pass_btn" class="send_pass_btn continue btn btn-info" style="font-size: 19px;
-padding: 8px 10px;
-float: right;
-margin-top: 0px;"><i class="icon-envelope icon-white" style="margin-top: 3px;"></i>&nbsp; Send Pass</a>
-
-
-<div class="alert alert-error" id="error_alert" style="display:none;font-size: 13px;
-font-weight: 700;
-padding-right: 0;
-width: 300px;
-text-align: center;">
  
 </div>
 
 {% end %}
 
-{% if pass_action == 'download' and ua_type == 'dl' %}
+{% if ua_type == 'dl' %}
 <div class="alert" style="font-size: 27px;
 padding: 16px;
 text-align: center;" id="downloading_pass">Downloading Pass....</div>
@@ -111,8 +71,5 @@ text-align: center;" id="downloading_pass">Downloading Pass....</div>
 
 </div> <!-- send details -->
 
-<div class="alert" style="background: #EEEFF4;display:none;
-border-color: #BCE8F1;
-color: #3A87AD;position: absolute;font-size: 11px;width: 325px;padding: 10px;margin: 52px -9px;"><b>Coming Soon: </b>Sign Into Facebook to Customize And Share</div>
 
 </div>

@@ -7,9 +7,12 @@ if (!window.location.hash)
     $('#subnav').find('li').removeClass('active').filter(':first').addClass('active');
 
 
+{% include "notifier.js" %}
+
 {% include "../pass/gallery.js" %}
 
 {% include "../pass/send_dialog.js" %}
+
 
 
 

@@ -48,6 +48,14 @@ if (download && pass_data['to_email'])
      url: "/ajax/pass.send",
      data: pass_data,
      success: function(response){
+
+     	Notifier.success('The pass has been sent');
+
+     },
+     error: function(response){
+     
+     	Notifier.error('There was an error sending the pass');
+
      }
      });
 

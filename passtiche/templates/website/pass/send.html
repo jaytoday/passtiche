@@ -3,10 +3,7 @@
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel"> 
-      <div class="btn-group" id="pass_action_choices" data-toggle="buttons-radio" style="margin-right: 10px;float:left;">
-  <button type="button" id="Download" class="btn">Download</button>
-  <button type="button" id="Share" class="btn">Share</button>
-</div>
+
 
 <!--<span class="pass_action" style="color:#888; font-size:.7em;"></span> &nbsp;--> <span class="pass_template"></span> 
    </h3>
@@ -48,8 +45,12 @@
 
 </div>
 
-<div class="cl rightspan">
+<div class="cl rightspan" style="padding-top: 14px;
+padding-left: 10px;">
 
+      
+
+      <!--
       <div id="name_form">
 
     <div class="control-group">
@@ -72,11 +73,11 @@ float: left;">Continue</a>
 
 
       </div>
+    -->
 
       <div id="send_form_wrapper" >
-        {% for pass_action in ['download','share'] %}
           {% include "send_form.html" %}
-        {% end %}
+
         </div>
 
 </div>
