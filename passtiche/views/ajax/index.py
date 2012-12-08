@@ -258,7 +258,7 @@ class EditProfile(AjaxHandler):
         user = self.get_current_user()
         kwargs = self.flat_args_dict()
         # optional args
-        for k in ['first_name', 'last_name','phone','organization','email','website']:
+        for k in ['first_name', 'last_name','image_url', 'phone','organization','email','website']:
             # TODO: sanitize
             if kwargs.get(k):
                 v = kwargs.get(k)
@@ -277,6 +277,16 @@ class EditProfile(AjaxHandler):
                         'Domain "<i>%s</i>" has already been claimed by another account.<br/> Contact support@costanza.co if this domain belongs to you.' % d)
                     return
             user.domains = domains
+
+
+        # set preferences
+        if self.get_argument('template',''):
+            user.preferences = {
+                'template': self.get_argument('template').lower(),
+                'foursquare_data': self.get_argument('foursquare_data',False),
+                'yelp_data': self.get_argument('yelp_data',False),
+                'facebook_data': self.get_argument('facebook_data',False)
+            }
         user.put()
 
             

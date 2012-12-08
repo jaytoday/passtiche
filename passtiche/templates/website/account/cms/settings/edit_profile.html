@@ -1,5 +1,5 @@
 
-
+<fieldset>
 <div>
       <span class="label label-danger" style="font-size: 15px;
 position: absolute;
@@ -8,18 +8,58 @@ padding: 3px 8px 4px;">Edit Profile</span>
   
 
 
-<fieldset class="form-horizontal well" style="
+<div class="form-horizontal well" style="
 margin: 45px 0 0 25px;
 float: left;
 padding: 10px;">
-<div style="margin-left: -55px;
+<div style="
 margin-top: 15px;">                      
+
+
+
+    <legend>Profile Info</legend>
+    <div style="margin: -15px 1px 10px;
+font-size: 13px;
+color: #888;
+" class="help-block">These fields are included on your passes</div> 
+
+  <div class="control-group field-organization">     
+
+  	<label class="control-label" for="logo">Logo</label> 
+
+  <div class="controls">   
+   <img style="width:40px;" class="pass_img img-polaroid" src="{% if current_user %}{{ current_user.img() }}{% end %}"/>
+
+    <a class="btn btn-mini upload_img">Upload Logo</a>
+</div>
+    <input type="hidden" id="image_url"> 
+
+        </div>     
+          
 
   <div class="control-group field-organization">           
    <label class="control-label" for="organization">Organization</label>            <div class="controls">              <div class="input-xlarge"><input id="organization" name="organization" type="text" value="{{ current_user.organization or '' }}"></div>  <div class="help-block"></div>            </div>          </div>
 
   <div class="control-group field-website">           
    <label class="control-label" for="website">Website</label>            <div class="controls">              <div class="input-xlarge"><input id="website" name="website" type="text" value="{{ current_user.website or '' }}"></div>  <div class="help-block"></div>            </div>          </div>   
+
+</div>
+	    
+</div>
+
+
+
+<div class="form-horizontal well" style="
+margin: 45px 0 0 25px;
+float: left;
+padding: 10px;">
+<div style="
+margin-top: 15px;">                      
+
+
+
+    <legend>Account Info</legend>
+
 
 	<div class="control-group field-first_name">            
 		<label class="control-label" for="first_name">First Name</label>            
@@ -42,12 +82,13 @@ margin-top: 15px;">
 	 	<div class="input-xlarge"><input id="phone" name="phone" type="tel" value="{{ current_user.phone or '' }}"></div>  <div class="help-block"></div>            </div>          </div>
 
 </div>
-	         </fieldset>
-
-
+	    
 </div>
 
 
    <div style="height:20px;clear:both"></div>
-   <div> <a style="font-size:20px;margin-left:20px;" id="save_profile" class="btn">Save</a></div>
+   <div> <a style="font-size:20px;margin-left:20px;" id="save_profile" class="btn save_btn">Save</a></div>
+
+       </fieldset>
+
    

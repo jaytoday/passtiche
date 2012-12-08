@@ -55,6 +55,9 @@ function SavePassTemplate(fieldset){
 							
 console.log(pass_data);
 
+if (!pass_data['name'])
+	return showDialog('A pass name is required');
+
 	$.ajax({
 	type: "GET",
 	url: "/api/1/pass.update",

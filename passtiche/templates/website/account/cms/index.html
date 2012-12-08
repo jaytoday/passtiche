@@ -27,7 +27,7 @@ $(function () {
 {% block body %}
 
 
-<div id="wrapper">
+<div id="wrapper" style="min-width:620px;">
 	
 
 
@@ -75,13 +75,14 @@ overflow: hidden;
 background: rgba(255, 255, 255, .4);
 padding-left: 0;padding-top:30px;">
 					
-					<div class="container">
+					<div>
 						
 						<div class="masthead-pad" style="padding-left:15px;">
 
 				<div class="tab-content">
 
 						<div class="tab-pane active" id="passes">
+							<div style="padding:15px 0;">You can create passes manually or<br/>with the Passtiche Javascript Library</div>
 							<a class="btn" id="new_pass"><i class="icon-plus-sign"></i> New Pass</a>
 							<div id="pass_template_list" style="margin:20px 0;">
 									<!-- Pass Template List Items Added Via Ajax -->
@@ -104,15 +105,17 @@ padding-left: 0;padding-top:30px;">
 
 							<div class="tab-pane" id="settings">
 								<div id="settings_links" style="line-height:40px;">
-									<a class="btn" id="edit_profile">Edit Profile</a>
-									<div id="edit_profile_inner" style="display:none;">
-										{% include "settings/edit_profile.html" %}
-									</div>
-									<br/>
+								
 									<a class="btn" id="account_settings">Account Settings</a>
 									<div id="account_settings_inner" style="display:none;">
 											{% include "settings/account_settings.html" %}
 									</div>
+									<br/>
+										<a class="btn" id="edit_profile">Edit Profile</a>
+									<div id="edit_profile_inner" style="display:none;">
+										{% include "settings/edit_profile.html" %}
+									</div>
+									
 								</div>
 							<div id="pass_list_list" style="margin:20px 0;">
 									<!-- Pass List List Items Added Via Ajax -->

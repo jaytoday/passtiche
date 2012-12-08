@@ -30,6 +30,61 @@ padding: 3px 8px 4px;">Account Settings</span>
 
 
 </div>
+
+
+<div class="well">
+
+    <legend>Pass Settings</legend>
+
+<form class="form-horizontal">
+  <div class="control-group">
+
+    <label class="control-label" for="template">Default Template</label>
+    <div class="controls">
+          <select id="template">
+            {% set default_template = current_user.preferences.get('template') %}
+  <option {% if not default_template or default_template == "light"%}selected{% end %}>Light</option>
+  <option {% if default_template == "dark"%}selected{% end %}>Dark</option>
+  <option {% if default_template == "local"%}selected{% end %}>Local</option>
+  <option {% if default_template == "metallic"%}selected{% end %}>Metallic</option>
+</select>
+    </div>
+  </div>
+  <p style="
+    font-style: italic;
+    font-size: 11px;
+    margin: 15px 0 0;
+">Local listings passes can be automatically enhanced with data from these services:</p>
+<div style="margin-left: -35px;
+margin-top: 3px;">
+<div class="control-group" style="margin-bottom:0;">
+     <label class="control-label" for="foursquare_data">Foursquare</label>
+    <div class="controls">
+   <input type="checkbox" id="foursquare_data" value="" {% if current_user.preferences.get('foursquare_data') %}checked{% end %}>
+</div>
+</div>
+
+<div class="control-group"  style="margin-bottom:0;">
+     <label class="control-label" for="yelp_data">Yelp</label>
+    <div class="controls">
+   <input type="checkbox" id="yelp_data" value="" {% if current_user.preferences.get('yelp_data') %}checked{% end %}>
+</div>
+</div>
+<div class="control-group"  style="margin-bottom:0;">
+     <label class="control-label" for="facebook_data">Facebook</label>
+    <div class="controls">
+   <input type="checkbox" id="facebook_data" value="" {% if current_user.preferences.get('facebook_data') %}checked{% end %}>
+</div>
+</div>
+</div>
+</form>
+
+
+
+
+
+</div>
+
   
 </fieldset>
 

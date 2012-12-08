@@ -40,7 +40,7 @@ $('.upload_img').live('click', function(){
 	    edit_form = img_uploader.parents('fieldset:first');
 	    edit_form.find('img.pass_img').attr('src', FPFile['url']);
 	    edit_form.find('#image_url').val(FPFile['url']);
-	    edit_form.find('.save_pass').click();
+	    edit_form.find('.save_btn').click();
 
 	  },
 	  function(FPError){ // error

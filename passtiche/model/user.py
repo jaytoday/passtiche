@@ -12,6 +12,9 @@ class User(BaseModel):
     password = properties.PickledProperty(required=False)
 
     short_code = db.StringProperty(required=False)
+
+    # preferences can store key/value settings that won't need to be queried on
+    preferences = properties.PickledProperty(required=False, default={})
     
     # optional fields
     first_name = db.StringProperty(required=False) # hidden to users?    
@@ -19,10 +22,10 @@ class User(BaseModel):
     phone = db.StringProperty(required=False)  
     organization = db.StringProperty(required=False)    
     
+    # user for verifying the js library (TODO: should be in Passtiche-specific model)
     website = db.StringProperty(required=False)
     domains = db.ListProperty(str, required=True)
     
-
     description = db.StringProperty(required=False)
     
     gender = db.StringProperty(required=False) 
@@ -30,11 +33,10 @@ class User(BaseModel):
     twitter = db.StringProperty(required=False) 
     
     # photo
+    image_url = db.StringProperty(required=False)  
     thumb = db.BlobProperty(required=False)  # 128?
     small_thumb = db.BlobProperty(required=False) # 32?
     
-    book_count = db.IntegerProperty(default=0)
-
     account = db.StringProperty(required=False)  
     is_paid = db.BooleanProperty(required=False)    
         
@@ -67,13 +69,15 @@ class User(BaseModel):
         if self.email in ADMINS:
             return True
         
-    def photo_url(self):
+    def img(self):
         # TODO: get FB photo (or gravatar, or uploaded photo)
+        if self.image_url:
+            return self.image_url
         if self.thumb:
             return '/image/user/%s' % self.key()
         if self.fb_user_id:
             return 'http://graph.facebook.com/%s/picture?type=large' % self.fb_user_id
-        return '/static/images/icons/minimalistica/128x128/user.png'
+        return '/static/images/logo/icon_large.png'
         
     
     def widgets(self, count=1000):

@@ -31,10 +31,25 @@ $('a#edit_profile').on('click', function(){
 $('#save_account_settings').live('click', function(){
 
 	settings_data = {};
+
 	$.each(['domains'], function(i, k){
-		if ($('#content_edit_wrapper').find('input#' + k).val())
-			settings_data[k] = $('#content_edit_wrapper').find('input#' + k).val();
+		var input_val = $('#content_edit_wrapper').find('input#' + k).val();
+		if (input_val)
+			settings_data[k] = input_val;
 	});
+
+	$.each(['template'], function(i, k){
+		var input_val = $('#content_edit_wrapper').find('select#' + k).find('option:selected').val();
+		if (input_val)
+			settings_data[k] = input_val;
+	});
+
+	$.each(['foursquare_data','yelp_data','facebook_data'], function(i, k){
+		var input_val = $('#content_edit_wrapper').find('input#' + k).attr('checked');
+		if (input_val)
+			settings_data[k] = input_val;
+	});	
+
 
 	$.ajax({
 	type: "POST",
@@ -52,7 +67,7 @@ $('#save_account_settings').live('click', function(){
 $('#save_profile').live('click', function(){
 
 	profile_data = {};
-	$.each(['first_name','last_name','organization','phone','email','website'], function(i, k){
+	$.each(['first_name','image_url', 'last_name','organization','phone','email','website'], function(i, k){
 		if ($('#content_edit_wrapper').find('input#' + k).val())
 			profile_data[k] = $('#content_edit_wrapper').find('input#' + k).val();
 	});

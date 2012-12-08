@@ -54,3 +54,5 @@ $('.not_available').live('click', function(){
 
   showDialog("This feature is not available");
 });
+
+window.showDialog = showDialog;

@@ -6,8 +6,8 @@ margin-top: -28px;
 padding: 3px 8px 4px;">Pass</span>
   <fieldset>
 
-    <legend>{% if p %}{{ p.name }}{% else %}New Pass{% end %}</legend>
-    <input type="text"  placeholder="Pass Name" id="name" {% if p and p.name %}value="{{ p.name }}"{% end %}>
+    <legend>{% if p %}{{ p.name }}{% else %}New Pass{% end %}</legend> 
+    <input type="text"  placeholder="Pass Name" id="name" {% if p and p.name %}value="{{ p.name }}"{% end %}>   <a style="margin: -7px 5px 0;" class="btn btn-mini not_available">Lookup Info</a>
 
 
     <label>Optional Slug</label>
@@ -91,7 +91,7 @@ clear: both;">
       <input type="checkbox"> Check me out
     </label>-->
 
-   <div style="height:20px;clear:both"></div><div> <a style="font-size:20px;margin-left:20px;" class="save_pass btn">Save</a>
+   <div style="height:20px;clear:both"></div><div> <a style="font-size:20px;margin-left:20px;" class="save_btn save_pass btn">Save</a>
   {% if p %}
   <div style="height:20px;clear:both"></div><div> <a style="font-size:10px;margin-left:20px;" class="delete_pass btn btn-mini">Delete</a>
   {% end %}  
