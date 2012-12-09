@@ -116,6 +116,7 @@ class PassUpdate(object):
 
 
 
+		pass_template.get_location(reset=True)
 		return pass_template
 
 

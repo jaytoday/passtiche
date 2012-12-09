@@ -5,7 +5,9 @@
 <!--<h5><i class="icon-comment"></i> &nbsp; New &amp; Upcoming</h5>-->
 {% if linked_pass_entity %}
 	{% set pass_template = linked_pass_entity %}
+	{% if pass_templates['tickets'] %}
 	{% set subtract_pass = pass_templates['tickets'].pop() %}
+	{% end %}
 	{% include "pass.html" %}
 {% end %}
 

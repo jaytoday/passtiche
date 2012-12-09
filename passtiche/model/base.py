@@ -12,6 +12,12 @@ class BaseModel(db.Expando):
 
     status = db.StringProperty(default='enabled')    
     
+    def property_dict(self): 
+        return dict([(x,getattr(self,x)) for x in self.properties()])
+
+    def dynamic_property_dict(self): 
+        return dict([(x,getattr(self,x)) for x in self.dynamic_properties()])        
+
     def created_time(self, tzoffset=0):
         tzoffset += 600 # TODO: nothing to see here, move along....
         return (self.created + datetime.timedelta(minutes=tzoffset)).strftime("%B %d (%I:%M%p)").replace("PM","pm").replace("AM","am")

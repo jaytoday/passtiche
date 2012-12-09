@@ -113,25 +113,25 @@ class PassFile(object):
 			      })
 
 		self.pass_location = self.pass_template.get_location()
+		# TODO: use saved info
 		if self.pass_location:
 			self.pass_json['backFields'][1]['label']= 'Event Location'
-			if self.pass_location.street_address:
-				self.pass_json['backFields'][1]['value'] = self.pass_location.street_address
-			if self.pass_template.neighborhood_name:
-				self.pass_json['backFields'][1]['value'] += " (%s)" % self.pass_template.neighborhood_name
+			if self.pass_location.get('street_address'):
+				self.pass_json['backFields'][1]['value'] = self.pass_location.get('street_address')
+			if self.pass_template.get('neighborhood_name'):
+				self.pass_json['backFields'][1]['value'] += " (%s)" % self.pass_template.get('neighborhood_name')
 			self.pass_json['backFields'][2]['label']= 'Venue Information'
-			if self.pass_location.phone:
-				self.pass_json['backFields'][2]['value'] += '%s\n\n' % self.pass_location.phone
-			if self.pass_location.yelp:
-				self.pass_json['backFields'][2]['value'] += "%s\n\n" % self.pass_location.yelp
+			if self.pass_location.get('phone'):
+				self.pass_json['backFields'][2]['value'] += '%s\n\n' % self.pass_location.get('phone')
+			if self.pass_location.get('yelp'):
+				self.pass_json['backFields'][2]['value'] += "%s\n\n" % self.pass_location.get('yelp')
 
 
 		self.pass_json['backFields'][2]['value'] += "\nThis pass was created with www.passtiche.com \n\n%s" % ( 
 			        	"Passtiche makes it easy to enhance online listings, coupons and tickets with instant Passbook badges ")
 
 		self.pass_json['backFields'] = [b for b in self.pass_json['backFields'] if b['value']]
-		#self.update_json()
-		self.send_info()
+
 
 
 	def update_json(self):

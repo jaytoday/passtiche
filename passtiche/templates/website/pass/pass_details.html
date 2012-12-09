@@ -1,6 +1,6 @@
 {% comment "TODO: THIS REQUIRES TONS OF DATABASE CALLS!" %}
 {% set loc = pass_template.get_location() %}
-{% if loc %}
+
 <div class="pass_details_container" style="display:none;">
 	<div class="alert alert-info pass_details_inner">
 
@@ -10,7 +10,7 @@ margin-bottom: 10px;"><a  {% if pass_template.url %} target="_blank" href="{{ pa
 padding-top: 2px;" class='icon-info-sign'></i> {{ pass_template.organizationName }}</a></div>
 		{% end %}
 
-	{% if pass_template.name %}
+	{% if pass_template.name and pass_template.location_name %}
 	<div class="field_value" style="line-height:17px;">at {{ pass_template.location_name }}</div>
 	{% end %}
 		<div class="clr"></div>
@@ -22,16 +22,35 @@ padding-top: 2px;" class='icon-info-sign'></i> {{ pass_template.organizationName
 		<div class="clr"></div>
 		<div class="description field_type">{{ pass_template.display_description(limit=218) }}</div>
 		<div class="clr" style="margin-bottom:10px;"></div>
-		{% if loc.yelp %}
-		<div class="field_type" style="margin-bottom:0px;"><a  href="{{ loc.yelp }}" target="_blank">Reviews on Yelp</a></div>
+		
+
+		{% if loc.get('yelp') %}
+		<div class="field_type" style="margin-bottom:0px;"><a  href="{{ loc.get('yelp') }}" target="_blank">Reviews on Yelp</a></div>
 		{% end %}
-		{% if loc.website %}
-		<div class="field_type" style="margin-bottom:0px;"><a href="{{ loc.website }}" target="_blank">Venue Website</a></div>
+		{% if loc.get('website') %}
+		<div class="field_type" style="margin-bottom:0px;"><a href="{{ loc.get('website') }}" target="_blank">Venue Website</a></div>
 		{% end %}		
-		{% if loc.street_address %}
-		<div class="field_type"><a href="http://maps.google.com/?q={{ loc.street_address }}" target="_blank">Map &amp; Directions</a></div>
+		{% if loc.get('street_address') %}
+		<div class="field_type"><a href="http://maps.google.com/?q={{ loc.get('street_address') }}" target="_blank">Map &amp; Directions</a></div>
 		{% end %}	
+
+
+		{% if pass_template.pass_info %}
+
+		{% comment "for existing passes - header, primary, auxiliary, secondary, back. -- label, value" %}
+		
+		{% for field_type in ['header','primary','auxiliary','secondary'] %}
+
+			{% set field_info = pass_template.pass_fields().get(field_type + 'Fields',[None])[0] %}
+	
+			{% if field_info %}
+				<div class="field_type" style="margin-bottom:0px;"><a>
+					{% if field_info.get('label') %}{{ field_info['label'] }}{% end %}{% if field_info.get('label') and field_info.get('value') %}: {% end %}{% if field_info.get('value') %}{{ field_info['value'] }}{% end %}
+				</a></div>
+			{% end %}
+		{% end %}
+		
+		{% end %} <!-- end if pass info -->
 
 	</div>
 </div>
-{% end %}

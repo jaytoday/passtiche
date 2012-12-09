@@ -14,7 +14,10 @@ def truncate_by_words_if_long(title, limit):
     if shorter == title:
         return title
     else:
-        return '%s...' % shorter
+        if shorter:
+            return '%s...' % shorter
+        else:
+            return ''
 
         
 def humanized_list(input_list):

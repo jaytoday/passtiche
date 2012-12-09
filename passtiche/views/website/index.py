@@ -179,6 +179,7 @@ class UserPassDirectDownload(ViewHandler):
         from backend.passes import passfile
         pass_creator = passfile.PassFile(user_pass=user_pass)
         pass_creator.create()
+        pass_creator.send_info()
         return pass_creator.write(self)          
 
 

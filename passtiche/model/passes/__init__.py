@@ -27,6 +27,8 @@ class PassTemplate(BaseModel):
     organizationName = db.StringProperty(required=False)  
     pass_info = model.util.properties.PickledProperty(default={}) # full pass json object
 
+    loc_info = model.util.properties.PickledProperty(default={}) # full pass json object
+
     name = db.StringProperty(required=False)  
     location_code = db.StringProperty()  
     location_name = db.StringProperty()
@@ -101,7 +103,7 @@ class PassTemplate(BaseModel):
     def display_date(self):
         # date range or weekday range
         if not self.schedule:
-            return "Everyday"
+            return ""#return "Open Everyday"
         if 'date_range' in self.schedule:
             return self.schedule['date_range']
         return ', '.join([t['weekday_range'] for t in self.schedule['times'] if 'weekday_range' in t])
@@ -126,11 +128,23 @@ class PassTemplate(BaseModel):
 
 
     # TODO: cache? 
-    def get_location(self):
+    def get_location(self, reset=False):
         if not self.location_code:
-            return None
-        from model.activity import Location
-        return Location.get_by_key_name(self.location_code)
+            return {}
+        if (reset or not self.loc_info):
+            logging.info('resetting location info for pass %s - this should not happen on Index requests!' % self.full_name())
+            from model.activity import Location
+            loc = Location.get_by_key_name(self.location_code)
+            self.loc_info = loc.property_dict()
+            self.put()
+        return self.loc_info
+
+    def pass_fields(self):
+        if not self.pass_info:
+            return {}
+        for f in ['coupon', 'boardingPass', 'storeCard', 'eventTicket' 'generic']:
+            if self.pass_info.get(f):
+                return self.pass_info[f]
 
     @classmethod
     def get_slug(cls, name):
