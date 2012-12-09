@@ -41,9 +41,10 @@ class UpdateLocation(LocHandler):
 					loc_dict[f] = '' # b/c this is not None it can remove a set property
 
 
-		if self.get_argument('account'):
+		if self.get_argument('code'):
+			# TODO: it might be possible to do this without any User lookup, optimization
 			from model.user import User
-			loc_dict['user'] = User.get_by_key_name(self.get_argument('account'))
+			loc_dict['user'] = User.all().filter('short_code', self.get_argument('code')).get()
 
 		from backend.location import update
 		updater = update.LocationUpdate()		

@@ -32,6 +32,8 @@ class PassUpdate(object):
 		keyname = slug
 		if location_code:    
 			keyname += "-%s" % location_code
+		if self.user:
+			keyname += "~%s" % self.user.short_code
 
 		logging.info(kwargs)
 		if kwargs.get('new'):
@@ -58,12 +60,17 @@ class PassUpdate(object):
 				location_name = location.name
 			else:
 				location_name = ''
-			pass_doc = search.Document(fields=[search.TextField(name='name', value=name),
+
+			searchFields = [search.TextField(name='name', value=name),
                 search.TextField(name='code', value=code),
                 search.TextField(name='keyname', value=keyname),
                 search.TextField(name='loc', value=(location_code or '')),
                 search.TextField(name='location_name', value=location_name),
-                search.DateField(name='date', value=datetime.datetime.now().date())])
+                search.DateField(name='date', value=datetime.datetime.now().date())]
+
+			if self.user:
+				searchFields.append(search.TextField(name='owner', value=self.user.short_code))
+			pass_doc = search.Document(fields=searchFields)
 			logging.info('adding pass doc to index')
 			search.Index(name=_INDEX_NAME).add(pass_doc)
 

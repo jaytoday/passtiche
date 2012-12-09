@@ -133,7 +133,6 @@ PassticheBadger = {
 					pass_data['href'] = badgeLinkEl.attr('href');
 
 
-
 				}else{
 				
 				$(['loc', 'city', 'name', 'price', 'description', 'id']).each(function(i, attr){
@@ -160,6 +159,13 @@ PassticheBadger = {
 
 				passtiche.badge_data['passes'] = JSON.stringify(passtiche.badge_data['passes']);
 				console.log(passtiche.badge_data['passes']);
+
+				var badge_script = $('script').filter('[src$="passtiche.com/js"],[src$="localhost:8080/js"]');
+				if (badge_script.attr('account'))
+					passtiche.badge_data['code'] = badge_script.attr('account');
+
+				passtiche.badge_data['location'] = window.location.href;
+
 
 				$.ajax({
 					type: "GET",

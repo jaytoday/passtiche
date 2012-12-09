@@ -24,6 +24,11 @@ class PassHandler(APIHandler):
 			if self.get_argument(f,''):
 				query_args[f] = self.get_argument(f)
 
+		if self.get_argument('code',''):
+			# TODO: it might be possible to do this without any User lookup, optimization
+			from model.user import User
+			query_args['user'] = User.all().filter('short_code', self.get_argument('code')).get()
+
 		from backend.passes import find
 		self.context['passes'] = find.find_passes(**query_args)
 		if self.get_argument('output','') == 'html':
@@ -68,9 +73,11 @@ class UpdatePass(PassHandler):
 			pass_dict['price_rating'] = len(pass_dict['price_rating'])
 		
 
-		if self.get_argument('account'):
+
+		if self.get_argument('code'):
+			# TODO: it might be possible to do this without any User lookup, optimization
 			from model.user import User
-			pass_dict['user'] = User.get_by_key_name(self.get_argument('account'))
+			pass_dict['user'] = User.all().filter('short_code', self.get_argument('code')).get()
 
 		from backend.passes import update
 		updater = update.PassUpdate()		

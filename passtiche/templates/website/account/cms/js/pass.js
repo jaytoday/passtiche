@@ -3,7 +3,7 @@ function updatePassTemplates(){
 	$.ajax({
 	type: "GET",
 	url: "/api/1/pass.find",
-	data: {'output': 'html', 'account': $(document).data('current_user') },
+	data: {'output': 'html', 'code': $(document).data('account') },
 	success: function(response){
 	// TODO: JS templating with JSON
 	renderPassTemplates(response);
@@ -40,7 +40,7 @@ $('a#new_pass').on('click', function(){
 
 function SavePassTemplate(fieldset){
 
-	var pass_data = {'output': 'html', 'account': $(document).data('current_user')};
+	var pass_data = {'output': 'html', 'code': $(document).data('account')};
 
 		input_vals = ['name','slug','image_url', 'description','neighborhood_name','location_code','price', 'starts','ends','weekday_range','times','delete','organizationName','url'];
 	$(input_vals).each(function(i, f){

@@ -150,6 +150,8 @@ class FindPass(object):
 		from backend.passes import update as pass_update
 		pass_updater = pass_update.PassUpdate()
 		logging.info('Pass update kwargs: %s' % p)
+		if self.user:
+			p['user'] = self.user
 		pass_template = pass_updater.create_or_update(**p)
 
 		if self.save:
@@ -171,14 +173,23 @@ class FindPass(object):
 		search.SortExpression(
 		    expression='location_name', default_value='',
 		    direction=search.SortExpression.DESCENDING)]
+
+		if self.user:
+			expr_list.append(search.SortExpression(
+		    expression='owner', default_value='',
+		    direction=search.SortExpression.DESCENDING))
 		# construct the sort options 
 		sort_opts = search.SortOptions(
 		     expressions=expr_list)
 		query_options = search.QueryOptions(
 		    limit=3,
 		    sort_options=sort_opts)
-		query_obj = search.Query(query_string='name:"%s" location_name:"%s"' % (
-				p.get('name',''), p['loc']), options=query_options)
+		query_string = 'name:"%s" location_name:"%s"' % (
+				p.get('name',''), p['loc'])
+
+		if self.user:
+			query_string += ' owner:"%s"' % self.user.short_code
+		query_obj = search.Query(query_string=query_string, options=query_options)
 		results = search.Index(name=_INDEX_NAME).search(query=query_obj).results
 		logging.info(results)
 		return results

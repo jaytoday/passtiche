@@ -6,7 +6,7 @@ margin-top: -28px;
 padding: 3px 8px 4px;">Pass</span>
   <fieldset>
 
-    <legend>{% if p %}{{ p.name }}{% else %}New Pass{% end %}</legend> 
+    <legend>{% if p %}{{ p.short_name() }}{% else %}New Pass{% end %}</legend> 
     <input type="text"  placeholder="Pass Name" id="name" {% if p and p.name %}value="{{ p.name }}"{% end %}>   <a style="margin: -7px 5px 0;" class="btn btn-mini not_available">Lookup Info</a>
 
 

@@ -2,7 +2,7 @@
  {% for p in passes %}
 <div style="margin:5px; padding:5px;">
 
-<a class="edit_pass btn btn-primary" >{{ p.name }}</a>
+<a class="edit_pass btn btn-primary" >{{ p.short_name() }}</a>
 <div class="edit" style="display:none;">
 	{% include "edit.html" %}
 </div>

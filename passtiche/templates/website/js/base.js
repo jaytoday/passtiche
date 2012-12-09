@@ -12,6 +12,7 @@ $(document).data('domain', '{{ domain }}');
 {% if current_user %}
 // sometimes current user ID is used for direct API access
   $(document).data('current_user', '{{ current_user.key().name() }}');  
+  $(document).data('account', '{{ current_user.short_code }}');  
 {% end %}
 
 $(document).keyup(function(e){

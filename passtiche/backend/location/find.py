@@ -19,14 +19,14 @@ class FindLocation(object):
 	def __init__(self, *args):
 		pass
 
-	def find(self, query=None, create='true', user=None, account=None, **kwargs):
+	def find(self, query=None, create='true', user=None, code=None, **kwargs):
 
 		self.query, self.create, self.user = self.sanitize(query), create, user
 
-		if account:
+		if code:
 			from model.user import User
-			self.user = User.get_by_key_name(account)
-
+			self.user = User.all().filter('short_code', code).get()
+			
 		if self.create == 'true':
 			self.create = True
 		else: # you must manually set create to something besides true 

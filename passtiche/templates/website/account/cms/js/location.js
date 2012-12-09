@@ -4,7 +4,7 @@ function updateLocations(){
 $.ajax({
 type: "GET",
 url: "/api/1/loc.find",
-data: {'output': 'html', 'account': $(document).data('current_user')},
+data: {'output': 'html', 'code': $(document).data('account')},
 success: function(response){
 // TODO: JS templating with JSON
 renderLocations(response);
@@ -41,7 +41,7 @@ $('a#new_location').on('click', function(){
 
 function SaveLocation(fieldset){
 
-	var location_data = {'output': 'html', 'account': $(document).data('current_user')};
+	var location_data = {'output': 'html', 'code': $(document).data('account')};
 
 	input_vals = ['name', 'code','phone','yelp','opentable','website','neighborhood_name','street_address','region_name', 'region_code', 'delete'];
 	$(input_vals).each(function(i, f){
