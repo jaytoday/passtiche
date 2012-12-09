@@ -43,9 +43,17 @@ function openPassDialog(pass_action, el){
 	send_pass_modal.find('.pass_details_wrapper:first').html(pass_details);
 
 
+	// setup pass link
 	var pass_link =  $(document).data('domain') + '/p/' + send_pass_modal.data('pass_template_code');
 	send_pass_modal.find('#inputLink').val(pass_link);
 	send_pass_modal.find('#link_text').attr('href','http://' + pass_link);
+
+	// setup social links
+	send_pass_modal.find('#share-social').find('.twitter').find('a').attr('href','http://twitter.com/intent/tweet?text=http%3A%2F%2Fpasstiche.com%2Fp%2F' 
+		+ send_pass_modal.data('pass_template_code') + '%20Check%20Out%20This%20Pass');
+
+	send_pass_modal.find('#share-social').find('.fb').find('a').attr('href','http://www.facebook.com/share.php?u=http%3A%2F%2Fpasstiche.com%2Fp%2F' 
+		+ send_pass_modal.data('pass_template_code'));	
 
 send_pass_modal.data('pass_action', pass_action);
 

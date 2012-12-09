@@ -599,3 +599,9 @@ border-color: #828282 #828282 #5C5C5C;
 border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
+
+@media (max-width: 445px){
+	#sendPass .nav-pills > li > a{
+		font-size: 12px;
+	}
+}
