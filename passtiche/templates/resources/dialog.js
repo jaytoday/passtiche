@@ -30,6 +30,10 @@ PassticheDialog = {
 
 		passtiche_dialog.find('.send_pass_btn').live('click', PassticheDialog.sendPass);
 
+		passtiche_dialog.find('button.close').live('click', function(){
+				passtiche_dialog.addClass('hidden');
+		});
+
 	   // callback to the other JS file 
 	   PassticheBadger.findBadges();
 
