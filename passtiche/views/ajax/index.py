@@ -49,12 +49,13 @@ class AccountInvite(AjaxHandler):
 class SavePass(AjaxHandler):
 
     def get(self):
+        self.set_header('Access-Control-Allow-Origin', '*')
         if self.get_argument('increment', ''):
             return self.increment()
         from model.passes import UserPass, PassTemplate
 
         self.user = self.get_current_user()
-        self.action = self.get_argument('action')
+        self.action = self.get_argument('action','download')
 
         # TODO: first check if there is user_pass key name
         if self.get_argument('user_pass',''):         
@@ -71,8 +72,8 @@ class SavePass(AjaxHandler):
     def create(self):
         from model.passes import UserPass, PassTemplate
         
-        self.pass_template_keyname = self.get_argument('pass_template')
-        pass_template = PassTemplate.get_by_key_name(self.pass_template_keyname)
+        self.pass_code = self.get_argument('pass_template')
+        pass_template = PassTemplate.all().filter('short_code',self.pass_code).get()
         if not pass_template:
             raise ValueError('pass_template')
         self.pass_template = pass_template
@@ -101,7 +102,7 @@ class SavePass(AjaxHandler):
     def increment(self):
         from model.passes import UserPass, PassTemplate
         pass_template = PassTemplate.get_by_key_name(self.get_argument('pass'))
-        action = self.get_argument('action').lower()
+        action = self.get_argument('action','download').lower()
         if action == 'offer':
             pass_template.shares += 1
         if action == 'request':
@@ -117,13 +118,16 @@ class SavePass(AjaxHandler):
 class SendPass(AjaxHandler):
 
     def get(self):
-        action = self.get_argument('action').lower()
+        self.set_header('Access-Control-Allow-Origin', '*')
+        action = self.get_argument('action','download').lower()
         from backend.admin import send_admin_email 
         from google.appengine.ext.deferred import deferred
         deferred.defer(send_admin_email, 
                 subject='Sent Pass - %s %s' % (self.get_argument('to_email',''), self.get_argument('to_phone','')), 
                 message='Arguments: %s' % self.request.arguments)
         getattr(self, action)()
+
+        self.write_json({'status': 'OK'})
 
 
     def share(self):
@@ -177,7 +181,7 @@ class SendPass(AjaxHandler):
         # TODO: refactor this to backend API
 
         from model.passes import UserPass, PassTemplate
-        pass_template = PassTemplate.get_by_key_name(self.get_argument('pass_template'))
+        pass_template = PassTemplate.all().filter('short_code',self.get_argument('pass_template')).get()
         code = str_utils.genkey(length=5)
         self.user_pass = UserPass(key_name=code, code=code,owner=current_user, 
                 template=pass_template, pass_name=pass_template.name, pass_code=pass_template.short_code, action='download')
@@ -196,8 +200,7 @@ class SendPass(AjaxHandler):
             self.download_email()
         if to_phone:
             self.download_phone()
-
-        self.write('OK')        
+      
 
     def download_email(self):
         from backend.mail.base import EmailMessage

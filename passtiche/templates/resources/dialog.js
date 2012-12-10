@@ -15,18 +15,20 @@ PassticheDialog = {
 
 	init: function(){
 
-		passtiche_dialog.find('#pass_embed').find('textarea').on('click', function(){
+		passtiche_dialog.find('#pass_embed').find('textarea').live('click', function(){
 			$(this).focus(); $(this).select();
 		});
 
 
-		passtiche_dialog.find('#edit_name').on('click', function(){
+		passtiche_dialog.find('#edit_name').live('click', function(){
+			/* deprecated for now */
 
 			passtiche_dialog.find('#send_form_share').hide();
 			passtiche_dialog.find('#name_form').show();	
 
 		});
 
+		passtiche_dialog.find('.send_pass_btn').live('click', PassticheDialog.sendPass);
 
 	   // callback to the other JS file 
 	   PassticheBadger.findBadges();
@@ -44,6 +46,7 @@ PassticheDialog = {
 
 
     sendPass: function(){
+    	
     	{% include "send_pass.js" %}
     },
 

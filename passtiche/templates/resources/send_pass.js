@@ -3,9 +3,9 @@
 	var pass_data = { }
 
 	//pass_data['theme'] = passtiche_dialog.find('#inputThemes').find('input:checked').val();
-	pass_data['action'] = passtiche_dialog.data('pass_action');
 
 	passtiche_dialog.find('#error_alert').hide();	
+
 
 		/*
 		pass_data['from_email']  = passtiche_dialog.find('#inputFrom').val();
@@ -14,10 +14,11 @@
 	*/
 	
 	var send_form = $(this).parents('.send_form:first');
+    
+    pass_data['pass_template'] = passtiche_dialog.data('pass_template_code');
 
 	if (send_form.attr('id') == 'send_form_download'){
 		var download = true;
-		pass_data['pass_template'] = passtiche_dialog.data('pass_template_keyname');
 	}else{
 		if (!passtiche_dialog.data('user_pass'))
 			console.error('no user pass');
@@ -42,23 +43,29 @@ if (download && pass_data['to_phone'])
 if (download && pass_data['to_email'])
 	localStorage.setItem('user_email', pass_data['to_email']);
 
+  passtiche_dialog.find('#dialog-tab-content').addClass('hidden');
+  passtiche_dialog.find('#sent-confirmation').removeClass('hidden');
+
+  	window.SendPassCB = function(){
+  		console.log('send pass callback');
+
+     	  setTimeout(function(){
+     	  	passtiche_dialog.find('#sent-confirmation').addClass('hidden');
+     	  	passtiche_dialog.find('#dialog-tab-content').removeClass('hidden');
+     	  	passtiche_dialog.modal('hide'); passtiche_dialog.addClass('hidden');
+     	  }, 2500);
+
+  	}
+
+  	pass_data['callback'] = 'SendPassCB';
    $.ajax({
      type: "POST",
-     url: "/ajax/pass.send",
+     url: PASSTICHE_BASE_URL + "/ajax/pass.send",
      data: pass_data,
-     success: function(response){
-
-
-     },
-     error: function(response){
-     
-
-     }
+     dataType: 'jsonp'
      });
 
-
-	send_form.html('<h1>Sent</h1>');
-	//passtiche_dialog.hide();
+	
 
 
 

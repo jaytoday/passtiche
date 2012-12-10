@@ -1,8 +1,9 @@
 
 if (window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('thelevybreaks/Dropbox') > -1)
-	BASE_URL = 'http://localhost:8080';
+	PASSTICHE_BASE_URL = 'http://localhost:8080';
 else
-	BASE_URL = 'http://www.passtiche.com';
+	PASSTICHE_BASE_URL = 'http://www.passtiche.com';
+window.PASSTICHE_BASE_URL = PASSTICHE_BASE_URL;
 
 // TODO: implement as a proper js lib with different methods and options 
 // TODO: dynamically compile and cache 
@@ -36,8 +37,20 @@ PassticheBadger = {
 			console.log('initiating Passtiche library');
 
 			passtiche.badgelinks = $('a[data-pass-loc], a[data-pass-id], a[href$=pkpass]');
+			var timestamp = new Date().getTime();
+			callbackName = 'passticheCB_' + timestamp; 
 
-			passtiche.badge_data = { 'create': true, 'passes': [], 'sdk': true }; // create passes if they don't already exist 
+			window[callbackName] = function(response_json){
+					// JSONP callback
+
+							console.log('adding dialog html and adding pass content to badges');
+
+							var dialog_html = $(response_json['dialog_html']);
+							$('body').append(dialog_html.html());
+							$(response_json['passes']).each(PassticheBadger.badgeCallback);
+			}
+
+			passtiche.badge_data = { 'create': true, 'passes': [], 'sdk': true, 'callback': callbackName }; // create passes if they don't already exist 
 
 
 			// collect badge data for each badge 
@@ -60,8 +73,8 @@ PassticheBadger = {
 			// add additional CSS and JS
 
       // this should be first thing after jQuery loads
-	  $.getScript(BASE_URL + '/r/dialog.js', function(){ PassticheDialog.init(); });
-	  $('head').append('<link href="' + BASE_URL + '/r/dialog.css" rel="stylesheet" type="text/css">');
+	  $.getScript(PASSTICHE_BASE_URL + '/r/dialog.js', function(){ PassticheDialog.init(); });
+	  $('head').append('<link href="' + PASSTICHE_BASE_URL + '/r/dialog.css" rel="stylesheet" type="text/css">');
 	  
 	  console.log('loaded resources');
 	},
@@ -110,7 +123,15 @@ PassticheBadger = {
 
 				var badge_width = parseInt(badge_height * 3.075);
 
-				var badge_img  = $('<img style="cursor:pointer;width: ' + badge_width + 'px; height: ' + badge_height + 'px;" src="' + BASE_URL + '/badge"></img>');
+				var clearslate_css = 'border: none !important; display: block !important;margin: 0 !important;outline: none !important;padding: 0 !important;background: none !important;clear: none !important;'
+					+ 'float: none !important;max-height: none !important;max-width: none !important;min-height: 0 !important;width: auto!important;height: auto !important;min-width: 0 !important;visibility: visible !important;bottom: auto !important;'
+					+ 'clip: auto !important;left: auto !important;overflow: auto !important;position: relative !important;right: auto !important;top: auto !important;vertical-align: top !important;z-index: 1 !important;'
+					+ 'color: none !important;cursor:pointer !important;';
+
+				// TODO: better way to override for custom styles
+				badgeLinkEl.attr('style', clearslate_css);
+
+				var badge_img  = $('<img style="' + clearslate_css + 'width: ' + badge_width + 'px !important; height: ' + badge_height + 'px !important;" src="' + PASSTICHE_BASE_URL + '/badge"></img>');
 
 				var badge_title = badgeLinkEl.text() || 'Add to Passbook';
 				badgeLinkEl.html(badge_img);
@@ -163,17 +184,10 @@ PassticheBadger = {
 
 				$.ajax({
 					type: "GET",
-					url: BASE_URL + "/api/1/pass.find",
-					data: passtiche.badge_data,
-					success: function(response_json){
-						    
-							console.log('adding dialog html and adding pass content to badges');
-
-							var dialog_html = $(response_json['dialog_html']);
-							$('body').append(dialog_html);
-							$(response_json['passes']).each(PassticheBadger.badgeCallback);
-					}
-				});	
+					url: PASSTICHE_BASE_URL + "/api/1/pass.find",
+					dataType: 'jsonp',
+					data: passtiche.badge_data
+					});	
 
 
 	}, // end findBadges
@@ -181,20 +195,12 @@ PassticheBadger = {
 	
 	badgeCallback: function(i, pass_dict){
 
-		short_code = pass_dict['short_code'];
+
 		// this relies on 1-1 match between els and data
-		var badge_el = $(passtiche.badgelinks[i]);
-
-		PassticheBadger.addBadgeContent(pass_dict, badge_el);
-
-
-	},
-
-	addBadgeContent: function(pass_dict, badgeLinkEl){
-		// add href attribute to a link when pass ID is returned 
-
-		badgeLinkEl.attr('data-pass-id',short_code);
+		var badgeLinkEl = $(passtiche.badgelinks[i]);
+		badgeLinkEl.attr('data-pass-id', pass_dict['short_code']);
 		badgeLinkEl.data('pass-info', pass_dict);
+
 
 	},
 
@@ -203,7 +209,7 @@ PassticheBadger = {
 		// add href attribute to a link when pass ID is returned 
 		console.log(badgeLinkEl);
 		badgeLinkEl.attr('pass-code',short_code);
-		badgeLinkEl.attr('href', BASE_URL + '/p/' + short_code);
+		badgeLinkEl.attr('href', PASSTICHE_BASE_URL + '/p/' + short_code);
 		badgeLinkEl.attr('target', '_blank');
 
 	},

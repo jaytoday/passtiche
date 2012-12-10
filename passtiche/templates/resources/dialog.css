@@ -1,14 +1,20 @@
 {% comment "include bootstrap, base" %}
 
-{% comment "cleanslate.css" %}
+{% include "cleanslate.css" %}
 {% include "bootstrap.min.css" %}
 
 
 /* Modal */
 
+#passticheDialogModal.hidden, #passticheDialogModal .hidden{
+  display: none !important;
+  visibility: hidden !important;
+}
+
 #passticheDialogModal .cl{
 float: left !important;
 width: auto !important;
+max-width: 342px;
 margin-left: 25px !important;
 }
 
@@ -208,6 +214,7 @@ line-height: 13px !important;
 }
 #passticheDialogModal .nav-pills  > li  > a {
   margin-right: .75em !important;
+  font-size: 13px !important;
   color: #333333 !important;
   background-color: #eeeeee !important;
   text-shadow: none !important;

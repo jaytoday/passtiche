@@ -29,5 +29,6 @@ class APIHandler(BaseHandler):
 
     def write_json(self, dict):
         # TODO: response codes, etc.
-        self.set_header('Content-Type','application/json') 
+        self.set_header('Access-Control-Allow-Origin', '*')
+
         return super(APIHandler, self).write_json(dict)

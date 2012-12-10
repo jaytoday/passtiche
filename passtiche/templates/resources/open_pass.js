@@ -2,6 +2,7 @@
 	
 passtiche_dialog = $('#passticheDialogModal');
 
+
 if (passtiche_dialog.length < 1) return console.error('dialog HTML not found');
 
 	if (passtiche_dialog.is(':visible')) return;
@@ -13,6 +14,8 @@ if (passtiche_dialog.length < 1) return console.error('dialog HTML not found');
 	var pass_img_src =  pass_link.data('pass-info')['img'];
 	var pass_description = pass_link.data('pass-info')['description'];
 	PassticheDialog.resetSendDialog();
+	passtiche_dialog.removeClass('hidden');
+
 
 
 	passtiche_dialog.data('pass_template', pass_name);

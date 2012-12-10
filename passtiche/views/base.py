@@ -80,8 +80,15 @@ class BaseHandler(tornado.web.RequestHandler):
             import json
         except:
             from django.utils import simplejson as json
-
-        self.write(json.dumps(dict))
+        json_response = json.dumps(dict)
+        callback = self.get_argument('callback','')
+        if callback:
+            self.set_header('Content-Type','application/javascript') 
+            # TODO: unique ID?
+            self.write(callback + '(' + json_response + ')')
+        else:
+            self.set_header('Content-Type','application/json') 
+            self.write(json_response)
 
     def send_error(self, *args, **kwargs):
         self.set_status(500) # always 500?
