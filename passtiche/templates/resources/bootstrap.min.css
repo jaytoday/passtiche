@@ -1536,3 +1536,1565 @@ background-clip: padding-box !important;
 #passticheDialogModal .invisible{visibility:hidden !important;}
 
 #passticheDialogModal .affix{position:fixed !important;}
+
+
+
+/*!
+ * Bootstrap Responsive v2.1.1
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+
+
+@media (max-width: 767px) {
+
+  #passticheDialogModal .navbar-fixed-top,
+  .navbar-fixed-bottom,
+  .navbar-static-top {
+    margin-right: -20px;
+    margin-left: -20px;
+  }
+  #passticheDialogModal .container-fluid {
+    padding: 0;
+  }
+  #passticheDialogModal .dl-horizontal dt {
+    float: none;
+    width: auto;
+    clear: none;
+    text-align: left;
+  }
+  #passticheDialogModal .dl-horizontal dd {
+    margin-left: 0;
+  }
+  #passticheDialogModal .container {
+    width: auto;
+  }
+  #passticheDialogModal .row-fluid {
+    width: 100%;
+  }
+  #passticheDialogModal .row,
+  .thumbnails {
+    margin-left: 0;
+  }
+  #passticheDialogModal .thumbnails > li {
+    float: none;
+    margin-left: 0;
+  }
+  #passticheDialogModal [class*="span"],
+  .row-fluid [class*="span"] {
+    display: block;
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  #passticheDialogModal .span12,
+  .row-fluid .span12 {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  #passticheDialogModal .input-large,
+  .input-xlarge,
+  .input-xxlarge,
+  input[class*="span"],
+  select[class*="span"],
+  textarea[class*="span"],
+  .uneditable-input {
+    display: block;
+    width: 100%;
+    min-height: 30px;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  #passticheDialogModal .input-prepend input,
+  .input-append input,
+  .input-prepend input[class*="span"],
+  .input-append input[class*="span"] {
+    display: inline-block;
+    width: auto;
+  }
+  #passticheDialogModal .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 0;
+  }
+  #passticheDialogModal{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    left: 20px;
+    width: auto;
+    margin: 0;
+  }
+  #passticheDialogModal.fade.in {
+    top: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-collapse {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  #passticheDialogModal .page-header h1 small {
+    display: block;
+    line-height: 20px;
+  }
+  #passticheDialogModal input[type="checkbox"],
+  input[type="radio"] {
+    border: 1px solid #ccc;
+  }
+  #passticheDialogModal .form-horizontal .control-label {
+    float: none;
+    width: auto;
+    padding-top: 0;
+    text-align: left;
+  }
+  #passticheDialogModal .form-horizontal .controls {
+    margin-left: 0;
+  }
+  #passticheDialogModal .form-horizontal .control-list {
+    padding-top: 0;
+  }
+  #passticheDialogModal .form-horizontal .form-actions {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  #passticheDialogModal{
+    top: 10px;
+    right: 10px;
+    left: 10px;
+  }
+  #passticheDialogModal .modal-header .close {
+    padding: 10px;
+    margin: -10px;
+  }
+  #passticheDialogModal .carousel-caption {
+    position: static;
+  }
+}
+
+@media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
+  #passticheDialogModal .navbar-fixed-top,
+  .navbar-fixed-bottom {
+    position: static;
+  }
+  #passticheDialogModal .navbar-fixed-top {
+    margin-bottom: 20px;
+  }
+  #passticheDialogModal .navbar-fixed-bottom {
+    margin-top: 20px;
+  }
+  #passticheDialogModal .navbar-fixed-top .navbar-inner,
+  .navbar-fixed-bottom .navbar-inner {
+    padding: 5px;
+  }
+  #passticheDialogModal .navbar .container {
+    width: auto;
+    padding: 0;
+  }
+  #passticheDialogModal .navbar .brand {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 0 0 0 -5px;
+  }
+  #passticheDialogModal .nav-collapse {
+    clear: both;
+  }
+  #passticheDialogModal .nav-collapse .nav {
+    float: none;
+    margin: 0 0 10px;
+  }
+  #passticheDialogModal .nav-collapse .nav > li {
+    float: none;
+  }
+  #passticheDialogModal .nav-collapse .nav > li > a {
+    margin-bottom: 2px;
+  }
+  #passticheDialogModal .nav-collapse .nav > .divider-vertical {
+    display: none;
+  }
+  #passticheDialogModal .nav-collapse .nav .nav-header {
+    color: #777777;
+    text-shadow: none;
+  }
+  #passticheDialogModal .nav-collapse .nav > li > a,
+  .nav-collapse .dropdown-menu a {
+    padding: 9px 15px;
+    font-weight: bold;
+    color: #777777;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+  }
+  #passticheDialogModal .nav-collapse .btn {
+    padding: 4px 10px 4px;
+    font-weight: normal;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+  }
+  #passticheDialogModal .nav-collapse .dropdown-menu li + li a {
+    margin-bottom: 2px;
+  }
+  #passticheDialogModal .nav-collapse .nav > li > a:hover,
+  .nav-collapse .dropdown-menu a:hover {
+    background-color: #f2f2f2;
+  }
+  #passticheDialogModal .navbar-inverse .nav-collapse .nav > li > a:hover,
+  .navbar-inverse .nav-collapse .dropdown-menu a:hover {
+    background-color: #111111;
+  }
+  #passticheDialogModal .nav-collapse.in .btn-group {
+    padding: 0;
+    margin-top: 5px;
+  }
+  #passticheDialogModal .nav-collapse .dropdown-menu {
+    position: static;
+    top: auto;
+    left: auto;
+    display: block;
+    float: none;
+    max-width: none;
+    padding: 0;
+    margin: 0 15px;
+    background-color: transparent;
+    border: none;
+    -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+  }
+  #passticheDialogModal .nav-collapse .dropdown-menu:before,
+  .nav-collapse .dropdown-menu:after {
+    display: none;
+  }
+  #passticheDialogModal .nav-collapse .dropdown-menu .divider {
+    display: none;
+  }
+  #passticheDialogModal .nav-collapse .nav > li > .dropdown-menu:before,
+  .nav-collapse .nav > li > .dropdown-menu:after {
+    display: none;
+  }
+  #passticheDialogModal .nav-collapse .navbar-form,
+  .nav-collapse .navbar-search {
+    float: none;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+       -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  #passticheDialogModal .navbar-inverse .nav-collapse .navbar-form,
+  .navbar-inverse .nav-collapse .navbar-search {
+    border-top-color: #111111;
+    border-bottom-color: #111111;
+  }
+  #passticheDialogModal .navbar .nav-collapse .nav.pull-right {
+    float: none;
+    margin-left: 0;
+  }
+  #passticheDialogModal .nav-collapse,
+  .nav-collapse.collapse {
+    height: 0;
+    overflow: hidden;
+  }
+  #passticheDialogModal .navbar .btn-navbar {
+    display: block;
+  }
+  #passticheDialogModal .navbar-static .navbar-inner {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+
+/*!
+ * Bootstrap Responsive v2.1.1
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+
+.clearfix {
+  *zoom: 1 !important;
+}
+
+#passticheDialogModal .clearfix:before,
+.clearfix:after {
+  display: table !important;
+  line-height: 0 !important;
+  content: "" !important;
+}
+
+#passticheDialogModal .clearfix:after {
+  clear: both !important;
+}
+
+#passticheDialogModal .hide-text {
+  font: 0/0 a !important;
+  color: transparent !important;
+  text-shadow: none !important;
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+#passticheDialogModal .input-block-level {
+  display: block !important;
+  width: 100% !important;
+  min-height: 30px !important;
+  -webkit-box-sizing: border-box !important;
+     -moz-box-sizing: border-box !important;
+          box-sizing: border-box !important;
+}
+
+#passticheDialogModal .hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+#passticheDialogModal .visible-phone {
+  display: none !important !important;
+}
+
+#passticheDialogModal .visible-tablet {
+  display: none !important !important;
+}
+
+#passticheDialogModal .hidden-desktop {
+  display: none !important !important;
+}
+
+#passticheDialogModal .visible-desktop {
+  display: inherit !important !important;
+}
+
+#passticheDialogModal @media (min-width: 768px) and (max-width: 979px) {
+  .hidden-desktop {
+    display: inherit !important !important;
+  }
+  
+
+  #passticheDialogModal .visible-desktop {
+    display: none !important  !important;}
+  
+
+  #passticheDialogModal .visible-tablet {
+    display: inherit !important !important;}
+  
+
+  #passticheDialogModal .hidden-tablet {
+    display: none !important !important;}
+}
+
+@media (max-width: 767px) {
+  .hidden-desktop {
+    display: inherit !important !important;
+  }
+  
+
+  #passticheDialogModal .visible-desktop {
+    display: none !important !important;}
+  
+
+  #passticheDialogModal .visible-phone {
+    display: inherit !important !important;}
+  
+
+  #passticheDialogModal .hidden-phone {
+    display: none !important !important;}
+}
+
+@media (min-width: 1200px) {
+  
+
+  #passticheDialogModal .row {
+    margin-left: -30px !important;  *zoom: 1 !important;
+  }
+  
+
+  #passticheDialogModal .row:before,
+  .row:after {  display: table !important;
+    line-height: 0 !important;
+    content: "" !important;
+  }
+  
+
+  #passticheDialogModal .row:after {
+    clear: both !important;}
+  
+
+  #passticheDialogModal [class*="span"] {
+    float: left !important;  min-height: 1px !important;
+    margin-left: 30px !important;
+  }
+  
+
+  #passticheDialogModal .container,
+  .navbar-static-top .container,.navbar-fixed-top .container,
+  .navbar-fixed-bottom .container {
+    width: 1170px !important;
+  }
+  
+
+  #passticheDialogModal .span12 {
+    width: 1170px !important;}
+  
+
+  #passticheDialogModal .span11 {
+    width: 1070px !important;}
+  
+
+  #passticheDialogModal .span10 {
+    width: 970px !important;}
+  
+
+  #passticheDialogModal .span9 {
+    width: 870px !important;}
+  
+
+  #passticheDialogModal .span8 {
+    width: 770px !important;}
+  
+
+  #passticheDialogModal .span7 {
+    width: 670px !important;}
+  
+
+  #passticheDialogModal .span6 {
+    width: 570px !important;}
+  
+
+  #passticheDialogModal .span5 {
+    width: 470px !important;}
+  
+
+  #passticheDialogModal .span4 {
+    width: 370px !important;}
+  
+
+  #passticheDialogModal .span3 {
+    width: 270px !important;}
+  
+
+  #passticheDialogModal .span2 {
+    width: 170px !important;}
+  
+
+  #passticheDialogModal .span1 {
+    width: 70px !important;}
+  
+
+  #passticheDialogModal .offset12 {
+    margin-left: 1230px !important;}
+  
+
+  #passticheDialogModal .offset11 {
+    margin-left: 1130px !important;}
+  
+
+  #passticheDialogModal .offset10 {
+    margin-left: 1030px !important;}
+  
+
+  #passticheDialogModal .offset9 {
+    margin-left: 930px !important;}
+  
+
+  #passticheDialogModal .offset8 {
+    margin-left: 830px !important;}
+  
+
+  #passticheDialogModal .offset7 {
+    margin-left: 730px !important;}
+  
+
+  #passticheDialogModal .offset6 {
+    margin-left: 630px !important;}
+  
+
+  #passticheDialogModal .offset5 {
+    margin-left: 530px !important;}
+  
+
+  #passticheDialogModal .offset4 {
+    margin-left: 430px !important;}
+  
+
+  #passticheDialogModal .offset3 {
+    margin-left: 330px !important;}
+  
+
+  #passticheDialogModal .offset2 {
+    margin-left: 230px !important;}
+  
+
+  #passticheDialogModal .offset1 {
+    margin-left: 130px !important;}
+  
+
+  #passticheDialogModal .row-fluid {
+    width: 100% !important;  *zoom: 1 !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid:before,
+  .row-fluid:after {  display: table !important;
+    line-height: 0 !important;
+    content: "" !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid:after {
+    clear: both !important;}
+  
+
+  #passticheDialogModal .row-fluid [class*="span"] {
+    display: block !important;  float: left !important;
+    width: 100% !important;
+    min-height: 30px !important;
+    margin-left: 2.564102564102564% !important;
+    *margin-left: 2.5109110747408616% !important;
+    -webkit-box-sizing: border-box !important;
+       -moz-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid [class*="span"]:first-child {
+    margin-left: 0 !important;}
+  
+
+  #passticheDialogModal .row-fluid .span12 {
+    width: 100% !important;  *width: 99.94680851063829% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span11 {
+    width: 91.45299145299145% !important;  *width: 91.39979996362975% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span10 {
+    width: 82.90598290598291% !important;  *width: 82.8527914166212% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span9 {
+    width: 74.35897435897436% !important;  *width: 74.30578286961266% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span8 {
+    width: 65.81196581196582% !important;  *width: 65.75877432260411% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span7 {
+    width: 57.26495726495726% !important;  *width: 57.21176577559556% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span6 {
+    width: 48.717948717948715% !important;  *width: 48.664757228587014% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span5 {
+    width: 40.17094017094017% !important;  *width: 40.11774868157847% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span4 {
+    width: 31.623931623931625% !important;  *width: 31.570740134569924% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span3 {
+    width: 23.076923076923077% !important;  *width: 23.023731587561375% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span2 {
+    width: 14.52991452991453% !important;  *width: 14.476723040552828% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span1 {
+    width: 5.982905982905983% !important;  *width: 5.929714493544281% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset12 {
+    margin-left: 105.12820512820512% !important;  *margin-left: 105.02182214948171% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset12:first-child {
+    margin-left: 102.56410256410257% !important;  *margin-left: 102.45771958537915% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset11 {
+    margin-left: 96.58119658119658% !important;  *margin-left: 96.47481360247316% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset11:first-child {
+    margin-left: 94.01709401709402% !important;  *margin-left: 93.91071103837061% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset10 {
+    margin-left: 88.03418803418803% !important;  *margin-left: 87.92780505546462% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset10:first-child {
+    margin-left: 85.47008547008548% !important;  *margin-left: 85.36370249136206% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset9 {
+    margin-left: 79.48717948717949% !important;  *margin-left: 79.38079650845607% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset9:first-child {
+    margin-left: 76.92307692307693% !important;  *margin-left: 76.81669394435352% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset8 {
+    margin-left: 70.94017094017094% !important;  *margin-left: 70.83378796144753% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset8:first-child {
+    margin-left: 68.37606837606839% !important;  *margin-left: 68.26968539734497% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset7 {
+    margin-left: 62.393162393162385% !important;  *margin-left: 62.28677941443899% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset7:first-child {
+    margin-left: 59.82905982905982% !important;  *margin-left: 59.72267685033642% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset6 {
+    margin-left: 53.84615384615384% !important;  *margin-left: 53.739770867430444% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset6:first-child {
+    margin-left: 51.28205128205128% !important;  *margin-left: 51.175668303327875% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset5 {
+    margin-left: 45.299145299145295% !important;  *margin-left: 45.1927623204219% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset5:first-child {
+    margin-left: 42.73504273504273% !important;  *margin-left: 42.62865975631933% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset4 {
+    margin-left: 36.75213675213675% !important;  *margin-left: 36.645753773413354% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset4:first-child {
+    margin-left: 34.18803418803419% !important;  *margin-left: 34.081651209310785% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset3 {
+    margin-left: 28.205128205128204% !important;  *margin-left: 28.0987452264048% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset3:first-child {
+    margin-left: 25.641025641025642% !important;  *margin-left: 25.53464266230224% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset2 {
+    margin-left: 19.65811965811966% !important;  *margin-left: 19.551736679396257% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset2:first-child {
+    margin-left: 17.094017094017094% !important;  *margin-left: 16.98763411529369% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset1 {
+    margin-left: 11.11111111111111% !important;  *margin-left: 11.004728132387708% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset1:first-child {
+    margin-left: 8.547008547008547% !important;  *margin-left: 8.440625568285142% !important;
+  }
+  
+
+  #passticheDialogModal input,
+  textarea,.uneditable-input {
+    margin-left: 0 !important;
+  }
+  
+
+  #passticheDialogModal .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 30px !important;}
+  
+
+  #passticheDialogModal input.span12,
+  textarea.span12,.uneditable-input.span12 {
+    width: 1156px !important;
+  }
+  
+
+  #passticheDialogModal input.span11,
+  textarea.span11,.uneditable-input.span11 {
+    width: 1056px !important;
+  }
+  
+
+  #passticheDialogModal input.span10,
+  textarea.span10,.uneditable-input.span10 {
+    width: 956px !important;
+  }
+  
+
+  #passticheDialogModal input.span9,
+  textarea.span9,.uneditable-input.span9 {
+    width: 856px !important;
+  }
+  
+
+  #passticheDialogModal input.span8,
+  textarea.span8,.uneditable-input.span8 {
+    width: 756px !important;
+  }
+  
+
+  #passticheDialogModal input.span7,
+  textarea.span7,.uneditable-input.span7 {
+    width: 656px !important;
+  }
+  
+
+  #passticheDialogModal input.span6,
+  textarea.span6,.uneditable-input.span6 {
+    width: 556px !important;
+  }
+  
+
+  #passticheDialogModal input.span5,
+  textarea.span5,.uneditable-input.span5 {
+    width: 456px !important;
+  }
+  
+
+  #passticheDialogModal input.span4,
+  textarea.span4,.uneditable-input.span4 {
+    width: 356px !important;
+  }
+  
+
+  #passticheDialogModal input.span3,
+  textarea.span3,.uneditable-input.span3 {
+    width: 256px !important;
+  }
+  
+
+  #passticheDialogModal input.span2,
+  textarea.span2,.uneditable-input.span2 {
+    width: 156px !important;
+  }
+  
+
+  #passticheDialogModal input.span1,
+  textarea.span1,.uneditable-input.span1 {
+    width: 56px !important;
+  }
+  
+
+  #passticheDialogModal .thumbnails {
+    margin-left: -30px !important;}
+  
+
+  #passticheDialogModal .thumbnails > li {
+    margin-left: 30px !important;}
+  
+
+  #passticheDialogModal .row-fluid .thumbnails {
+    margin-left: 0 !important;}
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .row {
+    margin-left: -20px !important;
+    *zoom: 1 !important;
+  }
+  
+
+  #passticheDialogModal .row:before,
+  .row:after {  display: table !important;
+    line-height: 0 !important;
+    content: "" !important;
+  }
+  
+
+  #passticheDialogModal .row:after {
+    clear: both !important;}
+  
+
+  #passticheDialogModal [class*="span"] {
+    float: left !important;  min-height: 1px !important;
+    margin-left: 20px !important;
+  }
+  
+
+  #passticheDialogModal .container,
+  .navbar-static-top .container,.navbar-fixed-top .container,
+  .navbar-fixed-bottom .container {
+    width: 724px !important;
+  }
+  
+
+  #passticheDialogModal .span12 {
+    width: 724px !important;}
+  
+
+  #passticheDialogModal .span11 {
+    width: 662px !important;}
+  
+
+  #passticheDialogModal .span10 {
+    width: 600px !important;}
+  
+
+  #passticheDialogModal .span9 {
+    width: 538px !important;}
+  
+
+  #passticheDialogModal .span8 {
+    width: 476px !important;}
+  
+
+  #passticheDialogModal .span7 {
+    width: 414px !important;}
+  
+
+  #passticheDialogModal .span6 {
+    width: 352px !important;}
+  
+
+  #passticheDialogModal .span5 {
+    width: 290px !important;}
+  
+
+  #passticheDialogModal .span4 {
+    width: 228px !important;}
+  
+
+  #passticheDialogModal .span3 {
+    width: 166px !important;}
+  
+
+  #passticheDialogModal .span2 {
+    width: 104px !important;}
+  
+
+  #passticheDialogModal .span1 {
+    width: 42px !important;}
+  
+
+  #passticheDialogModal .offset12 {
+    margin-left: 764px !important;}
+  
+
+  #passticheDialogModal .offset11 {
+    margin-left: 702px !important;}
+  
+
+  #passticheDialogModal .offset10 {
+    margin-left: 640px !important;}
+  
+
+  #passticheDialogModal .offset9 {
+    margin-left: 578px !important;}
+  
+
+  #passticheDialogModal .offset8 {
+    margin-left: 516px !important;}
+  
+
+  #passticheDialogModal .offset7 {
+    margin-left: 454px !important;}
+  
+
+  #passticheDialogModal .offset6 {
+    margin-left: 392px !important;}
+  
+
+  #passticheDialogModal .offset5 {
+    margin-left: 330px !important;}
+  
+
+  #passticheDialogModal .offset4 {
+    margin-left: 268px !important;}
+  
+
+  #passticheDialogModal .offset3 {
+    margin-left: 206px !important;}
+  
+
+  #passticheDialogModal .offset2 {
+    margin-left: 144px !important;}
+  
+
+  #passticheDialogModal .offset1 {
+    margin-left: 82px !important;}
+  
+
+  #passticheDialogModal .row-fluid {
+    width: 100% !important;  *zoom: 1 !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid:before,
+  .row-fluid:after {  display: table !important;
+    line-height: 0 !important;
+    content: "" !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid:after {
+    clear: both !important;}
+  
+
+  #passticheDialogModal .row-fluid [class*="span"] {
+    display: block !important;  float: left !important;
+    width: 100% !important;
+    min-height: 30px !important;
+    margin-left: 2.7624309392265194% !important;
+    *margin-left: 2.709239449864817% !important;
+    -webkit-box-sizing: border-box !important;
+       -moz-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid [class*="span"]:first-child {
+    margin-left: 0 !important;}
+  
+
+  #passticheDialogModal .row-fluid .span12 {
+    width: 100% !important;  *width: 99.94680851063829% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span11 {
+    width: 91.43646408839778% !important;  *width: 91.38327259903608% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span10 {
+    width: 82.87292817679558% !important;  *width: 82.81973668743387% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span9 {
+    width: 74.30939226519337% !important;  *width: 74.25620077583166% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span8 {
+    width: 65.74585635359117% !important;  *width: 65.69266486422946% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span7 {
+    width: 57.18232044198895% !important;  *width: 57.12912895262725% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span6 {
+    width: 48.61878453038674% !important;  *width: 48.56559304102504% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span5 {
+    width: 40.05524861878453% !important;  *width: 40.00205712942283% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span4 {
+    width: 31.491712707182323% !important;  *width: 31.43852121782062% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span3 {
+    width: 22.92817679558011% !important;  *width: 22.87498530621841% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span2 {
+    width: 14.3646408839779% !important;  *width: 14.311449394616199% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .span1 {
+    width: 5.801104972375691% !important;  *width: 5.747913483013988% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset12 {
+    margin-left: 105.52486187845304% !important;  *margin-left: 105.41847889972962% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset12:first-child {
+    margin-left: 102.76243093922652% !important;  *margin-left: 102.6560479605031% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset11 {
+    margin-left: 96.96132596685082% !important;  *margin-left: 96.8549429881274% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset11:first-child {
+    margin-left: 94.1988950276243% !important;  *margin-left: 94.09251204890089% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset10 {
+    margin-left: 88.39779005524862% !important;  *margin-left: 88.2914070765252% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset10:first-child {
+    margin-left: 85.6353591160221% !important;  *margin-left: 85.52897613729868% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset9 {
+    margin-left: 79.8342541436464% !important;  *margin-left: 79.72787116492299% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset9:first-child {
+    margin-left: 77.07182320441989% !important;  *margin-left: 76.96544022569647% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset8 {
+    margin-left: 71.2707182320442% !important;  *margin-left: 71.16433525332079% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset8:first-child {
+    margin-left: 68.50828729281768% !important;  *margin-left: 68.40190431409427% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset7 {
+    margin-left: 62.70718232044199% !important;  *margin-left: 62.600799341718584% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset7:first-child {
+    margin-left: 59.94475138121547% !important;  *margin-left: 59.838368402492065% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset6 {
+    margin-left: 54.14364640883978% !important;  *margin-left: 54.037263430116376% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset6:first-child {
+    margin-left: 51.38121546961326% !important;  *margin-left: 51.27483249088986% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset5 {
+    margin-left: 45.58011049723757% !important;  *margin-left: 45.47372751851417% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset5:first-child {
+    margin-left: 42.81767955801105% !important;  *margin-left: 42.71129657928765% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset4 {
+    margin-left: 37.01657458563536% !important;  *margin-left: 36.91019160691196% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset4:first-child {
+    margin-left: 34.25414364640884% !important;  *margin-left: 34.14776066768544% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset3 {
+    margin-left: 28.45303867403315% !important;  *margin-left: 28.346655695309746% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset3:first-child {
+    margin-left: 25.69060773480663% !important;  *margin-left: 25.584224756083227% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset2 {
+    margin-left: 19.88950276243094% !important;  *margin-left: 19.783119783707537% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset2:first-child {
+    margin-left: 17.12707182320442% !important;  *margin-left: 17.02068884448102% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset1 {
+    margin-left: 11.32596685082873% !important;  *margin-left: 11.219583872105325% !important;
+  }
+  
+
+  #passticheDialogModal .row-fluid .offset1:first-child {
+    margin-left: 8.56353591160221% !important;  *margin-left: 8.457152932878806% !important;
+  }
+  
+
+  #passticheDialogModal input,
+  textarea,.uneditable-input {
+    margin-left: 0 !important;
+  }
+  
+
+  #passticheDialogModal .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 20px !important;}
+  
+
+  #passticheDialogModal input.span12,
+  textarea.span12,.uneditable-input.span12 {
+    width: 710px !important;
+  }
+  
+
+  #passticheDialogModal input.span11,
+  textarea.span11,.uneditable-input.span11 {
+    width: 648px !important;
+  }
+  
+
+  #passticheDialogModal input.span10,
+  textarea.span10,.uneditable-input.span10 {
+    width: 586px !important;
+  }
+  
+
+  #passticheDialogModal input.span9,
+  textarea.span9,.uneditable-input.span9 {
+    width: 524px !important;
+  }
+  
+
+  #passticheDialogModal input.span8,
+  textarea.span8,.uneditable-input.span8 {
+    width: 462px !important;
+  }
+  
+
+  #passticheDialogModal input.span7,
+  textarea.span7,.uneditable-input.span7 {
+    width: 400px !important;
+  }
+  
+
+  #passticheDialogModal input.span6,
+  textarea.span6,.uneditable-input.span6 {
+    width: 338px !important;
+  }
+  
+
+  #passticheDialogModal input.span5,
+  textarea.span5,.uneditable-input.span5 {
+    width: 276px !important;
+  }
+  
+
+  #passticheDialogModal input.span4,
+  textarea.span4,.uneditable-input.span4 {
+    width: 214px !important;
+  }
+  
+
+  #passticheDialogModal input.span3,
+  textarea.span3,.uneditable-input.span3 {
+    width: 152px !important;
+  }
+  
+
+  #passticheDialogModal input.span2,
+  textarea.span2,.uneditable-input.span2 {
+    width: 90px !important;
+  }
+  
+
+  #passticheDialogModal input.span1,
+  textarea.span1,.uneditable-input.span1 {
+    width: 28px !important;
+  }
+}
+
+@media (max-width: 767px) {
+
+  
+
+  #passticheDialogModal .navbar-fixed-top,
+  .navbar-fixed-bottom,.navbar-static-top {
+    margin-right: -20px !important;
+    margin-left: -20px !important;
+  }
+  
+
+  #passticheDialogModal .container-fluid {
+    padding: 0 !important;}
+  
+
+  #passticheDialogModal .dl-horizontal dt {
+    float: none !important;  width: auto !important;
+    clear: none !important;
+    text-align: left !important;
+  }
+  
+
+  #passticheDialogModal .dl-horizontal dd {
+    margin-left: 0 !important;}
+  
+
+  #passticheDialogModal .container {
+    width: auto !important;}
+  
+
+  #passticheDialogModal .row-fluid {
+    width: 100% !important;}
+  
+
+  #passticheDialogModal .row,
+  .thumbnails {  margin-left: 0 !important;
+  }
+  
+
+  #passticheDialogModal .thumbnails > li {
+    float: none !important;  margin-left: 0 !important;
+  }
+  
+
+  #passticheDialogModal [class*="span"],
+  .row-fluid [class*="span"] {  display: block !important;
+    float: none !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    -webkit-box-sizing: border-box !important;
+       -moz-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+  }
+  
+
+  #passticheDialogModal .span12,
+  .row-fluid .span12 {  width: 100% !important;
+    -webkit-box-sizing: border-box !important;
+       -moz-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+  }
+  
+
+  #passticheDialogModal .input-large,
+  .input-xlarge,.input-xxlarge,
+  input[class*="span"],
+  select[class*="span"],
+  textarea[class*="span"],
+  .uneditable-input {
+    display: block !important;
+    width: 100% !important;
+    min-height: 30px !important;
+    -webkit-box-sizing: border-box !important;
+       -moz-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+  }
+  
+
+  #passticheDialogModal .input-prepend input,
+  .input-append input,.input-prepend input[class*="span"],
+  .input-append input[class*="span"] {
+    display: inline-block !important;
+    width: auto !important;
+  }
+  
+
+  #passticheDialogModal .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 0 !important;}
+  #passticheDialogModal{
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    left: 20px !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+  #passticheDialogModal.fade.in {
+    top: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-collapse {
+    -webkit-transform: translate3d(0, 0, 0) !important;
+  }
+  
+
+  #passticheDialogModal .page-header h1 small {
+    display: block !important;  line-height: 20px !important;
+  }
+  
+
+  #passticheDialogModal input[type="checkbox"],
+  input[type="radio"] {  border: 1px solid #ccc !important;
+  }
+  
+
+  #passticheDialogModal .form-horizontal .control-label {
+    float: none !important;  width: auto !important;
+    padding-top: 0 !important;
+    text-align: left !important;
+  }
+  
+
+  #passticheDialogModal .form-horizontal .controls {
+    margin-left: 0 !important;}
+  
+
+  #passticheDialogModal .form-horizontal .control-list {
+    padding-top: 0 !important;}
+  
+
+  #passticheDialogModal .form-horizontal .form-actions {
+    padding-right: 10px !important;  padding-left: 10px !important;
+  }
+  
+
+  #passticheDialogModal .modal {
+    top: 10px !important;  right: 10px !important;
+    left: 10px !important;
+  }
+  
+
+  #passticheDialogModal .modal-header .close {
+    padding: 10px !important;  margin: -10px !important;
+  }
+  
+
+  #passticheDialogModal .carousel-caption {
+    position: static !important;}
+}
+
+@media (max-width: 979px) {
+  body {
+    padding-top: 0 !important;
+  }
+  
+
+  #passticheDialogModal .navbar-fixed-top,
+  .navbar-fixed-bottom {  position: static !important;
+  }
+  
+
+  #passticheDialogModal .navbar-fixed-top {
+    margin-bottom: 20px !important;}
+  
+
+  #passticheDialogModal .navbar-fixed-bottom {
+    margin-top: 20px !important;}
+  
+
+  #passticheDialogModal .navbar-fixed-top .navbar-inner,
+  .navbar-fixed-bottom .navbar-inner {  padding: 5px !important;
+  }
+  
+
+  #passticheDialogModal .navbar .container {
+    width: auto !important;  padding: 0 !important;
+  }
+  
+
+  #passticheDialogModal .navbar .brand {
+    padding-right: 10px !important;  padding-left: 10px !important;
+    margin: 0 0 0 -5px !important;
+  }
+  
+
+  #passticheDialogModal .nav-collapse {
+    clear: both !important;}
+  
+
+  #passticheDialogModal .nav-collapse .nav {
+    float: none !important;  margin: 0 0 10px !important;
+  }
+  
+
+  #passticheDialogModal .nav-collapse .nav > li {
+    float: none !important;}
+  
+
+  #passticheDialogModal .nav-collapse .nav > li > a {
+    margin-bottom: 2px !important;}
+  
+
+  #passticheDialogModal .nav-collapse .nav > .divider-vertical {
+    display: none !important;}
+  
+
+  #passticheDialogModal .nav-collapse .nav .nav-header {
+    color: #777777 !important;  text-shadow: none !important;
+  }
+  
+
+  #passticheDialogModal .nav-collapse .nav > li > a,
+  .nav-collapse .dropdown-menu a {  padding: 9px 15px !important;
+    font-weight: bold !important;
+    color: #777777 !important;
+    -webkit-border-radius: 3px !important;
+       -moz-border-radius: 3px !important;
+            border-radius: 3px !important;
+  }
+  
+
+  #passticheDialogModal .nav-collapse .btn {
+    padding: 4px 10px 4px !important;  font-weight: normal !important;
+    -webkit-border-radius: 4px !important;
+       -moz-border-radius: 4px !important;
+            border-radius: 4px !important;
+  }
+  
+
+  #passticheDialogModal .nav-collapse .dropdown-menu li + li a {
+    margin-bottom: 2px !important;}
+  
+
+  #passticheDialogModal .nav-collapse .nav > li > a:hover,
+  .nav-collapse .dropdown-menu a:hover {  background-color: #f2f2f2 !important;
+  }
+  
+
+  #passticheDialogModal .navbar-inverse .nav-collapse .nav > li > a:hover,
+  .navbar-inverse .nav-collapse .dropdown-menu a:hover {  background-color: #111111 !important;
+  }
+  
+
+  #passticheDialogModal .nav-collapse.in .btn-group {
+    padding: 0 !important;  margin-top: 5px !important;
+  }
+  
+
+  #passticheDialogModal .nav-collapse .dropdown-menu {
+    position: static !important;  top: auto !important;
+    left: auto !important;
+    display: block !important;
+    float: none !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 15px !important;
+    background-color: transparent !important;
+    border: none !important;
+    -webkit-border-radius: 0 !important;
+       -moz-border-radius: 0 !important;
+            border-radius: 0 !important;
+    -webkit-box-shadow: none !important;
+       -moz-box-shadow: none !important;
+            box-shadow: none !important;
+  }
+  
+
+  #passticheDialogModal .nav-collapse .dropdown-menu:before,
+  .nav-collapse .dropdown-menu:after {  display: none !important;
+  }
+  
+
+  #passticheDialogModal .nav-collapse .dropdown-menu .divider {
+    display: none !important;}
+  
+
+  #passticheDialogModal .nav-collapse .nav > li > .dropdown-menu:before,
+  .nav-collapse .nav > li > .dropdown-menu:after {  display: none !important;
+  }
+  
+
+  #passticheDialogModal .nav-collapse .navbar-form,
+  .nav-collapse .navbar-search {  float: none !important;
+    padding: 10px 15px !important;
+    margin: 10px 0 !important;
+    border-top: 1px solid #f2f2f2 !important;
+    border-bottom: 1px solid #f2f2f2 !important;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+       -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  }
+  
+
+  #passticheDialogModal .navbar-inverse .nav-collapse .navbar-form,
+  .navbar-inverse .nav-collapse .navbar-search {  border-top-color: #111111 !important;
+    border-bottom-color: #111111 !important;
+  }
+  
+
+  #passticheDialogModal .navbar .nav-collapse .nav.pull-right {
+    float: none !important;  margin-left: 0 !important;
+  }
+  
+
+  #passticheDialogModal .nav-collapse,
+  .nav-collapse.collapse {  height: 0 !important;
+    overflow: hidden !important;
+  }
+  
+
+  #passticheDialogModal .navbar .btn-navbar {
+    display: block !important;}
+  
+
+  #passticheDialogModal .navbar-static .navbar-inner {
+    padding-right: 10px !important;  padding-left: 10px !important;
+  }
+}
+
+
