@@ -32,13 +32,61 @@ class PassHandler(APIHandler):
 		from backend.passes import find
 		self.context['passes'] = find.find_passes(**query_args)
 		if self.get_argument('output','') == 'html':
+			# this is only for account CMS
 			self.render("website/account/cms/pass/list.html", **self.context)	
 		else:
-			self.write_json({'passes': [ self.pass_dict(p) for p in self.context['passes'] ]})
+			response_json = {'passes': [ self.pass_dict(p) for p in self.context['passes'] ]}
+			if self.get_argument('sdk'):
+				self.context['ua_type'] = self.ua_type()
+				# include personalized dialog html - could possibly be cached for identical UAs
+				response_json['dialog_html'] = self.render_string('resources/dialog/dialog.html', **self.context)
+			self.write_json(response_json)
 			return
 
 	def pass_dict(self, p):
-		return { 'name': p.name, 'short_code': p.short_code }
+		response = { 
+			'name': p.short_name(), 
+			'short_code': p.short_code, 
+			'img': p.img(),
+			'description': p.display_description(),
+		}
+		if self.get_argument('sdk', ''):
+			response['pass_details'] = 'just testing the html'
+		return response
+
+	def ua_type(self):
+
+		# if on iOS6 device, download pass
+		if self.get_argument('dl',''):
+		    self.context['ua_type'] = 'dl' 
+		    return  
+
+		self.context['ua_type'] = 'generic' 
+		if self.context['ua_type'] == 'dl':
+		    return
+		ua = gae_utils.GetUserAgent()            
+		if 'Mobile' in ua:
+		    if ('iPhone' in ua or 'iPod' in ua) and 'AppleWebKit' in ua:
+		        if 'OS 6_' in ua:
+		            self.context['ua_type'] = 'dl'
+		            return
+		        # a previous iPhone version 
+		        self.context['ua_type'] = 'upgrade_iOS'
+		    # another mobile OS
+
+		if 'Intel Mac' in ua:
+		    if 'OS X 10_8' in ua:
+		        if 'Safari' in ua and 'Chrome' not in ua:
+		            # Safari on Mountain Lion
+		            self.context['ua_type'] = 'dl'
+		            return
+		        # using Mountain Lion, not Safari
+		        self.context['ua_type'] = 'mountain_lion'  
+		        return
+		    # using previous OS X
+		    self.context['ua_type'] = 'upgrade_OSX'  
+
+
 
 class FindPass(PassHandler):
 

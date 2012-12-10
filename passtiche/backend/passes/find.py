@@ -136,7 +136,6 @@ class FindPass(object):
 			loc, name
 		'''
 		passes = json.loads(self.passes)
-
 		pass_templates = []
 
 		for p in passes:

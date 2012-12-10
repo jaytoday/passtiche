@@ -2,6 +2,9 @@ import logging
 import os
 import datetime, time
 import tornado.web
+
+from utils.cache import cache
+
 from google.appengine.api import users
 from model.user import User, SubUser 
 from utils import gae as gae_utils
@@ -30,6 +33,7 @@ class BaseHandler(tornado.web.RequestHandler):
             "handler_name": self.__class__.__name__,
             "handler": self,
             'token': None,
+            'is_mobile': None,
         }
         
         #if '__FOO' in os.environ['SERVER_NAME'].lower():
@@ -316,6 +320,9 @@ class CookieHandler(BaseHandler):
         if set_user:
             self.set_current_user(user_entity)
         return user_entity 
+
+
+
             
     def get_auto_keyname(self):
         keyname = 'auto_gen_' + os.environ.get('REMOTE_ADDR', 'unknown_IP') + os.environ.get('HTTP_USER_AGENT','unknown_UA') + str(
@@ -343,4 +350,19 @@ def send_welcome_email(user, subject):
         template="confirm.html")
     email_msg.send()  
     
+
+# TODO: navbar and other elements can't be cached
+#@cache(reset=True)#gae_utils.Debug())
+def static_page(page_name=None, template_file=None, context=None):
+
+    handler = BaseHandler(mock_handler=True)
+    handler.request.cookies = []
+    if not template_file:
+        template_file = "website/static/" + page_name + ".html"
+    logging.info(context)
+    if context:
+        handler.context.update(context)
+    logging.info(handler.context)
+    return handler.render_string(template_file, **handler.context) # TODO: see if context can optionally be passed
+
        

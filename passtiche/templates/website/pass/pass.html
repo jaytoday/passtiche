@@ -36,14 +36,13 @@ width: 280px;
 			</a>
 				<img class="pass _sprite {{ pass_template.slug }}" src="{{ pass_template.img() }}"></img>
 
-<img src="/static/images/Add_to_Passbook_Badge_2x.png" class="download_pass" style="width: 123px;
-height: 40px;
+<a style="
 margin: -3px 9px 0px 0px;
 position: absolute;
 bottom: 8px;
 left: 8px;
 border: 5px solid rgba(0, 0, 0, .15);
-border-radius: 5px;"/>
+border-radius: 5px;" data-pass-id="{{ pass_template.short_code }}"></a>
 
 					<div href="#sendPass" class="targ {% if is_mobile %}is_mobile{% end %}"></div>
 				
@@ -75,5 +74,4 @@ margin-right: 4px;" class="icon-share icon-white"></i> Share</a>
 
 
 				</div>
-				{% include "pass_details.html" %}
 			</div>

@@ -5,7 +5,7 @@ import datetime, time
 import logging
 import os
 
-from views.base import BaseHandler, CookieHandler
+from views.base import BaseHandler, CookieHandler, static_page
 from backend.user import auth
 from utils.cache import cache
 from utils import gae as gae_utils
@@ -32,7 +32,7 @@ class ViewHandler(CookieHandler):
         self.write(static_page('500', context={'error_msg': error_msg}))
         return  
                 
-        
+
 class PassticheIndex(ViewHandler):
     """ Main website view """
     
@@ -53,39 +53,6 @@ class PassticheIndex(ViewHandler):
         self.ua_type()
         self.write(static_page(None, "website/index.html", context=self.context))
         return
-
-    def ua_type(self):
-
-        # if on iOS6 device, download pass
-        if self.get_argument('dl',''):
-            self.context['ua_type'] = 'dl' 
-            return  
-
-        self.context['ua_type'] = 'generic' 
-        if self.context['ua_type'] == 'dl':
-            return
-        ua = gae_utils.GetUserAgent()            
-        if 'Mobile' in ua:
-            if ('iPhone' in ua or 'iPod' in ua) and 'AppleWebKit' in ua:
-                if 'OS 6_' in ua:
-                    self.context['ua_type'] = 'dl'
-                    return
-                # a previous iPhone version 
-                self.context['ua_type'] = 'upgrade_iOS'
-            # another mobile OS
-        
-        if 'Intel Mac' in ua:
-            if 'OS X 10_8' in ua:
-                if 'Safari' in ua and 'Chrome' not in ua:
-                    # Safari on Mountain Lion
-                    self.context['ua_type'] = 'dl'
-                    return
-                # using Mountain Lion, not Safari
-                self.context['ua_type'] = 'mountain_lion'  
-                return
-            # using previous OS X
-            self.context['ua_type'] = 'upgrade_OSX'  
-
 
 #@cache(version_only=True) # set False once this is stable
 def get_passes():
@@ -200,18 +167,5 @@ class PageNotFound(ViewHandler):
         return self.page_not_found()      
         
 
-# TODO: navbar and other elements can't be cached
-@cache(reset=True)#gae_utils.Debug())
-def static_page(page_name, template_file=None, context=None):
-
-    handler = ViewHandler(mock_handler=True)
-    handler.request.cookies = []
-    if not template_file:
-        template_file = "website/static/" + page_name + ".html"
-    logging.info(context)
-    if context:
-        handler.context.update(context)
-    logging.info(handler.context)
-    return handler.render_string(template_file, **handler.context) # TODO: see if context can optionally be passed
 
  

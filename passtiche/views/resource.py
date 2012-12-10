@@ -66,6 +66,25 @@ class PassImageHandler(BaseResourceHandler):
             raise ValueError
 
 
+class StaticResourceHandler(BaseResourceHandler):
+
+    # TODO: handle compression
+    
+    def get(self, resource_key):
+        if resource_key.endswith('.css'):
+            self.set_header('Content-Type','text/css') 
+        if resource_key.endswith('.js'):
+            self.set_header('Content-Type','text/javascript')             
+        
+        from views.base import static_page
+        self.write(static_page(template_file="resources/%s" % resource_key))
+        return
+
+
+
+
+
+
 @cache()    
 def get_media_image(media_key):
     from model.passes import PassImage

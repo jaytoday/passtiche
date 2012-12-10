@@ -78,7 +78,7 @@ class PassTemplate(BaseModel):
         return "%s at %s" % (self.name, self.location_name)
 
     def short_name(self):
-        return self.name or self.location_name
+        return self.name or self.location_name or 'Pass'
 
     def img(self):
 

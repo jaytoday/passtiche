@@ -115,6 +115,9 @@ application = tornado.wsgi.WSGIApplication([
     #(r'/mobile/?', mobile_index.UploadScreenshot), 
 
     # resources
+    #(r"/r/badge\.js", resource.StaticResourceHandler),
+    #(r"/r/badge\.css", resource.StaticResourceHandler),    
+    (r"/r/([\.0-9a-zA-Z-_]+)/?", resource.StaticResourceHandler),    
     (r"/img/p/([0-9a-zA-Z-_]+)/?", resource.PassImageHandler),   
 
     # admin

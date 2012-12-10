@@ -1,30 +1,3 @@
-var JSON;if(!JSON){JSON={};}
-(function(){"use strict";function f(n){return n<10?'0'+n:n;}
-if(typeof Date.prototype.toJSON!=='function'){Date.prototype.toJSON=function(key){return isFinite(this.valueOf())?this.getUTCFullYear()+'-'+
-f(this.getUTCMonth()+1)+'-'+
-f(this.getUTCDate())+'T'+
-f(this.getUTCHours())+':'+
-f(this.getUTCMinutes())+':'+
-f(this.getUTCSeconds())+'Z':null;};String.prototype.toJSON=Number.prototype.toJSON=Boolean.prototype.toJSON=function(key){return this.valueOf();};}
-var cx=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,escapable=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,gap,indent,meta={'\b':'\\b','\t':'\\t','\n':'\\n','\f':'\\f','\r':'\\r','"':'\\"','\\':'\\\\'},rep;function quote(string){escapable.lastIndex=0;return escapable.test(string)?'"'+string.replace(escapable,function(a){var c=meta[a];return typeof c==='string'?c:'\\u'+('0000'+a.charCodeAt(0).toString(16)).slice(-4);})+'"':'"'+string+'"';}
-function str(key,holder){var i,k,v,length,mind=gap,partial,value=holder[key];if(value&&typeof value==='object'&&typeof value.toJSON==='function'){value=value.toJSON(key);}
-if(typeof rep==='function'){value=rep.call(holder,key,value);}
-switch(typeof value){case'string':return quote(value);case'number':return isFinite(value)?String(value):'null';case'boolean':case'null':return String(value);case'object':if(!value){return'null';}
-gap+=indent;partial=[];if(Object.prototype.toString.apply(value)==='[object Array]'){length=value.length;for(i=0;i<length;i+=1){partial[i]=str(i,value)||'null';}
-v=partial.length===0?'[]':gap?'[\n'+gap+partial.join(',\n'+gap)+'\n'+mind+']':'['+partial.join(',')+']';gap=mind;return v;}
-if(rep&&typeof rep==='object'){length=rep.length;for(i=0;i<length;i+=1){if(typeof rep[i]==='string'){k=rep[i];v=str(k,value);if(v){partial.push(quote(k)+(gap?': ':':')+v);}}}}else{for(k in value){if(Object.prototype.hasOwnProperty.call(value,k)){v=str(k,value);if(v){partial.push(quote(k)+(gap?': ':':')+v);}}}}
-v=partial.length===0?'{}':gap?'{\n'+gap+partial.join(',\n'+gap)+'\n'+mind+'}':'{'+partial.join(',')+'}';gap=mind;return v;}}
-if(typeof JSON.stringify!=='function'){JSON.stringify=function(value,replacer,space){var i;gap='';indent='';if(typeof space==='number'){for(i=0;i<space;i+=1){indent+=' ';}}else if(typeof space==='string'){indent=space;}
-rep=replacer;if(replacer&&typeof replacer!=='function'&&(typeof replacer!=='object'||typeof replacer.length!=='number')){throw new Error('JSON.stringify');}
-return str('',{'':value});};}
-if(typeof JSON.parse!=='function'){JSON.parse=function(text,reviver){var j;function walk(holder,key){var k,v,value=holder[key];if(value&&typeof value==='object'){for(k in value){if(Object.prototype.hasOwnProperty.call(value,k)){v=walk(value,k);if(v!==undefined){value[k]=v;}else{delete value[k];}}}}
-return reviver.call(holder,key,value);}
-text=String(text);cx.lastIndex=0;if(cx.test(text)){text=text.replace(cx,function(a){return'\\u'+
-('0000'+a.charCodeAt(0).toString(16)).slice(-4);});}
-if(/^[\],:{}\s]*$/.test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,'@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,']').replace(/(?:^|:|,)(?:\s*\[)+/g,''))){j=eval('('+text+')');return typeof reviver==='function'?walk({'':j},''):j;}
-throw new SyntaxError('JSON.parse');};}}());
-
-
 
 if (window.location.href.indexOf('localhost') > -1)
 	BASE_URL = 'http://localhost:8080';
@@ -37,7 +10,7 @@ else
 /*
 
 
- Options include badge size
+ TODO: Better default for when something doesn't work or hasn't loaded
 
 */
 
@@ -48,6 +21,9 @@ PassticheBadger = {
 	init: function(){
 
 			/* 
+
+				See www.passtiche.com/docs for implementation details 
+
 				Required:
 					- loc
 				Optional:
@@ -57,20 +33,38 @@ PassticheBadger = {
 					- description
 			*/
 	
+			console.log('initiating Passtiche library');
 
 			passtiche.badgelinks = $('a[data-pass-loc], a[data-pass-id], a[href$=pkpass]');
 
-			passtiche.badge_data = { 'create': true, 'passes': [] }; // create passes if they don't already exist 
+			passtiche.badge_data = { 'create': true, 'passes': [], 'sdk': true }; // create passes if they don't already exist 
 
 
 			// collect badge data for each badge 
 			$(passtiche.badgelinks).each(PassticheBadger.addBadge);
 
-			// make ajax call and find badge
-			PassticheBadger.findBadges();
+
+			// load additional CSS and JS 
+			
+			PassticheBadger.loadResources();
+
+			// TODO - JS should contain callback for PassticheBadger.findBadges();
+			
+
 
 
 	}, // end init
+
+	loadResources: function(){
+
+			// add additional CSS and JS
+
+      // this should be first thing after jQuery loads
+	  $.getScript(BASE_URL + '/r/dialog.js', function(){ PassticheDialog.init(); });
+	  $('head').append('<link href="' + BASE_URL + '/r/dialog.css" rel="stylesheet" type="text/css">');
+	  
+	  console.log('loaded resources');
+	},
 
 	addBadge: function(){
 
@@ -116,9 +110,8 @@ PassticheBadger = {
 
 				var badge_width = parseInt(badge_height * 3.075);
 
-				var badge_img  = $('<img style="width: ' + badge_width + 'px; height: ' + badge_height + 'px;" src="' + BASE_URL + '/badge"></img>');
-				badge_img.on('click', PassticheBadger.badgeClick)
-				
+				var badge_img  = $('<img style="cursor:pointer;width: ' + badge_width + 'px; height: ' + badge_height + 'px;" src="' + BASE_URL + '/badge"></img>');
+
 				var badge_title = badgeLinkEl.text() || 'Add to Passbook';
 				badgeLinkEl.html(badge_img);
 				if (!badgeLinkEl.attr('title'))
@@ -135,6 +128,7 @@ PassticheBadger = {
 
 				}else{
 				
+				// TODO: if ID, it does not need call 
 				$(['loc', 'city', 'name', 'price', 'description', 'id']).each(function(i, attr){
 
 						var attr_val = badgeLinkEl.attr('data-pass-' + attr);
@@ -145,10 +139,10 @@ PassticheBadger = {
 					});
 
 				}
-
-
 				
-				badgeLinkEl.attr('href', BASE_URL + '/not_found');
+				badgeLinkEl.removeAttr('href'); // TODO: bind fallback link or message
+
+				badgeLinkEl.on('click', PassticheBadger.badgeClick);
 
 				passtiche.badge_data['passes'].push(pass_data);	
 
@@ -156,7 +150,7 @@ PassticheBadger = {
 
 	 findBadges: function(){
 	 			// make ajax call to get badge data
-
+	 			console.log('find badges');
 				passtiche.badge_data['passes'] = JSON.stringify(passtiche.badge_data['passes']);
 				console.log(passtiche.badge_data['passes']);
 
@@ -171,11 +165,12 @@ PassticheBadger = {
 					type: "GET",
 					url: BASE_URL + "/api/1/pass.find",
 					data: passtiche.badge_data,
-					success: function(response){
+					success: function(response_json){
+						    
+							console.log('adding dialog html and adding pass content to badges');
 
-							response_json = JSON.parse(response);
-							console.log(response_json)
-
+							var dialog_html = $(response_json['dialog_html']);
+							$('body').append(dialog_html);
 							$(response_json['passes']).each(PassticheBadger.badgeCallback);
 					}
 				});	
@@ -189,32 +184,54 @@ PassticheBadger = {
 		short_code = pass_dict['short_code'];
 		// this relies on 1-1 match between els and data
 		var badge_el = $(passtiche.badgelinks[i]);
-		PassticheBadger.addBadgeLink(short_code, badge_el)
+
+		PassticheBadger.addBadgeContent(pass_dict, badge_el);
+
+
+	},
+
+	addBadgeContent: function(pass_dict, badgeLinkEl){
+		// add href attribute to a link when pass ID is returned 
+
+		badgeLinkEl.attr('data-pass-id',short_code);
+		badgeLinkEl.data('pass-info', pass_dict);
 
 	},
 
 	addBadgeLink: function(short_code, badgeLinkEl){
+		/* Deprecated - or fallback */
 		// add href attribute to a link when pass ID is returned 
 		console.log(badgeLinkEl);
+		badgeLinkEl.attr('pass-code',short_code);
 		badgeLinkEl.attr('href', BASE_URL + '/p/' + short_code);
 		badgeLinkEl.attr('target', '_blank');
 
 	},
 
 	badgeClick: function(){
-		// badge has been clicked 
+		// TODO: check if JS is in place yet - if not then 
+
+		if (!PassticheDialog)
+			return console.error('no passtiche dialog');
+
+		PassticheDialog.openPassDialog($(this));
 	}
 
 
 };// end PassticheBadger
 
-
-
+window.PassticheBadger = PassticheBadger; 
 
 
 (function () {
 
     function loadScript(url, callback) {
+
+    	/*
+
+					TODO: jQuery can be required for dialog, but not for the bootstrapper! 
+
+		*/
 
     	if (window.jQuery)
     		return callback();

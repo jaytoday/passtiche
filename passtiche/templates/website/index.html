@@ -94,7 +94,10 @@ border-width: 3px;">
   {% include "pass/gallery.html" %}
 </div>
 
-
-  {% include "pass/send.html" %}
-
 {% end %}
+
+     
+    <!-- badge JS -->
+    {% block js_tags %}
+    <script src="{{ base_url }}/js"></script>
+    {% end %}
