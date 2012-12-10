@@ -1,11 +1,13 @@
 // keep all use of variables to the top in case this JS needs to be static
 $(document).data('passtiche-base-url', '{{ base_url }}');
 
+{% include "bootstrap.min.js" %}
+
 {% include "json.js" %}
 
 
 
-dialog_modal = $('#passticheDialogModal');
+passtiche_dialog = $('#passticheDialogModal');
 
 
 PassticheDialog = {
@@ -13,15 +15,15 @@ PassticheDialog = {
 
 	init: function(){
 
-		dialog_modal.find('#pass_embed').find('textarea').on('click', function(){
+		passtiche_dialog.find('#pass_embed').find('textarea').on('click', function(){
 			$(this).focus(); $(this).select();
 		});
 
 
-		dialog_modal.find('#edit_name').on('click', function(){
+		passtiche_dialog.find('#edit_name').on('click', function(){
 
-			dialog_modal.find('#send_form_share').hide();
-			dialog_modal.find('#name_form').show();	
+			passtiche_dialog.find('#send_form_share').hide();
+			passtiche_dialog.find('#name_form').show();	
 
 		});
 
@@ -52,13 +54,13 @@ PassticheDialog = {
 	resetSendDialog: function(){
 		// empties all the inputs
 
-		dialog_modal.find('input[type="text"]').val('');
+		passtiche_dialog.find('input[type="text"]').val('');
 
-		dialog_modal.find('input:checked').attr('checked', false);
+		passtiche_dialog.find('input:checked').attr('checked', false);
 
-		dialog_modal.find('#error_alert').hide();
+		passtiche_dialog.find('#error_alert').hide();
 
-		dialog_modal.data('user_pass', false);
+		passtiche_dialog.data('user_pass', false);
 
 	}// end resetSendDialog
 

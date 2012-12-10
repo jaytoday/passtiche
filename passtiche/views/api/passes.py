@@ -37,7 +37,7 @@ class PassHandler(APIHandler):
 		else:
 			response_json = {'passes': [ self.pass_dict(p) for p in self.context['passes'] ]}
 			if self.get_argument('sdk'):
-				self.context['ua_type'] = self.ua_type()
+				self.ua_type()
 				# include personalized dialog html - could possibly be cached for identical UAs
 				response_json['dialog_html'] = self.render_string('resources/dialog/dialog.html', **self.context)
 			self.write_json(response_json)
@@ -51,7 +51,7 @@ class PassHandler(APIHandler):
 			'description': p.display_description(),
 		}
 		if self.get_argument('sdk', ''):
-			response['pass_details'] = 'just testing the html'
+			response['pass_details'] = self.render_string('resources/pass_details.html', **{ 'pass_template': p })
 		return response
 
 	def ua_type(self):

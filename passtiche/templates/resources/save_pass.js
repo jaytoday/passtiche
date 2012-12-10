@@ -2,9 +2,9 @@ DEFAULT_NAME = "Not Specified";
 
 function getPassData(){
      return {
-          'pass_template': dialog_modal.data('pass_template_keyname'),
-          'action': dialog_modal.data('pass_action'),
-          'theme': dialog_modal.find('#inputThemes').find('input:checked').val(),
+          'pass_template': pass_dialog.data('pass_template_keyname'),
+          'action': pass_dialog.data('pass_action'),
+          'theme': pass_dialog.find('#inputThemes').find('input:checked').val(),
           'owner_name': localStorage.getItem("user_name")
      };
 
@@ -12,8 +12,8 @@ function getPassData(){
 
 function updateUserPassLink(){
      var pass_link =  $(document).data('domain') + '/u/' + pass_item.data('user_pass_id');
-     dialog_modal.find('#inputLink').val(pass_link);
-     dialog_modal.find('#link_text').attr('href','http://' + pass_link);
+     pass_dialog.find('#inputLink').val(pass_link);
+     pass_dialog.find('#link_text').attr('href','http://' + pass_link);
           
 }
 function createUserPass(){
@@ -43,7 +43,7 @@ function createUserPass(){
      data: pass_data,
      success: function(response){
      	console.log(response)
-     	dialog_modal.data('user_pass', response);
+     	pass_dialog.data('user_pass', response);
           pass_item.data('user_pass_id', response);
 
           updateUserPassLink();

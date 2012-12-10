@@ -2,13 +2,13 @@
 
 	var pass_data = { }
 
-	//pass_data['theme'] = dialog_modal.find('#inputThemes').find('input:checked').val();
-	pass_data['action'] = dialog_modal.data('pass_action');
+	//pass_data['theme'] = passtiche_dialog.find('#inputThemes').find('input:checked').val();
+	pass_data['action'] = passtiche_dialog.data('pass_action');
 
-	dialog_modal.find('#error_alert').hide();	
+	passtiche_dialog.find('#error_alert').hide();	
 
 		/*
-		pass_data['from_email']  = dialog_modal.find('#inputFrom').val();
+		pass_data['from_email']  = passtiche_dialog.find('#inputFrom').val();
 		if (false && pass_data['from_email'].indexOf('@') < 1)
 		return sendDialogError("Valid 'From' Email Address is Required");
 	*/
@@ -17,12 +17,12 @@
 
 	if (send_form.attr('id') == 'send_form_download'){
 		var download = true;
-		pass_data['pass_template'] = dialog_modal.data('pass_template_keyname');
+		pass_data['pass_template'] = passtiche_dialog.data('pass_template_keyname');
 	}else{
-		if (!dialog_modal.data('user_pass'))
+		if (!passtiche_dialog.data('user_pass'))
 			console.error('no user pass');
 		var download = false;
-		pass_data['user_pass'] = dialog_modal.data('user_pass') 
+		pass_data['user_pass'] = passtiche_dialog.data('user_pass') 
 	}
 
 	to_email = send_form.find('#inputToEmail').val();	
@@ -58,7 +58,7 @@ if (download && pass_data['to_email'])
 
 
 	send_form.html('<h1>Sent</h1>');
-	//dialog_modal.hide();
+	//passtiche_dialog.hide();
 
 
 

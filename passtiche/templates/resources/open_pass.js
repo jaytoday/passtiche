@@ -1,10 +1,10 @@
 
 	
-dialog_modal = $('#passticheDialogModal');
+passtiche_dialog = $('#passticheDialogModal');
 
-if (dialog_modal.length < 1) return console.error('dialog HTML not found');
+if (passtiche_dialog.length < 1) return console.error('dialog HTML not found');
 
-	if (dialog_modal.is(':visible')) return;
+	if (passtiche_dialog.is(':visible')) return;
 
 	// el can be various buttons and targets
 	pass_name = pass_link.data('pass-info')['name'];
@@ -15,68 +15,65 @@ if (dialog_modal.length < 1) return console.error('dialog HTML not found');
 	PassticheDialog.resetSendDialog();
 
 
-	dialog_modal.data('pass_template', pass_name);
-	dialog_modal.data('pass_template_code', pass_code);
-	dialog_modal.find('.pass_template:first').text(pass_name);	
+	passtiche_dialog.data('pass_template', pass_name);
+	passtiche_dialog.data('pass_template_code', pass_code);
+	passtiche_dialog.find('.pass_template:first').text(pass_name);	
 
 	
 	// use cached values if possible 
 	if (localStorage.getItem('user_email'))
-		dialog_modal.find('#send_form_download').find('#inputToEmail').val(localStorage.getItem('user_email'));
+		passtiche_dialog.find('#send_form_download').find('#inputToEmail').val(localStorage.getItem('user_email'));
 
 	if (localStorage.getItem('user_phone'))
-		dialog_modal.find('#send_form_download').find('#inputPhone').val(localStorage.getItem('user_phone'));
+		passtiche_dialog.find('#send_form_download').find('#inputPhone').val(localStorage.getItem('user_phone'));
 
 
 
 	// open up default option
-	dialog_modal.find('#passOptions').find('a:first').tab('show');
+	passtiche_dialog.find('#passOptions').find('a:first').tab('show');
 
-	//dialog_modal.find('#inputThemes input:first').click();
+	//passtiche_dialog.find('#inputThemes input:first').click();
 
-	dialog_modal.find('#pass_preview').attr('src', pass_img_src);
+	passtiche_dialog.find('#pass_preview').attr('src', pass_img_src);
 
-	/*
-
-	TODO: pass details should be added as hidden content to link, or just data 
-
-	var pass_details = pass_link.find('.pass_details_container:last').html();
-	dialog_modal.find('.pass_details_wrapper:first').html(pass_details);
-	*/
-
-
-	// setup pass link
-	var pass_link =  $(document).data('passtiche-base-url') + '/p/' + dialog_modal.data('pass_template_code');
-	dialog_modal.find('#inputLink').val(pass_link);
-	dialog_modal.find('#link_text').attr('href','http://' + pass_link);
-
-	// setup social links
-	dialog_modal.find('#share-social').find('.twitter').find('a').attr('href','http://twitter.com/intent/tweet?text=http%3A%2F%2Fpasstiche.com%2Fp%2F' 
-		+ dialog_modal.data('pass_template_code') + '%20Check%20Out%20This%20Pass');
-
-	dialog_modal.find('#share-social').find('.fb').find('a').attr('href','http://www.facebook.com/share.php?u=http%3A%2F%2Fpasstiche.com%2Fp%2F' 
-		+ dialog_modal.data('pass_template_code'));	
-
-
-	dialog_modal.modal('show');
-
-	dialog_modal.find('#pass_embed').find('textarea').html('&lt;script src="http://www.passtiche.com/js"&gt;&lt;/script&gt;\n'
-		+ '&lt;a data-pass-id="' + dialog_modal.data('pass_template_code') + '" &gt;&lt;/a&gt;')
+	var pass_details = pass_link.data('pass-info')['pass_details'];
+	console.log(pass_details);
+	passtiche_dialog.find('.pass_details_wrapper:first').html(pass_details);
 	
 
 
-	if (dialog_modal.find('#downloading_pass:visible').length > 0){
+	// setup pass link
+	var pass_link =  $(document).data('passtiche-base-url') + '/p/' + passtiche_dialog.data('pass_template_code');
+	passtiche_dialog.find('#inputLink').val(pass_link.slice(7,pass_link.length));
+	passtiche_dialog.find('#link_text').attr('href',pass_link);
+
+	// setup social links
+	passtiche_dialog.find('#share-social').find('.twitter').find('a').attr('href','http://twitter.com/intent/tweet?text=http%3A%2F%2Fpasstiche.com%2Fp%2F' 
+		+ passtiche_dialog.data('pass_template_code') + '%20Check%20Out%20This%20Pass');
+
+	passtiche_dialog.find('#share-social').find('.fb').find('a').attr('href','http://www.facebook.com/share.php?u=http%3A%2F%2Fpasstiche.com%2Fp%2F' 
+		+ passtiche_dialog.data('pass_template_code'));	
+
+
+	passtiche_dialog.modal('show');
+
+	passtiche_dialog.find('#pass_embed').find('textarea').html('&lt;script src="http://www.passtiche.com/js"&gt;&lt;/script&gt;\n'
+		+ '&lt;a data-pass-id="' + passtiche_dialog.data('pass_template_code') + '" &gt;&lt;/a&gt;')
+	
+
+
+	if (passtiche_dialog.find('#downloading_pass:visible').length > 0){
 		// redirect to direct download page 
 		var dd_href = $(document).data('base-url');
-		if (dialog_modal.data('user_pass'))
-			dd_href += ('/ud/' + dialog_modal.data('user_pass'));
+		if (passtiche_dialog.data('user_pass'))
+			dd_href += ('/ud/' + passtiche_dialog.data('user_pass'));
 		else dd_href += ('/pd/' + pass_code);
 
 		setTimeout(function(){
 			window.location.href = dd_href;	
 		}, 100);
 		setTimeout(function(){
-			dialog_modal.modal('hide');
+			passtiche_dialog.modal('hide');
 		}, 1000);		
 
 	}

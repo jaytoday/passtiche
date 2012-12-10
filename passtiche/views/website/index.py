@@ -50,7 +50,6 @@ class PassticheIndex(ViewHandler):
             if f not in self.context:
                 self.context[f] = ''
         self.context['pass_templates'] = get_passes()
-        self.ua_type()
         self.write(static_page(None, "website/index.html", context=self.context))
         return
 
