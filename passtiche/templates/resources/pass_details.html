@@ -7,7 +7,11 @@
 		{% if pass_template.organizationName %}
 			<div class="field_value" style="font-size: 1.2em !important;
 margin-bottom: 10px !important;"><a  {% if pass_template.url %} target="_blank" href="{{ pass_template.url or '' }}"{% end %}><!--<i  style="font-size: 15px !important;
-padding-top: 2px !important;" class='icon-info-sign'></i>-->{{ pass_template.organizationName }}</a></div>
+padding-top: 2px !important;" class='icon-info-sign'></i>--><img src="{{ base_url }}/static/images/logo/icon_small.png" style="
+width: 15px !important;
+float: left !important;
+margin: -2px 6px 0 0 !important;
+"> {{ pass_template.organizationName }}</a></div>
 		{% end %}
 
 	{% if pass_template.name and pass_template.location_name %}
@@ -18,7 +22,7 @@ padding-top: 2px !important;" class='icon-info-sign'></i>-->{{ pass_template.org
 		<div class="field_type">{{ pass_template.display_date() }} {% if pass_template.display_date() and pass_template.display_time() %}<div style="margin-bottom:4px !important;"></div>{% end %}{{ pass_template.display_time() }}
 		</div>
 	{% end %}
-	
+
 		{% if pass_template.display_price() %}
 		<div class="clr"></div>
 		<div class="field_type">Price: <b>{{ pass_template.display_price() }}</b></div>

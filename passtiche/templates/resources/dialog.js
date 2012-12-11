@@ -15,6 +15,7 @@ PassticheDialog = {
 
 	init: function(){
 
+
 		passtiche_dialog.find('#pass_embed').find('textarea').live('click', function(){
 			$(this).focus(); $(this).select();
 		});
@@ -31,7 +32,7 @@ PassticheDialog = {
 		passtiche_dialog.find('.send_pass_btn').live('click', PassticheDialog.sendPass);
 
 		passtiche_dialog.live('hidden', function(){
-		
+
 			$(this).addClass('hidden');
 
 		});

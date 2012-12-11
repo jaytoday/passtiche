@@ -221,7 +221,7 @@ PassticheBadger = {
 	badgeClick: function(){
 		// TODO: check if JS is in place yet - if not then 
 
-		if (!PassticheDialog)
+		if (!window.PassticheDialog)
 			return console.error('no passtiche dialog');
 
 		PassticheDialog.openPassDialog($(this));
