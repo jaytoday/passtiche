@@ -50,19 +50,28 @@ width: 572px;
 
 <div style="height:25px;"></div>
 
+<div style="margin: -10px 0px 25px;font-size: 18px;font-style: italic;">Use Passtiche to schedule personalized alerts 
+  &amp; reminders for customers</div>
+
 <ul class="well" style="
     
     font-size: 15px;
     color: #666;
-    padding: 10px 0px 10px 35px;
+    padding: 20px 0px 10px 35px;
     margin-left: -9px;
     width: 564px;
 ">
-<li  style="line-height: 27px;">Send personalized alerts and reminders to customers. <i>No app install required!</i></li>
-<li style="line-height: 27px;">Badges for passes generated for your listings or links to existing Passbook files </li>
-<li style="line-height: 27px;">Visitors can download your passes via SMS or email and share them with friends</li>
-<li  style="line-height: 27px;">Automatically enhance your listings passes with extra info from Yelp &amp; Foursquare</li>
-<li  style="line-height: 27px;">Tested on every web browser across dozens of tablets and mobile devices.</li>
+<span class="label label-danger" style="font-size: 15px;
+position: absolute;
+margin: -30px -20px;
+padding: 3px 8px 4px;">How it Works</span>
+
+
+<li style="line-height: 30px;">Passtiche auto-generates badges for listings or links to existing Passbook files </li>
+<li style="line-height: 30px;">Visitors can download your passes via SMS or email and share them with friends</li>
+<li  style="line-height: 30px;">Listings passes are automatically enhanced with extra info from Yelp &amp; Foursquare</li>
+<li  style="line-height: 30px;">Schedule personalized alerts &amp; reminders to be sent as Passbook notifications</li>
+<li  style="line-height: 30px;"><span class="label label-info">New</span> &nbsp; Badges supported on over a dozen web browsers and mobile devices.</li>
 </ul>
 <div style="height:5px;"></div>
 
@@ -80,7 +89,7 @@ margin: 20px 20px 0;">
 {% if current_user %}
 <div  class="alert" style="margin-left:20px; font-size:.9em;">This script tag uses code <code>{{ current_user.short_code }}</code> for the account of <b><a href="/dashboard">{{ current_user.display_name() }}</a></b></div>
 {% end %}
-This markup should be placed at the bottom of your website's HTML (or generated-HTML) structure, before the closing &lt;body&gt; tag.
+This markup should be placed at the bottom of your website's HTML (or generated-HTML) structure, before the closing &lt;body&gt; tag. The sections below describe how to generate badges, or <a href="http://jsbin.com/uwadev/1/edit" target="_blank">check out a couple of examples on JSBin</a>. 
 
 </div>
 

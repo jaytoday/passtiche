@@ -70,16 +70,16 @@ if (passtiche_dialog.length < 1) return console.error('dialog HTML not found');
 
 	if (passtiche_dialog.find('#downloading_pass:visible').length > 0){
 		// redirect to direct download page 
-		var dd_href = $(document).data('base-url');
+		var dd_href = PASSTICHE_BASE_URL;
 		if (passtiche_dialog.data('user_pass'))
 			dd_href += ('/ud/' + passtiche_dialog.data('user_pass'));
 		else dd_href += ('/pd/' + pass_code);
 
 		setTimeout(function(){
 			window.location.href = dd_href;	
-		}, 100);
+		}, 500);
 		setTimeout(function(){
 			passtiche_dialog.modal('hide');
-		}, 1000);		
+		}, 3000);		
 
 	}

@@ -5,6 +5,10 @@ pre {
 
 }
 
+#footer{
+  bottom:auto !important;
+}
+
 .dropdown .dropdown-menu {
     display: none;
 }
@@ -149,7 +153,7 @@ html{
   background: none;
 }
 
-body, .navbar .navbar-inner .container-fluid{
+.body-content, .navbar .navbar-inner .container-fluid{
   max-width: 1150px;
   margin: 0 auto;
 }
@@ -157,6 +161,7 @@ body, .navbar .navbar-inner .container-fluid{
 body{
   background: url("../img/grid.png") repeat-x;
   background-attachment: fixed;
+   margin: 0 auto;
 }
 
 /* custom navigation styles */

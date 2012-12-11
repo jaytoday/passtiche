@@ -146,6 +146,7 @@ class PassTemplate(BaseModel):
         for f in ['coupon', 'boardingPass', 'storeCard', 'eventTicket' 'generic']:
             if self.pass_info.get(f):
                 return self.pass_info[f]
+        return {}
 
     @classmethod
     def get_slug(cls, name):

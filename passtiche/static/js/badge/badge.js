@@ -1,5 +1,5 @@
 
-if (window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('thelevybreaks/Dropbox') > -1)
+if (window.location.href.indexOf('localhost') > -1)
 	PASSTICHE_BASE_URL = 'http://localhost:8080';
 else
 	PASSTICHE_BASE_URL = 'http://www.passtiche.com';
