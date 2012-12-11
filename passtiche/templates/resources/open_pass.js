@@ -47,7 +47,10 @@ if (passtiche_dialog.length < 1) return console.error('dialog HTML not found');
 
 	// setup pass link
 	var pass_link =  $(document).data('passtiche-base-url') + '/p/' + passtiche_dialog.data('pass_template_code');
-	passtiche_dialog.find('#inputLink').val(pass_link.slice(7,pass_link.length));
+	var short_pass_link = pass_link.slice(7,pass_link.length);
+	if (short_pass_link.indexOf('www.') == 0)
+		short_pass_link = short_pass_link.slice(4,short_pass_link.length);
+	passtiche_dialog.find('#inputLink').val(short_pass_link);
 	passtiche_dialog.find('#link_text').attr('href',pass_link);
 
 	// setup social links

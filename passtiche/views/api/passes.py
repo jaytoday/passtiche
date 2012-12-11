@@ -51,7 +51,8 @@ class PassHandler(APIHandler):
 			'description': p.display_description(),
 		}
 		if self.get_argument('sdk', ''):
-			response['pass_details'] = self.render_string('resources/pass_details.html', **{ 'pass_template': p })
+			self.context['pass_template'] = p
+			response['pass_details'] = self.render_string('resources/pass_details.html', **self.context)
 		return response
 
 	def ua_type(self):
