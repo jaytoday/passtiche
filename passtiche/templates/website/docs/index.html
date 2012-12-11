@@ -36,11 +36,12 @@
 <p><br/></p>
 <div style="height:10px;"></div>
 
-<a style="
-    float: left;
+<div style="   float: left;
     margin-right: 25px;display: block;
-width: 125px;
-" href="http://www.passtiche.com/demo.pkpass">Download My Pass</a>
+width: 125px;">
+<a style="" href="http://www.passtiche.com/demo.pkpass">Download My Pass</a>
+</div>
+
 <p style="
 font-size: 16px;
 width: 572px;
@@ -99,7 +100,13 @@ margin: 20px 20px 0;">
 
 <p>Here is the badge rendered when this link is on a page with the Passtiche JS library:
 <div style="margin:15px;text-align:center;max-width:500px;">
-<div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> <a href="http://www.passtiche.com/demo.pkpass">Download My Pass</a> </div>
+<div  style="height:40px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> 
+
+  <div style="margin: auto; text-align:center;">
+    <a href="http://www.passtiche.com/demo.pkpass">Download My Pass</a>
+  </div>
+
+ </div>
 </div></p>
 <div style="height:45px;"></div>
 
@@ -166,6 +173,7 @@ You can also use <code>data-pass-id</code> to specify a 4-character ID code for 
 <h2 id="customize-your-passes">Customize Badges &amp; Passes</h2>
 
 <div style="height:5px;"></div>
+
 <h3 id="wzxhzdk53-customizing-pass-appearance">&nbsp; Configuring Badge Size:</h3>
 <div style="margin: 0 20px 20px;">
 You can set the <code>data-pass-size</code> attribute to <code>xsmall</code> <i>(20px height)</i>, <code>small</code> <i>(30px height)</i>, <code>medium</code> <i>(<b>default</b>, 40px height)</i>, <code>large</code> <i>(60px height)</i>, or <code>xlarge</code> <i>(80px height)</i>.
@@ -174,8 +182,16 @@ You can set the <code>data-pass-size</code> attribute to <code>xsmall</code> <i>
 
 <div style="margin:15px;text-align:center;max-width:500px;">
 <div  style="height:60px; margin:20px;padding:10px;background:rgba(200,200,200,.3);border-radius:5px;"> 
-  <a style="margin-right: 10px;" data-pass-size="xsmall" data-pass-loc="Local Pub" data-pass-city="San Francisco" data-pass-name="Sample a Dozen Beers" data-pass-price="10" ></a>
-  <a style="margin-right: 10px;" data-pass-size="40" data-pass-loc="Local Pub" data-pass-city="San Francisco" data-pass-name="Sample a Dozen Beers" data-pass-price="10" ></a> <a data-pass-size="large" data-pass-loc="Local Pub" data-pass-city="San Francisco" data-pass-name="Sample a Dozen Beers" data-pass-price="10" ></a></div>
+  <div style="margin-left:20px;margin-right: 10px; float:left; margin-top: 21px;">
+  <a data-pass-size="xsmall" data-pass-loc="Local Pub" data-pass-city="San Francisco" data-pass-name="Sample a Dozen Beers" data-pass-price="10" ></a>
+</div>
+<div style="margin-right: 10px; float:left; margin-top: 10px;">
+  <a data-pass-size="40" data-pass-loc="Local Pub" data-pass-city="San Francisco" data-pass-name="Sample a Dozen Beers" data-pass-price="10" ></a>
+  </div>
+  <div style="float:left;"> <a data-pass-size="large" data-pass-loc="Local Pub" data-pass-city="San Francisco" data-pass-name="Sample a Dozen Beers" data-pass-price="10" ></a>
+  </div>
+
+</div>
 </div>
 
 <div style="height:15px;"></div>

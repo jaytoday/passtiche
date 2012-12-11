@@ -81,13 +81,14 @@ class PassTemplate(BaseModel):
         return self.name or self.location_name or 'Pass'
 
     def img(self):
+        from utils.gae import base_url
 
         if self.image_key:
-            return '/img/p/%s' % self.image_key
+            return '%s/img/p/%s' % (base_url(), self.image_key)
         if self.image_url:
             return self.image_url
         import random
-        return '/static/images/pass/default/%s.jpg' % random.randint(1,4)
+        return '%s/static/images/pass/default/%s.jpg' % (base_url(), random.randint(1,4))
 
     def display_price(self):
         if self.price_rating:

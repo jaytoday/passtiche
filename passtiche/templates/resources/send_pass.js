@@ -52,7 +52,7 @@ if (download && pass_data['to_email'])
      	  setTimeout(function(){
      	  	passtiche_dialog.find('#sent-confirmation').addClass('hidden');
      	  	passtiche_dialog.find('#dialog-tab-content').removeClass('hidden');
-     	  	passtiche_dialog.modal('hide'); passtiche_dialog.addClass('hidden');
+     	  	passtiche_dialog.find('button.close:first').click(); 
      	  }, 2500);
 
   	}

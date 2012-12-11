@@ -123,15 +123,19 @@ PassticheBadger = {
 
 				var badge_width = parseInt(badge_height * 3.075);
 
-				var clearslate_css = 'border: none !important; display: block !important;margin: 0 !important;outline: none !important;padding: 0 !important;background: none !important;clear: none !important;'
+				var clearslate_css = 'border: none !important; display: block !important;margin: auto !important;outline: none !important;padding: 0 !important;background: none !important;clear: none !important;'
 					+ 'float: none !important;max-height: none !important;max-width: none !important;min-height: 0 !important;width: auto!important;height: auto !important;min-width: 0 !important;visibility: visible !important;bottom: auto !important;'
 					+ 'clip: auto !important;left: auto !important;overflow: auto !important;position: relative !important;right: auto !important;top: auto !important;vertical-align: top !important;z-index: 1 !important;'
 					+ 'color: none !important;cursor:pointer !important;';
 
 				// TODO: better way to override for custom styles
-				badgeLinkEl.attr('style', clearslate_css);
+				
 
-				var badge_img  = $('<img style="' + clearslate_css + 'width: ' + badge_width + 'px !important; height: ' + badge_height + 'px !important;" src="' + PASSTICHE_BASE_URL + '/badge"></img>');
+				var dimensions_css = 'width: ' + badge_width + 'px !important; height: ' + badge_height + 'px !important;';
+
+				badgeLinkEl.attr('style', clearslate_css + dimensions_css );
+
+				var badge_img  = $('<img style="' + clearslate_css + dimensions_css + '" src="' + PASSTICHE_BASE_URL + '/badge"></img>');
 
 				var badge_title = badgeLinkEl.text() || 'Add to Passbook';
 				badgeLinkEl.html(badge_img);

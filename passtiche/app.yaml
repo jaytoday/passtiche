@@ -24,6 +24,22 @@ handlers:
   static_files: static/passes/Apple/Coupon.pkpass
   upload: /static/passes/Apple/Coupon.pkpass
 
+- url: /coupon.pkpass
+  static_files: static/passes/Apple/Coupon.pkpass
+  upload: /static/passes/Apple/Coupon.pkpass  
+
+- url: /event.pkpass
+  static_files: static/passes/Apple/Event.pkpass
+  upload: /static/passes/Apple/Event.pkpass  
+
+- url: /generic.pkpass
+  static_files: static/passes/Apple/Generic.pkpass
+  upload: /static/passes/Apple/Generic.pkpass  
+
+- url: /storecard.pkpass
+  static_files: static/passes/Apple/StoreCard.pkpass
+  upload: /static/passes/Apple/StoreCard.pkpass  
+
 
 - url: /channel.html
   static_files: static/channel.html

@@ -47,7 +47,7 @@ class PassHandler(APIHandler):
 		response = { 
 			'name': p.short_name(), 
 			'short_code': p.short_code, 
-			'img': self.context['base_url'] + p.img(),
+			'img': p.img(),
 			'description': p.display_description(),
 		}
 		if self.get_argument('sdk', ''):

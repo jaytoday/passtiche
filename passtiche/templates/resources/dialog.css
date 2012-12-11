@@ -25,6 +25,13 @@ text-align: left !important;
 }
 
 
+#passticheDialogModal [class^="icon-"]:before,
+#passticheDialogModal [class*=" icon-"]:before {
+  font-family: none !important;
+  font-weight: none !important;
+  color: none !important;
+  font-size: 0  !important;
+}
 
 #passticheDialogModal .modal-header{
 	background: rgba(200, 200, 200, .2) !important;

@@ -36,13 +36,16 @@ width: 280px;
 			</a>
 				<img class="pass _sprite {{ pass_template.slug }}" src="{{ pass_template.img() }}"></img>
 
-<a style="
-margin: -3px 9px 0px 0px;
+<!-- Include Link with Pass ID -->
+<div style="margin: -3px 9px 0px 0px;
 position: absolute;
 bottom: 8px;
 left: 8px;
 border: 5px solid rgba(0, 0, 0, .15);
-border-radius: 5px;" data-pass-id="{{ pass_template.short_code }}"></a>
+border-radius: 5px;">
+<a style="" data-pass-id="{{ pass_template.short_code }}"></a>
+</div>
+
 
 					<div href="#sendPass" class="targ {% if is_mobile %}is_mobile{% end %}"></div>
 				
