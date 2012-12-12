@@ -181,36 +181,38 @@ class SendPass(AjaxHandler):
         # TODO: refactor this to backend API
 
         from model.passes import UserPass, PassTemplate
-        pass_template = PassTemplate.all().filter('short_code',self.get_argument('pass_template')).get()
+        self.pass_template = PassTemplate.all().filter('short_code',self.get_argument('pass_template')).get()
+        self.context['pass_template'] = self.pass_template
+
         code = str_utils.genkey(length=5)
         self.user_pass = UserPass(key_name=code, code=code,owner=current_user, 
-                template=pass_template, pass_name=pass_template.name, pass_code=pass_template.short_code, action='download')
+                template=self.pass_template, pass_name=self.pass_template.name, pass_code=self.pass_template.short_code, action='download')
 
         if to_email:
             self.user_pass.to_email = to_email
         if to_phone:
             self.user_pass.to_phone = self.sanitize_phone(to_phone)
 
-        pass_template.saves += 1
+        self.pass_template.saves += 1
 
-        db.put([self.user_pass, pass_template])
-        self.context['user_pass'] = self.user_pass
+        db.put([self.user_pass, self.pass_template])
+        
 
         if to_email:
-            self.download_email()
+            self.download_email(to_email)
         if to_phone:
             self.download_phone()
       
 
-    def download_email(self):
+    def download_email(self, to_email):
         from backend.mail.base import EmailMessage
-        email_msg = EmailMessage(subject="Here is your PassBook pass", to=self.user_pass.to_email, 
+        email_msg = EmailMessage(subject="Here is your PassBook pass", to=to_email, 
             context=self.context, template='pass/download.html')
         email_msg.send()  
 
     def download_phone(self):
         from backend.phone import send_sms
-        send_sms("Download Your Pass: %s" % self.user_pass.url(), self.user_pass.to_phone)
+        send_sms("Download Your Pass: %s" % self.pass_template.url(), self.user_pass.to_phone)
 
     def share_phone_recipient(self):
         from backend.phone import send_sms

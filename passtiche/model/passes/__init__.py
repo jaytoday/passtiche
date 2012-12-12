@@ -148,6 +148,10 @@ class PassTemplate(BaseModel):
                 return self.pass_info[f]
         return {}
 
+    def dl_url(self):
+        link = 'http://passtiche.com/p/%s' % self.short_code
+        return link        
+
     @classmethod
     def get_slug(cls, name):
         from utils.string import safe_slugify
@@ -158,6 +162,8 @@ class PassTemplate(BaseModel):
         s = self.description
         s = truncate_by_words_if_long(s, limit)
         return s
+
+
 
 
 

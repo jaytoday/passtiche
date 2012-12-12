@@ -49,13 +49,14 @@ if (download && pass_data['to_email'])
   	window.SendPassCB = function(){
   		console.log('send pass callback');
 
-     	  setTimeout(function(){
+    
+  	}
+
+  	setTimeout(function(){
      	  	passtiche_dialog.find('#sent-confirmation').addClass('hidden');
      	  	passtiche_dialog.find('#dialog-tab-content').removeClass('hidden');
      	  	passtiche_dialog.find('button.close:first').click(); 
      	  }, 2500);
-
-  	}
 
   	pass_data['callback'] = 'SendPassCB';
    $.ajax({

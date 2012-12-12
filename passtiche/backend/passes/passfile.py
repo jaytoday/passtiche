@@ -118,8 +118,8 @@ class PassFile(object):
 			self.pass_json['backFields'][1]['label']= 'Event Location'
 			if self.pass_location.get('street_address'):
 				self.pass_json['backFields'][1]['value'] = self.pass_location.get('street_address')
-			if self.pass_template.get('neighborhood_name'):
-				self.pass_json['backFields'][1]['value'] += " (%s)" % self.pass_template.get('neighborhood_name')
+			if self.pass_location.get('neighborhood_name'):
+				self.pass_json['backFields'][1]['value'] += " (%s)" % self.pass_location.get('neighborhood_name')
 			self.pass_json['backFields'][2]['label']= 'Venue Information'
 			if self.pass_location.get('phone'):
 				self.pass_json['backFields'][2]['value'] += '%s\n\n' % self.pass_location.get('phone')
@@ -134,7 +134,7 @@ class PassFile(object):
 
 
 
-	def update_json(self):
+	def _update_json(self):
 
 		
 		# first specify item

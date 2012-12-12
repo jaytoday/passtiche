@@ -50,6 +50,10 @@ class PassticheIndex(ViewHandler):
             if f not in self.context:
                 self.context[f] = ''
         self.context['pass_templates'] = get_passes()
+        if self.context['linked_pass_entity']:
+            self.context['pass_templates']['tickets'] = [pt for pt in self.context['pass_templates']['tickets'] if (
+                    pt.key() != self.context['linked_pass_entity'].key())]
+            self.context['pass_templates']['tickets'].insert(0,self.context['linked_pass_entity'])
         self.write(static_page(None, "website/index.html", context=self.context))
         return
 
@@ -136,6 +140,7 @@ class PassDirectDownload(ViewHandler):
         # TODO: in the future this should be cached in advance if possible 
         pass_creator = passfile.PassFile(pass_template=pass_template)
         pass_creator.create()
+        pass_creator.send_info()
         return pass_creator.write(self)    
    
 class UserPassDirectDownload(ViewHandler):

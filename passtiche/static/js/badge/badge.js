@@ -48,6 +48,10 @@ PassticheBadger = {
 							var dialog_html = $(response_json['dialog_html']);
 							$('body').append(dialog_html.html());
 							$(response_json['passes']).each(PassticheBadger.badgeCallback);
+
+							setTimeout(function(){
+								$(document).trigger('passtiche-loaded');
+							},50);
 			}
 
 			passtiche.badge_data = { 'create': true, 'passes': [], 'sdk': true, 'callback': callbackName }; // create passes if they don't already exist 

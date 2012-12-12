@@ -2,12 +2,12 @@
 
 {% block main %}
 <br/><br/>
-<font color="#333333" size="5"><b>Here is your pass.</b></font>
+<font color="#333333" size="5"><b>Here is your <i>{{ pass_template.short_name() }} pass.</b></font>
 <font color="#666666" size="3">
 <br/><br/>
 
 Your pass is available for download on your iPhone or the latest version of Safari for Mac:<br/><br/>
-    {{ user_pass.url() }}
+    {{ pass_template.dl_url() }}
 <br/><br/>
 </font>
 {% end %}

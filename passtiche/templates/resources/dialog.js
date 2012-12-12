@@ -40,7 +40,7 @@ PassticheDialog = {
 	   // callback to the other JS file 
 	   PassticheBadger.findBadges();
 
-
+	
 	}, // end init
 
 	openPassDialog: function(pass_link){
