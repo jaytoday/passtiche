@@ -212,7 +212,7 @@ class SendPass(AjaxHandler):
 
     def download_phone(self):
         from backend.phone import send_sms
-        send_sms("Download Your Pass: %s" % self.pass_template.url(), self.user_pass.to_phone)
+        send_sms("Download Your Pass: %s" % self.pass_template.dl_url(), self.user_pass.to_phone)
 
     def share_phone_recipient(self):
         from backend.phone import send_sms

@@ -44,7 +44,7 @@ settings = {
     "facebook_admin": "2401963",
     
     # Configuration
-    "debug": os.environ['SERVER_SOFTWARE'].startswith('Development'), 
+    "debug": os.environ.get('SERVER_SOFTWARE','').startswith('Development'), 
     "static_path": os.path.join(os.path.dirname(__file__), "static"),
     #"xsrf_cookies": True,
 }        

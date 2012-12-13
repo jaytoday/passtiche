@@ -16,8 +16,7 @@ if (!window.location.hash)
 
 if ('{{ linked_pass_template }}' && window.location.hash.indexOf('#') < 0){
 $(document).live('passtiche-loaded', function(){
-    console.error($('.pass_item[code="{{ linked_pass_template }}"]').find('a.passtiche-link'), $('.pass_item[code="{{ linked_pass_template }}"]'));
-        $('.pass_item[code="{{ linked_pass_template }}"]').find('a.passtiche-link').click();
+        $('.pass_item[code="{{ linked_pass_template }}"]:first').find('a.passtiche-link').click();
     });
     
 }

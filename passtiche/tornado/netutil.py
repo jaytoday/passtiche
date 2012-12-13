@@ -121,7 +121,7 @@ class TCPServer(object):
         """Singular version of `add_sockets`.  Takes a single socket object."""
         self.add_sockets([socket])
 
-    def bind(self, port, address=None, family=socket.AF_UNSPEC, backlog=128):
+    def bind(self, port, address=None, family=socket.AF_INET, backlog=128):
         """Binds this server to the given port on the given address.
 
         To start the server, call `start`. If you want to run this server
@@ -217,7 +217,7 @@ class TCPServer(object):
             logging.error("Error in connection callback", exc_info=True)
 
 
-def bind_sockets(port, address=None, family=socket.AF_UNSPEC, backlog=128):
+def bind_sockets(port, address=None, family=socket.AF_INET, backlog=128):
     """Creates listening sockets bound to the given port and address.
 
     Returns a list of socket objects (multiple sockets are returned if
@@ -234,6 +234,7 @@ def bind_sockets(port, address=None, family=socket.AF_UNSPEC, backlog=128):
     The ``backlog`` argument has the same meaning as for 
     ``socket.listen()``.
     """
+    return
     sockets = []
     if address == "":
         address = None

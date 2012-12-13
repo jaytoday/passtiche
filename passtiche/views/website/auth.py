@@ -28,10 +28,12 @@ class Login(ViewHandler):
         except (errors.PasswordError):
             logging.warning('Incorrect email/password combination for email %s' % email)
             self.error = 'Incorrect email/password combination'
+            self.set_status(402)
             return self.get()
         except (errors.NoEntityError):
             logging.warning('No entity found for email %s' % email)
             self.error = 'No user found for this email address'           
+            self.set_status(402)
             return self.get()
             
         self.redirect(ACCOUNT_HOME)

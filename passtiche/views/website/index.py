@@ -54,6 +54,9 @@ class PassticheIndex(ViewHandler):
             self.context['pass_templates']['tickets'] = [pt for pt in self.context['pass_templates']['tickets'] if (
                     pt.key() != self.context['linked_pass_entity'].key())]
             self.context['pass_templates']['tickets'].insert(0,self.context['linked_pass_entity'])
+            if len(self.context['pass_templates']['tickets']) == 10:
+                self.context['pass_templates']['tickets'] = self.context['pass_templates']['tickets'][:9]
+
         self.write(static_page(None, "website/index.html", context=self.context))
         return
 

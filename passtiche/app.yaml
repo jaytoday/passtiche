@@ -46,8 +46,6 @@ handlers:
   upload: static/channel.html
 
 
-   
-
 
 
 - url: /pf/
@@ -76,6 +74,13 @@ handlers:
   script: main.application
   login: admin  
     
+# TESTING
+
+- url: /test.*
+  login: admin  # This is important if you deploy the test directory in production!
+  script: utils.gaeunit.app
+
+# MAIN VIEWS
 
 - url: /.*
   script: main.application
