@@ -6,28 +6,11 @@ import tornado.web
 import tornado.wsgi
 import wsgiref.handlers
 
-PASSBOOK_DESCRIPTION = """
-
-Passbook on iPhone and iPod touch is where 
-you store and access all your boarding passes, 
-movie tickets, retail coupons, loyalty cards, and 
-more.
-
-"""
-
-PASSBOOK_INSTRUCTIONS = """
-
-To add this <pass/ticket/coupon/card> to 
-Passbook, open this <email, web page> on 
-your iPhone or iPod touch.
-
-"""
-
-            
+           
 settings = {
 
-    "title": u"passtiche",
-    "description": "Share and Create Fun Passbook Passes",
+    "title": u"Passtiche",
+    "description": "Passbook Badges For Your Website",
     "cookie_secret": "49490ja09jfkjapojspokajk20jk",
     "template_path": os.path.join(os.path.dirname(__file__), "templates"),
     
@@ -55,8 +38,6 @@ from views.website import index, auth, account
 
 from views.ajax import index as ajax_index, mobile as ajax_mobile
 
-from views.mobile import index as mobile_index
-
 from views.api import passes as pass_api
 from views.api import location as loc_api
 from views.api import passlist as list_api
@@ -83,21 +64,19 @@ application = tornado.wsgi.WSGIApplication([
 
     (r"/docs", index.Docs),
     (r"/docs/(?P<path>[^\/]+)?", index.Docs),    
-     # shortcut login
-     (r'/login/(?P<email>[^\/]+)/?', auth.Login),
+    # shortcut login
+    (r'/login/(?P<email>[^\/]+)/?', auth.Login),
 
-     # pass URLs 
-     #(r'/pt/(?P<pass_id>[^\/]+)/(?P<letter_code>[^\/]+)/?', index.PassURL),     
-     (r'/p/(?P<pass_code>[^\/]+)/?', index.PassDownload),   
-     (r'/u/(?P<pass_code>[^\/]+)/?', index.UserPassDownload),   
-     (r'/pd/(?P<pass_code>[^\/]+)/?', index.PassDirectDownload),
-     (r'/ud/(?P<pass_code>[^\/]+)/?', index.UserPassDirectDownload),               
+    # pass URLs 
+    #(r'/pt/(?P<pass_id>[^\/]+)/(?P<letter_code>[^\/]+)/?', index.PassURL),     
+    (r'/p/(?P<pass_code>[^\/]+)/?', index.PassDownload),   
+    (r'/u/(?P<pass_code>[^\/]+)/?', index.UserPassDownload),   
+    (r'/pd/(?P<pass_code>[^\/]+)/?', index.PassDirectDownload),
+    (r'/ud/(?P<pass_code>[^\/]+)/?', index.UserPassDirectDownload),               
 
     # ajax
     (r'/ajax/user\.email_signup/?', ajax_index.EmailSignup), 
     (r'/ajax/user\.edit/?', ajax_index.EditProfile), 
-
-
 
 
     (r'/ajax/pass\.save/?', ajax_index.SavePass),    
@@ -111,9 +90,6 @@ application = tornado.wsgi.WSGIApplication([
     (r'/api/(?P<api_version>[\d\.]*)/list\.find/?', list_api.FindList),  
     (r'/api/(?P<api_version>[\d\.]*)/list\.update/?', list_api.UpdateList), 
 
-    # mobile
-    #(r'/mobile/?', mobile_index.UploadScreenshot), 
-
     # resources
     #(r"/r/badge\.js", resource.StaticResourceHandler),
     #(r"/r/badge\.css", resource.StaticResourceHandler),    
@@ -125,22 +101,20 @@ application = tornado.wsgi.WSGIApplication([
     (r"/admin/mail/?", admin.Email),
     (r"/admin/run/(?P<task>[^\/]+)?", admin.RunTask),
 
-
-
-     (r'/_4sq_callback/?', services.FoursquareCallback), 
-     (r'/_4sq_push/?', services.FoursquarePush), 
+    (r'/_4sq_callback/?', services.FoursquareCallback), 
+    (r'/_4sq_push/?', services.FoursquarePush), 
     # Apple push service URL
-     (r'/_ps/?', services.APNS), 
+    (r'/_ps/?', services.APNS), 
 
     # GAE handlers
-     (r'/_ah/channel/disconnected/', gae.ChannelDisconnect),
-     (r'/_ah/channel/connected/', gae.ChannelConnect),
-     
+    (r'/_ah/channel/disconnected/', gae.ChannelDisconnect),
+    (r'/_ah/channel/connected/', gae.ChannelConnect),
+    
   
-      
+     
     (r'.*', index.PageNotFound)
     # TODO: for 404 deliver static compiled resource
-            
+           
 ], **settings)
 
 
