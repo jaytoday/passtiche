@@ -10,6 +10,7 @@ try:
 except:
     from django.utils import simplejson as json   
 import os
+import zipfile
 
 _INDEX_NAME = 'pass'
 
@@ -20,13 +21,13 @@ class PassUpdate(object):
 
 	def create_or_update(self, name=None, slug=None, description=None, price=None, schedule=None, 
 			neighborhood_name=None, location=None, location_code=None, price_rating=None, api=False, 
-			image_url=None, href=None, user=None, organizationName=None, url=None, **kwargs):
+			image_url=None, url=None, user=None, organizationName=None, organizationUrl=None, **kwargs):
 		
 		self.user = user
 
-		if href:
+		if url:
 			# this does not allow file-based passes to have updated listings on Passtiche
-			return self.pass_file(href)
+			return self.pass_file(url)
 		if not slug:
 		    slug = PassTemplate.get_slug(name) or 'event'
 		keyname = slug
@@ -86,10 +87,11 @@ class PassUpdate(object):
 
 		if organizationName:
 			pass_template.organizationName = organizationName
-		if url:
-			if not url.startswith('http://'):
-				url = 'http://%s' % url
-			pass_template.url = url
+
+		if organizationUrl:
+			if not organizationUrl.startswith('http://'):
+				organizationUrl = 'http://%s' % organizationUrl
+			pass_template.organizationUrl = organizationUrl
 
 		if image_url:
 			pass_template.image_url = image_url	
@@ -121,14 +123,21 @@ class PassUpdate(object):
 
 
 	def pass_file(self, url):
+		if self.user:
+			user_keyname = self.user.key().name()
+		else:
+			user_keyname = '_no_user'
 		safe_url = url
+		key_name = "%s_%s" % (user_keyname, safe_url)
 		
-		pass_template = PassTemplate.get_by_key_name(url)
+		pass_template = PassTemplate.get_by_key_name(key_name)
 		if pass_template:
 			new = False
 		else:
 			new = True
-			pass_template = PassTemplate(key_name=safe_url, url=url)
+			pass_template = PassTemplate(key_name=key_name, url=url)
+			if self.user:
+				pass_template.owner = self.user
 			from utils import string as str_utils
 			code = str_utils.genkey(length=4)
 			pass_template.short_code = code
@@ -138,7 +147,7 @@ class PassUpdate(object):
 		# TODO: check last modified, only update if not modified in over x hours
 		if new or pass_template.modified < (datetime.datetime.now() - datetime.timedelta(hours=1)):
 			logging.info('deferring update from passfile')
-			deferred.defer(update_from_passfile, url)
+			deferred.defer(update_from_passfile, key_name)
 		else:
 			logging.info('this pass was modified too recently')
 
@@ -146,14 +155,19 @@ class PassUpdate(object):
 
 
 
-def update_from_passfile(url):
-	pass_template = PassTemplate.get_by_key_name(url)
+def update_from_passfile(key_name):
+	pass_template = PassTemplate.get_by_key_name(key_name)
 	remote_pass = RemotePass()
 	logging.info('getting pass from URL')
-	remote_pass.from_url(url)
+	remote_pass.from_url(pass_template.url)
 
-	logging.info(remote_pass.pass_info)
+	logging.debug('remote pass info: %s' % remote_pass.pass_info)
 	pass_template.pass_info = remote_pass.pass_info
+	for f in ['background', 'strip', 'logo']:
+		imgObj = getattr(remote_pass, f)
+		if imgObj:
+			pass_template.save_image(imgObj)
+			break
 	# get name from description? 
 
 	# TODO: other fields - [x][headerFields][secondaryFields][auxiliaryFields] - key/value
@@ -185,10 +199,27 @@ class RemotePass(object):
 
 		logging.info('URL Response Length: %s' % len(response.content))
 		import StringIO
-		import zipfile
-		objZip = zipfile.ZipFile(StringIO.StringIO(response.content),'r')
-		pass_json = zipfile.ZipFile.read(objZip,'pass.json')
+		self.objZip = zipfile.ZipFile(StringIO.StringIO(response.content),'r')
+
+		pass_json = zipfile.ZipFile.read(self.objZip,'pass.json')
 		self.pass_info = json.loads(pass_json)
+
+		self.get_images()
+
+	def get_images(self):
+		# logo is for org, icon is tiny icon, strip for store card, background/thumbnail for events
+		
+		for f in ['logo', 'icon', 'strip', 'background', 'thumbnail']:
+			try:
+				imgObj = zipfile.ZipFile.read(self.objZip,'%s.png' % f)
+			except KeyError:
+				imgObj = None
+			setattr(self, f, imgObj)	
+
+
+
+
+
 
 
 

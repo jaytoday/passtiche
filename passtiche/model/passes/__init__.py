@@ -24,10 +24,13 @@ class PassTemplate(BaseModel):
 
     # these fields are for external passes
     url = db.StringProperty(required=False)
-    organizationName = db.StringProperty(required=False)  
     pass_info = model.util.properties.PickledProperty(default={}) # full pass json object
 
-    loc_info = model.util.properties.PickledProperty(default={}) # full pass json object
+    organizationName = db.StringProperty(required=False)  
+    organizationUrl = db.StringProperty(required=False)
+    
+
+    loc_info = model.util.properties.PickledProperty(default={}) # full loc json object
 
     name = db.StringProperty(required=False)  
     location_code = db.StringProperty()  
@@ -63,7 +66,10 @@ class PassTemplate(BaseModel):
     image_url = db.StringProperty(required=False)
     tags = model.util.properties.PickledProperty(default=[])
 
-    saves = db.IntegerProperty(default=0)
+
+    downloads = db.IntegerProperty(default=0)
+    views = db.IntegerProperty(default=0)
+    sends = db.IntegerProperty(default=0)
     shares = db.IntegerProperty(default=0)
  
     description = db.TextProperty(required=False)
@@ -121,13 +127,6 @@ class PassTemplate(BaseModel):
             times.append(time_str)
         return ", ".join(times)
 
-    @classmethod    
-    def update_from_json(cls):
-        from backend.passes import fixtures
-        fixture_update = fixtures.FixtureUpdate(cls)
-        fixture_update.run()
-
-
     # TODO: cache? 
     def get_location(self, reset=False):
         if not self.location_code:
@@ -152,10 +151,6 @@ class PassTemplate(BaseModel):
         link = 'http://passtiche.com/p/%s' % self.short_code
         return link        
 
-    @classmethod
-    def get_slug(cls, name):
-        from utils.string import safe_slugify
-        return safe_slugify(name)
 
     def display_description(self, limit=35):
         from utils.string import truncate_by_words_if_long
@@ -163,8 +158,31 @@ class PassTemplate(BaseModel):
         s = truncate_by_words_if_long(s, limit)
         return s
 
+    def save_image(self, imgObj):
+        from backend.passes.images import save_pass_image
+        save_pass_image(self, imgObj)
 
+    @classmethod
+    def get_slug(cls, name):
+        from utils.string import safe_slugify
+        return safe_slugify(name)
 
+    @classmethod    
+    def update_from_json(cls):
+        from backend.passes import fixtures
+        fixture_update = fixtures.FixtureUpdate(cls)
+        fixture_update.run()
+
+# defer 
+def increment(increment_type, code):
+
+    pass_template = PassTemplate.all().filter('short_code',code).get()       
+    
+    val = getattr(pass_template, increment_type)
+    logging.info('incrementing %s from %s for pass template %s' % (
+        increment_type, val, pass_template.key().name()))
+    setattr(pass_template, increment_type, val + 1)
+    pass_template.put()    
 
 
 

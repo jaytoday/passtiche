@@ -1,11 +1,11 @@
-{% comment "TODO: THIS REQUIRES TONS OF DATABASE CALLS!" %}
+
 {% set loc = pass_template.get_location() %}
 
 <div class="pass_details_container">
 	<div class="alert alert-info pass_details_inner">
 
 		{% if pass_template.organizationName %}
-			<div class="field_value" style="font-size: 1.2em !important;
+			<div class="field_value" style="font-size: 1.2em !important; line-height: 18px !important;
 margin-bottom: 10px !important;"><a  {% if pass_template.url %} target="_blank" href="{{ pass_template.url or '' }}"{% end %}><!--<i  style="font-size: 15px !important;
 padding-top: 2px !important;" class='icon-info-sign'></i>--><img src="{{ base_url }}/static/images/logo/icon_small.png" style="
 width: 15px !important;

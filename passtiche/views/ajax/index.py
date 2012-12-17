@@ -49,6 +49,11 @@ class AccountInvite(AjaxHandler):
 class SavePass(AjaxHandler):
 
     def get(self):
+        """
+
+        Deprecated 
+
+        """
         self.set_header('Access-Control-Allow-Origin', '*')
         if self.get_argument('increment', ''):
             return self.increment()
@@ -130,6 +135,65 @@ class SendPass(AjaxHandler):
         self.write_json({'status': 'OK'})
 
 
+    def download(self):
+        # TODO: create new UserPass to record that this user has this pass? 
+
+        to_email = self.get_argument('to_email','')
+        to_phone = self.get_argument('to_phone','')
+        theme = self.get_argument('theme','')
+        
+        current_user = self.get_current_user()
+        
+        # TODO: refactor this to backend API
+
+        from model.passes import UserPass, PassTemplate
+        self.pass_template = PassTemplate.all().filter('short_code',self.get_argument('pass_template')).get()
+        self.context['pass_template'] = self.pass_template
+
+        
+        
+        """
+        # Deprecated for now 
+        code = str_utils.genkey(length=5)
+        self.user_pass = UserPass(key_name=code, code=code,owner=current_user, 
+                template=self.pass_template, pass_name=self.pass_template.name, pass_code=self.pass_template.short_code, action='download')
+        
+        if to_email:
+            self.user_pass.to_email = to_email
+        if to_phone:
+            self.user_pass.to_phone = self.sanitize_phone(to_phone)
+        """
+
+
+        from google.appengine.ext.deferred import deferred
+        from model.passes import increment
+        deferred.defer(increment, 'sends', self.pass_template.short_code)
+
+        #db.put([self.user_pass, self.pass_template])
+        
+
+        if to_email:
+            self.download_email(to_email)
+        if to_phone:
+            self.download_phone()
+      
+
+    def download_email(self, to_email):
+        from backend.mail.base import EmailMessage
+        email_msg = EmailMessage(subject="Here is your PassBook pass", to=to_email, 
+            context=self.context, template='pass/download.html')
+        email_msg.send()  
+
+    def download_phone(self):
+        from backend.phone import send_sms
+        send_sms("Download Your Pass: %s" % self.pass_template.dl_url(), self.user_pass.to_phone)
+
+    def sanitize_phone(self, number):
+        number = number.replace('-','').replace(' ','').replace('(','').replace(')','')  
+        if not number.startswith('1'): number = "1" + number
+        return number 
+        
+    '''
     def share(self):
 
         to_email = self.get_argument('to_email','')
@@ -165,54 +229,7 @@ class SendPass(AjaxHandler):
         #self.share_email_sender()   
 
         self.write('OK')
-
-
-
-
-    def download(self):
-        # TODO: create new UserPass to record that this user has this pass? 
-
-        to_email = self.get_argument('to_email','')
-        to_phone = self.get_argument('to_phone','')
-        theme = self.get_argument('theme','')
-        
-        current_user = self.get_current_user()
-        
-        # TODO: refactor this to backend API
-
-        from model.passes import UserPass, PassTemplate
-        self.pass_template = PassTemplate.all().filter('short_code',self.get_argument('pass_template')).get()
-        self.context['pass_template'] = self.pass_template
-
-        code = str_utils.genkey(length=5)
-        self.user_pass = UserPass(key_name=code, code=code,owner=current_user, 
-                template=self.pass_template, pass_name=self.pass_template.name, pass_code=self.pass_template.short_code, action='download')
-
-        if to_email:
-            self.user_pass.to_email = to_email
-        if to_phone:
-            self.user_pass.to_phone = self.sanitize_phone(to_phone)
-
-        self.pass_template.saves += 1
-
-        db.put([self.user_pass, self.pass_template])
-        
-
-        if to_email:
-            self.download_email(to_email)
-        if to_phone:
-            self.download_phone()
-      
-
-    def download_email(self, to_email):
-        from backend.mail.base import EmailMessage
-        email_msg = EmailMessage(subject="Here is your PassBook pass", to=to_email, 
-            context=self.context, template='pass/download.html')
-        email_msg.send()  
-
-    def download_phone(self):
-        from backend.phone import send_sms
-        send_sms("Download Your Pass: %s" % self.pass_template.dl_url(), self.user_pass.to_phone)
+    '''
 
     def share_phone_recipient(self):
         from backend.phone import send_sms
@@ -231,11 +248,6 @@ class SendPass(AjaxHandler):
             context=self.context, template='pass/sender.html')   
         email_msg.send()
 
-    def sanitize_phone(self, number):
-        number = number.replace('-','').replace(' ','').replace('(','').replace(')','')  
-        if not number.startswith('1'): number = "1" + number
-        return number 
-        
         
 class AccountPayment(AjaxHandler):
 
@@ -294,6 +306,12 @@ class EditProfile(AjaxHandler):
             }
         user.put()
 
+class PassCallback(AjaxHandler):
+    def get(self):
+        from google.appengine.ext.deferred import deferred
+        from model.passes import increment
+        deferred.defer(increment, self.get_argument('type'), self.get_argument('pass_template')) 
+        # TODO: return updated version?        
             
 class EmailSignup(AjaxHandler):
 

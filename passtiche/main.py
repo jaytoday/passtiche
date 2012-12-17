@@ -79,8 +79,9 @@ application = tornado.wsgi.WSGIApplication([
     (r'/ajax/user\.edit/?', ajax_index.EditProfile), 
 
 
-    (r'/ajax/pass\.save/?', ajax_index.SavePass),    
+    #(r'/ajax/pass\.save/?', ajax_index.SavePass),    
     (r'/ajax/pass\.send/?', ajax_index.SendPass),     
+    (r'/ajax/pass\.callback/?', ajax_index.PassCallback),         
 
 
     (r'/api/(?P<api_version>[\d\.]*)/pass\.find/?', pass_api.FindPass), 

@@ -192,7 +192,11 @@ class PassFile(object):
 		    handler.write(buf)
 		handler.set_header("Content-Type", "application/vnd.apple.pkpass")	
 		handler.set_header('Content-Disposition', "attachment; filename=%s.pkpass" % self.pass_code)
-		strIO.close()  	
+		strIO.close()
+
+		from google.appengine.ext.deferred import deferred
+		from model.passes import increment
+		deferred.defer(increment, 'downloads', self.pass_template.short_code)
 
 
 '''

@@ -76,7 +76,7 @@ class FindPass(object):
 				raise ValueError(p['id'])
 		
 
-		if 'href' in p:
+		if 'url' in p:
 			# will search in update class
 			return self.create_or_update(p)
 

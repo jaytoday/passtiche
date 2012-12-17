@@ -24,48 +24,25 @@ height: 112px;">{% if p and p.description %}{{ p.description }}{% end %}</textar
     <a class="btn btn-mini upload_img">Upload Image</a>
     <input type="hidden" id="image_url"> 
 
-    <div style="clear:both;">
-  <div class="well" style="margin: 20px 0 20px 30px;
+
+    {% if not p or not p.url %}
+      {% include "edit_activity.html" %}
+    {% end %}
+
+
+    {% if not p or p.url %}
+     <div style="clear:both;">
+  <div class="well" style="margin: 20px 0 20px 0px;
 padding: 10px;
 float: left;
 clear: both;">
-    <label>Neighborhood</label>
-    <input type="text" id="neighborhood_name" {% if p and p.neighborhood_name %}value="{{ p.neighborhood_name }}"{% end %}>
-    <label>Optional Location Code <span class="help-block" style="font-size: .7em;
-margin-bottom: -3px;"> &nbsp; cannot be edited</span></label>
-     <input type="text" id="location_code" {% if p and p.location_code %}value="{{ p.location_code }}"{% end %}>
-    </div></div>     
+    <label>&nbsp; <i>pkpass</i> url <span class="help-block" style="font-size: .7em;
+margin-bottom: -3px;"> &nbsp; this field is only for remotely hosted passes</span></label>
+    <input type="text" id="url" style="width:350px;" {% if p %}disabled{% end %} value="{% if p %}{{ p.url }}{% end %}">
+  </div></div>
+    {% end %}
+    
 
-
-  <div style="clear:both;">
-  <div class="well" style="margin: 20px 0 20px 30px;
-padding: 10px;
-float: left;
-clear: both;">
-    <label>Optional Price</label>
-    $ <input type="text" id="price" {% if p and p.price %}value="{{ p.price }}"{% end %}>
-
-    <label>or Optional Price Rating</label> 
-    <select id="price_rating"><option></option><option {% if p and p.price_rating == 1 %}selected{% end %}>$</option>, <option {% if p and p.price_rating == 2 %}selected{% end %}>$$</option>, <option {% if p and p.price_rating == 3 %}selected{% end %}>$$$</option>, <option {% if p and p.price_rating == 4 %}selected{% end %}>$$$$</option></select>  
-    </div></div>  
-
-   <div style="clear:both;">
-  	<div class="well" style="margin: 20px 0 20px 30px;
-padding: 10px;
-float: left;
-clear: both;">
-    <label>Optional Date Starts</label>
-    <input type="text" id="starts" {% if p and p.schedule.get('starts') %}value="{{p.schedule.get('starts') }}"{% end %}>
-    <label>Optional Date Ends</label>
-    <input type="text" id="ends" {% if p and p.schedule.get('ends') %}value="{{ p.schedule.get('ends') }}"{% end %}>  
-    <label>Optional Weekday Range <span class="help-block" style="font-size: .7em;
-margin-bottom: -3px;">(Tues - Sun, Wed - Fri)</span></label>
-    <input type="text" id="weekday_range"  {% if p and p.schedule.get('weekday_range') %}value="{{ p.schedule.get('weekday_range') }}"{% end %}> 
-    <label>Optional Times <span class="help-block" style="font-size: .7em;
-margin-bottom: -3px;">[{ "starts": "7pm", "ends": "9pm"  }]</span></label>
-    <input type="text" id="times" {% if p and p.schedule.get('times') %}value="{{ p.schedule.get('times') }}"{% end %}>        
-
-    </div></div> 
 
 
        <div style="clear:both;" class="admin_only">
@@ -76,7 +53,7 @@ clear: both;">
     <label>Organization</label>
     <input type="text" id="organizationName" {% if p and p.organizationName %}value="{{ p.organizationName }}"{% end %}>
     <label>Website</label>
-    <input type="text" id="url" {% if p and p.url %}value="{{ p.url }}"{% end %}>  
+    <input type="text" id="organizationUrl" {% if p and p.organizationUrl %}value="{{ p.organizationUrl }}"{% end %}>  
     </div></div> 
 
 

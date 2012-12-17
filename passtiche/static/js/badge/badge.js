@@ -142,7 +142,7 @@ PassticheBadger = {
 				if (badgeLinkEl.filter('[href$=pkpass]').length > 0){
 
 					// linked pass
-					pass_data['href'] = badgeLinkEl.attr('href');
+					pass_data['url'] = badgeLinkEl.attr('href');
 
 
 				}else{

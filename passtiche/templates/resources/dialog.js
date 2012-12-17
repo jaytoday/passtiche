@@ -37,6 +37,15 @@ PassticheDialog = {
 
 		});
 
+		passtiche_dialog.find('#share-social').find('a').live('click', function(){
+		    $.ajax({
+		     	type: "GET",
+		     	url: PASSTICHE_BASE_URL + "/ajax/pass.callback",
+		     	data: { 'type': 'shares', 'pass_template': passtiche_dialog.data('pass_template_code') }
+			 });
+
+		})
+
 	   // callback to the other JS file 
 	   PassticheBadger.findBadges();
 
@@ -47,6 +56,8 @@ PassticheDialog = {
 
 
 		{% include "open_pass.js" %}
+
+		setTimeout(PassticheDialog.viewCallback, 250);
 
 
 	}, // end openPassDialog
@@ -72,7 +83,17 @@ PassticheDialog = {
 
 		passtiche_dialog.data('user_pass', false);
 
-	}// end resetSendDialog
+	}, // end resetSendDialog
+
+
+	viewCallback: function(){	
+
+     $.ajax({
+     	type: "GET",
+     	url: PASSTICHE_BASE_URL + "/ajax/pass.callback",
+     	data: { 'type': 'views', 'pass_template': passtiche_dialog.data('pass_template_code') }
+     });
+} // end viewCallback
 
 } // end PassticheDialog
 
