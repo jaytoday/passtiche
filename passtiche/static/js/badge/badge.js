@@ -5,16 +5,6 @@ else
 	PASSTICHE_BASE_URL = 'http://www.passtiche.com';
 window.PASSTICHE_BASE_URL = PASSTICHE_BASE_URL;
 
-// TODO: implement as a proper js lib with different methods and options 
-// TODO: dynamically compile and cache 
-
-/*
-
-
- TODO: Better default for when something doesn't work or hasn't loaded
-
-*/
-
 passtiche = {};
 
 PassticheBadger = {
