@@ -1,12 +1,5 @@
-
-<div>
-      <span class="label label-danger" style="font-size: 15px;
-position: absolute;
-margin-top: -28px;
-padding: 3px 8px 4px;">Pass</span>
   <fieldset>
 
-    <legend>{% if p %}{{ p.short_name() }}{% else %}New Pass{% end %}</legend> 
     <input type="text"  placeholder="Pass Name" id="name" {% if p and p.name %}value="{{ p.name }}"{% end %}>   <a style="margin: -7px 5px 0;" class="btn btn-mini not_available">Lookup Info</a>
 
 
@@ -26,7 +19,24 @@ height: 112px;">{% if p and p.description %}{{ p.description }}{% end %}</textar
 
 
     {% if not p or not p.url %}
-      {% include "edit_activity.html" %}
+    <div class="accordion" id="pass_activity_accordian" style="width: 500px;
+margin: 20px;
+background: rgba(100, 100, 100, .04);
+border-radius: 10px;">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#pass_activity_accordian" data-target="#pass_activity_body">
+     <i id="pass_activity_accordian_icon" class="icon-plus"></i>  Pass Activity
+      </a>
+    </div>
+    <div id="pass_activity_body" class="accordion-body collapse">
+      <div class="accordion-inner">
+           {% include "edit_activity.html" %}
+      </div>
+    </div>
+  </div>
+</div>
+
     {% end %}
 
 
@@ -57,12 +67,6 @@ clear: both;">
     </div></div> 
 
 
-
-
-   
-
-
-
    <!-- <span class="help-block">Example block-level help text here.</span>
     <label class="checkbox">
       <input type="checkbox"> Check me out
@@ -75,4 +79,3 @@ clear: both;">
    <input type="hidden" id="delete"> 
    </div>
   </fieldset>
-</div>

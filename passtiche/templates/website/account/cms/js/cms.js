@@ -11,7 +11,7 @@
 
 /* Tabs */
 $(function(){
-$('#main-nav').find('li').on('click',function (e) {
+$('#dashboard-menu').find('li').on('click',function (e) {
 
 	$('#content_edit_wrapper').html('').hide();
 

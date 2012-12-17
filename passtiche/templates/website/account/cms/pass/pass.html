@@ -1,0 +1,41 @@
+
+<div>
+      <span class="label label-danger" style="font-size: 15px;
+position: absolute;
+margin-top: -28px;
+padding: 3px 8px 4px;">Pass</span>
+
+
+    <legend style="font-size: 25px;
+line-height: 45px;
+border: none;">{% if p %}{{ p.short_name() }}{% else %}New Pass{% end %}</legend> 
+
+
+<div>
+            <ul id="passOptions" class="nav nav-tabs">
+              <li class="active"><a data-target="#pass-edit">Edit</a></li>
+              {% if p %}
+              <li><a data-target="#pass-analytics">Analytics</a></li>
+              <li><a data-target="#pass-messages">Messages</a></li>
+              {% end %}
+            </ul>
+
+       </div>  
+
+  <div class="tab-content" id="passOptionsContent">
+  <div class="tab-pane active" id="pass-edit">
+  {% include "edit.html" %}
+</div>
+
+{% if p %}
+  <div class="tab-pane" id="pass-analytics">
+  {% include "analytics.html" %}
+</div>
+  <div class="tab-pane" id="pass-messages">
+    {% include "messages.html" %}
+  </div>
+  {% end %}
+
+</div>
+        
+</div>

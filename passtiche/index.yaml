@@ -44,6 +44,12 @@ indexes:
   - name: modified
     direction: desc
 
+- kind: PassTemplate
+  properties:
+  - name: owner
+  - name: views
+    direction: desc
+
 - kind: Widget
   properties:
   - name: user

@@ -1,6 +1,27 @@
 {% extends "../../base.html" %}
 
 
+{% block css %}
+table.menu-list tr:hover th{
+	color:#666;
+
+}
+
+#dashboard-menu a span{
+	font-size:17px;
+}
+
+
+@media (max-width: 1200px){
+
+table.menu-list .views h4{
+font-size: 11px;
+margin: 11px -16px;
+}	
+}
+
+{% end %}
+
 {% block js_tags %}
 
 <script src="/static/js/cms/Theme.js"></script>
@@ -43,18 +64,21 @@ $(function () {
 width: 100%;
 float: left;
 margin-bottom: 0px;">
-			<ul id="main-nav" class="nav pull-left" style="cursor:pointer;padding-left:15px;margin-bottom:-2px;">
+			<ul id="dashboard-menu" class="nav nav-pills pull-left" style="cursor:pointer;padding-left:15px;margin-bottom:7px;">
 				<li class="active">
 					<a data-target="#passes" href="#passes"  id='pass_link'>
 						<span>Passes</span>        					
 					</a>
 				</li>
+
+				{% if current_user and current_user.is_admin() %}
+
 				<li>
 					<a data-target="#locations" href="#locations"  id='location_link'>
 						<span>Locations</span>        					
 					</a>
 				</li>	
-				{% if current_user and current_user.is_admin() %}
+				
 				<li>
 					<a data-target="#lists" href="#lists"  id='list_link' >
 						<span>Lists</span>        					
@@ -63,9 +87,10 @@ margin-bottom: 0px;">
 				{% else %}
 				<li>
 					<a data-target="#settings" href="#settings" id='settings_link'>
-						<span><i class='icon-cog'></i> &nbsp; Settings</span>        					
+						<span><i style="line-height:20px;" class='icon-cog'></i> &nbsp; Settings</span>        					
 					</a>
-				</li>				
+				</li>
+												
 				{% end %}						
 			</ul>
 			
@@ -106,12 +131,16 @@ padding-left: 0;padding-top:30px;">
 							<div class="tab-pane" id="settings">
 								<div id="settings_links" style="line-height:40px;">
 								
-									<a class="btn" id="account_settings">Account Settings</a>
+									<a class="btn" style="font-size: 17px;
+line-height: 26px;
+margin: 5px;" id="account_settings">Account Settings</a>
 									<div id="account_settings_inner" style="display:none;">
 											{% include "settings/account_settings.html" %}
 									</div>
 									<br/>
-										<a class="btn" id="edit_profile">Edit Profile</a>
+										<a class="btn" style="font-size: 17px;
+line-height: 26px;
+margin: 5px;"  id="edit_profile">Edit Profile</a>
 									<div id="edit_profile_inner" style="display:none;">
 										{% include "settings/edit_profile.html" %}
 									</div>
@@ -140,7 +169,7 @@ padding-left: 0;padding-top:30px;">
 			
 			<div id="new_pass_wrapper" style="display:none;">
 				{% set p = None %}
-				{% include "pass/edit.html" %}
+				{% include "pass/pass.html" %}
 			</div>
 			<div id="new_location_wrapper" style="display:none;">
 				{% set l = None %}

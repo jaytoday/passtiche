@@ -3,7 +3,7 @@ function updatePassTemplates(){
 	$.ajax({
 	type: "GET",
 	url: "/api/1/pass.find",
-	data: {'output': 'html', 'code': $(document).data('account') },
+	data: {'output': 'html', 'order': '-views', 'code': $(document).data('account') },
 	success: function(response){
 	// TODO: JS templating with JSON
 	renderPassTemplates(response);
@@ -25,8 +25,23 @@ $('#pass_link').parent().on('click', function(){
 });
 
 
+$('#pass_list').find('tr').live('click', function(){
+	editPass($(this));
+});
+
+function editPass(el){
+ 	$('#content_edit_wrapper').html(el.find('.edit').html()).show();
+
+	$('#content_edit_wrapper').find('#passOptions').find('a').on('click',function (e) {
+ 		 $(this).tab('show');
+ 		 	$('#content_edit_wrapper').find('#passOptionsContent').find($(this).attr('data-target')).siblings().removeClass('active').end().addClass('active');
+
+	}).filter(':first').click();
+
+}
+
 $('a.edit_pass').live('click', function(){
-       $('#content_edit_wrapper').html($(this).parent().find('.edit').html()).show();
+      editPass($(this).parent());
 });
 
 $('a#new_pass').on('click', function(){
@@ -34,6 +49,16 @@ $('a#new_pass').on('click', function(){
      $('#content_edit_wrapper').html($('#new_pass_wrapper').html()).show();
 
 });
+
+	  $('#content_edit_wrapper').find('#pass_activity_accordian').live('show', function() {
+    // Replace the icon by switching out the class
+   $('#pass_activity_accordian_icon').removeClass('icon-plus').addClass('icon-minus');
+   });
+	  $('#content_edit_wrapper').find('#pass_activity_accordian').live('hide', function() {
+    // Replace the icon by switching out the class
+   $('#pass_activity_accordian_icon').removeClass('icon-minus').addClass('icon-plus');
+   });
+
 
 
 

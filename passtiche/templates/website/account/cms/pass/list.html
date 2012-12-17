@@ -1,15 +1,41 @@
 
- {% for p in passes %}
-<div style="margin:5px; padding:5px;">
+<table id="pass_list" class="menu-list table table-striped">
 
-<a class="edit_pass btn btn-primary" >{{ p.short_name() }}</a>
-<div class="edit" style="display:none;">
-	{% include "edit.html" %}
-</div>
-</div>
+<tbody>
+
+
+ {% for p in passes %}
+		<tr style="cursor:pointer">
+		<th>
+			
+			<div style="margin:5px; padding:5px;">
+
+				<a style="width:140px;" class="edit_pass btn btn-primary" >{{ p.short_name() }}</a>
+				<div class="edit" style="display:none;">
+					{% include "pass.html" %}
+				</div>
+				</div>
+
+		</th>
+		<th class="views">
+			{% if p.views %}
+			<h4 style="width: 100px;
+padding-top: 4px;">{{ p.views }} Views</h4>
+			{% end %}
+
+		</th>
+		</tr>
+
+		{% end %}
+
+		{% if not passes %}
+		<div class="well" style="margin: 0  20px;float:left;">
+		You don't have any saved passes.
+		</div>
 {% end %}
-{% if not passes %}
-<div class="well" style="margin: 0  20px;float:left;">
-You don't have any saved passes.
-</div>
-{% end %}
+
+
+
+
+</tbody>
+</table>
