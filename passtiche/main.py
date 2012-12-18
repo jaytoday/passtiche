@@ -104,9 +104,12 @@ application = tornado.wsgi.WSGIApplication([
 
     (r'/_4sq_callback/?', services.FoursquareCallback), 
     (r'/_4sq_push/?', services.FoursquarePush), 
-    # Apple push service URL
-    (r'/_ps/?', services.APNS), 
 
+    # Apple registration URL
+    (r'/_ps/v1/devices/(?P<deviceID>[^\/]+)/registrations/(?P<pass_type>[^\/]+)/(?P<serial>[^\/]+)?', services.PassbookRegister), 
+    (r'/_ps/v1/devices/(?P<deviceID>[^\/]+)/registrations/(?P<pass_type>[^\/]+)/?', services.PassbookGetSerials), 
+    (r'/_ps/v1/passes/(?P<pass_type>[^\/]+)/(?P<serial>[^\/]+)?', services.PassbookGetPass), 
+    (r'/_ps/v1/log?', services.PassbookLog),     
     # GAE handlers
     (r'/_ah/channel/disconnected/', gae.ChannelDisconnect),
     (r'/_ah/channel/connected/', gae.ChannelConnect),

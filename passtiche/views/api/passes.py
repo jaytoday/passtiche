@@ -135,6 +135,12 @@ class UpdatePass(PassHandler):
 			db.delete(updated_template)
 		else:
 			db.put(updated_template)
+
+		# this could be deferred for extra put
+		from backend.passes import push
+		pass_pusher = push.PassPusher()
+		pass_pusher.create(updated_template, self.get_argument('changeMessage'))
+
 		self.find_passes()	
 
 

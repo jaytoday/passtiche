@@ -67,7 +67,9 @@ function SavePassTemplate(fieldset){
 
 	var pass_data = {'output': 'html', 'code': $(document).data('account')};
 
-		input_vals = ['name','slug','image_url', 'url','description','neighborhood_name','location_code','price', 'starts','ends','weekday_range','times','delete','organizationName','organizationUrl'];
+		input_vals = ['name','slug','image_url', 'url','description','neighborhood_name','location_code',
+		'price', 'starts','ends','weekday_range','times','delete','organizationName','organizationUrl', 
+		'changeMessage'];
 	$(input_vals).each(function(i, f){
 		if (fieldset.find('#' + f).val())
 			pass_data[f] = fieldset.find('#' + f).val();
