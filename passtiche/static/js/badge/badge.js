@@ -18,20 +18,23 @@ PASSTICHE.PassticheBadger = makeClass();
 PASSTICHE.PassticheBadger.prototype.init = function(){ }; // pass args
 
 PASSTICHE.PassticheBadger.prototype.loadResources = function(){
+	/* Load additional CSS and JS for Passtiche dialog modal */
 
-		// add additional CSS and JS
 
       // this should be first thing after jQuery loads
 	  jQuery.getScript(PASSTICHE.BASE_URL + '/r/dialog.js', function(){ 
 	  	PASSTICHE.dialog.load(); 
 	  });
-	  jQuery('head').append('<link href="' + PASSTICHE.BASE_URL + '/r/dialog.css" rel="stylesheet" type="text/css">');
+	  jQuery('head').append('<link href="' + PASSTICHE.BASE_URL 
+	  	+ '/r/dialog.css" rel="stylesheet" type="text/css">');
 	  
 };
 
 PASSTICHE.PassticheBadger.prototype.loadBadges = function(){
 
 	/* 
+		Loads badges into the DOM from links to pkpass files or
+		links with supported data attributes.
 
 		See www.passtiche.com/docs for implementation details 
 
@@ -107,20 +110,12 @@ TODO: These should be batched for performance!!!!
 				badge_height = DEFAULT_BADGE_HEIGHT;
 		};
 
-		if (badgeLinkEl.attr('data-pass-size') == 'xsmall'){
-			badge_height = 20;
+		switch(badgeLinkEl.attr('data-pass-size')){
+			case 'xsmall': badge_height = 20;break; 
+			case 'small': badge_height = 30;break;  
+			case 'large': badge_height = 60;break;  
+			case 'xlarge': badge_height = 70;break;  
 		}
-
-		if (badgeLinkEl.attr('data-pass-size') == 'small'){
-			badge_height = 30;
-		}
-		if (badgeLinkEl.attr('data-pass-size') == 'large'){
-			badge_height = 60;
-		}					
-		if (badgeLinkEl.attr('data-pass-size') == 'xlarge'){
-			badge_height = 70;
-		}	
-
 
 	}; // end pass size
 
@@ -186,7 +181,8 @@ TODO: These should be batched for performance!!!!
 	this.badge_data['passes'] = JSON.stringify(this.badge_data['passes']);
 	console.log(this.badge_data['passes']);
 
-	var badge_script = jQuery('script').filter('[src$="this.com/js"],[src$="localhost:8080/js"]');
+	var badge_script = jQuery('script')
+	.filter('[src$="this.com/js"],[src$="localhost:8080/js"]');
 	if (badge_script.attr('account'))
 		this.badge_data['code'] = badge_script.attr('account');
 
@@ -280,8 +276,8 @@ PASSTICHE.PassticheBadger.prototype.badgeClick = function(){
 	else
 		PASSTICHE.BASE_URL = 'http://www.passtiche.com';
 
-    loadScript("https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", function(){
-    	PASSTICHE.badger.loadBadges() });
+    loadScript("https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", 
+    	function(){ PASSTICHE.badger.loadBadges() });
 
 
 
