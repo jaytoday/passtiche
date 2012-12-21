@@ -54,6 +54,7 @@ application = tornado.wsgi.WSGIApplication([
     (r"/", index.PassticheIndex),
     (r"/costanza", index.PassticheIndex),
 
+    (r"/confirm/(?P<user_key>[^\/]+)/?", account.ConfirmAccount),   
     (r"/dashboard", account.Dashboard),
 
  

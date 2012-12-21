@@ -1,101 +1,104 @@
 // keep all use of variables to the top in case this JS needs to be static
-$(document).data('passtiche-base-url', '{{ base_url }}');
+
 
 {% include "bootstrap.min.js" %}
 
 {% include "json.js" %}
 
 
-
-passtiche_dialog = $('#passticheDialogModal');
-
-
-PassticheDialog = {
+if (!window.PASSTICHE) console.error('PASSTICHE object not found - badge script has not been loaded');
 
 
-	init: function(){
 
 
-		passtiche_dialog.find('#pass_embed').find('textarea').live('click', function(){
-			$(this).focus(); $(this).select();
-		});
+PASSTICHE.PassticheDialog = makeClass();
+
+PASSTICHE.PassticheDialog.prototype.init = function(){ }; // pass args
+
+PASSTICHE.PassticheDialog.prototype.load = function(){
+
+	PASSTICHE.dialog_el = jQuery('#passticheDialogModal');
+
+	PASSTICHE.dialog_el.find('#pass_embed').find('textarea').live('click', function(){
+		jQuery(this).focus(); jQuery(this).select();
+	});
 
 
-		passtiche_dialog.find('#edit_name').live('click', function(){
-			/* deprecated for now */
+	PASSTICHE.dialog_el.find('#edit_name').live('click', function(){
+		/* deprecated for now */
 
-			passtiche_dialog.find('#send_form_share').hide();
-			passtiche_dialog.find('#name_form').show();	
+		PASSTICHE.dialog_el.find('#send_form_share').hide();
+		PASSTICHE.dialog_el.find('#name_form').show();	
 
-		});
+	});
 
-		passtiche_dialog.find('.send_pass_btn').live('click', PassticheDialog.sendPass);
+	PASSTICHE.dialog_el.find('.send_pass_btn').live('click', this.sendPass);
 
-		passtiche_dialog.live('hidden', function(){
+	PASSTICHE.dialog_el.live('hidden', function(){
 
-			$(this).addClass('hidden');
+		jQuery(this).addClass('hidden');
 
-		});
+	});
 
-		passtiche_dialog.find('#share-social').find('a').live('click', function(){
-		    $.ajax({
-		     	type: "GET",
-		     	url: PASSTICHE_BASE_URL + "/ajax/pass.callback",
-		     	data: { 'type': 'shares', 'pass_template': passtiche_dialog.data('pass_template_code') }
-			 });
+	PASSTICHE.dialog_el.find('#share-social').find('a').live('click', function(){
+	    jQuery.ajax({
+	     	type: "GET",
+	     	url: PASSTICHE.BASE_URL + "/ajax/pass.callback",
+	     	data: { 'type': 'shares', 'pass_template': PASSTICHE.dialog_el.data('pass_template_code') }
+		 });
 
-		})
+	})
 
-	   // callback to the other JS file 
-	   PassticheBadger.findBadges();
+   // callback to the other JS file 
+   if (!PASSTICHE.badger)
+   		return console.error('passtiche badger js library not found');
+   PASSTICHE.badger.findBadges();
 
-	
-	}, // end init
 
-	openPassDialog: function(pass_link){
+}; // end load
+
+ PASSTICHE.PassticheDialog.prototype.openPassDialog = function(pass_link){
 
 
 		{% include "open_pass.js" %}
 
-		setTimeout(PassticheDialog.viewCallback, 250);
+		setTimeout(this.viewCallback, 250);
 
 
-	}, // end openPassDialog
+	}; // end openPassDialog
 
 
-    sendPass: function(){
-    	
-    	{% include "send_pass.js" %}
-    },
+ PASSTICHE.PassticheDialog.prototype.sendPass = function(){
+    {% include "send_pass.js" %}
+    };
 
-    savePass: function(){
-    	{% include "save_pass.js" %}
-    },
+ PASSTICHE.PassticheDialog.prototype.savePass = function(){
+    	{% comment "save_pass.js" %}
+    };
 
-	resetSendDialog: function(){
-		// empties all the inputs
+ PASSTICHE.PassticheDialog.prototype.resetSendDialog = function(){
+	// empties all the inputs
 
-		passtiche_dialog.find('input[type="text"]').val('');
+	PASSTICHE.dialog_el.find('input[type="text"]').val('');
 
-		passtiche_dialog.find('input:checked').attr('checked', false);
+	PASSTICHE.dialog_el.find('input:checked').attr('checked', false);
 
-		passtiche_dialog.find('#error_alert').hide();
+	PASSTICHE.dialog_el.find('#error_alert').hide();
 
-		passtiche_dialog.data('user_pass', false);
+	PASSTICHE.dialog_el.data('user_pass', false);
 
-	}, // end resetSendDialog
+	}; // end resetSendDialog
 
 
-	viewCallback: function(){	
+PASSTICHE.PassticheDialog.prototype.viewCallback = function(){	
 
-     $.ajax({
+     jQuery.ajax({
      	type: "GET",
-     	url: PASSTICHE_BASE_URL + "/ajax/pass.callback",
-     	data: { 'type': 'views', 'pass_template': passtiche_dialog.data('pass_template_code') }
+     	url: PASSTICHE.BASE_URL + "/ajax/pass.callback",
+     	data: { 'type': 'views', 'pass_template': PASSTICHE.dialog_el.data('pass_template_code') }
      });
-} // end viewCallback
-
-} // end PassticheDialog
+}; // end viewCallback
 
 
-window.PassticheDialog = PassticheDialog;
+
+PASSTICHE.dialog = PASSTICHE.PassticheDialog();

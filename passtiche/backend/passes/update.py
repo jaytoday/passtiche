@@ -73,7 +73,7 @@ class PassUpdate(object):
 				searchFields.append(search.TextField(name='owner', value=self.user.short_code))
 			pass_doc = search.Document(fields=searchFields)
 			logging.info('adding pass doc to index')
-			search.Index(name=_INDEX_NAME).add(pass_doc)
+			search.Index(name=_INDEX_NAME).put(pass_doc)
 
 		elif name:
 				pass_template.name = name

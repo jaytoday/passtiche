@@ -2,28 +2,19 @@
 
 	var pass_data = { }
 
-	//pass_data['theme'] = passtiche_dialog.find('#inputThemes').find('input:checked').val();
-
-	passtiche_dialog.find('#error_alert').hide();	
-
-
-		/*
-		pass_data['from_email']  = passtiche_dialog.find('#inputFrom').val();
-		if (false && pass_data['from_email'].indexOf('@') < 1)
-		return sendDialogError("Valid 'From' Email Address is Required");
-	*/
+	PASSTICHE.dialog_el.find('#error_alert').hide();	
 	
-	var send_form = $(this).parents('.send_form:first');
+	var send_form = jQuery(this).parents('.send_form:first');
     
-    pass_data['pass_template'] = passtiche_dialog.data('pass_template_code');
+    pass_data['pass_template'] = PASSTICHE.dialog_el.data('pass_template_code');
 
 	if (send_form.attr('id') == 'send_form_download'){
 		var download = true;
 	}else{
-		if (!passtiche_dialog.data('user_pass'))
+		if (!PASSTICHE.dialog_el.data('user_pass'))
 			console.error('no user pass');
 		var download = false;
-		pass_data['user_pass'] = passtiche_dialog.data('user_pass') 
+		pass_data['user_pass'] = PASSTICHE.dialog_el.data('user_pass') 
 	}
 
 	to_email = send_form.find('#inputToEmail').val();	
@@ -43,8 +34,8 @@ if (download && pass_data['to_phone'])
 if (download && pass_data['to_email'])
 	localStorage.setItem('user_email', pass_data['to_email']);
 
-  passtiche_dialog.find('#dialog-tab-content').addClass('hidden');
-  passtiche_dialog.find('#sent-confirmation').removeClass('hidden');
+  PASSTICHE.dialog_el.find('#dialog-tab-content').addClass('hidden');
+  PASSTICHE.dialog_el.find('#sent-confirmation').removeClass('hidden');
 
   	window.SendPassCB = function(){
   		console.log('send pass callback');
@@ -53,15 +44,15 @@ if (download && pass_data['to_email'])
   	}
 
   	setTimeout(function(){
-     	  	passtiche_dialog.find('#sent-confirmation').addClass('hidden');
-     	  	passtiche_dialog.find('#dialog-tab-content').removeClass('hidden');
-     	  	passtiche_dialog.find('button.close:first').click(); 
+     	  	PASSTICHE.dialog_el.find('#sent-confirmation').addClass('hidden');
+     	  	PASSTICHE.dialog_el.find('#dialog-tab-content').removeClass('hidden');
+     	  	PASSTICHE.dialog_el.find('button.close:first').click(); 
      	  }, 2500);
 
   	pass_data['callback'] = 'SendPassCB';
-   $.ajax({
+   jQuery.ajax({
      type: "POST",
-     url: PASSTICHE_BASE_URL + "/ajax/pass.send",
+     url: PASSTICHE.BASE_URL + "/ajax/pass.send",
      data: pass_data,
      dataType: 'jsonp'
      });

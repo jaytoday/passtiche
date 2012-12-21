@@ -38,6 +38,7 @@ class User(BaseModel):
     small_thumb = db.BlobProperty(required=False) # 32?
     
     account = db.StringProperty(required=False)  
+    confirmed = db.BooleanProperty(default=False)   
     is_paid = db.BooleanProperty(required=False)    
         
     # optional integration

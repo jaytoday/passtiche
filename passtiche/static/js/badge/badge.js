@@ -1,235 +1,249 @@
 
-if (window.location.href.indexOf('localhost') > -1)
-	PASSTICHE_BASE_URL = 'http://localhost:8080';
-else
-	PASSTICHE_BASE_URL = 'http://www.passtiche.com';
-window.PASSTICHE_BASE_URL = PASSTICHE_BASE_URL;
 
-passtiche = {};
+// makeClass - By John Resig (MIT Licensed)
+function makeClass(){
+  return function(args){
+    if ( this instanceof arguments.callee ) {
+      if ( typeof this.init == "function" )
+        this.init.apply( this, args.callee ? args : arguments );
+    } else
+      return new arguments.callee( arguments );
+  };
+}
 
-PassticheBadger = {
+window.PASSTICHE = makeClass()();
 
-	init: function(){
+PASSTICHE.PassticheBadger = makeClass();
 
-			/* 
+PASSTICHE.PassticheBadger.prototype.init = function(){ }; // pass args
 
-				See www.passtiche.com/docs for implementation details 
+PASSTICHE.PassticheBadger.prototype.loadResources = function(){
 
-				Required:
-					- loc
-				Optional:
-					- city
-					- name
-					- price
-					- description
-			*/
-	
-			console.log('initiating Passtiche library');
-
-			passtiche.badgelinks = $('a[data-pass-loc], a[data-pass-id], a[href$=pkpass]');
-			var timestamp = new Date().getTime();
-			callbackName = 'passticheCB_' + timestamp; 
-
-			window[callbackName] = function(response_json){
-					// JSONP callback
-
-							console.log('adding dialog html and adding pass content to badges');
-
-							var dialog_html = $(response_json['dialog_html']);
-							$('body').append(dialog_html.html());
-							$(response_json['passes']).each(PassticheBadger.badgeCallback);
-
-							setTimeout(function(){
-								$(document).trigger('passtiche-loaded');
-							},50);
-			}
-
-			passtiche.badge_data = { 'create': true, 'passes': [], 'sdk': true, 'callback': callbackName }; // create passes if they don't already exist 
-
-
-			// collect badge data for each badge 
-			$(passtiche.badgelinks).each(PassticheBadger.addBadge);
-
-
-			// load additional CSS and JS 
-			
-			PassticheBadger.loadResources();
-
-			// TODO - JS should contain callback for PassticheBadger.findBadges();
-			
-
-
-
-	}, // end init
-
-	loadResources: function(){
-
-			// add additional CSS and JS
+		// add additional CSS and JS
 
       // this should be first thing after jQuery loads
-	  $.getScript(PASSTICHE_BASE_URL + '/r/dialog.js', function(){ PassticheDialog.init(); });
-	  $('head').append('<link href="' + PASSTICHE_BASE_URL + '/r/dialog.css" rel="stylesheet" type="text/css">');
+	  jQuery.getScript(PASSTICHE.BASE_URL + '/r/dialog.js', function(){ 
+	  	PASSTICHE.dialog.load(); 
+	  });
+	  jQuery('head').append('<link href="' + PASSTICHE.BASE_URL + '/r/dialog.css" rel="stylesheet" type="text/css">');
 	  
-	  console.log('loaded resources');
-	},
+};
 
-	addBadge: function(){
+PASSTICHE.PassticheBadger.prototype.loadBadges = function(){
 
-		/* 
+	/* 
 
-		TODO: These should be batched for performance!!!!
+		See www.passtiche.com/docs for implementation details 
 
-		*/
+		Required:
+			- loc
+		Optional:
+			- city
+			- name
+			- price
+			- description
+	*/
 
-		// add badge image and find or create pass
+	console.log(PASSTICHE, 'initiating Passtiche Badger class');
 
-				var badgeLinkEl = $(this);
+	this.badgelinks = jQuery('a[data-pass-loc], a[data-pass-id], a[href$=pkpass]');
+	var timestamp = new Date().getTime();
+	callbackName = 'passticheCB_' + timestamp; 
 
-				DEFAULT_BADGE_HEIGHT = 40;
-				var badge_height = DEFAULT_BADGE_HEIGHT;
+	window[callbackName] = function(response_json){
+			// JSONP callback
 
-				if (badgeLinkEl.attr('data-pass-size')){
+			console.log('adding dialog html and adding pass content to badges');
 
-					if (parseInt(badgeLinkEl.attr('data-pass-size'))){
+			var dialog_html = jQuery(response_json['dialog_html']);
+			jQuery('body').append(dialog_html.html());
+			jQuery(response_json['passes']).each(PASSTICHE.badger.badgeCallback);
+
+			setTimeout(function(){
+				jQuery(document).trigger('passtiche-loaded');
+			},50);
+	}; // end callback
+
+	this.badge_data = { 'create': true, 'passes': [], 'sdk': true, 'callback': callbackName }; // create passes if they don't already exist 
+
+	// collect badge data for each badge 
+	jQuery(this.badgelinks).each(PASSTICHE.badger.addBadge);
+
+
+
+	// load additional CSS and JS 
+	
+	this.loadResources();
+
+	// TODO - JS should contain callback for PassticheBadger.findBadges();
 	
 
-						badge_height = parseInt(badgeLinkEl.attr('data-pass-size'));
-						if (badge_height > 80 || badge_height < 20)
-							badge_height = DEFAULT_BADGE_HEIGHT;
-					};
-
-					if (badgeLinkEl.attr('data-pass-size') == 'xsmall'){
-						badge_height = 20;
-					}
-
-					if (badgeLinkEl.attr('data-pass-size') == 'small'){
-						badge_height = 30;
-					}
-					if (badgeLinkEl.attr('data-pass-size') == 'large'){
-						badge_height = 60;
-					}					
-					if (badgeLinkEl.attr('data-pass-size') == 'xlarge'){
-						badge_height = 70;
-					}	
 
 
-				}; // end pass size
-
-				var badge_width = parseInt(badge_height * 3.075);
-
-				var clearslate_css = 'border: none !important; display: block !important;margin: auto !important;outline: none !important;padding: 0 !important;background: none !important;clear: none !important;'
-					+ 'float: none !important;max-height: none !important;max-width: none !important;min-height: 0 !important;width: auto!important;height: auto !important;min-width: 0 !important;visibility: visible !important;bottom: auto !important;'
-					+ 'clip: auto !important;left: auto !important;overflow: auto !important;position: relative !important;right: auto !important;top: auto !important;vertical-align: top !important;z-index: 1 !important;'
-					+ 'color: none !important;cursor:pointer !important;';
-
-				// TODO: better way to override for custom styles
-				
-
-				var dimensions_css = 'width: ' + badge_width + 'px !important; height: ' + badge_height + 'px !important;';
-
-				badgeLinkEl.attr('style', clearslate_css + dimensions_css );
-
-				var badge_img  = $('<img style="' + clearslate_css + dimensions_css + '" src="' + PASSTICHE_BASE_URL + '/badge"></img>');
-
-				var badge_title = badgeLinkEl.text() || 'Add to Passbook';
-				badgeLinkEl.html(badge_img);
-				if (!badgeLinkEl.attr('title'))
-					badgeLinkEl.attr('title', badge_title);
+}; // end init
 
 
-				var pass_data = {};
+PASSTICHE.PassticheBadger.prototype.addBadge = function(){
 
-				if (badgeLinkEl.filter('[href$=pkpass]').length > 0){
+/* 
 
-					// linked pass
-					pass_data['url'] = badgeLinkEl.attr('href');
+TODO: These should be batched for performance!!!!
 
+*/
 
-				}else{
-				
-				// TODO: if ID, it does not need call 
-				$(['loc', 'city', 'name', 'price', 'description', 'id']).each(function(i, attr){
+// add badge image and find or create pass
 
-						var attr_val = badgeLinkEl.attr('data-pass-' + attr);
-						if (attr_val){
-							console.log(attr_val);
-							pass_data[attr] = attr_val;
-						}
-					});
+	var badgeLinkEl = jQuery(this);
+	DEFAULT_BADGE_HEIGHT = 40;
+	var badge_height = DEFAULT_BADGE_HEIGHT;
 
-				}
-				
-				badgeLinkEl.removeAttr('href'); // TODO: bind fallback link or message
+	if (badgeLinkEl.attr('data-pass-size')){
 
-				badgeLinkEl.on('click', PassticheBadger.badgeClick);
-
-				passtiche.badge_data['passes'].push(pass_data);	
-
-		},
-
-	 findBadges: function(){
-	 			// make ajax call to get badge data
-	 			console.log('find badges');
-				passtiche.badge_data['passes'] = JSON.stringify(passtiche.badge_data['passes']);
-				console.log(passtiche.badge_data['passes']);
-
-				var badge_script = $('script').filter('[src$="passtiche.com/js"],[src$="localhost:8080/js"]');
-				if (badge_script.attr('account'))
-					passtiche.badge_data['code'] = badge_script.attr('account');
-
-				passtiche.badge_data['location'] = window.location.href;
+		if (parseInt(badgeLinkEl.attr('data-pass-size'))){
 
 
-				$.ajax({
-					type: "GET",
-					url: PASSTICHE_BASE_URL + "/api/1/pass.find",
-					dataType: 'jsonp',
-					data: passtiche.badge_data
-					});	
+			badge_height = parseInt(badgeLinkEl.attr('data-pass-size'));
+			if (badge_height > 80 || badge_height < 20)
+				badge_height = DEFAULT_BADGE_HEIGHT;
+		};
+
+		if (badgeLinkEl.attr('data-pass-size') == 'xsmall'){
+			badge_height = 20;
+		}
+
+		if (badgeLinkEl.attr('data-pass-size') == 'small'){
+			badge_height = 30;
+		}
+		if (badgeLinkEl.attr('data-pass-size') == 'large'){
+			badge_height = 60;
+		}					
+		if (badgeLinkEl.attr('data-pass-size') == 'xlarge'){
+			badge_height = 70;
+		}	
 
 
-	}, // end findBadges
+	}; // end pass size
 
+	var badge_width = parseInt(badge_height * 3.075);
+
+	var clearslate_css = 'border: none !important; display: block !important;margin: auto !important;outline: none !important;padding: 0 !important;background: none !important;clear: none !important;'
+		+ 'float: none !important;max-height: none !important;max-width: none !important;min-height: 0 !important;width: auto!important;height: auto !important;min-width: 0 !important;visibility: visible !important;bottom: auto !important;'
+		+ 'clip: auto !important;left: auto !important;overflow: auto !important;position: relative !important;right: auto !important;top: auto !important;vertical-align: top !important;z-index: 1 !important;'
+		+ 'color: none !important;cursor:pointer !important;';
+
+	// TODO: better way to override for custom styles
 	
-	badgeCallback: function(i, pass_dict){
+
+	var dimensions_css = 'width: ' + badge_width + 'px !important; height: ' + badge_height + 'px !important;';
+
+	badgeLinkEl.attr('style', clearslate_css + dimensions_css );
+
+	var badge_img  = jQuery('<img style="' + clearslate_css + dimensions_css + '" src="' + PASSTICHE.BASE_URL + '/badge"></img>');
+
+	var badge_title = badgeLinkEl.text() || 'Add to Passbook';
+	badgeLinkEl.html(badge_img);
+	if (!badgeLinkEl.attr('title'))
+		badgeLinkEl.attr('title', badge_title);
 
 
-		// this relies on 1-1 match between els and data
-		var badgeLinkEl = $(passtiche.badgelinks[i]);
-		badgeLinkEl.attr('data-pass-id', pass_dict['short_code']);
-		badgeLinkEl.data('pass-info', pass_dict);
+	var pass_data = {};
+
+	if (badgeLinkEl.filter('[href$=pkpass]').length > 0){
+
+		// linked pass
+		pass_data['url'] = badgeLinkEl.attr('href');
 
 
-	},
+	}else{
+	
+	// TODO: if ID, it does not need call 
+	jQuery(['loc', 'city', 'name', 'price', 'description', 'id']).each(function(i, attr){
 
-	addBadgeLink: function(short_code, badgeLinkEl){
-		/* Deprecated - or fallback */
-		// add href attribute to a link when pass ID is returned 
-		console.log(badgeLinkEl);
-		badgeLinkEl.attr('pass-code',short_code);
-		badgeLinkEl.attr('href', PASSTICHE_BASE_URL + '/p/' + short_code);
-		badgeLinkEl.attr('target', '_blank');
+			var attr_val = badgeLinkEl.attr('data-pass-' + attr);
+			if (attr_val){
+				//console.log(attr_val);
+				pass_data[attr] = attr_val;
+			}
+		});
 
-	},
-
-	badgeClick: function(){
-		// TODO: check if JS is in place yet - if not then 
-
-		if (!window.PassticheDialog)
-			return console.error('no passtiche dialog');
-
-		PassticheDialog.openPassDialog($(this));
 	}
+	
+	badgeLinkEl.removeAttr('href'); // TODO: bind fallback link or message
+
+	badgeLinkEl.on('click', PASSTICHE.badger.badgeClick);
+	console.log(PASSTICHE.badger);
+	PASSTICHE.badger.badge_data['passes'].push(pass_data);	
+
+	};
+
+ PASSTICHE.PassticheBadger.prototype.findBadges = function(){
+		console.log('test')
+		console.log(this, this.badge_data);
+
+		// make ajax call to get badge data
+		console.log('find badges');
+
+	this.badge_data['passes'] = JSON.stringify(this.badge_data['passes']);
+	console.log(this.badge_data['passes']);
+
+	var badge_script = jQuery('script').filter('[src$="this.com/js"],[src$="localhost:8080/js"]');
+	if (badge_script.attr('account'))
+		this.badge_data['code'] = badge_script.attr('account');
+
+	this.badge_data['location'] = window.location.href;
 
 
-};// end PassticheBadger
+	jQuery.ajax({
+			type: "GET",
+			url: PASSTICHE.BASE_URL + "/api/1/pass.find",
+			dataType: 'jsonp',
+			data: this.badge_data
+		});	
 
-window.PassticheBadger = PassticheBadger; 
+
+}; // end findBadges
+
+
+PASSTICHE.PassticheBadger.prototype.badgeCallback = function(i, pass_dict){
+
+	// this relies on 1-1 match between els and data
+	var badgeLinkEl = jQuery(PASSTICHE.badger.badgelinks[i]);
+	badgeLinkEl.attr('data-pass-id', pass_dict['short_code']);
+	badgeLinkEl.data('pass-info', pass_dict);
+
+};
+
+PASSTICHE.PassticheBadger.prototype.addBadgeLink = function(short_code, badgeLinkEl){
+	/* Deprecated - or fallback */
+	// add href attribute to a link when pass ID is returned 
+	console.log(badgeLinkEl);
+	badgeLinkEl.attr('pass-code',short_code);
+	badgeLinkEl.attr('href', PASSTICHE.BASE_URL + '/p/' + short_code);
+	badgeLinkEl.attr('target', '_blank');
+
+};
+
+PASSTICHE.PassticheBadger.prototype.badgeClick = function(){
+	// TODO: check if JS is in place yet - if not then 
+
+	if (!PASSTICHE.dialog)
+		return console.error('no passtiche dialog');
+
+	PASSTICHE.dialog.openPassDialog(jQuery(this));
+};
+
+
+
 
 
 (function () {
 
+
+	PASSTICHE.badger = PASSTICHE.PassticheBadger();
+
     function loadScript(url, callback) {
+
+
 
     	/*
 
@@ -260,7 +274,16 @@ window.PassticheBadger = PassticheBadger;
         document.getElementsByTagName("head")[0].appendChild(script);
     }
 
-    loadScript("https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", PassticheBadger.init);
+
+	if (window.location.href.indexOf('localhost') > -1)
+		PASSTICHE.BASE_URL = 'http://localhost:8080';
+	else
+		PASSTICHE.BASE_URL = 'http://www.passtiche.com';
+
+    loadScript("https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", function(){
+    	PASSTICHE.badger.loadBadges() });
+
 
 
 })();
+
