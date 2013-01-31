@@ -38,13 +38,6 @@ PASSTICHE.PassticheBadger.prototype.loadBadges = function(){
 
 		See www.passtiche.com/docs for implementation details 
 
-		Required:
-			- loc
-		Optional:
-			- city
-			- name
-			- price
-			- description
 	*/
 
 	console.log(PASSTICHE, 'initiating Passtiche Badger class');
@@ -72,25 +65,20 @@ PASSTICHE.PassticheBadger.prototype.loadBadges = function(){
 	// collect badge data for each badge 
 	jQuery(this.badgelinks).each(PASSTICHE.badger.addBadge);
 
-
-
 	// load additional CSS and JS 
 	
 	this.loadResources();
 
 	// TODO - JS should contain callback for PassticheBadger.findBadges();
 	
-
-
-
-}; // end init
+}; // end loadBadges
 
 
 PASSTICHE.PassticheBadger.prototype.addBadge = function(){
 
 /* 
 
-TODO: These should be batched for performance!!!!
+	Modify a link to include badge image and extra attributes
 
 */
 
@@ -128,7 +116,6 @@ TODO: These should be batched for performance!!!!
 
 	// TODO: better way to override for custom styles
 	
-
 	var dimensions_css = 'width: ' + badge_width + 'px !important; height: ' + badge_height + 'px !important;';
 
 	badgeLinkEl.attr('style', clearslate_css + dimensions_css );
@@ -172,14 +159,11 @@ TODO: These should be batched for performance!!!!
 	};
 
  PASSTICHE.PassticheBadger.prototype.findBadges = function(){
-		console.log('test')
-		console.log(this, this.badge_data);
+ 	/* Send retrieved pass data to server for more detailed data
+ 		and content for dialog modal */
 
-		// make ajax call to get badge data
-		console.log('find badges');
 
 	this.badge_data['passes'] = JSON.stringify(this.badge_data['passes']);
-	console.log(this.badge_data['passes']);
 
 	var badge_script = jQuery('script')
 	.filter('[src$="this.com/js"],[src$="localhost:8080/js"]');
@@ -201,6 +185,7 @@ TODO: These should be batched for performance!!!!
 
 
 PASSTICHE.PassticheBadger.prototype.badgeCallback = function(i, pass_dict){
+	/* add data attributes to badge links for short code and detailed pass info */
 
 	// this relies on 1-1 match between els and data
 	var badgeLinkEl = jQuery(PASSTICHE.badger.badgelinks[i]);
@@ -220,7 +205,7 @@ PASSTICHE.PassticheBadger.prototype.addBadgeLink = function(short_code, badgeLin
 };
 
 PASSTICHE.PassticheBadger.prototype.badgeClick = function(){
-	// TODO: check if JS is in place yet - if not then 
+	/* binds badge clicks to dialog's open event */
 
 	if (!PASSTICHE.dialog)
 		return console.error('no passtiche dialog');
@@ -229,23 +214,13 @@ PASSTICHE.PassticheBadger.prototype.badgeClick = function(){
 };
 
 
-
-
-
 (function () {
-
 
 	PASSTICHE.badger = PASSTICHE.PassticheBadger();
 
     function loadScript(url, callback) {
 
-
-
-    	/*
-
-					TODO: jQuery can be required for dialog, but not for the bootstrapper! 
-
-		*/
+    	/* TODO: jQuery can be required for dialog, but not for the bootstrapper */
 
     	if (window.jQuery)
     		return callback();

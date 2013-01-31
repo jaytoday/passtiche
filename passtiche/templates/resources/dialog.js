@@ -9,13 +9,12 @@
 if (!window.PASSTICHE) console.error('PASSTICHE object not found - badge script has not been loaded');
 
 
-
-
 PASSTICHE.PassticheDialog = makeClass();
 
 PASSTICHE.PassticheDialog.prototype.init = function(){ }; // pass args
 
 PASSTICHE.PassticheDialog.prototype.load = function(){
+	/* load dialog modal */
 
 	PASSTICHE.dialog_el = jQuery('#passticheDialogModal');
 
@@ -23,14 +22,6 @@ PASSTICHE.PassticheDialog.prototype.load = function(){
 		jQuery(this).focus(); jQuery(this).select();
 	});
 
-
-	PASSTICHE.dialog_el.find('#edit_name').live('click', function(){
-		/* deprecated for now */
-
-		PASSTICHE.dialog_el.find('#send_form_share').hide();
-		PASSTICHE.dialog_el.find('#name_form').show();	
-
-	});
 
 	PASSTICHE.dialog_el.find('.send_pass_btn').live('click', this.sendPass);
 
@@ -47,7 +38,14 @@ PASSTICHE.PassticheDialog.prototype.load = function(){
 	     	data: { 'type': 'shares', 'pass_template': PASSTICHE.dialog_el.data('pass_template_code') }
 		 });
 
-	})
+	});
+
+	PASSTICHE.dialog_el.find('#edit_name').live('click', function(){
+
+		PASSTICHE.dialog_el.find('#send_form_share').hide();
+		PASSTICHE.dialog_el.find('#name_form').show();	
+
+	});
 
    // callback to the other JS file 
    if (!PASSTICHE.badger)
@@ -58,6 +56,7 @@ PASSTICHE.PassticheDialog.prototype.load = function(){
 }; // end load
 
  PASSTICHE.PassticheDialog.prototype.openPassDialog = function(pass_link){
+ 	/* opens and resets pass dialog modal */
 
 
 		{% include "open_pass.js" %}
@@ -69,10 +68,12 @@ PASSTICHE.PassticheDialog.prototype.load = function(){
 
 
  PASSTICHE.PassticheDialog.prototype.sendPass = function(){
+ 	/* send pass via email or SMS */
     {% include "send_pass.js" %}
     };
 
  PASSTICHE.PassticheDialog.prototype.savePass = function(){
+ 	/* bookmark pass */
     	{% comment "save_pass.js" %}
     };
 
@@ -91,6 +92,7 @@ PASSTICHE.PassticheDialog.prototype.load = function(){
 
 
 PASSTICHE.PassticheDialog.prototype.viewCallback = function(){	
+	/* notify server of view event */
 
      jQuery.ajax({
      	type: "GET",

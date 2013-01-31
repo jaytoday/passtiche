@@ -139,7 +139,7 @@ class UpdatePass(PassHandler):
 		# this could be deferred for extra put
 		from backend.passes import push
 		pass_pusher = push.PassPusher()
-		pass_pusher.create(updated_template, self.get_argument('changeMessage'))
+		pass_pusher.create(updated_template, self.get_argument('changeMessage',''))
 
 		self.find_passes()	
 
