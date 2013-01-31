@@ -1,9 +1,0 @@
-
-{% for i, (marketing_date, (clicks, spend)) in enumerate(demographic_dict['marketing_history']) %}
-	<div  sort="{{ i }}" range="{{ marketing_date.strftime("%A, %B %d") }}">
-	<span class="clicks">{{ clicks }}</span>
-	<span class="spend">{{ spend }}</span>
-	</div>
-{% end %}
-
-

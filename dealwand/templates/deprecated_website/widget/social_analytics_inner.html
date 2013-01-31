@@ -1,3 +1,0 @@
-	{% for i, (view_date, date_dict) in enumerate(widget.social_data(days=days)) %}
-    		    <span day="{{ view_date.day }}" {% if  view_date == current_date %} is_today="true" {% end %} date="{{ view_date.strftime("%s") }}000" _date="{{ view_date.strftime('%Y-%m-%d') }}" readable_date="{{ view_date.strftime('%d %B %Y') }}" facebook="{{ date_dict['facebook']  }}" twitter="{{ date_dict['twitter']  }}"></span>
-		{% end %}
