@@ -36,7 +36,7 @@ PASSTICHE.PassticheBadger.prototype.loadBadges = function(){
 		Loads badges into the DOM from links to pkpass files or
 		links with supported data attributes.
 
-		See www.passtiche.com/docs for implementation details 
+		See www.passtiche.appspot.com/docs for implementation details 
 
 	*/
 
@@ -249,7 +249,7 @@ PASSTICHE.PassticheBadger.prototype.badgeClick = function(){
 	if (window.location.href.indexOf('localhost') > -1)
 		PASSTICHE.BASE_URL = 'http://localhost:8080';
 	else
-		PASSTICHE.BASE_URL = 'http://www.passtiche.com';
+		PASSTICHE.BASE_URL = 'http://www.passtiche.appspot.com';
 
     loadScript("https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", 
     	function(){ PASSTICHE.badger.loadBadges() });

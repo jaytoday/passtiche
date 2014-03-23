@@ -16,8 +16,8 @@ settings = {
     
     
     # URLs
-    "domain": "passtiche.com",
-    "website": "http://www.passtiche.com",
+    "domain": "passtiche.appspot.com",
+    "website": "http://www.passtiche.appspot.com",
     "twitter": "passtiche",  
 
     # API TOKENS

@@ -148,7 +148,7 @@ class PassTemplate(BaseModel):
         return {}
 
     def dl_url(self):
-        link = 'http://passtiche.com/p/%s' % self.short_code
+        link = 'http://passtiche.appspot.com/p/%s' % self.short_code
         return link        
 
 
@@ -235,7 +235,7 @@ class UserPass(BaseModel):
     theme = db.StringProperty()
 
     def url(self):
-        link = 'http://passtiche.com/u/%s' % self.code
+        link = 'http://passtiche.appspot.com/u/%s' % self.code
         return link
 
     def display_owner_name(self):

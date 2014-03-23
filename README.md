@@ -1,4 +1,4 @@
-<img src="http://www.passtiche.com/static/images/logo/logo_black_text_small.png" style="width:00px;"/>
+<img src="http://www.passtiche.appspot.com/static/images/logo/logo_black_text_small.png" style="width:00px;"/>
 
 * [Overview](#overview)
 * [System Architecture](#system-architecture) 
@@ -18,7 +18,7 @@ Passtiche is a website plugin that brings Passbook to your website or mobile app
 * Listings passes are automatically enhanced with extra info from Yelp & Foursquare
 * Schedule personalized alerts & reminders to be sent as Passbook notifications
 
-See the [Passtiche Documentations](http://www.passtiche.com/docs) for details.
+See the [Passtiche Documentations](http://www.passtiche.appspot.com/docs) for details.
 
 ## System Architecture
 
@@ -26,7 +26,7 @@ Passtiche runs on [Tornado](http://www.tornadoweb.org/).
 
 The Passtiche stack includes:
 
-* A javascript library that can be included on a website with `<script src="http://passtiche.com/js>` 
+* A javascript library that can be included on a website with `<script src="http://passtiche.appspot.com/js>` 
 * A Passbook server that creates, updates, signs, and delivers pass files.
 * A website with dashboard for managing passes and account settings.
 
@@ -54,7 +54,7 @@ There are more components for emails, third-party API access, utilities, tests, 
 
 ## Badge.js
 
-The initial script loaded via `<script src="http://passtiche.com/js>` is located at `static/js/badge/badge.js`. 
+The initial script loaded via `<script src="http://passtiche.appspot.com/js>` is located at `static/js/badge/badge.js`. 
 This script contains a `PassticheBadger` class. When initiated, this class finds all links that either link to a *pkpass* file or contain supported data attributes.
 From the  `PassticheBadger.addBadge` method, supported links on the page are injected with markup containing an *Add to Passbook* badge image.
 

@@ -154,7 +154,7 @@ position: absolute;
 z-index:0;
 opacity: .8;
 height: 130px;
--webkit-filter: grayscale(0.3) brightness(0.1) contrast(1.8) saturate(1.3) sepia(.5);
+-webkit-filter: grayscale(0.3) brightness(.8) contrast(1.8) saturate(1.3) sepia(.5);
 max-width: none;
 }
 

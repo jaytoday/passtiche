@@ -127,7 +127,7 @@ class PassFile(object):
 				self.pass_json['backFields'][2]['value'] += "%s\n\n" % self.pass_location.get('yelp')
 
 
-		self.pass_json['backFields'][2]['value'] += "\nThis pass was created with www.passtiche.com \n\n%s" % ( 
+		self.pass_json['backFields'][2]['value'] += "\nThis pass was created with www.passtiche.appspot.com \n\n%s" % ( 
 			        	"Passtiche makes it easy to enhance online listings, coupons and tickets with instant Passbook badges ")
 
 		self.pass_json['backFields'] = [b for b in self.pass_json['backFields'] if b['value']]

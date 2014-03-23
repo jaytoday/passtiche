@@ -120,7 +120,7 @@ class EmailMessage(object):
 
 
 def sender():
-	return "passtiche <james@passtiche.com>" # team@fitpledge.com, TODO: change this to support@fitwand.com?
+	return "passtiche <james@passtiche.appspot.com>" # team@fitpledge.com, TODO: change this to support@fitwand.com?
 
 def reply_to(address=None):
 	address = address or "hiptype"

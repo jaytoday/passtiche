@@ -50,16 +50,16 @@ if (PASSTICHE.dialog_el.length < 1) return console.error('dialog HTML not found'
 	PASSTICHE.dialog_el.find('#link_text').attr('href',pass_link);
 
 	// setup social links
-	PASSTICHE.dialog_el.find('#share-social').find('.twitter').find('a').attr('href','http://twitter.com/intent/tweet?text=http%3A%2F%2Fpasstiche.com%2Fp%2F' 
+	PASSTICHE.dialog_el.find('#share-social').find('.twitter').find('a').attr('href','http://twitter.com/intent/tweet?text=http%3A%2F%2Fpasstiche.appspot.com%2Fp%2F' 
 		+ PASSTICHE.dialog_el.data('pass_template_code') + '%20Check%20Out%20This%20Pass');
 
-	PASSTICHE.dialog_el.find('#share-social').find('.fb').find('a').attr('href','http://www.facebook.com/share.php?u=http%3A%2F%2Fpasstiche.com%2Fp%2F' 
+	PASSTICHE.dialog_el.find('#share-social').find('.fb').find('a').attr('href','http://www.facebook.com/share.php?u=http%3A%2F%2Fpasstiche.appspot.com%2Fp%2F' 
 		+ PASSTICHE.dialog_el.data('pass_template_code'));	
 
 
 	PASSTICHE.dialog_el.modal('show');
 
-	PASSTICHE.dialog_el.find('#pass_embed').find('textarea').html('&lt;script src="http://www.passtiche.com/js"&gt;&lt;/script&gt;\n'
+	PASSTICHE.dialog_el.find('#pass_embed').find('textarea').html('&lt;script src="http://www.passtiche.appspot.com/js"&gt;&lt;/script&gt;\n'
 		+ '&lt;a data-pass-id="' + PASSTICHE.dialog_el.data('pass_template_code') + '" &gt;&lt;/a&gt;')
 	
 

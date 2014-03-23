@@ -1,8 +1,8 @@
 
 @font-face {
     font-family: 'museo-slab' !important;
-    src: url('http://www.passtiche.com/static/fonts/museo_slab_500-webfont.eot') !important;
-    src: url('http://www.passtiche.com/static/fonts/museo_slab_500-webfont.eot?#iefix') format('embedded-opentype'),  url('http://www.passtiche.com/static/fonts/museo_slab_500-webfont.ttf') format('truetype') !important;
+    src: url('http://www.passtiche.appspot.com/static/fonts/museo_slab_500-webfont.eot') !important;
+    src: url('http://www.passtiche.appspot.com/static/fonts/museo_slab_500-webfont.eot?#iefix') format('embedded-opentype'),  url('http://www.passtiche.appspot.com/static/fonts/museo_slab_500-webfont.ttf') format('truetype') !important;
     font-weight: bold !important;
     font-style: normal !important;
 }
@@ -516,9 +516,9 @@ input:focus:required:invalid:focus,#passticheDialogModal textarea:focus:required
 #passticheDialogModal table{max-width:100% !important;background-color:transparent !important;border-collapse:collapse !important;border-spacing:0 !important;}
 
 #passticheDialogModal 
-[class^="icon-"],#passticheDialogModal [class*=" icon-"]{display:inline-block !important;width:14px !important;height:14px !important;*margin-right:.3em !important;line-height:14px !important;vertical-align:text-top !important; background-image:url("http://www.passtiche.com/static/images/glyphicons-halflings.png") !important;background-position:14px 14px !important;background-repeat:no-repeat !important;margin-top:1px !important;}
+[class^="icon-"],#passticheDialogModal [class*=" icon-"]{display:inline-block !important;width:14px !important;height:14px !important;*margin-right:.3em !important;line-height:14px !important;vertical-align:text-top !important; background-image:url("http://www.passtiche.appspot.com/static/images/glyphicons-halflings.png") !important;background-position:14px 14px !important;background-repeat:no-repeat !important;margin-top:1px !important;}
 
-#passticheDialogModal .icon-white,#passticheDialogModal .nav-tabs>.active>a>[class^="icon-"],#passticheDialogModal .nav-tabs>.active>a>[class*=" icon-"],#passticheDialogModal .nav-pills>.active>a>[class^="icon-"],#passticheDialogModal .nav-pills>.active>a>[class*=" icon-"],#passticheDialogModal .nav-list>.active>a>[class^="icon-"],#passticheDialogModal .nav-list>.active>a>[class*=" icon-"],#passticheDialogModal .navbar-inverse .nav>.active>a>[class^="icon-"],#passticheDialogModal .navbar-inverse .nav>.active>a>[class*=" icon-"],#passticheDialogModal .dropdown-menu>li>a:hover>[class^="icon-"],#passticheDialogModal .dropdown-menu>li>a:hover>[class*=" icon-"],#passticheDialogModal .dropdown-menu>.active>a>[class^="icon-"],#passticheDialogModal .dropdown-menu>.active>a>[class*=" icon-"]{background-image:url("http://www.passtiche.com/static/images/glyphicons-halflings-white.png") !important;}
+#passticheDialogModal .icon-white,#passticheDialogModal .nav-tabs>.active>a>[class^="icon-"],#passticheDialogModal .nav-tabs>.active>a>[class*=" icon-"],#passticheDialogModal .nav-pills>.active>a>[class^="icon-"],#passticheDialogModal .nav-pills>.active>a>[class*=" icon-"],#passticheDialogModal .nav-list>.active>a>[class^="icon-"],#passticheDialogModal .nav-list>.active>a>[class*=" icon-"],#passticheDialogModal .navbar-inverse .nav>.active>a>[class^="icon-"],#passticheDialogModal .navbar-inverse .nav>.active>a>[class*=" icon-"],#passticheDialogModal .dropdown-menu>li>a:hover>[class^="icon-"],#passticheDialogModal .dropdown-menu>li>a:hover>[class*=" icon-"],#passticheDialogModal .dropdown-menu>.active>a>[class^="icon-"],#passticheDialogModal .dropdown-menu>.active>a>[class*=" icon-"]{background-image:url("http://www.passtiche.appspot.com/static/images/glyphicons-halflings-white.png") !important;}
 
 #passticheDialogModal .icon-glass{background-position:0 0 !important;}
 

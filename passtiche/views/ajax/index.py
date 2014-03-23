@@ -346,7 +346,7 @@ def invite_email(email):
     email_msg = EmailMessage(
         duplicate_check=False,
         campaign='INVITE_REQUEST',
-        sender='james@passtiche.com',
+        sender='james@passtiche.appspot.com',
         subject="Setting you up with a Passtiche account", 
         to=email, 
         context={ 'email': email }, 

@@ -299,7 +299,7 @@ class CookieHandler(BaseHandler):
         user_entity = User(key_name=user_keyname, username=user_keyname)
         if password:
             user_entity.password = password
-        if '@passtiche.com' not in user_keyname and not user_keyname.startswith('auto_gen'):
+        if '@passtiche.appspot.com' not in user_keyname and not user_keyname.startswith('auto_gen'):
             deferred.defer(send_admin_email, subject='New %s User: %s' % (
                  self._settings['title'], user_keyname),        
                 message='User %s just signed up for an account' % user_keyname,

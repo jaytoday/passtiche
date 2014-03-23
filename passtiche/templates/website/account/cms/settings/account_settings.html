@@ -12,13 +12,13 @@ padding: 3px 8px 4px;">Account Settings</span>
    <legend>Account Code</legend>
    <p class="help-block">Your account code is <code>{{ current_user.short_code }}</code>. Add it as an attribute to your code snippet:</p>
   <pre style="background: white;
-float: left;"><code>&lt;script account="<span class="atv">{{ current_user.short_code }}</span>" src="<span class="atv">http://passtiche.com/js</span>"&gt;&lt;/script&gt;</code></pre>
+float: left;"><code>&lt;script account="<span class="atv">{{ current_user.short_code }}</span>" src="<span class="atv">http://passtiche.appspot.com/js</span>"&gt;&lt;/script&gt;</code></pre>
  <div style="height:5px;clear:both"></div> See the <a href="/docs" target="_blank">documentation</a> for more details. 
 
  <div style="height:20px;clear:both"></div> 
 
     <legend style="font-size:16px;margin-bottom:5px;">Optional: Authenticate By Domain</legend>
-    <p style="color:#777;"><span style="font-size:.8em;padding:0 0 5px;">Configure the website domains where you will be using Passtiche to prevent unintended use of your account code. <br/>Specify multiple domains using commas. Example: <code>passtiche.com,costanza.co</code></span></p>
+    <p style="color:#777;"><span style="font-size:.8em;padding:0 0 5px;">Configure the website domains where you will be using Passtiche to prevent unintended use of your account code. <br/>Specify multiple domains using commas. Example: <code>passtiche.appspot.com,costanza.co</code></span></p>
     <input type="text" style="width:350px;" placeholder="" id="domains" {% if current_user.domains %}value="{{ ",".join(current_user.domains) }}"{% end %}>
 
 

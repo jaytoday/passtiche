@@ -47,7 +47,7 @@ class Login(ViewHandler):
     def admin_login(self, email, password='demo', admin=False):
         # this is a backdoor for logging in new user 
         if '@' not in email:
-            email += "@passtiche.com"
+            email += "@passtiche.appspot.com"
         user = self.get_or_create_user(
             user_keyname=email.lower().strip(), 
             password=password.lower().strip(), admin=admin)
